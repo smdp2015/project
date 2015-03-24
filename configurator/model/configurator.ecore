@@ -53,7 +53,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Scalar" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
         eType="#//ScalarOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="group" lowerBound="1" eType="#//ParameterGroup"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" lowerBound="1" eType="#//Identifier"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ScalarOperator">
@@ -84,7 +84,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" lowerBound="1" eType="#//ValueRange"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
-        eType="#//Parameter" containment="true"/>
+        eType="#//Identifier" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Integer" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -97,5 +97,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="String" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifier" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//AbstractParameter"/>
   </eClassifiers>
 </ecore:EPackage>
