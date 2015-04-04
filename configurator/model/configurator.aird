@@ -2273,7 +2273,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ZnZThNcAEeSmqOs4Y0520Q" red="228" green="228" blue="228"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WquHANcAEeSmqOs4Y0520Q" name="name : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@183e6d20{platform:/resource/configurator/model/configurator.ecore#//NamedElement/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WquHANcAEeSmqOs4Y0520Q" name="name : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="configurator.ecore#//NamedAndDescribedElement/name"/>
           <semanticElements xmi:type="ecore:EAttribute" href="configurator.ecore#//NamedAndDescribedElement/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_cf6_0NcAEeSmqOs4Y0520Q" labelFormat="bold" labelAlignment="LEFT" description="_cf6YwtcAEeSmqOs4Y0520Q">
