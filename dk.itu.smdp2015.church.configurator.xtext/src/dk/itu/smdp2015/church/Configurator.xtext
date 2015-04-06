@@ -36,6 +36,7 @@ Bounded returns Bounded:
 	'[' lowerBound=Expression ';' upperBound=Expression ']';
 
 Constraint:
+	('description' description=STRING)?	
 	 expr=Expression;
 
 Expression:
