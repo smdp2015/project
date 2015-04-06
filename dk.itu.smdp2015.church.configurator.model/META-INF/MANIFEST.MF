@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: dk.itu.smdp2015.church.configurator.model;singleton:=true
+Bundle-Version: 1.1.0.qualifier
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: dk.itu.smdp2015.church.model.configurator,
+ dk.itu.smdp2015.church.model.configurator.impl,
+ dk.itu.smdp2015.church.model.configurator.util
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
