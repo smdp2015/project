@@ -86,9 +86,9 @@
     <genClasses ecoreClass="configurator.ecore#//Identifier">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Identifier/id"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="configurator.ecore#//NamedAndDescribedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//NamedAndDescribedElement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//NamedAndDescribedElement/description"/>
+    <genClasses image="false" ecoreClass="configurator.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

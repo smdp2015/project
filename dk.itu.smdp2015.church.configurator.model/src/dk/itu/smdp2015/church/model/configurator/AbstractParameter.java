@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractParameter extends NamedAndDescribedElement {
+public interface AbstractParameter extends NamedElement, DescribedElement {
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public interface AbstractParameter extends NamedAndDescribedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link dk.itu.smdp2015.church.model.configurator.Expression}.
+	 * The list contents are of type {@link dk.itu.smdp2015.church.model.configurator.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
@@ -62,6 +62,6 @@ public interface AbstractParameter extends NamedAndDescribedElement {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Expression> getConstraints();
+	EList<Constraint> getConstraints();
 
 } // AbstractParameter
