@@ -15,7 +15,7 @@ ParameterGroup:
 	'group'	name=ID
 	(description=STRING)?
 	( ('visible-if' visibility=Expression)?
-	& ('constraints' '{' constraints+=Expression ( ',' constraints+=Expression)* ','? '}' )?
+	& ('constraints' '{' constraints+=Constraint ( ',' constraints+=Constraint)* ','? '}' )?
 	& '{' parameters+=AbstractParameter ( ','? parameters+=AbstractParameter)* ','? '}' );
 
 Parameter:
@@ -23,7 +23,7 @@ Parameter:
 	(description=STRING)?
 	( (mandatory?='mandatory'|'optional')? 
 	& ('visible-if' visibility=Expression)?
-	& ('constraints' '{' constraints+=Expression ( ',' constraints+=Expression)* '}' )?
+	& ('constraints' '{' constraints+=Constraint ( ',' constraints+=Constraint)* '}' )?
 	& 'values' valueRange=ValueRange );
 
 ValueRange:
@@ -34,6 +34,9 @@ Enumerated returns Enumerated:
 
 Bounded returns Bounded:
 	'[' lowerBound=Expression ';' upperBound=Expression ']';
+
+Constraint:
+	 expr=Expression;
 
 Expression:
 	Disjunctive;
