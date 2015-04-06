@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="dk.itu.smdp2015.church.configurator.syntax.sdk"
+	label="Configurator SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="dk.itu.smdp2015.church.configurator.syntax"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="dk.itu.smdp2015.church.configurator.syntax.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>
