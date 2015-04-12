@@ -7,6 +7,8 @@ import org.eclipse.xtext.validation.Check
 import dk.itu.smdp2015.church.model.configurator.Bounded
 import dk.itu.smdp2015.church.model.configurator.Constant
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage
+import dk.itu.smdp2015.church.model.configurator.Enumerated
+import dk.itu.smdp2015.church.model.configurator.Binary
 
 /**
  * Custom validation rules. 
@@ -16,12 +18,29 @@ import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage
 class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
     public static val INVALID_BOUND = 'invalidBound'
-
+    public static val INVALID_ENUMERATION = 'invalid enumeration'
+	public static val INVALID_BINARYTYPE = 'invalid binary operand type'
+	
+	
 	@Check
-	def checkBoundedExpressionLowerBoundIsConstant(Bounded bounded) {
-		if (!Constant.isAssignableFrom(bounded.lowerBound.class)) {
-			warning('Lower bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND, INVALID_BOUND) 			
-		}
+	def checkBinaryOperatorConstantsAreSameType(Binary it) {
+		if(Constant.isAssignableFrom(left.class) && Constant.isAssignableFrom(right.class) && left.class!=right.class){
+				error(String.format('Left operand (%s) should be same type as right operand (%s).',left.class.simpleName,right.class.simpleName), ConfiguratorPackage.Literals.BINARY__LEFT, INVALID_BINARYTYPE)
+				error(String.format('Right operand (%s) should be same type as left operand (%s).',right.class.simpleName,left.class.simpleName), ConfiguratorPackage.Literals.BINARY__RIGHT, INVALID_BINARYTYPE)
+		
+			}
+	}
+	@Check
+	def checkEnumeratedExpressionIsConstant(Enumerated it) {
+		values.forEach[if(!Constant.isAssignableFrom(it.class)){
+			error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES, INVALID_ENUMERATION) 			
+		}]
+	}
+	@Check
+	def checkEnumeratedValuesAreSameType(Enumerated it) {
+		values.forEach[v|if(v.class != values.get(0).class){
+			error('Enumerated items should have similar type.', ConfiguratorPackage.Literals.ENUMERATED__VALUES, INVALID_ENUMERATION) 			
+		}]
 	}
 
 	@Check
@@ -38,5 +57,10 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 			warning('Lower and upper bound should have similar type.', ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND, INVALID_BOUND) 
 		}
 	}
-
+	@Check
+	def checkBoundedExpressionLowerBoundIsConstant(Bounded bounded) {
+		if (!Constant.isAssignableFrom(bounded.lowerBound.class)) {
+			warning('Lower bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND, INVALID_BOUND) 			
+		}
+	}
 }
