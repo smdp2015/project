@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>car</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Content/Lib/jquery.mobile-1.4.5.min.css">
+    <script src="Scripts/Lib/jquery-1.11.1.min.js"></script>
+    <script src="Scripts/Lib/knockout-3.3.0.js"></script>
+    <script src="Scripts/mobileinit.js"></script>
+    <script src="Scripts/Lib/jquery.mobile-1.4.5.min.js"></script>
+    <script src="Scripts/App.js"></script>
+</head>
+<body >
+    <div id="main" data-role="page" data-add-back-btn="true">
+        <div data-role="header">
+            <h1>
+                car
+            </h1>
+        </div>
+        <div role="main">
+            <section class="description">
+                A configurator for a car
+            </section>
+            <ul data-role="listview">
+                <li>
+                    <label for="length-param">Length:</label>
+                    <input type="range" name="length" id="length-param" min="2" max="10" value="3">
+                </li>
+                <li data-role="collapsible" >
+                    <h2><label for="variant-param">variant:</label></h2>
+
+                        <select  id="variant-param">
+                            <option value="1">standard</option>
+                            <option value="2">sport</option>
+                            <option value="3">luxury</option>
+                        </select>
+
+                </li>
+                <li>
+                    <label for="engine-param">engine:</label>
+                     <select  id="engine-param">
+                            <option value="1">TFSI 1.2</option>
+                            <option value="2">TFSI 1.4</option>
+                            <option value="3">TFSI 2.0</option>
+                        </select>
+
+                </li>
+                <li data-role="collapsible">
+                    <h2><label for="fog_lights-param">fog_lights:</label></h2>
+
+                    <input type="checkbox" data-role="flipswitch" id="fog_lights-param">
+
+                </li>
+                <li><a href="#seats">seats</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="seats" data-role="page" >
+        <div data-role="header" data-add-back-btn="true">
+            <h1>
+                seats
+            </h1>
+        </div>
+        <div role="main">
+            <ul data-role="listview">
+                <li>
+                    <label for="material-param">material:</label>
+                     <select  id="material-param">
+                                <option value="1">leather</option>
+                                <option value="2">cloth</option>
+                    </select>
+                </li>
+                <li data-role="collapsible">
+                    <h2><label for="colour-param">colour:</label></h2>
+                     <select  id="colour-param">
+                            <option value="1">red</option>
+                            <option value="2">blue</option>
+                            <option value="2">blue</option>
+                </select>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
