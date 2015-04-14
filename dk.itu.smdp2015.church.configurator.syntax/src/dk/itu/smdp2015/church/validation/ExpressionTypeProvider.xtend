@@ -3,11 +3,9 @@ package dk.itu.smdp2015.church.validation
 import dk.itu.smdp2015.church.model.configurator.Binary
 import dk.itu.smdp2015.church.model.configurator.Boolean
 import dk.itu.smdp2015.church.model.configurator.Constant
-import dk.itu.smdp2015.church.model.configurator.Double
 import dk.itu.smdp2015.church.model.configurator.Identifier
 import dk.itu.smdp2015.church.model.configurator.InRange
 import dk.itu.smdp2015.church.model.configurator.Integer
-import dk.itu.smdp2015.church.model.configurator.Scalar
 import dk.itu.smdp2015.church.model.configurator.String
 import dk.itu.smdp2015.church.model.configurator.Unary
 
@@ -22,7 +20,6 @@ class ExpressionTypeProvider {
 			String: ExpressionType.String
 			Boolean: ExpressionType.Boolean
 			Integer: ExpressionType.Integer
-			Double: ExpressionType.Double
 		}
 	}
 
@@ -35,21 +32,15 @@ class ExpressionTypeProvider {
 					ExpressionType.String
 				else if(leftType == ExpressionType.Integer && rightType == ExpressionType.Integer) ExpressionType.
 					Integer else ExpressionType.Double
-			case CONJUNCTION:
+			case LOGICAL_AND:
 				ExpressionType.Boolean
-			case DISJUNCTION:
+			case LOGICAL_OR:
 				ExpressionType.Boolean
-			case DIVISION:
-				ExpressionType.Double
 			case EQUAL:
 				ExpressionType.Boolean
 			case GREATER_THAN:
 				ExpressionType.Boolean
-			case GREATER_THAN_EQUAL:
-				ExpressionType.Boolean
 			case LESS_THAN:
-				ExpressionType.Boolean
-			case LESS_THAN_EQUAL:
 				ExpressionType.Boolean
 			case MULTIPLICATION:
 				if(leftType == ExpressionType.Integer && rightType == ExpressionType.Integer) ExpressionType.Integer else ExpressionType.
@@ -66,7 +57,6 @@ class ExpressionTypeProvider {
 		val innerType = unary.inner?.typeFor
 		switch (unary.operator) {
 			case INVERSION: if(innerType == ExpressionType.Double) ExpressionType.Double else ExpressionType.Integer
-			case NEGATION: ExpressionType.Boolean
 		}
 	}
 
@@ -82,7 +72,4 @@ class ExpressionTypeProvider {
 		}
 	}
 
-	def dispatch ExpressionType typeFor(Scalar scalar) {
-		ExpressionType.Double
-	}	
 }

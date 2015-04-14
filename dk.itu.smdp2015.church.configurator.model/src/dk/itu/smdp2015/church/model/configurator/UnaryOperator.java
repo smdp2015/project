@@ -31,14 +31,14 @@ public enum UnaryOperator implements Enumerator {
 	INVERSION(0, "inversion", "inversion"),
 
 	/**
-	 * The '<em><b>Negation</b></em>' literal object.
+	 * The '<em><b>Logical Not</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NEGATION_VALUE
+	 * @see #LOGICAL_NOT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NEGATION(0, "negation", "negation");
+	LOGICAL_NOT(0, "logicalNot", "logicalNot");
 
 	/**
 	 * The '<em><b>Inversion</b></em>' literal value.
@@ -56,19 +56,19 @@ public enum UnaryOperator implements Enumerator {
 	public static final int INVERSION_VALUE = 0;
 
 	/**
-	 * The '<em><b>Negation</b></em>' literal value.
+	 * The '<em><b>Logical Not</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Negation</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Logical Not</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NEGATION
-	 * @model name="negation"
+	 * @see #LOGICAL_NOT
+	 * @model name="logicalNot"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NEGATION_VALUE = 0;
+	public static final int LOGICAL_NOT_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Unary Operator</b></em>' enumerators.
@@ -79,7 +79,7 @@ public enum UnaryOperator implements Enumerator {
 	private static final UnaryOperator[] VALUES_ARRAY =
 		new UnaryOperator[] {
 			INVERSION,
-			NEGATION,
+			LOGICAL_NOT,
 		};
 
 	/**

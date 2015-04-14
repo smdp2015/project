@@ -46,20 +46,17 @@ public class XConfiguratorValidator extends AbstractConfiguratorValidator {
           case ADDITION:
             _switchResult = null;
             break;
-          case CONJUNCTION:
+          case LOGICAL_AND:
             Expression _left = binary.getLeft();
             this.checkExpectedBoolean(_left, leftLiteral);
             Expression _right = binary.getRight();
             this.checkExpectedBoolean(_right, rightLiteral);
             break;
-          case DISJUNCTION:
+          case LOGICAL_OR:
             Expression _left_1 = binary.getLeft();
             this.checkExpectedBoolean(_left_1, leftLiteral);
             Expression _right_1 = binary.getRight();
             this.checkExpectedBoolean(_right_1, rightLiteral);
-            break;
-          case DIVISION:
-            _switchResult = null;
             break;
           case EQUAL:
             Expression _left_2 = binary.getLeft();
@@ -75,13 +72,7 @@ public class XConfiguratorValidator extends AbstractConfiguratorValidator {
           case GREATER_THAN:
             _switchResult = null;
             break;
-          case GREATER_THAN_EQUAL:
-            _switchResult = null;
-            break;
           case LESS_THAN:
-            _switchResult = null;
-            break;
-          case LESS_THAN_EQUAL:
             _switchResult = null;
             break;
           case MULTIPLICATION:

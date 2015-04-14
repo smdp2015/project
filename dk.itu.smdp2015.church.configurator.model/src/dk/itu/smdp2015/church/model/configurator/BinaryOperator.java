@@ -21,24 +21,24 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum BinaryOperator implements Enumerator {
 	/**
-	 * The '<em><b>Disjunction</b></em>' literal object.
+	 * The '<em><b>Logical Or</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DISJUNCTION_VALUE
+	 * @see #LOGICAL_OR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DISJUNCTION(0, "disjunction", "disjunction"),
+	LOGICAL_OR(0, "logicalOr", "logicalOr"),
 
 	/**
-	 * The '<em><b>Conjunction</b></em>' literal object.
+	 * The '<em><b>Logical And</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CONJUNCTION_VALUE
+	 * @see #LOGICAL_AND_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CONJUNCTION(0, "conjunction", "conjunction"),
+	LOGICAL_AND(0, "logicalAnd", "logicalAnd"),
 
 	/**
 	 * The '<em><b>Addition</b></em>' literal object.
@@ -71,16 +71,6 @@ public enum BinaryOperator implements Enumerator {
 	MULTIPLICATION(0, "multiplication", "multiplication"),
 
 	/**
-	 * The '<em><b>Division</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DIVISION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	DIVISION(0, "division", "division"),
-
-	/**
 	 * The '<em><b>Less Than</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,16 +81,6 @@ public enum BinaryOperator implements Enumerator {
 	LESS_THAN(0, "lessThan", "lessThan"),
 
 	/**
-	 * The '<em><b>Less Than Equal</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LESS_THAN_EQUAL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	LESS_THAN_EQUAL(0, "lessThanEqual", "lessThanEqual"),
-
-	/**
 	 * The '<em><b>Greater Than</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,16 +89,6 @@ public enum BinaryOperator implements Enumerator {
 	 * @ordered
 	 */
 	GREATER_THAN(0, "greaterThan", "greaterThan"),
-
-	/**
-	 * The '<em><b>Greater Than Equal</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #GREATER_THAN_EQUAL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	GREATER_THAN_EQUAL(0, "greaterThanEqual", "greaterThanEqual"),
 
 	/**
 	 * The '<em><b>Equal</b></em>' literal object.
@@ -141,34 +111,34 @@ public enum BinaryOperator implements Enumerator {
 	NOT_EQUAL(0, "notEqual", "notEqual");
 
 	/**
-	 * The '<em><b>Disjunction</b></em>' literal value.
+	 * The '<em><b>Logical Or</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Disjunction</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Logical Or</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #DISJUNCTION
-	 * @model name="disjunction"
+	 * @see #LOGICAL_OR
+	 * @model name="logicalOr"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DISJUNCTION_VALUE = 0;
+	public static final int LOGICAL_OR_VALUE = 0;
 
 	/**
-	 * The '<em><b>Conjunction</b></em>' literal value.
+	 * The '<em><b>Logical And</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Conjunction</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Logical And</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CONJUNCTION
-	 * @model name="conjunction"
+	 * @see #LOGICAL_AND
+	 * @model name="logicalAnd"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CONJUNCTION_VALUE = 0;
+	public static final int LOGICAL_AND_VALUE = 0;
 
 	/**
 	 * The '<em><b>Addition</b></em>' literal value.
@@ -216,21 +186,6 @@ public enum BinaryOperator implements Enumerator {
 	public static final int MULTIPLICATION_VALUE = 0;
 
 	/**
-	 * The '<em><b>Division</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Division</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #DIVISION
-	 * @model name="division"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DIVISION_VALUE = 0;
-
-	/**
 	 * The '<em><b>Less Than</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -246,21 +201,6 @@ public enum BinaryOperator implements Enumerator {
 	public static final int LESS_THAN_VALUE = 0;
 
 	/**
-	 * The '<em><b>Less Than Equal</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Less Than Equal</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #LESS_THAN_EQUAL
-	 * @model name="lessThanEqual"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int LESS_THAN_EQUAL_VALUE = 0;
-
-	/**
 	 * The '<em><b>Greater Than</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -274,21 +214,6 @@ public enum BinaryOperator implements Enumerator {
 	 * @ordered
 	 */
 	public static final int GREATER_THAN_VALUE = 0;
-
-	/**
-	 * The '<em><b>Greater Than Equal</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Greater Than Equal</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #GREATER_THAN_EQUAL
-	 * @model name="greaterThanEqual"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int GREATER_THAN_EQUAL_VALUE = 0;
 
 	/**
 	 * The '<em><b>Equal</b></em>' literal value.
@@ -328,16 +253,13 @@ public enum BinaryOperator implements Enumerator {
 	 */
 	private static final BinaryOperator[] VALUES_ARRAY =
 		new BinaryOperator[] {
-			DISJUNCTION,
-			CONJUNCTION,
+			LOGICAL_OR,
+			LOGICAL_AND,
 			ADDITION,
 			SUBTRACTION,
 			MULTIPLICATION,
-			DIVISION,
 			LESS_THAN,
-			LESS_THAN_EQUAL,
 			GREATER_THAN,
-			GREATER_THAN_EQUAL,
 			EQUAL,
 			NOT_EQUAL,
 		};
@@ -390,7 +312,7 @@ public enum BinaryOperator implements Enumerator {
 	 */
 	public static BinaryOperator get(int value) {
 		switch (value) {
-			case DISJUNCTION_VALUE: return DISJUNCTION;
+			case LOGICAL_OR_VALUE: return LOGICAL_OR;
 		}
 		return null;
 	}

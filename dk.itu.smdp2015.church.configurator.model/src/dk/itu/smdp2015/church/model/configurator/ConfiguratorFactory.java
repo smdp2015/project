@@ -85,15 +85,6 @@ public interface ConfiguratorFactory extends EFactory {
 	Binary createBinary();
 
 	/**
-	 * Returns a new object of class '<em>Scalar</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scalar</em>'.
-	 * @generated
-	 */
-	Scalar createScalar();
-
-	/**
 	 * Returns a new object of class '<em>In Range</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,15 +101,6 @@ public interface ConfiguratorFactory extends EFactory {
 	 * @generated
 	 */
 	Integer createInteger();
-
-	/**
-	 * Returns a new object of class '<em>Double</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Double</em>'.
-	 * @generated
-	 */
-	Double createDouble();
 
 	/**
 	 * Returns a new object of class '<em>Boolean</em>'.

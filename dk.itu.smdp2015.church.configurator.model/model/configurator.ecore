@@ -48,33 +48,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Scalar" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
-        eType="#//ScalarOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//ParameterGroup"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ScalarOperator">
-    <eLiterals name="sum"/>
-    <eLiterals name="min"/>
-    <eLiterals name="max"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BinaryOperator">
-    <eLiterals name="disjunction"/>
-    <eLiterals name="conjunction"/>
+    <eLiterals name="logicalOr"/>
+    <eLiterals name="logicalAnd"/>
     <eLiterals name="addition"/>
     <eLiterals name="subtraction"/>
     <eLiterals name="multiplication"/>
-    <eLiterals name="division"/>
     <eLiterals name="lessThan"/>
-    <eLiterals name="lessThanEqual"/>
     <eLiterals name="greaterThan"/>
-    <eLiterals name="greaterThanEqual"/>
     <eLiterals name="equal"/>
     <eLiterals name="notEqual"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="UnaryOperator">
     <eLiterals name="inversion"/>
-    <eLiterals name="negation"/>
+    <eLiterals name="logicalNot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" abstract="true" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="InRange" eSuperTypes="#//Expression">
@@ -85,9 +72,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Integer" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Double" eSuperTypes="#//Constant">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Boolean" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

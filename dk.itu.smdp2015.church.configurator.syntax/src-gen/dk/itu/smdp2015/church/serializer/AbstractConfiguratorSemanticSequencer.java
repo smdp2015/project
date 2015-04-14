@@ -12,7 +12,6 @@ import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-import dk.itu.smdp2015.church.model.configurator.Scalar;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.services.ConfiguratorGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -40,17 +39,17 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule()) {
-					sequence_Additive_Comparative_Conjunctive_Disjunctive_Equality_Multiplicative(context, (Binary) semanticObject); 
+					sequence_Additive_Comparative_Equality_LogicalAnd_LogicalOr_Multiplicative(context, (Binary) semanticObject); 
 					return; 
 				}
 				else break;
@@ -60,14 +59,14 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getBooleanRule() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getConstantRule() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule()) {
@@ -94,27 +93,6 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 					return; 
 				}
 				else break;
-			case ConfiguratorPackage.DOUBLE:
-				if(context == grammarAccess.getAdditiveRule() ||
-				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getComparativeRule() ||
-				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConstantRule() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDoubleRule() ||
-				   context == grammarAccess.getEqualityRule() ||
-				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getMultiplicativeRule() ||
-				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getPrimitiveRule()) {
-					sequence_Double(context, (dk.itu.smdp2015.church.model.configurator.Double) semanticObject); 
-					return; 
-				}
-				else break;
 			case ConfiguratorPackage.ENUMERATED:
 				if(context == grammarAccess.getEnumeratedRule() ||
 				   context == grammarAccess.getValueRangeRule()) {
@@ -127,14 +105,14 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getIdentifierRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule()) {
@@ -147,14 +125,14 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getInRangeRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule()) {
@@ -167,15 +145,15 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getConstantRule() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getIntegerRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule()) {
@@ -197,39 +175,19 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 					return; 
 				}
 				else break;
-			case ConfiguratorPackage.SCALAR:
-				if(context == grammarAccess.getAdditiveRule() ||
-				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getComparativeRule() ||
-				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getEqualityRule() ||
-				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getMultiplicativeRule() ||
-				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getPrimitiveRule() ||
-				   context == grammarAccess.getScalarRule()) {
-					sequence_Scalar(context, (Scalar) semanticObject); 
-					return; 
-				}
-				else break;
 			case ConfiguratorPackage.STRING:
 				if(context == grammarAccess.getAdditiveRule() ||
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getConstantRule() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule() ||
@@ -243,13 +201,13 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 				   context == grammarAccess.getAdditiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getComparativeRule() ||
 				   context == grammarAccess.getComparativeAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getConjunctiveRule() ||
-				   context == grammarAccess.getConjunctiveAccess().getBinaryLeftAction_1_0() ||
-				   context == grammarAccess.getDisjunctiveRule() ||
-				   context == grammarAccess.getDisjunctiveAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getEqualityRule() ||
 				   context == grammarAccess.getEqualityAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLogicalAndRule() ||
+				   context == grammarAccess.getLogicalAndAccess().getBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getLogicalOrRule() ||
+				   context == grammarAccess.getLogicalOrAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicativeRule() ||
 				   context == grammarAccess.getMultiplicativeAccess().getBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getPrimitiveRule() ||
@@ -269,11 +227,11 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	 *         (left=Multiplicative_Binary_1_0 operator=MultiplicativeOperator right=Primitive) | 
 	 *         (left=Comparative_Binary_1_0 operator=ComparativeOperator right=Additive) | 
 	 *         (left=Equality_Binary_1_0 operator=EqualityOperator right=Comparative) | 
-	 *         (left=Conjunctive_Binary_1_0 operator=ConjunctiveOperator right=Equality) | 
-	 *         (left=Disjunctive_Binary_1_0 operator=DisjunctiveOperator right=Conjunctive)
+	 *         (left=LogicalAnd_Binary_1_0 operator=LogicalAndOperator right=Equality) | 
+	 *         (left=LogicalOr_Binary_1_0 operator=LogicalOrOperator right=LogicalAnd)
 	 *     )
 	 */
-	protected void sequence_Additive_Comparative_Conjunctive_Disjunctive_Equality_Multiplicative(EObject context, Binary semanticObject) {
+	protected void sequence_Additive_Comparative_Equality_LogicalAnd_LogicalOr_Multiplicative(EObject context, Binary semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -328,22 +286,6 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	 */
 	protected void sequence_Constraint(EObject context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     value=EDouble
-	 */
-	protected void sequence_Double(EObject context, dk.itu.smdp2015.church.model.configurator.Double semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackage.Literals.DOUBLE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackage.Literals.DOUBLE__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDoubleAccess().getValueEDoubleParserRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
 	}
 	
 	
@@ -436,25 +378,6 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	 */
 	protected void sequence_Parameter(EObject context, Parameter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (operator=ScalarOperator id=[ParameterGroup|ID])
-	 */
-	protected void sequence_Scalar(EObject context, Scalar semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackage.Literals.SCALAR__OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackage.Literals.SCALAR__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorPackage.Literals.SCALAR__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorPackage.Literals.SCALAR__ID));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getScalarAccess().getOperatorScalarOperatorEnumRuleCall_0_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getScalarAccess().getIdParameterGroupIDTerminalRuleCall_2_0_1(), semanticObject.getId());
-		feeder.finish();
 	}
 	
 	

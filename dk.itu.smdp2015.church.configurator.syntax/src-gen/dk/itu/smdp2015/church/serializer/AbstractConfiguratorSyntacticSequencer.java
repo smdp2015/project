@@ -22,8 +22,8 @@ public abstract class AbstractConfiguratorSyntacticSequencer extends AbstractSyn
 	protected AbstractElementAlias match_ParameterGroup_CommaKeyword_3_2_2_0_q;
 	protected AbstractElementAlias match_ParameterGroup_CommaKeyword_3_2_3_q;
 	protected AbstractElementAlias match_Parameter_OptionalKeyword_3_0_1_a;
-	protected AbstractElementAlias match_Primitive_LeftParenthesisKeyword_8_0_a;
-	protected AbstractElementAlias match_Primitive_LeftParenthesisKeyword_8_0_p;
+	protected AbstractElementAlias match_Primitive_LeftParenthesisKeyword_6_0_a;
+	protected AbstractElementAlias match_Primitive_LeftParenthesisKeyword_6_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -33,8 +33,8 @@ public abstract class AbstractConfiguratorSyntacticSequencer extends AbstractSyn
 		match_ParameterGroup_CommaKeyword_3_2_2_0_q = new TokenAlias(false, true, grammarAccess.getParameterGroupAccess().getCommaKeyword_3_2_2_0());
 		match_ParameterGroup_CommaKeyword_3_2_3_q = new TokenAlias(false, true, grammarAccess.getParameterGroupAccess().getCommaKeyword_3_2_3());
 		match_Parameter_OptionalKeyword_3_0_1_a = new TokenAlias(true, true, grammarAccess.getParameterAccess().getOptionalKeyword_3_0_1());
-		match_Primitive_LeftParenthesisKeyword_8_0_a = new TokenAlias(true, true, grammarAccess.getPrimitiveAccess().getLeftParenthesisKeyword_8_0());
-		match_Primitive_LeftParenthesisKeyword_8_0_p = new TokenAlias(true, false, grammarAccess.getPrimitiveAccess().getLeftParenthesisKeyword_8_0());
+		match_Primitive_LeftParenthesisKeyword_6_0_a = new TokenAlias(true, true, grammarAccess.getPrimitiveAccess().getLeftParenthesisKeyword_6_0());
+		match_Primitive_LeftParenthesisKeyword_6_0_p = new TokenAlias(true, false, grammarAccess.getPrimitiveAccess().getLeftParenthesisKeyword_6_0());
 	}
 	
 	@Override
@@ -59,10 +59,10 @@ public abstract class AbstractConfiguratorSyntacticSequencer extends AbstractSyn
 				emit_ParameterGroup_CommaKeyword_3_2_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Parameter_OptionalKeyword_3_0_1_a.equals(syntax))
 				emit_Parameter_OptionalKeyword_3_0_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Primitive_LeftParenthesisKeyword_8_0_a.equals(syntax))
-				emit_Primitive_LeftParenthesisKeyword_8_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Primitive_LeftParenthesisKeyword_8_0_p.equals(syntax))
-				emit_Primitive_LeftParenthesisKeyword_8_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Primitive_LeftParenthesisKeyword_6_0_a.equals(syntax))
+				emit_Primitive_LeftParenthesisKeyword_6_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Primitive_LeftParenthesisKeyword_6_0_p.equals(syntax))
+				emit_Primitive_LeftParenthesisKeyword_6_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -111,7 +111,7 @@ public abstract class AbstractConfiguratorSyntacticSequencer extends AbstractSyn
 	 * Syntax:
 	 *     '('*
 	 */
-	protected void emit_Primitive_LeftParenthesisKeyword_8_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primitive_LeftParenthesisKeyword_6_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -119,7 +119,7 @@ public abstract class AbstractConfiguratorSyntacticSequencer extends AbstractSyn
 	 * Syntax:
 	 *     '('+
 	 */
-	protected void emit_Primitive_LeftParenthesisKeyword_8_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primitive_LeftParenthesisKeyword_6_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

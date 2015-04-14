@@ -17,7 +17,6 @@ import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.NamedElement;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-import dk.itu.smdp2015.church.model.configurator.Scalar;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
 
@@ -125,10 +124,6 @@ public class ConfiguratorAdapterFactory extends AdapterFactoryImpl {
 				return createBinaryAdapter();
 			}
 			@Override
-			public Adapter caseScalar(Scalar object) {
-				return createScalarAdapter();
-			}
-			@Override
 			public Adapter caseConstant(Constant object) {
 				return createConstantAdapter();
 			}
@@ -139,10 +134,6 @@ public class ConfiguratorAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInteger(dk.itu.smdp2015.church.model.configurator.Integer object) {
 				return createIntegerAdapter();
-			}
-			@Override
-			public Adapter caseDouble(dk.itu.smdp2015.church.model.configurator.Double object) {
-				return createDoubleAdapter();
 			}
 			@Override
 			public Adapter caseBoolean(dk.itu.smdp2015.church.model.configurator.Boolean object) {
@@ -329,20 +320,6 @@ public class ConfiguratorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dk.itu.smdp2015.church.model.configurator.Scalar <em>Scalar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dk.itu.smdp2015.church.model.configurator.Scalar
-	 * @generated
-	 */
-	public Adapter createScalarAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link dk.itu.smdp2015.church.model.configurator.Constant <em>Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -381,20 +358,6 @@ public class ConfiguratorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntegerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link dk.itu.smdp2015.church.model.configurator.Double <em>Double</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dk.itu.smdp2015.church.model.configurator.Double
-	 * @generated
-	 */
-	public Adapter createDoubleAdapter() {
 		return null;
 	}
 

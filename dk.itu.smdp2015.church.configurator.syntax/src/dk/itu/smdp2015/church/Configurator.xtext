@@ -40,19 +40,19 @@ Constraint:
 	 expr=Expression;
 
 Expression:
-	Disjunctive;
+	LogicalOr;
 
-enum DisjunctiveOperator returns BinaryOperator:
-	disjunction = 'or' ;
+enum LogicalOrOperator returns BinaryOperator:
+	logicalOr = 'or' ;
 
-Disjunctive returns Expression:
-	Conjunctive ( {Binary.left=current} operator=DisjunctiveOperator right=Conjunctive )*;
+LogicalOr returns Expression:
+	LogicalAnd ( {Binary.left=current} operator=LogicalOrOperator right=LogicalAnd )*;
 
-enum ConjunctiveOperator returns BinaryOperator:
-	conjunction = 'and';
+enum LogicalAndOperator returns BinaryOperator:
+	logicalAnd = 'and';
 
-Conjunctive returns Expression:
-	Equality ( {Binary.left=current} operator=ConjunctiveOperator right=Equality )*;
+LogicalAnd returns Expression:
+	Equality ( {Binary.left=current} operator=LogicalAndOperator right=Equality )*;
 
 enum EqualityOperator returns BinaryOperator:
 	equal = '==' | notEqual = '!=';
@@ -61,7 +61,7 @@ Equality returns Expression:
 	Comparative ( {Binary.left=current} operator=EqualityOperator right=Comparative )*;
 
 enum ComparativeOperator returns BinaryOperator:
-	lessThan = '<' | lessThanEqual = '<=' | greaterThan = '>' | greaterThanEqual = '>=' ;
+	lessThan = '<' | greaterThan = '>' ;
 
 Comparative returns Expression:
 	Additive ( {Binary.left=current} operator=ComparativeOperator right=Additive )*;
@@ -73,37 +73,28 @@ Additive returns Expression:
 	Multiplicative ( {Binary.left=current} operator=AdditiveOperator right=Multiplicative )*;
 
 enum MultiplicativeOperator returns BinaryOperator:
-	multiplication = '*' | division = '/';
+	multiplication = '*';
 
 Multiplicative returns Expression:
 	Primitive ( {Binary.left=current} operator=MultiplicativeOperator right=Primitive )*;
 
 Primitive returns Expression:	
-	Unary | Scalar | InRange | Integer | Double | Boolean | String0 | Identifier | '(' Expression ')';
+	Unary | InRange | Integer | Boolean | String0 | Identifier | '(' Expression ')';
 
 enum UnaryOperator:
-	inversion = 'not' | negation = '-';
+	inversion = '-' | logicalNot = 'not';
 
 Unary:
 	operator=UnaryOperator inner=Primitive;
 
-enum ScalarOperator:
-	sum = 'sum' | min = 'min' | max = 'max';
-
-Scalar:
-	operator=ScalarOperator '(' id=[ParameterGroup] ')';
-
 Constant:
-	Integer | Double | Boolean | String0;
+	Integer | Boolean | String0;
 
 InRange:
 	parameter=[Parameter] 'in' range=ValueRange;
 
 Integer:
 	value=EInt;
-
-Double:
-	value=EDouble;
 
 Boolean:
 	value=EBoolean;

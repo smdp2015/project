@@ -30,15 +30,13 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 		switch (binary.operator) {
 			case ADDITION: {
 			}
-			case CONJUNCTION: {
+			case LOGICAL_AND: {
 				checkExpectedBoolean(binary.left, leftLiteral)
 				checkExpectedBoolean(binary.right, rightLiteral)
 			}
-			case DISJUNCTION: {
+			case LOGICAL_OR: {
 				checkExpectedBoolean(binary.left, leftLiteral)
 				checkExpectedBoolean(binary.right, rightLiteral)
-			}
-			case DIVISION: {
 			}
 			case EQUAL: {
 				val leftType = getTypeAndCheckNotNull(binary.left, leftLiteral)
@@ -50,11 +48,7 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 			}
 			case GREATER_THAN: {
 			}
-			case GREATER_THAN_EQUAL: {
-			}
 			case LESS_THAN: {
-			}
-			case LESS_THAN_EQUAL: {
 			}
 			case MULTIPLICATION: {
 			}

@@ -19,8 +19,6 @@ import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.NamedElement;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-import dk.itu.smdp2015.church.model.configurator.Scalar;
-import dk.itu.smdp2015.church.model.configurator.ScalarOperator;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.UnaryOperator;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
@@ -115,13 +113,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scalarEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass constantEClass = null;
 
 	/**
@@ -137,13 +128,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * @generated
 	 */
 	private EClass integerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass doubleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,13 +170,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * @generated
 	 */
 	private EClass constraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum scalarOperatorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -499,33 +476,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getScalar() {
-		return scalarEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getScalar_Operator() {
-		return (EAttribute)scalarEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getScalar_Id() {
-		return (EReference)scalarEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getConstant() {
 		return constantEClass;
 	}
@@ -573,24 +523,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 */
 	public EAttribute getInteger_Value() {
 		return (EAttribute)integerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDouble() {
-		return doubleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDouble_Value() {
-		return (EAttribute)doubleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -706,15 +638,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getScalarOperator() {
-		return scalarOperatorEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getBinaryOperator() {
 		return binaryOperatorEEnum;
 	}
@@ -791,10 +714,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		createEReference(binaryEClass, BINARY__LEFT);
 		createEReference(binaryEClass, BINARY__RIGHT);
 
-		scalarEClass = createEClass(SCALAR);
-		createEAttribute(scalarEClass, SCALAR__OPERATOR);
-		createEReference(scalarEClass, SCALAR__ID);
-
 		constantEClass = createEClass(CONSTANT);
 
 		inRangeEClass = createEClass(IN_RANGE);
@@ -803,9 +722,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 
 		integerEClass = createEClass(INTEGER);
 		createEAttribute(integerEClass, INTEGER__VALUE);
-
-		doubleEClass = createEClass(DOUBLE);
-		createEAttribute(doubleEClass, DOUBLE__VALUE);
 
 		booleanEClass = createEClass(BOOLEAN);
 		createEAttribute(booleanEClass, BOOLEAN__VALUE);
@@ -826,7 +742,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		createEReference(constraintEClass, CONSTRAINT__EXPR);
 
 		// Create enums
-		scalarOperatorEEnum = createEEnum(SCALAR_OPERATOR);
 		binaryOperatorEEnum = createEEnum(BINARY_OPERATOR);
 		unaryOperatorEEnum = createEEnum(UNARY_OPERATOR);
 	}
@@ -869,11 +784,9 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		boundedEClass.getESuperTypes().add(this.getValueRange());
 		unaryEClass.getESuperTypes().add(this.getExpression());
 		binaryEClass.getESuperTypes().add(this.getExpression());
-		scalarEClass.getESuperTypes().add(this.getExpression());
 		constantEClass.getESuperTypes().add(this.getExpression());
 		inRangeEClass.getESuperTypes().add(this.getExpression());
 		integerEClass.getESuperTypes().add(this.getConstant());
-		doubleEClass.getESuperTypes().add(this.getConstant());
 		booleanEClass.getESuperTypes().add(this.getConstant());
 		stringEClass.getESuperTypes().add(this.getConstant());
 		identifierEClass.getESuperTypes().add(this.getExpression());
@@ -915,10 +828,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEReference(getBinary_Left(), this.getExpression(), null, "left", null, 1, 1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBinary_Right(), this.getExpression(), null, "right", null, 1, 1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(scalarEClass, Scalar.class, "Scalar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getScalar_Operator(), this.getScalarOperator(), "operator", null, 1, 1, Scalar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScalar_Id(), this.getParameterGroup(), null, "id", null, 1, 1, Scalar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(constantEClass, Constant.class, "Constant", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inRangeEClass, InRange.class, "InRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -927,9 +836,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 
 		initEClass(integerEClass, dk.itu.smdp2015.church.model.configurator.Integer.class, "Integer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInteger_Value(), ecorePackage.getEInt(), "value", null, 1, 1, dk.itu.smdp2015.church.model.configurator.Integer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(doubleEClass, dk.itu.smdp2015.church.model.configurator.Double.class, "Double", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDouble_Value(), ecorePackage.getEDouble(), "value", null, 1, 1, dk.itu.smdp2015.church.model.configurator.Double.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanEClass, dk.itu.smdp2015.church.model.configurator.Boolean.class, "Boolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBoolean_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, dk.itu.smdp2015.church.model.configurator.Boolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -950,28 +856,20 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEReference(getConstraint_Expr(), this.getExpression(), null, "expr", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(scalarOperatorEEnum, ScalarOperator.class, "ScalarOperator");
-		addEEnumLiteral(scalarOperatorEEnum, ScalarOperator.SUM);
-		addEEnumLiteral(scalarOperatorEEnum, ScalarOperator.MIN);
-		addEEnumLiteral(scalarOperatorEEnum, ScalarOperator.MAX);
-
 		initEEnum(binaryOperatorEEnum, BinaryOperator.class, "BinaryOperator");
-		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.DISJUNCTION);
-		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.CONJUNCTION);
+		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.LOGICAL_OR);
+		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.LOGICAL_AND);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.ADDITION);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.SUBTRACTION);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.MULTIPLICATION);
-		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.DIVISION);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.LESS_THAN);
-		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.LESS_THAN_EQUAL);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.GREATER_THAN);
-		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.GREATER_THAN_EQUAL);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.EQUAL);
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.NOT_EQUAL);
 
 		initEEnum(unaryOperatorEEnum, UnaryOperator.class, "UnaryOperator");
 		addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.INVERSION);
-		addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.NEGATION);
+		addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.LOGICAL_NOT);
 
 		// Create resource
 		createResource(eNS_URI);

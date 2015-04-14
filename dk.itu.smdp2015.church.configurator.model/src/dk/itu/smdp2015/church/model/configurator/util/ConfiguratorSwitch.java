@@ -17,7 +17,6 @@ import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.NamedElement;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-import dk.itu.smdp2015.church.model.configurator.Scalar;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
 
@@ -157,13 +156,6 @@ public class ConfiguratorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorPackage.SCALAR: {
-				Scalar scalar = (Scalar)theEObject;
-				T result = caseScalar(scalar);
-				if (result == null) result = caseExpression(scalar);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ConfiguratorPackage.CONSTANT: {
 				Constant constant = (Constant)theEObject;
 				T result = caseConstant(constant);
@@ -183,14 +175,6 @@ public class ConfiguratorSwitch<T> extends Switch<T> {
 				T result = caseInteger(integer);
 				if (result == null) result = caseConstant(integer);
 				if (result == null) result = caseExpression(integer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ConfiguratorPackage.DOUBLE: {
-				dk.itu.smdp2015.church.model.configurator.Double double_ = (dk.itu.smdp2015.church.model.configurator.Double)theEObject;
-				T result = caseDouble(double_);
-				if (result == null) result = caseConstant(double_);
-				if (result == null) result = caseExpression(double_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -391,21 +375,6 @@ public class ConfiguratorSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scalar</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scalar</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseScalar(Scalar object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -447,21 +416,6 @@ public class ConfiguratorSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInteger(dk.itu.smdp2015.church.model.configurator.Integer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Double</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Double</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDouble(dk.itu.smdp2015.church.model.configurator.Double object) {
 		return null;
 	}
 
