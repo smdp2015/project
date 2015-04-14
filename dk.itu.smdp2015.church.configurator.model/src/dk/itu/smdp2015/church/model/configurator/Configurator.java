@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Configurator extends NamedAndDescribedElement {
+public interface Configurator extends DescribedElement, NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link dk.itu.smdp2015.church.model.configurator.AbstractParameter}.

@@ -5,10 +5,13 @@ package dk.itu.smdp2015.church.model.configurator.impl;
 import dk.itu.smdp2015.church.model.configurator.Bounded;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Expression;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**

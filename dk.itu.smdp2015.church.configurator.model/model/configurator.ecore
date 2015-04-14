@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="configurator" nsURI="http://itu.dk/smdp/configurator" nsPrefix="configurator">
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractParameter" abstract="true" eSuperTypes="#//NamedAndDescribedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractParameter" abstract="true" eSuperTypes="#//DescribedElement #//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="visibility" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+        eType="#//Constraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterGroup" eSuperTypes="#//AbstractParameter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
@@ -16,8 +16,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="valueRange" lowerBound="1"
         eType="#//ValueRange" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="default" eType="#//Expression"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Configurator" eSuperTypes="#//NamedAndDescribedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Configurator" eSuperTypes="#//DescribedElement #//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
         upperBound="-1" eType="#//AbstractParameter" containment="true"/>
   </eClassifiers>
@@ -97,8 +98,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Identifier" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//Parameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedAndDescribedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DescribedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="#//DescribedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" lowerBound="1" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

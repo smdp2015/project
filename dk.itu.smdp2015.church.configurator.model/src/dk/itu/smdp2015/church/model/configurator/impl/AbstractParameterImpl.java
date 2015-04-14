@@ -4,7 +4,11 @@ package dk.itu.smdp2015.church.model.configurator.impl;
 
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
+import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Expression;
+import dk.itu.smdp2015.church.model.configurator.NamedElement;
+
+import java.lang.String;
 
 import java.util.Collection;
 
@@ -28,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -35,7 +40,27 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl implements AbstractParameter {
+public abstract class AbstractParameterImpl extends DescribedElementImpl implements AbstractParameter {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -54,7 +79,7 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> constraints;
+	protected EList<Constraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,6 +98,27 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	@Override
 	protected EClass eStaticClass() {
 		return ConfiguratorPackage.Literals.ABSTRACT_PARAMETER;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.ABSTRACT_PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -123,9 +169,9 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getConstraints() {
+	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentEList<Expression>(Expression.class, this, ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -154,6 +200,8 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				return getName();
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				return getVisibility();
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
@@ -171,12 +219,15 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				setName((String)newValue);
+				return;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				setVisibility((Expression)newValue);
 				return;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				getConstraints().clear();
-				getConstraints().addAll((Collection<? extends Expression>)newValue);
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -190,6 +241,9 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				setVisibility((Expression)null);
 				return;
@@ -208,12 +262,62 @@ public abstract class AbstractParameterImpl extends NamedAndDescribedElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				return visibility != null;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedElement.class) {
+			switch (derivedFeatureID) {
+				case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME: return ConfiguratorPackage.NAMED_ELEMENT__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedElement.class) {
+			switch (baseFeatureID) {
+				case ConfiguratorPackage.NAMED_ELEMENT__NAME: return ConfiguratorPackage.ABSTRACT_PARAMETER__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AbstractParameterImpl

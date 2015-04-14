@@ -13,6 +13,7 @@ package dk.itu.smdp2015.church.model.configurator;
  * <ul>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#getValueRange <em>Value Range</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,5 +74,31 @@ public interface Parameter extends AbstractParameter {
 	 * @generated
 	 */
 	void setValueRange(ValueRange value);
+
+	/**
+	 * Returns the value of the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default</em>' reference.
+	 * @see #setDefault(Expression)
+	 * @see dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage#getParameter_Default()
+	 * @model
+	 * @generated
+	 */
+	Expression getDefault();
+
+	/**
+	 * Sets the value of the '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default</em>' reference.
+	 * @see #getDefault()
+	 * @generated
+	 */
+	void setDefault(Expression value);
 
 } // Parameter

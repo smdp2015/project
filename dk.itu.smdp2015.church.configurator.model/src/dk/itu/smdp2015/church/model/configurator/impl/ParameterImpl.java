@@ -3,6 +3,7 @@
 package dk.itu.smdp2015.church.model.configurator.impl;
 
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
+import dk.itu.smdp2015.church.model.configurator.Expression;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#getValueRange <em>Value Range</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#getDefault <em>Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,6 +62,16 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * @ordered
 	 */
 	protected ValueRange valueRange;
+
+	/**
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression default_;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,6 +161,44 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Expression getDefault() {
+		if (default_ != null && default_.eIsProxy()) {
+			InternalEObject oldDefault = (InternalEObject)default_;
+			default_ = (Expression)eResolveProxy(oldDefault);
+			if (default_ != oldDefault) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfiguratorPackage.PARAMETER__DEFAULT, oldDefault, default_));
+			}
+		}
+		return default_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Expression basicGetDefault() {
+		return default_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefault(Expression newDefault) {
+		Expression oldDefault = default_;
+		default_ = newDefault;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__DEFAULT, oldDefault, default_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -170,6 +220,9 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 				return isMandatory();
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return getValueRange();
+			case ConfiguratorPackage.PARAMETER__DEFAULT:
+				if (resolve) return getDefault();
+				return basicGetDefault();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,6 +240,9 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 				return;
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				setValueRange((ValueRange)newValue);
+				return;
+			case ConfiguratorPackage.PARAMETER__DEFAULT:
+				setDefault((Expression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -206,6 +262,9 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				setValueRange((ValueRange)null);
 				return;
+			case ConfiguratorPackage.PARAMETER__DEFAULT:
+				setDefault((Expression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -222,6 +281,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 				return mandatory != MANDATORY_EDEFAULT;
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return valueRange != null;
+			case ConfiguratorPackage.PARAMETER__DEFAULT:
+				return default_ != null;
 		}
 		return super.eIsSet(featureID);
 	}

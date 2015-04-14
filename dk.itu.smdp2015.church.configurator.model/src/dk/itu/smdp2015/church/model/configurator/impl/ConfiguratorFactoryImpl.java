@@ -8,6 +8,7 @@ import dk.itu.smdp2015.church.model.configurator.Bounded;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorFactory;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
+import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
@@ -85,6 +86,7 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 			case ConfiguratorPackage.BOOLEAN: return createBoolean();
 			case ConfiguratorPackage.STRING: return createString();
 			case ConfiguratorPackage.IDENTIFIER: return createIdentifier();
+			case ConfiguratorPackage.CONSTRAINT: return createConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -266,6 +268,16 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	public Identifier createIdentifier() {
 		IdentifierImpl identifier = new IdentifierImpl();
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
 	}
 
 	/**
