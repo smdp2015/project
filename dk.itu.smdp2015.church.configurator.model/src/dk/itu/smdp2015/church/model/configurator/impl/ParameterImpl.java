@@ -64,7 +64,7 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	protected ValueRange valueRange;
 
 	/**
-	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDefault()
@@ -162,14 +162,6 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * @generated
 	 */
 	public Expression getDefault() {
-		if (default_ != null && default_.eIsProxy()) {
-			InternalEObject oldDefault = (InternalEObject)default_;
-			default_ = (Expression)eResolveProxy(oldDefault);
-			if (default_ != oldDefault) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfiguratorPackage.PARAMETER__DEFAULT, oldDefault, default_));
-			}
-		}
 		return default_;
 	}
 
@@ -178,8 +170,14 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetDefault() {
-		return default_;
+	public NotificationChain basicSetDefault(Expression newDefault, NotificationChain msgs) {
+		Expression oldDefault = default_;
+		default_ = newDefault;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__DEFAULT, oldDefault, newDefault);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -188,10 +186,17 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * @generated
 	 */
 	public void setDefault(Expression newDefault) {
-		Expression oldDefault = default_;
-		default_ = newDefault;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__DEFAULT, oldDefault, default_));
+		if (newDefault != default_) {
+			NotificationChain msgs = null;
+			if (default_ != null)
+				msgs = ((InternalEObject)default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.PARAMETER__DEFAULT, null, msgs);
+			if (newDefault != null)
+				msgs = ((InternalEObject)newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.PARAMETER__DEFAULT, null, msgs);
+			msgs = basicSetDefault(newDefault, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__DEFAULT, newDefault, newDefault));
 	}
 
 	/**
@@ -204,6 +209,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 		switch (featureID) {
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return basicSetValueRange(null, msgs);
+			case ConfiguratorPackage.PARAMETER__DEFAULT:
+				return basicSetDefault(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -221,8 +228,7 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return getValueRange();
 			case ConfiguratorPackage.PARAMETER__DEFAULT:
-				if (resolve) return getDefault();
-				return basicGetDefault();
+				return getDefault();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

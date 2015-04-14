@@ -282,7 +282,7 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	
 	/**
 	 * Constraint:
-	 *     (description=STRING? expr=Expression)
+	 *     (description=STRING? expression=Expression)
 	 */
 	protected void sequence_Constraint(EObject context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -372,6 +372,7 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	 *         description=STRING? 
 	 *         mandatory?='mandatory'? 
 	 *         visibility=Expression? 
+	 *         default=Expression? 
 	 *         (constraints+=Constraint constraints+=Constraint*)? 
 	 *         valueRange=ValueRange
 	 *     )

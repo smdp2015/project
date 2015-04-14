@@ -76,26 +76,26 @@ public interface Parameter extends AbstractParameter {
 	void setValueRange(ValueRange value);
 
 	/**
-	 * Returns the value of the '<em><b>Default</b></em>' reference.
+	 * Returns the value of the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Default</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default</em>' reference.
+	 * @return the value of the '<em>Default</em>' containment reference.
 	 * @see #setDefault(Expression)
 	 * @see dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage#getParameter_Default()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Expression getDefault();
 
 	/**
-	 * Sets the value of the '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}' reference.
+	 * Sets the value of the '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' reference.
+	 * @param value the new value of the '<em>Default</em>' containment reference.
 	 * @see #getDefault()
 	 * @generated
 	 */

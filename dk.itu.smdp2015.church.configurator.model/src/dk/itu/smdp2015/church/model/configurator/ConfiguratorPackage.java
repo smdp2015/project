@@ -298,7 +298,7 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER__VALUE_RANGE = ABSTRACT_PARAMETER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -898,13 +898,13 @@ public interface ConfiguratorPackage extends EPackage {
 	int CONSTRAINT__DESCRIPTION = DESCRIBED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Expr</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__EXPR = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
+	int CONSTRAINT__EXPRESSION = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -1031,10 +1031,10 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getParameter_ValueRange();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Default</em>'.
+	 * @return the meta object for the containment reference '<em>Default</em>'.
 	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#getDefault()
 	 * @see #getParameter()
 	 * @generated
@@ -1389,15 +1389,15 @@ public interface ConfiguratorPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Constraint#getExpr <em>Expr</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Constraint#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expr</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Constraint#getExpr()
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.Constraint#getExpression()
 	 * @see #getConstraint()
 	 * @generated
 	 */
-	EReference getConstraint_Expr();
+	EReference getConstraint_Expression();
 
 	/**
 	 * Returns the meta object for enum '{@link dk.itu.smdp2015.church.model.configurator.BinaryOperator <em>Binary Operator</em>}'.
@@ -1513,7 +1513,7 @@ public interface ConfiguratorPackage extends EPackage {
 		EReference PARAMETER__VALUE_RANGE = eINSTANCE.getParameter_ValueRange();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1817,12 +1817,12 @@ public interface ConfiguratorPackage extends EPackage {
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONSTRAINT__EXPR = eINSTANCE.getConstraint_Expr();
+		EReference CONSTRAINT__EXPRESSION = eINSTANCE.getConstraint_Expression();
 
 		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.BinaryOperator <em>Binary Operator</em>}' enum.

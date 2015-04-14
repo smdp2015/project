@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'configurator'", "'{'", "','", "'}'", "'group'", "'visible-if'", "'constraints'", "'parameter'", "'mandatory'", "'optional'", "'values'", "'('", "')'", "'['", "';'", "']'", "'description'", "'in'", "'true'", "'false'", "'or'", "'and'", "'=='", "'!='", "'<'", "'>'", "'+'", "'-'", "'*'", "'not'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'configurator'", "'{'", "','", "'}'", "'group'", "'visible-if'", "'constraints'", "'parameter'", "'mandatory'", "'optional'", "'default-value'", "'values'", "'('", "')'", "'['", "';'", "']'", "'description'", "'in'", "'true'", "'false'", "'or'", "'and'", "'=='", "'!='", "'<'", "'>'", "'+'", "'-'", "'*'", "'not'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -60,6 +60,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
     public static final int T__24=24;
     public static final int T__25=25;
     public static final int T__40=40;
+    public static final int T__41=41;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -810,7 +811,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	        if ( (LA6_0==13) ) {
             	            int LA6_1 = input.LA(2);
 
-            	            if ( ((LA6_1>=RULE_ID && LA6_1<=RULE_INT)||LA6_1==22||LA6_1==27||(LA6_1>=29 && LA6_1<=30)||LA6_1==38||LA6_1==40) ) {
+            	            if ( ((LA6_1>=RULE_ID && LA6_1<=RULE_INT)||LA6_1==23||LA6_1==28||(LA6_1>=30 && LA6_1<=31)||LA6_1==39||LA6_1==41) ) {
             	                alt6=1;
             	            }
 
@@ -1178,7 +1179,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameter"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:470:1: ruleParameter returns [EObject current=null] : (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:470:1: ruleParameter returns [EObject current=null] : (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) ) ;
     public final EObject ruleParameter() throws RecognitionException {
         EObject current = null;
 
@@ -1189,27 +1190,30 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
         Token otherlv_5=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
-        Token otherlv_9=null;
+        Token otherlv_10=null;
         Token otherlv_11=null;
         Token otherlv_13=null;
-        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
         EObject lv_visibility_7_0 = null;
 
-        EObject lv_constraints_10_0 = null;
+        EObject lv_default_9_0 = null;
 
         EObject lv_constraints_12_0 = null;
 
-        EObject lv_valueRange_15_0 = null;
+        EObject lv_constraints_14_0 = null;
+
+        EObject lv_valueRange_17_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:473:28: ( (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:1: (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:473:28: ( (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:1: (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:1: (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:3: otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:1: (otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:474:3: otherlv_0= 'parameter' ( (lv_name_1_0= RULE_ID ) ) ( (lv_description_2_0= RULE_STRING ) )? ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) )
             {
             otherlv_0=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleParameter1026); 
 
@@ -1278,23 +1282,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:514:3: ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:516:1: ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:514:3: ( ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:516:1: ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:516:1: ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:517:2: ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?)
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:516:1: ( ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:517:2: ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?)
             {
              
             	  getUnorderedGroupHelper().enter(grammarAccess.getParameterAccess().getUnorderedGroup_3());
             	
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:520:2: ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?)
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:521:3: ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+ {...}?
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:520:2: ( ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?)
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:521:3: ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+ {...}?
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:521:3: ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) ) )+
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:521:3: ( ({...}? => ( ({...}? => ( ( (lv_mandatory_4_0= 'mandatory' ) ) | otherlv_5= 'optional' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'visible-if' ( (lv_visibility_7_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) ) )+
             int cnt15=0;
             loop15:
             do {
-                int alt15=5;
+                int alt15=6;
                 int LA15_0 = input.LA(1);
 
                 if ( LA15_0 >=19 && LA15_0<=20 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 0) ) {
@@ -1303,11 +1307,14 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                 else if ( LA15_0 ==16 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 1) ) {
                     alt15=2;
                 }
-                else if ( LA15_0 ==17 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2) ) {
+                else if ( LA15_0 ==21 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2) ) {
                     alt15=3;
                 }
-                else if ( LA15_0 ==21 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3) ) {
+                else if ( LA15_0 ==17 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3) ) {
                     alt15=4;
+                }
+                else if ( LA15_0 ==22 && getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4) ) {
+                    alt15=5;
                 }
 
 
@@ -1484,48 +1491,44 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:589:4: ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:589:4: ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:589:4: ({...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:590:5: {...}? => ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:589:4: ({...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:590:5: {...}? => ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2) ) {
             	        throw new FailedPredicateException(input, "ruleParameter", "getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2)");
             	    }
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:590:106: ( ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:591:6: ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:590:106: ( ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:591:6: ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2);
             	    	 				
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:6: ({...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:7: {...}? => (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:6: ({...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:7: {...}? => (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleParameter", "true");
             	    }
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:16: (otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}' )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:18: otherlv_8= 'constraints' otherlv_9= '{' ( (lv_constraints_10_0= ruleConstraint ) ) (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )* otherlv_13= '}'
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:16: (otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:594:18: otherlv_8= 'default-value' ( (lv_default_9_0= ruleExpression ) )
             	    {
-            	    otherlv_8=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleParameter1323); 
+            	    otherlv_8=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleParameter1323); 
 
-            	        	newLeafNode(otherlv_8, grammarAccess.getParameterAccess().getConstraintsKeyword_3_2_0());
+            	        	newLeafNode(otherlv_8, grammarAccess.getParameterAccess().getDefaultValueKeyword_3_2_0());
             	        
-            	    otherlv_9=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleParameter1335); 
-
-            	        	newLeafNode(otherlv_9, grammarAccess.getParameterAccess().getLeftCurlyBracketKeyword_3_2_1());
-            	        
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:602:1: ( (lv_constraints_10_0= ruleConstraint ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:603:1: (lv_constraints_10_0= ruleConstraint )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:598:1: ( (lv_default_9_0= ruleExpression ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:599:1: (lv_default_9_0= ruleExpression )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:603:1: (lv_constraints_10_0= ruleConstraint )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:604:3: lv_constraints_10_0= ruleConstraint
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:599:1: (lv_default_9_0= ruleExpression )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:600:3: lv_default_9_0= ruleExpression
             	    {
             	     
-            	    	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_2_2_0()); 
+            	    	        newCompositeNode(grammarAccess.getParameterAccess().getDefaultExpressionParserRuleCall_3_2_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_ruleParameter1356);
-            	    lv_constraints_10_0=ruleConstraint();
+            	    pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleParameter1344);
+            	    lv_default_9_0=ruleExpression();
 
             	    state._fsp--;
 
@@ -1533,11 +1536,11 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	    	        if (current==null) {
             	    	            current = createModelElementForParent(grammarAccess.getParameterRule());
             	    	        }
-            	           		add(
+            	           		set(
             	           			current, 
-            	           			"constraints",
-            	            		lv_constraints_10_0, 
-            	            		"Constraint");
+            	           			"default",
+            	            		lv_default_9_0, 
+            	            		"Expression");
             	    	        afterParserOrEnumRuleCall();
             	    	    
 
@@ -1546,69 +1549,6 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:620:2: (otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) ) )*
-            	    loop14:
-            	    do {
-            	        int alt14=2;
-            	        int LA14_0 = input.LA(1);
-
-            	        if ( (LA14_0==13) ) {
-            	            alt14=1;
-            	        }
-
-
-            	        switch (alt14) {
-            	    	case 1 :
-            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:620:4: otherlv_11= ',' ( (lv_constraints_12_0= ruleConstraint ) )
-            	    	    {
-            	    	    otherlv_11=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleParameter1369); 
-
-            	    	        	newLeafNode(otherlv_11, grammarAccess.getParameterAccess().getCommaKeyword_3_2_3_0());
-            	    	        
-            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:624:1: ( (lv_constraints_12_0= ruleConstraint ) )
-            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:625:1: (lv_constraints_12_0= ruleConstraint )
-            	    	    {
-            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:625:1: (lv_constraints_12_0= ruleConstraint )
-            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:626:3: lv_constraints_12_0= ruleConstraint
-            	    	    {
-            	    	     
-            	    	    	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_2_3_1_0()); 
-            	    	    	    
-            	    	    pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_ruleParameter1390);
-            	    	    lv_constraints_12_0=ruleConstraint();
-
-            	    	    state._fsp--;
-
-
-            	    	    	        if (current==null) {
-            	    	    	            current = createModelElementForParent(grammarAccess.getParameterRule());
-            	    	    	        }
-            	    	           		add(
-            	    	           			current, 
-            	    	           			"constraints",
-            	    	            		lv_constraints_12_0, 
-            	    	            		"Constraint");
-            	    	    	        afterParserOrEnumRuleCall();
-            	    	    	    
-
-            	    	    }
-
-
-            	    	    }
-
-
-            	    	    }
-            	    	    break;
-
-            	    	default :
-            	    	    break loop14;
-            	        }
-            	    } while (true);
-
-            	    otherlv_13=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleParameter1404); 
-
-            	        	newLeafNode(otherlv_13, grammarAccess.getParameterAccess().getRightCurlyBracketKeyword_3_2_4());
-            	        
 
             	    }
 
@@ -1628,44 +1568,188 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:653:4: ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:623:4: ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:653:4: ({...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:654:5: {...}? => ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:623:4: ({...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:624:5: {...}? => ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3) ) {
             	        throw new FailedPredicateException(input, "ruleParameter", "getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3)");
             	    }
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:654:106: ( ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:655:6: ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:624:106: ( ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:625:6: ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3);
             	    	 				
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:658:6: ({...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:658:7: {...}? => (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:628:6: ({...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:628:7: {...}? => (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleParameter", "true");
             	    }
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:658:16: (otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:658:18: otherlv_14= 'values' ( (lv_valueRange_15_0= ruleValueRange ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:628:16: (otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}' )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:628:18: otherlv_10= 'constraints' otherlv_11= '{' ( (lv_constraints_12_0= ruleConstraint ) ) (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )* otherlv_15= '}'
             	    {
-            	    otherlv_14=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleParameter1472); 
+            	    otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleParameter1412); 
 
-            	        	newLeafNode(otherlv_14, grammarAccess.getParameterAccess().getValuesKeyword_3_3_0());
+            	        	newLeafNode(otherlv_10, grammarAccess.getParameterAccess().getConstraintsKeyword_3_3_0());
             	        
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:662:1: ( (lv_valueRange_15_0= ruleValueRange ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:663:1: (lv_valueRange_15_0= ruleValueRange )
+            	    otherlv_11=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleParameter1424); 
+
+            	        	newLeafNode(otherlv_11, grammarAccess.getParameterAccess().getLeftCurlyBracketKeyword_3_3_1());
+            	        
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:636:1: ( (lv_constraints_12_0= ruleConstraint ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:637:1: (lv_constraints_12_0= ruleConstraint )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:663:1: (lv_valueRange_15_0= ruleValueRange )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:664:3: lv_valueRange_15_0= ruleValueRange
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:637:1: (lv_constraints_12_0= ruleConstraint )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:638:3: lv_constraints_12_0= ruleConstraint
             	    {
             	     
-            	    	        newCompositeNode(grammarAccess.getParameterAccess().getValueRangeValueRangeParserRuleCall_3_3_1_0()); 
+            	    	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_3_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_ruleParameter1493);
-            	    lv_valueRange_15_0=ruleValueRange();
+            	    pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_ruleParameter1445);
+            	    lv_constraints_12_0=ruleConstraint();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getParameterRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"constraints",
+            	            		lv_constraints_12_0, 
+            	            		"Constraint");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:654:2: (otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) ) )*
+            	    loop14:
+            	    do {
+            	        int alt14=2;
+            	        int LA14_0 = input.LA(1);
+
+            	        if ( (LA14_0==13) ) {
+            	            alt14=1;
+            	        }
+
+
+            	        switch (alt14) {
+            	    	case 1 :
+            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:654:4: otherlv_13= ',' ( (lv_constraints_14_0= ruleConstraint ) )
+            	    	    {
+            	    	    otherlv_13=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleParameter1458); 
+
+            	    	        	newLeafNode(otherlv_13, grammarAccess.getParameterAccess().getCommaKeyword_3_3_3_0());
+            	    	        
+            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:658:1: ( (lv_constraints_14_0= ruleConstraint ) )
+            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:659:1: (lv_constraints_14_0= ruleConstraint )
+            	    	    {
+            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:659:1: (lv_constraints_14_0= ruleConstraint )
+            	    	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:660:3: lv_constraints_14_0= ruleConstraint
+            	    	    {
+            	    	     
+            	    	    	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_3_3_1_0()); 
+            	    	    	    
+            	    	    pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_ruleParameter1479);
+            	    	    lv_constraints_14_0=ruleConstraint();
+
+            	    	    state._fsp--;
+
+
+            	    	    	        if (current==null) {
+            	    	    	            current = createModelElementForParent(grammarAccess.getParameterRule());
+            	    	    	        }
+            	    	           		add(
+            	    	           			current, 
+            	    	           			"constraints",
+            	    	            		lv_constraints_14_0, 
+            	    	            		"Constraint");
+            	    	    	        afterParserOrEnumRuleCall();
+            	    	    	    
+
+            	    	    }
+
+
+            	    	    }
+
+
+            	    	    }
+            	    	    break;
+
+            	    	default :
+            	    	    break loop14;
+            	        }
+            	    } while (true);
+
+            	    otherlv_15=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleParameter1493); 
+
+            	        	newLeafNode(otherlv_15, grammarAccess.getParameterAccess().getRightCurlyBracketKeyword_3_3_4());
+            	        
+
+            	    }
+
+
+            	    }
+
+            	     
+            	    	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getParameterAccess().getUnorderedGroup_3());
+            	    	 				
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+            	case 5 :
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:687:4: ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) )
+            	    {
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:687:4: ({...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:688:5: {...}? => ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) )
+            	    {
+            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4) ) {
+            	        throw new FailedPredicateException(input, "ruleParameter", "getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4)");
+            	    }
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:688:106: ( ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:689:6: ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) )
+            	    {
+            	     
+            	    	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4);
+            	    	 				
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:692:6: ({...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:692:7: {...}? => (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) )
+            	    {
+            	    if ( !((true)) ) {
+            	        throw new FailedPredicateException(input, "ruleParameter", "true");
+            	    }
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:692:16: (otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:692:18: otherlv_16= 'values' ( (lv_valueRange_17_0= ruleValueRange ) )
+            	    {
+            	    otherlv_16=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleParameter1561); 
+
+            	        	newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getValuesKeyword_3_4_0());
+            	        
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:696:1: ( (lv_valueRange_17_0= ruleValueRange ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:697:1: (lv_valueRange_17_0= ruleValueRange )
+            	    {
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:697:1: (lv_valueRange_17_0= ruleValueRange )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:698:3: lv_valueRange_17_0= ruleValueRange
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getParameterAccess().getValueRangeValueRangeParserRuleCall_3_4_1_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_ruleParameter1582);
+            	    lv_valueRange_17_0=ruleValueRange();
 
             	    state._fsp--;
 
@@ -1676,7 +1760,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	           		set(
             	           			current, 
             	           			"valueRange",
-            	            		lv_valueRange_15_0, 
+            	            		lv_valueRange_17_0, 
             	            		"ValueRange");
             	    	        afterParserOrEnumRuleCall();
             	    	    
@@ -1750,7 +1834,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValueRange"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:703:1: entryRuleValueRange returns [EObject current=null] : iv_ruleValueRange= ruleValueRange EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:737:1: entryRuleValueRange returns [EObject current=null] : iv_ruleValueRange= ruleValueRange EOF ;
     public final EObject entryRuleValueRange() throws RecognitionException {
         EObject current = null;
 
@@ -1758,17 +1842,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:704:2: (iv_ruleValueRange= ruleValueRange EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:705:2: iv_ruleValueRange= ruleValueRange EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:738:2: (iv_ruleValueRange= ruleValueRange EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:739:2: iv_ruleValueRange= ruleValueRange EOF
             {
              newCompositeNode(grammarAccess.getValueRangeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_entryRuleValueRange1576);
+            pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_entryRuleValueRange1665);
             iv_ruleValueRange=ruleValueRange();
 
             state._fsp--;
 
              current =iv_ruleValueRange; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleValueRange1586); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleValueRange1675); 
 
             }
 
@@ -1786,7 +1870,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValueRange"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:712:1: ruleValueRange returns [EObject current=null] : (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:746:1: ruleValueRange returns [EObject current=null] : (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded ) ;
     public final EObject ruleValueRange() throws RecognitionException {
         EObject current = null;
 
@@ -1798,17 +1882,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:715:28: ( (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:716:1: (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:749:28: ( (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:750:1: (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:716:1: (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:750:1: (this_Enumerated_0= ruleEnumerated | this_Bounded_1= ruleBounded )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==22) ) {
+            if ( (LA16_0==23) ) {
                 alt16=1;
             }
-            else if ( (LA16_0==24) ) {
+            else if ( (LA16_0==25) ) {
                 alt16=2;
             }
             else {
@@ -1819,12 +1903,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:717:5: this_Enumerated_0= ruleEnumerated
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:751:5: this_Enumerated_0= ruleEnumerated
                     {
                      
                             newCompositeNode(grammarAccess.getValueRangeAccess().getEnumeratedParserRuleCall_0()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleEnumerated_in_ruleValueRange1633);
+                    pushFollow(FollowSets000.FOLLOW_ruleEnumerated_in_ruleValueRange1722);
                     this_Enumerated_0=ruleEnumerated();
 
                     state._fsp--;
@@ -1837,12 +1921,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:727:5: this_Bounded_1= ruleBounded
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:761:5: this_Bounded_1= ruleBounded
                     {
                      
                             newCompositeNode(grammarAccess.getValueRangeAccess().getBoundedParserRuleCall_1()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleBounded_in_ruleValueRange1660);
+                    pushFollow(FollowSets000.FOLLOW_ruleBounded_in_ruleValueRange1749);
                     this_Bounded_1=ruleBounded();
 
                     state._fsp--;
@@ -1875,7 +1959,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumerated"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:743:1: entryRuleEnumerated returns [EObject current=null] : iv_ruleEnumerated= ruleEnumerated EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:777:1: entryRuleEnumerated returns [EObject current=null] : iv_ruleEnumerated= ruleEnumerated EOF ;
     public final EObject entryRuleEnumerated() throws RecognitionException {
         EObject current = null;
 
@@ -1883,17 +1967,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:744:2: (iv_ruleEnumerated= ruleEnumerated EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:745:2: iv_ruleEnumerated= ruleEnumerated EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:778:2: (iv_ruleEnumerated= ruleEnumerated EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:779:2: iv_ruleEnumerated= ruleEnumerated EOF
             {
              newCompositeNode(grammarAccess.getEnumeratedRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEnumerated_in_entryRuleEnumerated1695);
+            pushFollow(FollowSets000.FOLLOW_ruleEnumerated_in_entryRuleEnumerated1784);
             iv_ruleEnumerated=ruleEnumerated();
 
             state._fsp--;
 
              current =iv_ruleEnumerated; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumerated1705); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumerated1794); 
 
             }
 
@@ -1911,7 +1995,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumerated"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:752:1: ruleEnumerated returns [EObject current=null] : (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:786:1: ruleEnumerated returns [EObject current=null] : (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' ) ;
     public final EObject ruleEnumerated() throws RecognitionException {
         EObject current = null;
 
@@ -1926,26 +2010,26 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:755:28: ( (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:756:1: (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:789:28: ( (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:790:1: (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:756:1: (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:756:3: otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')'
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:790:1: (otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:790:3: otherlv_0= '(' ( (lv_values_1_0= ruleExpression ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )* otherlv_4= ')'
             {
-            otherlv_0=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleEnumerated1742); 
+            otherlv_0=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleEnumerated1831); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getEnumeratedAccess().getLeftParenthesisKeyword_0());
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:760:1: ( (lv_values_1_0= ruleExpression ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:761:1: (lv_values_1_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:794:1: ( (lv_values_1_0= ruleExpression ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:795:1: (lv_values_1_0= ruleExpression )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:761:1: (lv_values_1_0= ruleExpression )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:762:3: lv_values_1_0= ruleExpression
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:795:1: (lv_values_1_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:796:3: lv_values_1_0= ruleExpression
             {
              
             	        newCompositeNode(grammarAccess.getEnumeratedAccess().getValuesExpressionParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleEnumerated1763);
+            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleEnumerated1852);
             lv_values_1_0=ruleExpression();
 
             state._fsp--;
@@ -1967,7 +2051,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:778:2: (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:812:2: (otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) ) )*
             loop17:
             do {
                 int alt17=2;
@@ -1980,22 +2064,22 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
                 switch (alt17) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:778:4: otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:812:4: otherlv_2= ',' ( (lv_values_3_0= ruleExpression ) )
             	    {
-            	    otherlv_2=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleEnumerated1776); 
+            	    otherlv_2=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleEnumerated1865); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getEnumeratedAccess().getCommaKeyword_2_0());
             	        
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:782:1: ( (lv_values_3_0= ruleExpression ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:783:1: (lv_values_3_0= ruleExpression )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:816:1: ( (lv_values_3_0= ruleExpression ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:817:1: (lv_values_3_0= ruleExpression )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:783:1: (lv_values_3_0= ruleExpression )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:784:3: lv_values_3_0= ruleExpression
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:817:1: (lv_values_3_0= ruleExpression )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:818:3: lv_values_3_0= ruleExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getEnumeratedAccess().getValuesExpressionParserRuleCall_2_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleEnumerated1797);
+            	    pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleEnumerated1886);
             	    lv_values_3_0=ruleExpression();
 
             	    state._fsp--;
@@ -2026,7 +2110,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleEnumerated1811); 
+            otherlv_4=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleEnumerated1900); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getEnumeratedAccess().getRightParenthesisKeyword_3());
                 
@@ -2051,7 +2135,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBounded"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:812:1: entryRuleBounded returns [EObject current=null] : iv_ruleBounded= ruleBounded EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:846:1: entryRuleBounded returns [EObject current=null] : iv_ruleBounded= ruleBounded EOF ;
     public final EObject entryRuleBounded() throws RecognitionException {
         EObject current = null;
 
@@ -2059,17 +2143,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:813:2: (iv_ruleBounded= ruleBounded EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:814:2: iv_ruleBounded= ruleBounded EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:847:2: (iv_ruleBounded= ruleBounded EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:848:2: iv_ruleBounded= ruleBounded EOF
             {
              newCompositeNode(grammarAccess.getBoundedRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleBounded_in_entryRuleBounded1847);
+            pushFollow(FollowSets000.FOLLOW_ruleBounded_in_entryRuleBounded1936);
             iv_ruleBounded=ruleBounded();
 
             state._fsp--;
 
              current =iv_ruleBounded; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBounded1857); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBounded1946); 
 
             }
 
@@ -2087,7 +2171,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBounded"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:821:1: ruleBounded returns [EObject current=null] : (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:855:1: ruleBounded returns [EObject current=null] : (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' ) ;
     public final EObject ruleBounded() throws RecognitionException {
         EObject current = null;
 
@@ -2102,26 +2186,26 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:824:28: ( (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:825:1: (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:858:28: ( (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:859:1: (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:825:1: (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:825:3: otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']'
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:859:1: (otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:859:3: otherlv_0= '[' ( (lv_lowerBound_1_0= ruleExpression ) ) otherlv_2= ';' ( (lv_upperBound_3_0= ruleExpression ) ) otherlv_4= ']'
             {
-            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleBounded1894); 
+            otherlv_0=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleBounded1983); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getBoundedAccess().getLeftSquareBracketKeyword_0());
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:829:1: ( (lv_lowerBound_1_0= ruleExpression ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:830:1: (lv_lowerBound_1_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:863:1: ( (lv_lowerBound_1_0= ruleExpression ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:864:1: (lv_lowerBound_1_0= ruleExpression )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:830:1: (lv_lowerBound_1_0= ruleExpression )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:831:3: lv_lowerBound_1_0= ruleExpression
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:864:1: (lv_lowerBound_1_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:865:3: lv_lowerBound_1_0= ruleExpression
             {
              
             	        newCompositeNode(grammarAccess.getBoundedAccess().getLowerBoundExpressionParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleBounded1915);
+            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleBounded2004);
             lv_lowerBound_1_0=ruleExpression();
 
             state._fsp--;
@@ -2143,20 +2227,20 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleBounded1927); 
+            otherlv_2=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleBounded2016); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getBoundedAccess().getSemicolonKeyword_2());
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:851:1: ( (lv_upperBound_3_0= ruleExpression ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:852:1: (lv_upperBound_3_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:885:1: ( (lv_upperBound_3_0= ruleExpression ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:886:1: (lv_upperBound_3_0= ruleExpression )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:852:1: (lv_upperBound_3_0= ruleExpression )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:853:3: lv_upperBound_3_0= ruleExpression
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:886:1: (lv_upperBound_3_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:887:3: lv_upperBound_3_0= ruleExpression
             {
              
             	        newCompositeNode(grammarAccess.getBoundedAccess().getUpperBoundExpressionParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleBounded1948);
+            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleBounded2037);
             lv_upperBound_3_0=ruleExpression();
 
             state._fsp--;
@@ -2178,7 +2262,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleBounded1960); 
+            otherlv_4=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleBounded2049); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getBoundedAccess().getRightSquareBracketKeyword_4());
                 
@@ -2203,7 +2287,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstraint"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:881:1: entryRuleConstraint returns [EObject current=null] : iv_ruleConstraint= ruleConstraint EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:915:1: entryRuleConstraint returns [EObject current=null] : iv_ruleConstraint= ruleConstraint EOF ;
     public final EObject entryRuleConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -2211,17 +2295,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:882:2: (iv_ruleConstraint= ruleConstraint EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:883:2: iv_ruleConstraint= ruleConstraint EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:916:2: (iv_ruleConstraint= ruleConstraint EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:917:2: iv_ruleConstraint= ruleConstraint EOF
             {
              newCompositeNode(grammarAccess.getConstraintRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_entryRuleConstraint1996);
+            pushFollow(FollowSets000.FOLLOW_ruleConstraint_in_entryRuleConstraint2085);
             iv_ruleConstraint=ruleConstraint();
 
             state._fsp--;
 
              current =iv_ruleConstraint; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConstraint2006); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConstraint2095); 
 
             }
 
@@ -2239,46 +2323,46 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstraint"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:890:1: ruleConstraint returns [EObject current=null] : ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expr_2_0= ruleExpression ) ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:924:1: ruleConstraint returns [EObject current=null] : ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expression_2_0= ruleExpression ) ) ) ;
     public final EObject ruleConstraint() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_description_1_0=null;
-        EObject lv_expr_2_0 = null;
+        EObject lv_expression_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:893:28: ( ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expr_2_0= ruleExpression ) ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:894:1: ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expr_2_0= ruleExpression ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:927:28: ( ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expression_2_0= ruleExpression ) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:928:1: ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expression_2_0= ruleExpression ) ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:894:1: ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expr_2_0= ruleExpression ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:894:2: (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expr_2_0= ruleExpression ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:928:1: ( (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expression_2_0= ruleExpression ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:928:2: (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )? ( (lv_expression_2_0= ruleExpression ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:894:2: (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )?
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:928:2: (otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
-            if ( (LA18_0==27) ) {
+            if ( (LA18_0==28) ) {
                 alt18=1;
             }
             switch (alt18) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:894:4: otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:928:4: otherlv_0= 'description' ( (lv_description_1_0= RULE_STRING ) )
                     {
-                    otherlv_0=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleConstraint2044); 
+                    otherlv_0=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleConstraint2133); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getConstraintAccess().getDescriptionKeyword_0_0());
                         
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:898:1: ( (lv_description_1_0= RULE_STRING ) )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:899:1: (lv_description_1_0= RULE_STRING )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:932:1: ( (lv_description_1_0= RULE_STRING ) )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:933:1: (lv_description_1_0= RULE_STRING )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:899:1: (lv_description_1_0= RULE_STRING )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:900:3: lv_description_1_0= RULE_STRING
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:933:1: (lv_description_1_0= RULE_STRING )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:934:3: lv_description_1_0= RULE_STRING
                     {
-                    lv_description_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleConstraint2061); 
+                    lv_description_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleConstraint2150); 
 
                     			newLeafNode(lv_description_1_0, grammarAccess.getConstraintAccess().getDescriptionSTRINGTerminalRuleCall_0_1_0()); 
                     		
@@ -2304,17 +2388,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:916:4: ( (lv_expr_2_0= ruleExpression ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:917:1: (lv_expr_2_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:950:4: ( (lv_expression_2_0= ruleExpression ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:951:1: (lv_expression_2_0= ruleExpression )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:917:1: (lv_expr_2_0= ruleExpression )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:918:3: lv_expr_2_0= ruleExpression
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:951:1: (lv_expression_2_0= ruleExpression )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:952:3: lv_expression_2_0= ruleExpression
             {
              
-            	        newCompositeNode(grammarAccess.getConstraintAccess().getExprExpressionParserRuleCall_1_0()); 
+            	        newCompositeNode(grammarAccess.getConstraintAccess().getExpressionExpressionParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleConstraint2089);
-            lv_expr_2_0=ruleExpression();
+            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_ruleConstraint2178);
+            lv_expression_2_0=ruleExpression();
 
             state._fsp--;
 
@@ -2324,8 +2408,8 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             	        }
                    		set(
                    			current, 
-                   			"expr",
-                    		lv_expr_2_0, 
+                   			"expression",
+                    		lv_expression_2_0, 
                     		"Expression");
             	        afterParserOrEnumRuleCall();
             	    
@@ -2356,7 +2440,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpression"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:942:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:976:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
     public final EObject entryRuleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2364,17 +2448,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:943:2: (iv_ruleExpression= ruleExpression EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:944:2: iv_ruleExpression= ruleExpression EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:977:2: (iv_ruleExpression= ruleExpression EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:978:2: iv_ruleExpression= ruleExpression EOF
             {
              newCompositeNode(grammarAccess.getExpressionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_entryRuleExpression2125);
+            pushFollow(FollowSets000.FOLLOW_ruleExpression_in_entryRuleExpression2214);
             iv_ruleExpression=ruleExpression();
 
             state._fsp--;
 
              current =iv_ruleExpression; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExpression2135); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExpression2224); 
 
             }
 
@@ -2392,7 +2476,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:951:1: ruleExpression returns [EObject current=null] : this_LogicalOr_0= ruleLogicalOr ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:985:1: ruleExpression returns [EObject current=null] : this_LogicalOr_0= ruleLogicalOr ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2402,13 +2486,13 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:954:28: (this_LogicalOr_0= ruleLogicalOr )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:956:5: this_LogicalOr_0= ruleLogicalOr
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:988:28: (this_LogicalOr_0= ruleLogicalOr )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:990:5: this_LogicalOr_0= ruleLogicalOr
             {
              
                     newCompositeNode(grammarAccess.getExpressionAccess().getLogicalOrParserRuleCall()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleLogicalOr_in_ruleExpression2181);
+            pushFollow(FollowSets000.FOLLOW_ruleLogicalOr_in_ruleExpression2270);
             this_LogicalOr_0=ruleLogicalOr();
 
             state._fsp--;
@@ -2435,7 +2519,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicalOr"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:972:1: entryRuleLogicalOr returns [EObject current=null] : iv_ruleLogicalOr= ruleLogicalOr EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1006:1: entryRuleLogicalOr returns [EObject current=null] : iv_ruleLogicalOr= ruleLogicalOr EOF ;
     public final EObject entryRuleLogicalOr() throws RecognitionException {
         EObject current = null;
 
@@ -2443,17 +2527,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:973:2: (iv_ruleLogicalOr= ruleLogicalOr EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:974:2: iv_ruleLogicalOr= ruleLogicalOr EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1007:2: (iv_ruleLogicalOr= ruleLogicalOr EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1008:2: iv_ruleLogicalOr= ruleLogicalOr EOF
             {
              newCompositeNode(grammarAccess.getLogicalOrRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleLogicalOr_in_entryRuleLogicalOr2215);
+            pushFollow(FollowSets000.FOLLOW_ruleLogicalOr_in_entryRuleLogicalOr2304);
             iv_ruleLogicalOr=ruleLogicalOr();
 
             state._fsp--;
 
              current =iv_ruleLogicalOr; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLogicalOr2225); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLogicalOr2314); 
 
             }
 
@@ -2471,7 +2555,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicalOr"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:981:1: ruleLogicalOr returns [EObject current=null] : (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1015:1: ruleLogicalOr returns [EObject current=null] : (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* ) ;
     public final EObject ruleLogicalOr() throws RecognitionException {
         EObject current = null;
 
@@ -2485,16 +2569,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:984:28: ( (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:985:1: (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1018:28: ( (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1019:1: (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:985:1: (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:986:5: this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1019:1: (this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1020:5: this_LogicalAnd_0= ruleLogicalAnd ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getLogicalOrAccess().getLogicalAndParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2272);
+            pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2361);
             this_LogicalAnd_0=ruleLogicalAnd();
 
             state._fsp--;
@@ -2503,23 +2587,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_LogicalAnd_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:994:1: ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1028:1: ( () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) ) )*
             loop19:
             do {
                 int alt19=2;
                 int LA19_0 = input.LA(1);
 
-                if ( (LA19_0==31) ) {
+                if ( (LA19_0==32) ) {
                     alt19=1;
                 }
 
 
                 switch (alt19) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:994:2: () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1028:2: () ( (lv_operator_2_0= ruleLogicalOrOperator ) ) ( (lv_right_3_0= ruleLogicalAnd ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:994:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:995:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1028:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1029:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -2529,16 +2613,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1000:2: ( (lv_operator_2_0= ruleLogicalOrOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1001:1: (lv_operator_2_0= ruleLogicalOrOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1034:2: ( (lv_operator_2_0= ruleLogicalOrOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1035:1: (lv_operator_2_0= ruleLogicalOrOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1001:1: (lv_operator_2_0= ruleLogicalOrOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1002:3: lv_operator_2_0= ruleLogicalOrOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1035:1: (lv_operator_2_0= ruleLogicalOrOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1036:3: lv_operator_2_0= ruleLogicalOrOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLogicalOrAccess().getOperatorLogicalOrOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalOrOperator_in_ruleLogicalOr2302);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalOrOperator_in_ruleLogicalOr2391);
             	    lv_operator_2_0=ruleLogicalOrOperator();
 
             	    state._fsp--;
@@ -2560,16 +2644,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1018:2: ( (lv_right_3_0= ruleLogicalAnd ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1019:1: (lv_right_3_0= ruleLogicalAnd )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1052:2: ( (lv_right_3_0= ruleLogicalAnd ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1053:1: (lv_right_3_0= ruleLogicalAnd )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1019:1: (lv_right_3_0= ruleLogicalAnd )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1020:3: lv_right_3_0= ruleLogicalAnd
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1053:1: (lv_right_3_0= ruleLogicalAnd )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1054:3: lv_right_3_0= ruleLogicalAnd
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLogicalOrAccess().getRightLogicalAndParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2323);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2412);
             	    lv_right_3_0=ruleLogicalAnd();
 
             	    state._fsp--;
@@ -2621,7 +2705,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicalAnd"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1044:1: entryRuleLogicalAnd returns [EObject current=null] : iv_ruleLogicalAnd= ruleLogicalAnd EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1078:1: entryRuleLogicalAnd returns [EObject current=null] : iv_ruleLogicalAnd= ruleLogicalAnd EOF ;
     public final EObject entryRuleLogicalAnd() throws RecognitionException {
         EObject current = null;
 
@@ -2629,17 +2713,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1045:2: (iv_ruleLogicalAnd= ruleLogicalAnd EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1046:2: iv_ruleLogicalAnd= ruleLogicalAnd EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1079:2: (iv_ruleLogicalAnd= ruleLogicalAnd EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1080:2: iv_ruleLogicalAnd= ruleLogicalAnd EOF
             {
              newCompositeNode(grammarAccess.getLogicalAndRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_entryRuleLogicalAnd2361);
+            pushFollow(FollowSets000.FOLLOW_ruleLogicalAnd_in_entryRuleLogicalAnd2450);
             iv_ruleLogicalAnd=ruleLogicalAnd();
 
             state._fsp--;
 
              current =iv_ruleLogicalAnd; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLogicalAnd2371); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLogicalAnd2460); 
 
             }
 
@@ -2657,7 +2741,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicalAnd"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1053:1: ruleLogicalAnd returns [EObject current=null] : (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1087:1: ruleLogicalAnd returns [EObject current=null] : (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* ) ;
     public final EObject ruleLogicalAnd() throws RecognitionException {
         EObject current = null;
 
@@ -2671,16 +2755,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1056:28: ( (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1057:1: (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1090:28: ( (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1091:1: (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1057:1: (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1058:5: this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1091:1: (this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1092:5: this_Equality_0= ruleEquality ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getLogicalAndAccess().getEqualityParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleEquality_in_ruleLogicalAnd2418);
+            pushFollow(FollowSets000.FOLLOW_ruleEquality_in_ruleLogicalAnd2507);
             this_Equality_0=ruleEquality();
 
             state._fsp--;
@@ -2689,23 +2773,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_Equality_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1066:1: ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1100:1: ( () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) ) )*
             loop20:
             do {
                 int alt20=2;
                 int LA20_0 = input.LA(1);
 
-                if ( (LA20_0==32) ) {
+                if ( (LA20_0==33) ) {
                     alt20=1;
                 }
 
 
                 switch (alt20) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1066:2: () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1100:2: () ( (lv_operator_2_0= ruleLogicalAndOperator ) ) ( (lv_right_3_0= ruleEquality ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1066:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1067:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1100:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1101:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -2715,16 +2799,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1072:2: ( (lv_operator_2_0= ruleLogicalAndOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1073:1: (lv_operator_2_0= ruleLogicalAndOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1106:2: ( (lv_operator_2_0= ruleLogicalAndOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1107:1: (lv_operator_2_0= ruleLogicalAndOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1073:1: (lv_operator_2_0= ruleLogicalAndOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1074:3: lv_operator_2_0= ruleLogicalAndOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1107:1: (lv_operator_2_0= ruleLogicalAndOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1108:3: lv_operator_2_0= ruleLogicalAndOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLogicalAndAccess().getOperatorLogicalAndOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalAndOperator_in_ruleLogicalAnd2448);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLogicalAndOperator_in_ruleLogicalAnd2537);
             	    lv_operator_2_0=ruleLogicalAndOperator();
 
             	    state._fsp--;
@@ -2746,16 +2830,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1090:2: ( (lv_right_3_0= ruleEquality ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1091:1: (lv_right_3_0= ruleEquality )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1124:2: ( (lv_right_3_0= ruleEquality ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1125:1: (lv_right_3_0= ruleEquality )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1091:1: (lv_right_3_0= ruleEquality )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1092:3: lv_right_3_0= ruleEquality
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1125:1: (lv_right_3_0= ruleEquality )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1126:3: lv_right_3_0= ruleEquality
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLogicalAndAccess().getRightEqualityParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEquality_in_ruleLogicalAnd2469);
+            	    pushFollow(FollowSets000.FOLLOW_ruleEquality_in_ruleLogicalAnd2558);
             	    lv_right_3_0=ruleEquality();
 
             	    state._fsp--;
@@ -2807,7 +2891,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEquality"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1116:1: entryRuleEquality returns [EObject current=null] : iv_ruleEquality= ruleEquality EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1150:1: entryRuleEquality returns [EObject current=null] : iv_ruleEquality= ruleEquality EOF ;
     public final EObject entryRuleEquality() throws RecognitionException {
         EObject current = null;
 
@@ -2815,17 +2899,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1117:2: (iv_ruleEquality= ruleEquality EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1118:2: iv_ruleEquality= ruleEquality EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1151:2: (iv_ruleEquality= ruleEquality EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1152:2: iv_ruleEquality= ruleEquality EOF
             {
              newCompositeNode(grammarAccess.getEqualityRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEquality_in_entryRuleEquality2507);
+            pushFollow(FollowSets000.FOLLOW_ruleEquality_in_entryRuleEquality2596);
             iv_ruleEquality=ruleEquality();
 
             state._fsp--;
 
              current =iv_ruleEquality; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEquality2517); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEquality2606); 
 
             }
 
@@ -2843,7 +2927,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEquality"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1125:1: ruleEquality returns [EObject current=null] : (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1159:1: ruleEquality returns [EObject current=null] : (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* ) ;
     public final EObject ruleEquality() throws RecognitionException {
         EObject current = null;
 
@@ -2857,16 +2941,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1128:28: ( (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1129:1: (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1162:28: ( (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1163:1: (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1129:1: (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1130:5: this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1163:1: (this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1164:5: this_Comparative_0= ruleComparative ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getEqualityAccess().getComparativeParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleComparative_in_ruleEquality2564);
+            pushFollow(FollowSets000.FOLLOW_ruleComparative_in_ruleEquality2653);
             this_Comparative_0=ruleComparative();
 
             state._fsp--;
@@ -2875,23 +2959,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_Comparative_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1138:1: ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1172:1: ( () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) ) )*
             loop21:
             do {
                 int alt21=2;
                 int LA21_0 = input.LA(1);
 
-                if ( ((LA21_0>=33 && LA21_0<=34)) ) {
+                if ( ((LA21_0>=34 && LA21_0<=35)) ) {
                     alt21=1;
                 }
 
 
                 switch (alt21) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1138:2: () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1172:2: () ( (lv_operator_2_0= ruleEqualityOperator ) ) ( (lv_right_3_0= ruleComparative ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1138:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1139:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1172:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1173:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -2901,16 +2985,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1144:2: ( (lv_operator_2_0= ruleEqualityOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1145:1: (lv_operator_2_0= ruleEqualityOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1178:2: ( (lv_operator_2_0= ruleEqualityOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1179:1: (lv_operator_2_0= ruleEqualityOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1145:1: (lv_operator_2_0= ruleEqualityOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1146:3: lv_operator_2_0= ruleEqualityOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1179:1: (lv_operator_2_0= ruleEqualityOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1180:3: lv_operator_2_0= ruleEqualityOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getEqualityAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEqualityOperator_in_ruleEquality2594);
+            	    pushFollow(FollowSets000.FOLLOW_ruleEqualityOperator_in_ruleEquality2683);
             	    lv_operator_2_0=ruleEqualityOperator();
 
             	    state._fsp--;
@@ -2932,16 +3016,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1162:2: ( (lv_right_3_0= ruleComparative ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1163:1: (lv_right_3_0= ruleComparative )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1196:2: ( (lv_right_3_0= ruleComparative ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1197:1: (lv_right_3_0= ruleComparative )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1163:1: (lv_right_3_0= ruleComparative )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1164:3: lv_right_3_0= ruleComparative
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1197:1: (lv_right_3_0= ruleComparative )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1198:3: lv_right_3_0= ruleComparative
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getEqualityAccess().getRightComparativeParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleComparative_in_ruleEquality2615);
+            	    pushFollow(FollowSets000.FOLLOW_ruleComparative_in_ruleEquality2704);
             	    lv_right_3_0=ruleComparative();
 
             	    state._fsp--;
@@ -2993,7 +3077,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComparative"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1188:1: entryRuleComparative returns [EObject current=null] : iv_ruleComparative= ruleComparative EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1222:1: entryRuleComparative returns [EObject current=null] : iv_ruleComparative= ruleComparative EOF ;
     public final EObject entryRuleComparative() throws RecognitionException {
         EObject current = null;
 
@@ -3001,17 +3085,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1189:2: (iv_ruleComparative= ruleComparative EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1190:2: iv_ruleComparative= ruleComparative EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1223:2: (iv_ruleComparative= ruleComparative EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1224:2: iv_ruleComparative= ruleComparative EOF
             {
              newCompositeNode(grammarAccess.getComparativeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleComparative_in_entryRuleComparative2653);
+            pushFollow(FollowSets000.FOLLOW_ruleComparative_in_entryRuleComparative2742);
             iv_ruleComparative=ruleComparative();
 
             state._fsp--;
 
              current =iv_ruleComparative; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleComparative2663); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleComparative2752); 
 
             }
 
@@ -3029,7 +3113,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparative"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1197:1: ruleComparative returns [EObject current=null] : (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1231:1: ruleComparative returns [EObject current=null] : (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* ) ;
     public final EObject ruleComparative() throws RecognitionException {
         EObject current = null;
 
@@ -3043,16 +3127,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1200:28: ( (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1201:1: (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1234:28: ( (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1235:1: (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1201:1: (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1202:5: this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1235:1: (this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1236:5: this_Additive_0= ruleAdditive ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getComparativeAccess().getAdditiveParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_ruleComparative2710);
+            pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_ruleComparative2799);
             this_Additive_0=ruleAdditive();
 
             state._fsp--;
@@ -3061,23 +3145,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_Additive_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1210:1: ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1244:1: ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) ) )*
             loop22:
             do {
                 int alt22=2;
                 int LA22_0 = input.LA(1);
 
-                if ( ((LA22_0>=35 && LA22_0<=36)) ) {
+                if ( ((LA22_0>=36 && LA22_0<=37)) ) {
                     alt22=1;
                 }
 
 
                 switch (alt22) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1210:2: () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1244:2: () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_right_3_0= ruleAdditive ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1210:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1211:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1244:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1245:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -3087,16 +3171,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1216:2: ( (lv_operator_2_0= ruleComparativeOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1217:1: (lv_operator_2_0= ruleComparativeOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1250:2: ( (lv_operator_2_0= ruleComparativeOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1251:1: (lv_operator_2_0= ruleComparativeOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1217:1: (lv_operator_2_0= ruleComparativeOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1218:3: lv_operator_2_0= ruleComparativeOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1251:1: (lv_operator_2_0= ruleComparativeOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1252:3: lv_operator_2_0= ruleComparativeOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getComparativeAccess().getOperatorComparativeOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleComparativeOperator_in_ruleComparative2740);
+            	    pushFollow(FollowSets000.FOLLOW_ruleComparativeOperator_in_ruleComparative2829);
             	    lv_operator_2_0=ruleComparativeOperator();
 
             	    state._fsp--;
@@ -3118,16 +3202,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1234:2: ( (lv_right_3_0= ruleAdditive ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1235:1: (lv_right_3_0= ruleAdditive )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1268:2: ( (lv_right_3_0= ruleAdditive ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1269:1: (lv_right_3_0= ruleAdditive )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1235:1: (lv_right_3_0= ruleAdditive )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1236:3: lv_right_3_0= ruleAdditive
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1269:1: (lv_right_3_0= ruleAdditive )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1270:3: lv_right_3_0= ruleAdditive
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getComparativeAccess().getRightAdditiveParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_ruleComparative2761);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_ruleComparative2850);
             	    lv_right_3_0=ruleAdditive();
 
             	    state._fsp--;
@@ -3179,7 +3263,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAdditive"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1260:1: entryRuleAdditive returns [EObject current=null] : iv_ruleAdditive= ruleAdditive EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1294:1: entryRuleAdditive returns [EObject current=null] : iv_ruleAdditive= ruleAdditive EOF ;
     public final EObject entryRuleAdditive() throws RecognitionException {
         EObject current = null;
 
@@ -3187,17 +3271,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1261:2: (iv_ruleAdditive= ruleAdditive EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1262:2: iv_ruleAdditive= ruleAdditive EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1295:2: (iv_ruleAdditive= ruleAdditive EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1296:2: iv_ruleAdditive= ruleAdditive EOF
             {
              newCompositeNode(grammarAccess.getAdditiveRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_entryRuleAdditive2799);
+            pushFollow(FollowSets000.FOLLOW_ruleAdditive_in_entryRuleAdditive2888);
             iv_ruleAdditive=ruleAdditive();
 
             state._fsp--;
 
              current =iv_ruleAdditive; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAdditive2809); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAdditive2898); 
 
             }
 
@@ -3215,7 +3299,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditive"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1269:1: ruleAdditive returns [EObject current=null] : (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1303:1: ruleAdditive returns [EObject current=null] : (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* ) ;
     public final EObject ruleAdditive() throws RecognitionException {
         EObject current = null;
 
@@ -3229,16 +3313,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1272:28: ( (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1273:1: (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1306:28: ( (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1307:1: (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1273:1: (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1274:5: this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1307:1: (this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1308:5: this_Multiplicative_0= ruleMultiplicative ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getAdditiveAccess().getMultiplicativeParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_ruleAdditive2856);
+            pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_ruleAdditive2945);
             this_Multiplicative_0=ruleMultiplicative();
 
             state._fsp--;
@@ -3247,23 +3331,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_Multiplicative_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1282:1: ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1316:1: ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) ) )*
             loop23:
             do {
                 int alt23=2;
                 int LA23_0 = input.LA(1);
 
-                if ( ((LA23_0>=37 && LA23_0<=38)) ) {
+                if ( ((LA23_0>=38 && LA23_0<=39)) ) {
                     alt23=1;
                 }
 
 
                 switch (alt23) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1282:2: () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1316:2: () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_right_3_0= ruleMultiplicative ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1282:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1283:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1316:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1317:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -3273,16 +3357,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1288:2: ( (lv_operator_2_0= ruleAdditiveOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1289:1: (lv_operator_2_0= ruleAdditiveOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1322:2: ( (lv_operator_2_0= ruleAdditiveOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1323:1: (lv_operator_2_0= ruleAdditiveOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1289:1: (lv_operator_2_0= ruleAdditiveOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1290:3: lv_operator_2_0= ruleAdditiveOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1323:1: (lv_operator_2_0= ruleAdditiveOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1324:3: lv_operator_2_0= ruleAdditiveOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getAdditiveAccess().getOperatorAdditiveOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAdditiveOperator_in_ruleAdditive2886);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAdditiveOperator_in_ruleAdditive2975);
             	    lv_operator_2_0=ruleAdditiveOperator();
 
             	    state._fsp--;
@@ -3304,16 +3388,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1306:2: ( (lv_right_3_0= ruleMultiplicative ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1307:1: (lv_right_3_0= ruleMultiplicative )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1340:2: ( (lv_right_3_0= ruleMultiplicative ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1341:1: (lv_right_3_0= ruleMultiplicative )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1307:1: (lv_right_3_0= ruleMultiplicative )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1308:3: lv_right_3_0= ruleMultiplicative
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1341:1: (lv_right_3_0= ruleMultiplicative )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1342:3: lv_right_3_0= ruleMultiplicative
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getAdditiveAccess().getRightMultiplicativeParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_ruleAdditive2907);
+            	    pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_ruleAdditive2996);
             	    lv_right_3_0=ruleMultiplicative();
 
             	    state._fsp--;
@@ -3365,7 +3449,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMultiplicative"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1332:1: entryRuleMultiplicative returns [EObject current=null] : iv_ruleMultiplicative= ruleMultiplicative EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1366:1: entryRuleMultiplicative returns [EObject current=null] : iv_ruleMultiplicative= ruleMultiplicative EOF ;
     public final EObject entryRuleMultiplicative() throws RecognitionException {
         EObject current = null;
 
@@ -3373,17 +3457,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1333:2: (iv_ruleMultiplicative= ruleMultiplicative EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1334:2: iv_ruleMultiplicative= ruleMultiplicative EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1367:2: (iv_ruleMultiplicative= ruleMultiplicative EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1368:2: iv_ruleMultiplicative= ruleMultiplicative EOF
             {
              newCompositeNode(grammarAccess.getMultiplicativeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_entryRuleMultiplicative2945);
+            pushFollow(FollowSets000.FOLLOW_ruleMultiplicative_in_entryRuleMultiplicative3034);
             iv_ruleMultiplicative=ruleMultiplicative();
 
             state._fsp--;
 
              current =iv_ruleMultiplicative; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMultiplicative2955); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMultiplicative3044); 
 
             }
 
@@ -3401,7 +3485,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicative"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1341:1: ruleMultiplicative returns [EObject current=null] : (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1375:1: ruleMultiplicative returns [EObject current=null] : (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* ) ;
     public final EObject ruleMultiplicative() throws RecognitionException {
         EObject current = null;
 
@@ -3415,16 +3499,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1344:28: ( (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1345:1: (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1378:28: ( (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1379:1: (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1345:1: (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1346:5: this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1379:1: (this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )* )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1380:5: this_Primitive_0= rulePrimitive ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getMultiplicativeAccess().getPrimitiveParserRuleCall_0()); 
                 
-            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleMultiplicative3002);
+            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleMultiplicative3091);
             this_Primitive_0=rulePrimitive();
 
             state._fsp--;
@@ -3433,23 +3517,23 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     current = this_Primitive_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1354:1: ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )*
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1388:1: ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) ) )*
             loop24:
             do {
                 int alt24=2;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0==39) ) {
+                if ( (LA24_0==40) ) {
                     alt24=1;
                 }
 
 
                 switch (alt24) {
             	case 1 :
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1354:2: () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1388:2: () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_right_3_0= rulePrimitive ) )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1354:2: ()
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1355:5: 
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1388:2: ()
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1389:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -3459,16 +3543,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1360:2: ( (lv_operator_2_0= ruleMultiplicativeOperator ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1361:1: (lv_operator_2_0= ruleMultiplicativeOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1394:2: ( (lv_operator_2_0= ruleMultiplicativeOperator ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1395:1: (lv_operator_2_0= ruleMultiplicativeOperator )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1361:1: (lv_operator_2_0= ruleMultiplicativeOperator )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1362:3: lv_operator_2_0= ruleMultiplicativeOperator
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1395:1: (lv_operator_2_0= ruleMultiplicativeOperator )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1396:3: lv_operator_2_0= ruleMultiplicativeOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getMultiplicativeAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleMultiplicativeOperator_in_ruleMultiplicative3032);
+            	    pushFollow(FollowSets000.FOLLOW_ruleMultiplicativeOperator_in_ruleMultiplicative3121);
             	    lv_operator_2_0=ruleMultiplicativeOperator();
 
             	    state._fsp--;
@@ -3490,16 +3574,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1378:2: ( (lv_right_3_0= rulePrimitive ) )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1379:1: (lv_right_3_0= rulePrimitive )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1412:2: ( (lv_right_3_0= rulePrimitive ) )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1413:1: (lv_right_3_0= rulePrimitive )
             	    {
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1379:1: (lv_right_3_0= rulePrimitive )
-            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1380:3: lv_right_3_0= rulePrimitive
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1413:1: (lv_right_3_0= rulePrimitive )
+            	    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1414:3: lv_right_3_0= rulePrimitive
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getMultiplicativeAccess().getRightPrimitiveParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleMultiplicative3053);
+            	    pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleMultiplicative3142);
             	    lv_right_3_0=rulePrimitive();
 
             	    state._fsp--;
@@ -3551,7 +3635,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitive"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1404:1: entryRulePrimitive returns [EObject current=null] : iv_rulePrimitive= rulePrimitive EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1438:1: entryRulePrimitive returns [EObject current=null] : iv_rulePrimitive= rulePrimitive EOF ;
     public final EObject entryRulePrimitive() throws RecognitionException {
         EObject current = null;
 
@@ -3559,17 +3643,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1405:2: (iv_rulePrimitive= rulePrimitive EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1406:2: iv_rulePrimitive= rulePrimitive EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1439:2: (iv_rulePrimitive= rulePrimitive EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1440:2: iv_rulePrimitive= rulePrimitive EOF
             {
              newCompositeNode(grammarAccess.getPrimitiveRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_entryRulePrimitive3091);
+            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_entryRulePrimitive3180);
             iv_rulePrimitive=rulePrimitive();
 
             state._fsp--;
 
              current =iv_rulePrimitive; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePrimitive3101); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePrimitive3190); 
 
             }
 
@@ -3587,7 +3671,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitive"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1413:1: rulePrimitive returns [EObject current=null] : (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1447:1: rulePrimitive returns [EObject current=null] : (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) ) ;
     public final EObject rulePrimitive() throws RecognitionException {
         EObject current = null;
 
@@ -3611,14 +3695,14 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1416:28: ( (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1417:1: (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1450:28: ( (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1451:1: (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1417:1: (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1451:1: (this_Unary_0= ruleUnary | this_InRange_1= ruleInRange | this_Integer_2= ruleInteger | this_Boolean_3= ruleBoolean | this_String0_4= ruleString0 | this_Identifier_5= ruleIdentifier | (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' ) )
             int alt25=7;
             switch ( input.LA(1) ) {
-            case 38:
-            case 40:
+            case 39:
+            case 41:
                 {
                 alt25=1;
                 }
@@ -3627,10 +3711,10 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                 {
                 int LA25_2 = input.LA(2);
 
-                if ( (LA25_2==28) ) {
+                if ( (LA25_2==29) ) {
                     alt25=2;
                 }
-                else if ( (LA25_2==EOF||(LA25_2>=12 && LA25_2<=21)||LA25_2==23||(LA25_2>=25 && LA25_2<=26)||(LA25_2>=31 && LA25_2<=39)) ) {
+                else if ( (LA25_2==EOF||(LA25_2>=12 && LA25_2<=22)||LA25_2==24||(LA25_2>=26 && LA25_2<=27)||(LA25_2>=32 && LA25_2<=40)) ) {
                     alt25=6;
                 }
                 else {
@@ -3646,8 +3730,8 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                 alt25=3;
                 }
                 break;
-            case 29:
             case 30:
+            case 31:
                 {
                 alt25=4;
                 }
@@ -3657,7 +3741,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                 alt25=5;
                 }
                 break;
-            case 22:
+            case 23:
                 {
                 alt25=7;
                 }
@@ -3671,12 +3755,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             switch (alt25) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1418:5: this_Unary_0= ruleUnary
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1452:5: this_Unary_0= ruleUnary
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getUnaryParserRuleCall_0()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleUnary_in_rulePrimitive3148);
+                    pushFollow(FollowSets000.FOLLOW_ruleUnary_in_rulePrimitive3237);
                     this_Unary_0=ruleUnary();
 
                     state._fsp--;
@@ -3689,12 +3773,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1428:5: this_InRange_1= ruleInRange
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1462:5: this_InRange_1= ruleInRange
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getInRangeParserRuleCall_1()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleInRange_in_rulePrimitive3175);
+                    pushFollow(FollowSets000.FOLLOW_ruleInRange_in_rulePrimitive3264);
                     this_InRange_1=ruleInRange();
 
                     state._fsp--;
@@ -3707,12 +3791,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1438:5: this_Integer_2= ruleInteger
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1472:5: this_Integer_2= ruleInteger
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getIntegerParserRuleCall_2()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_rulePrimitive3202);
+                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_rulePrimitive3291);
                     this_Integer_2=ruleInteger();
 
                     state._fsp--;
@@ -3725,12 +3809,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1448:5: this_Boolean_3= ruleBoolean
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1482:5: this_Boolean_3= ruleBoolean
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getBooleanParserRuleCall_3()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleBoolean_in_rulePrimitive3229);
+                    pushFollow(FollowSets000.FOLLOW_ruleBoolean_in_rulePrimitive3318);
                     this_Boolean_3=ruleBoolean();
 
                     state._fsp--;
@@ -3743,12 +3827,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1458:5: this_String0_4= ruleString0
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1492:5: this_String0_4= ruleString0
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getString0ParserRuleCall_4()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleString0_in_rulePrimitive3256);
+                    pushFollow(FollowSets000.FOLLOW_ruleString0_in_rulePrimitive3345);
                     this_String0_4=ruleString0();
 
                     state._fsp--;
@@ -3761,12 +3845,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1468:5: this_Identifier_5= ruleIdentifier
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1502:5: this_Identifier_5= ruleIdentifier
                     {
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getIdentifierParserRuleCall_5()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleIdentifier_in_rulePrimitive3283);
+                    pushFollow(FollowSets000.FOLLOW_ruleIdentifier_in_rulePrimitive3372);
                     this_Identifier_5=ruleIdentifier();
 
                     state._fsp--;
@@ -3779,19 +3863,19 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1477:6: (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1511:6: (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1477:6: (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1477:8: otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1511:6: (otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1511:8: otherlv_6= '(' this_Expression_7= ruleExpression otherlv_8= ')'
                     {
-                    otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_rulePrimitive3301); 
+                    otherlv_6=(Token)match(input,23,FollowSets000.FOLLOW_23_in_rulePrimitive3390); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getPrimitiveAccess().getLeftParenthesisKeyword_6_0());
                         
                      
                             newCompositeNode(grammarAccess.getPrimitiveAccess().getExpressionParserRuleCall_6_1()); 
                         
-                    pushFollow(FollowSets000.FOLLOW_ruleExpression_in_rulePrimitive3323);
+                    pushFollow(FollowSets000.FOLLOW_ruleExpression_in_rulePrimitive3412);
                     this_Expression_7=ruleExpression();
 
                     state._fsp--;
@@ -3800,7 +3884,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                             current = this_Expression_7; 
                             afterParserOrEnumRuleCall();
                         
-                    otherlv_8=(Token)match(input,23,FollowSets000.FOLLOW_23_in_rulePrimitive3334); 
+                    otherlv_8=(Token)match(input,24,FollowSets000.FOLLOW_24_in_rulePrimitive3423); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getPrimitiveAccess().getRightParenthesisKeyword_6_2());
                         
@@ -3831,7 +3915,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUnary"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1502:1: entryRuleUnary returns [EObject current=null] : iv_ruleUnary= ruleUnary EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1536:1: entryRuleUnary returns [EObject current=null] : iv_ruleUnary= ruleUnary EOF ;
     public final EObject entryRuleUnary() throws RecognitionException {
         EObject current = null;
 
@@ -3839,17 +3923,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1503:2: (iv_ruleUnary= ruleUnary EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1504:2: iv_ruleUnary= ruleUnary EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1537:2: (iv_ruleUnary= ruleUnary EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1538:2: iv_ruleUnary= ruleUnary EOF
             {
              newCompositeNode(grammarAccess.getUnaryRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleUnary_in_entryRuleUnary3371);
+            pushFollow(FollowSets000.FOLLOW_ruleUnary_in_entryRuleUnary3460);
             iv_ruleUnary=ruleUnary();
 
             state._fsp--;
 
              current =iv_ruleUnary; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnary3381); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleUnary3470); 
 
             }
 
@@ -3867,7 +3951,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnary"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1511:1: ruleUnary returns [EObject current=null] : ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1545:1: ruleUnary returns [EObject current=null] : ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) ) ;
     public final EObject ruleUnary() throws RecognitionException {
         EObject current = null;
 
@@ -3879,22 +3963,22 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1514:28: ( ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1515:1: ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1548:28: ( ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1549:1: ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1515:1: ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1515:2: ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1549:1: ( ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1549:2: ( (lv_operator_0_0= ruleUnaryOperator ) ) ( (lv_inner_1_0= rulePrimitive ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1515:2: ( (lv_operator_0_0= ruleUnaryOperator ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1516:1: (lv_operator_0_0= ruleUnaryOperator )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1549:2: ( (lv_operator_0_0= ruleUnaryOperator ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1550:1: (lv_operator_0_0= ruleUnaryOperator )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1516:1: (lv_operator_0_0= ruleUnaryOperator )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1517:3: lv_operator_0_0= ruleUnaryOperator
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1550:1: (lv_operator_0_0= ruleUnaryOperator )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1551:3: lv_operator_0_0= ruleUnaryOperator
             {
              
             	        newCompositeNode(grammarAccess.getUnaryAccess().getOperatorUnaryOperatorEnumRuleCall_0_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleUnaryOperator_in_ruleUnary3427);
+            pushFollow(FollowSets000.FOLLOW_ruleUnaryOperator_in_ruleUnary3516);
             lv_operator_0_0=ruleUnaryOperator();
 
             state._fsp--;
@@ -3916,16 +4000,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1533:2: ( (lv_inner_1_0= rulePrimitive ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1534:1: (lv_inner_1_0= rulePrimitive )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1567:2: ( (lv_inner_1_0= rulePrimitive ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1568:1: (lv_inner_1_0= rulePrimitive )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1534:1: (lv_inner_1_0= rulePrimitive )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1535:3: lv_inner_1_0= rulePrimitive
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1568:1: (lv_inner_1_0= rulePrimitive )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1569:3: lv_inner_1_0= rulePrimitive
             {
              
             	        newCompositeNode(grammarAccess.getUnaryAccess().getInnerPrimitiveParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleUnary3448);
+            pushFollow(FollowSets000.FOLLOW_rulePrimitive_in_ruleUnary3537);
             lv_inner_1_0=rulePrimitive();
 
             state._fsp--;
@@ -3968,7 +4052,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInRange"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1561:1: entryRuleInRange returns [EObject current=null] : iv_ruleInRange= ruleInRange EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1595:1: entryRuleInRange returns [EObject current=null] : iv_ruleInRange= ruleInRange EOF ;
     public final EObject entryRuleInRange() throws RecognitionException {
         EObject current = null;
 
@@ -3976,17 +4060,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1562:2: (iv_ruleInRange= ruleInRange EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1563:2: iv_ruleInRange= ruleInRange EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1596:2: (iv_ruleInRange= ruleInRange EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1597:2: iv_ruleInRange= ruleInRange EOF
             {
              newCompositeNode(grammarAccess.getInRangeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleInRange_in_entryRuleInRange3486);
+            pushFollow(FollowSets000.FOLLOW_ruleInRange_in_entryRuleInRange3575);
             iv_ruleInRange=ruleInRange();
 
             state._fsp--;
 
              current =iv_ruleInRange; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInRange3496); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInRange3585); 
 
             }
 
@@ -4004,7 +4088,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInRange"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1570:1: ruleInRange returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1604:1: ruleInRange returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) ) ;
     public final EObject ruleInRange() throws RecognitionException {
         EObject current = null;
 
@@ -4016,24 +4100,24 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1573:28: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1574:1: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1607:28: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1608:1: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1574:1: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1574:2: ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1608:1: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1608:2: ( (otherlv_0= RULE_ID ) ) otherlv_1= 'in' ( (lv_range_2_0= ruleValueRange ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1574:2: ( (otherlv_0= RULE_ID ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1575:1: (otherlv_0= RULE_ID )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1608:2: ( (otherlv_0= RULE_ID ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1609:1: (otherlv_0= RULE_ID )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1575:1: (otherlv_0= RULE_ID )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1576:3: otherlv_0= RULE_ID
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1609:1: (otherlv_0= RULE_ID )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1610:3: otherlv_0= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getInRangeRule());
             	        }
                     
-            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleInRange3541); 
+            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleInRange3630); 
 
             		newLeafNode(otherlv_0, grammarAccess.getInRangeAccess().getParameterParameterCrossReference_0_0()); 
             	
@@ -4043,20 +4127,20 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleInRange3553); 
+            otherlv_1=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleInRange3642); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getInRangeAccess().getInKeyword_1());
                 
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1591:1: ( (lv_range_2_0= ruleValueRange ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1592:1: (lv_range_2_0= ruleValueRange )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1625:1: ( (lv_range_2_0= ruleValueRange ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1626:1: (lv_range_2_0= ruleValueRange )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1592:1: (lv_range_2_0= ruleValueRange )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1593:3: lv_range_2_0= ruleValueRange
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1626:1: (lv_range_2_0= ruleValueRange )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1627:3: lv_range_2_0= ruleValueRange
             {
              
             	        newCompositeNode(grammarAccess.getInRangeAccess().getRangeValueRangeParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_ruleInRange3574);
+            pushFollow(FollowSets000.FOLLOW_ruleValueRange_in_ruleInRange3663);
             lv_range_2_0=ruleValueRange();
 
             state._fsp--;
@@ -4099,7 +4183,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInteger"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1617:1: entryRuleInteger returns [EObject current=null] : iv_ruleInteger= ruleInteger EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1651:1: entryRuleInteger returns [EObject current=null] : iv_ruleInteger= ruleInteger EOF ;
     public final EObject entryRuleInteger() throws RecognitionException {
         EObject current = null;
 
@@ -4107,17 +4191,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1618:2: (iv_ruleInteger= ruleInteger EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1619:2: iv_ruleInteger= ruleInteger EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1652:2: (iv_ruleInteger= ruleInteger EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1653:2: iv_ruleInteger= ruleInteger EOF
             {
              newCompositeNode(grammarAccess.getIntegerRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleInteger_in_entryRuleInteger3610);
+            pushFollow(FollowSets000.FOLLOW_ruleInteger_in_entryRuleInteger3699);
             iv_ruleInteger=ruleInteger();
 
             state._fsp--;
 
              current =iv_ruleInteger; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInteger3620); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInteger3709); 
 
             }
 
@@ -4135,7 +4219,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInteger"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1626:1: ruleInteger returns [EObject current=null] : ( (lv_value_0_0= ruleEInt ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1660:1: ruleInteger returns [EObject current=null] : ( (lv_value_0_0= ruleEInt ) ) ;
     public final EObject ruleInteger() throws RecognitionException {
         EObject current = null;
 
@@ -4145,19 +4229,19 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1629:28: ( ( (lv_value_0_0= ruleEInt ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1630:1: ( (lv_value_0_0= ruleEInt ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1663:28: ( ( (lv_value_0_0= ruleEInt ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1664:1: ( (lv_value_0_0= ruleEInt ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1630:1: ( (lv_value_0_0= ruleEInt ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1631:1: (lv_value_0_0= ruleEInt )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1664:1: ( (lv_value_0_0= ruleEInt ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1665:1: (lv_value_0_0= ruleEInt )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1631:1: (lv_value_0_0= ruleEInt )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1632:3: lv_value_0_0= ruleEInt
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1665:1: (lv_value_0_0= ruleEInt )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1666:3: lv_value_0_0= ruleEInt
             {
              
             	        newCompositeNode(grammarAccess.getIntegerAccess().getValueEIntParserRuleCall_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleInteger3665);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_ruleInteger3754);
             lv_value_0_0=ruleEInt();
 
             state._fsp--;
@@ -4197,7 +4281,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBoolean"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1656:1: entryRuleBoolean returns [EObject current=null] : iv_ruleBoolean= ruleBoolean EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1690:1: entryRuleBoolean returns [EObject current=null] : iv_ruleBoolean= ruleBoolean EOF ;
     public final EObject entryRuleBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -4205,17 +4289,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1657:2: (iv_ruleBoolean= ruleBoolean EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1658:2: iv_ruleBoolean= ruleBoolean EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1691:2: (iv_ruleBoolean= ruleBoolean EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1692:2: iv_ruleBoolean= ruleBoolean EOF
             {
              newCompositeNode(grammarAccess.getBooleanRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleBoolean_in_entryRuleBoolean3700);
+            pushFollow(FollowSets000.FOLLOW_ruleBoolean_in_entryRuleBoolean3789);
             iv_ruleBoolean=ruleBoolean();
 
             state._fsp--;
 
              current =iv_ruleBoolean; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBoolean3710); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBoolean3799); 
 
             }
 
@@ -4233,7 +4317,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBoolean"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1665:1: ruleBoolean returns [EObject current=null] : ( (lv_value_0_0= ruleEBoolean ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1699:1: ruleBoolean returns [EObject current=null] : ( (lv_value_0_0= ruleEBoolean ) ) ;
     public final EObject ruleBoolean() throws RecognitionException {
         EObject current = null;
 
@@ -4243,19 +4327,19 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1668:28: ( ( (lv_value_0_0= ruleEBoolean ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1669:1: ( (lv_value_0_0= ruleEBoolean ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1702:28: ( ( (lv_value_0_0= ruleEBoolean ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1703:1: ( (lv_value_0_0= ruleEBoolean ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1669:1: ( (lv_value_0_0= ruleEBoolean ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1670:1: (lv_value_0_0= ruleEBoolean )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1703:1: ( (lv_value_0_0= ruleEBoolean ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1704:1: (lv_value_0_0= ruleEBoolean )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1670:1: (lv_value_0_0= ruleEBoolean )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1671:3: lv_value_0_0= ruleEBoolean
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1704:1: (lv_value_0_0= ruleEBoolean )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1705:3: lv_value_0_0= ruleEBoolean
             {
              
             	        newCompositeNode(grammarAccess.getBooleanAccess().getValueEBooleanParserRuleCall_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEBoolean_in_ruleBoolean3755);
+            pushFollow(FollowSets000.FOLLOW_ruleEBoolean_in_ruleBoolean3844);
             lv_value_0_0=ruleEBoolean();
 
             state._fsp--;
@@ -4295,7 +4379,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleString0"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1695:1: entryRuleString0 returns [EObject current=null] : iv_ruleString0= ruleString0 EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1729:1: entryRuleString0 returns [EObject current=null] : iv_ruleString0= ruleString0 EOF ;
     public final EObject entryRuleString0() throws RecognitionException {
         EObject current = null;
 
@@ -4303,17 +4387,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1696:2: (iv_ruleString0= ruleString0 EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1697:2: iv_ruleString0= ruleString0 EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1730:2: (iv_ruleString0= ruleString0 EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1731:2: iv_ruleString0= ruleString0 EOF
             {
              newCompositeNode(grammarAccess.getString0Rule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleString0_in_entryRuleString03790);
+            pushFollow(FollowSets000.FOLLOW_ruleString0_in_entryRuleString03879);
             iv_ruleString0=ruleString0();
 
             state._fsp--;
 
              current =iv_ruleString0; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleString03800); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleString03889); 
 
             }
 
@@ -4331,7 +4415,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleString0"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1704:1: ruleString0 returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1738:1: ruleString0 returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
     public final EObject ruleString0() throws RecognitionException {
         EObject current = null;
 
@@ -4340,16 +4424,16 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1707:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1708:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1741:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1742:1: ( (lv_value_0_0= RULE_STRING ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1708:1: ( (lv_value_0_0= RULE_STRING ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1709:1: (lv_value_0_0= RULE_STRING )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1742:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1743:1: (lv_value_0_0= RULE_STRING )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1709:1: (lv_value_0_0= RULE_STRING )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1710:3: lv_value_0_0= RULE_STRING
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1743:1: (lv_value_0_0= RULE_STRING )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1744:3: lv_value_0_0= RULE_STRING
             {
-            lv_value_0_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleString03841); 
+            lv_value_0_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleString03930); 
 
             			newLeafNode(lv_value_0_0, grammarAccess.getString0Access().getValueSTRINGTerminalRuleCall_0()); 
             		
@@ -4387,7 +4471,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIdentifier"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1734:1: entryRuleIdentifier returns [EObject current=null] : iv_ruleIdentifier= ruleIdentifier EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1768:1: entryRuleIdentifier returns [EObject current=null] : iv_ruleIdentifier= ruleIdentifier EOF ;
     public final EObject entryRuleIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -4395,17 +4479,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1735:2: (iv_ruleIdentifier= ruleIdentifier EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1736:2: iv_ruleIdentifier= ruleIdentifier EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1769:2: (iv_ruleIdentifier= ruleIdentifier EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1770:2: iv_ruleIdentifier= ruleIdentifier EOF
             {
              newCompositeNode(grammarAccess.getIdentifierRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleIdentifier_in_entryRuleIdentifier3881);
+            pushFollow(FollowSets000.FOLLOW_ruleIdentifier_in_entryRuleIdentifier3970);
             iv_ruleIdentifier=ruleIdentifier();
 
             state._fsp--;
 
              current =iv_ruleIdentifier; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIdentifier3891); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIdentifier3980); 
 
             }
 
@@ -4423,7 +4507,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIdentifier"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1743:1: ruleIdentifier returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1777:1: ruleIdentifier returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -4432,21 +4516,21 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1746:28: ( ( (otherlv_0= RULE_ID ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1747:1: ( (otherlv_0= RULE_ID ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1780:28: ( ( (otherlv_0= RULE_ID ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1781:1: ( (otherlv_0= RULE_ID ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1747:1: ( (otherlv_0= RULE_ID ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1748:1: (otherlv_0= RULE_ID )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1781:1: ( (otherlv_0= RULE_ID ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1782:1: (otherlv_0= RULE_ID )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1748:1: (otherlv_0= RULE_ID )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1749:3: otherlv_0= RULE_ID
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1782:1: (otherlv_0= RULE_ID )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1783:3: otherlv_0= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getIdentifierRule());
             	        }
                     
-            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleIdentifier3935); 
+            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleIdentifier4024); 
 
             		newLeafNode(otherlv_0, grammarAccess.getIdentifierAccess().getIdParameterCrossReference_0()); 
             	
@@ -4474,7 +4558,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEInt"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1768:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1802:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
     public final String entryRuleEInt() throws RecognitionException {
         String current = null;
 
@@ -4482,17 +4566,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1769:2: (iv_ruleEInt= ruleEInt EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1770:2: iv_ruleEInt= ruleEInt EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1803:2: (iv_ruleEInt= ruleEInt EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1804:2: iv_ruleEInt= ruleEInt EOF
             {
              newCompositeNode(grammarAccess.getEIntRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_entryRuleEInt3971);
+            pushFollow(FollowSets000.FOLLOW_ruleEInt_in_entryRuleEInt4060);
             iv_ruleEInt=ruleEInt();
 
             state._fsp--;
 
              current =iv_ruleEInt.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEInt3982); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEInt4071); 
 
             }
 
@@ -4510,7 +4594,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEInt"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1777:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1811:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
     public final AntlrDatatypeRuleToken ruleEInt() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -4519,10 +4603,10 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1780:28: (this_INT_0= RULE_INT )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1781:5: this_INT_0= RULE_INT
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1814:28: (this_INT_0= RULE_INT )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1815:5: this_INT_0= RULE_INT
             {
-            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleEInt4021); 
+            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleEInt4110); 
 
             		current.merge(this_INT_0);
                 
@@ -4547,7 +4631,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEBoolean"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1798:1: entryRuleEBoolean returns [String current=null] : iv_ruleEBoolean= ruleEBoolean EOF ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1832:1: entryRuleEBoolean returns [String current=null] : iv_ruleEBoolean= ruleEBoolean EOF ;
     public final String entryRuleEBoolean() throws RecognitionException {
         String current = null;
 
@@ -4555,17 +4639,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1799:2: (iv_ruleEBoolean= ruleEBoolean EOF )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1800:2: iv_ruleEBoolean= ruleEBoolean EOF
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1833:2: (iv_ruleEBoolean= ruleEBoolean EOF )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1834:2: iv_ruleEBoolean= ruleEBoolean EOF
             {
              newCompositeNode(grammarAccess.getEBooleanRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEBoolean_in_entryRuleEBoolean4068);
+            pushFollow(FollowSets000.FOLLOW_ruleEBoolean_in_entryRuleEBoolean4157);
             iv_ruleEBoolean=ruleEBoolean();
 
             state._fsp--;
 
              current =iv_ruleEBoolean.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEBoolean4079); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEBoolean4168); 
 
             }
 
@@ -4583,7 +4667,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEBoolean"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1807:1: ruleEBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'true' | kw= 'false' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1841:1: ruleEBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'true' | kw= 'false' ) ;
     public final AntlrDatatypeRuleToken ruleEBoolean() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -4592,17 +4676,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1810:28: ( (kw= 'true' | kw= 'false' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1811:1: (kw= 'true' | kw= 'false' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1844:28: ( (kw= 'true' | kw= 'false' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1845:1: (kw= 'true' | kw= 'false' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1811:1: (kw= 'true' | kw= 'false' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1845:1: (kw= 'true' | kw= 'false' )
             int alt26=2;
             int LA26_0 = input.LA(1);
 
-            if ( (LA26_0==29) ) {
+            if ( (LA26_0==30) ) {
                 alt26=1;
             }
-            else if ( (LA26_0==30) ) {
+            else if ( (LA26_0==31) ) {
                 alt26=2;
             }
             else {
@@ -4613,9 +4697,9 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1812:2: kw= 'true'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1846:2: kw= 'true'
                     {
-                    kw=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleEBoolean4117); 
+                    kw=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleEBoolean4206); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getEBooleanAccess().getTrueKeyword_0()); 
@@ -4624,9 +4708,9 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1819:2: kw= 'false'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1853:2: kw= 'false'
                     {
-                    kw=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleEBoolean4136); 
+                    kw=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleEBoolean4225); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getEBooleanAccess().getFalseKeyword_1()); 
@@ -4655,7 +4739,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicalOrOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1832:1: ruleLogicalOrOperator returns [Enumerator current=null] : (enumLiteral_0= 'or' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1866:1: ruleLogicalOrOperator returns [Enumerator current=null] : (enumLiteral_0= 'or' ) ;
     public final Enumerator ruleLogicalOrOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4663,13 +4747,13 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1834:28: ( (enumLiteral_0= 'or' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1835:1: (enumLiteral_0= 'or' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1868:28: ( (enumLiteral_0= 'or' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1869:1: (enumLiteral_0= 'or' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1835:1: (enumLiteral_0= 'or' )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1835:3: enumLiteral_0= 'or'
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1869:1: (enumLiteral_0= 'or' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1869:3: enumLiteral_0= 'or'
             {
-            enumLiteral_0=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleLogicalOrOperator4189); 
+            enumLiteral_0=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleLogicalOrOperator4278); 
 
                     current = grammarAccess.getLogicalOrOperatorAccess().getLogicalOrEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getLogicalOrOperatorAccess().getLogicalOrEnumLiteralDeclaration()); 
@@ -4695,7 +4779,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicalAndOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1845:1: ruleLogicalAndOperator returns [Enumerator current=null] : (enumLiteral_0= 'and' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1879:1: ruleLogicalAndOperator returns [Enumerator current=null] : (enumLiteral_0= 'and' ) ;
     public final Enumerator ruleLogicalAndOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4703,13 +4787,13 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1847:28: ( (enumLiteral_0= 'and' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1848:1: (enumLiteral_0= 'and' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1881:28: ( (enumLiteral_0= 'and' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1882:1: (enumLiteral_0= 'and' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1848:1: (enumLiteral_0= 'and' )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1848:3: enumLiteral_0= 'and'
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1882:1: (enumLiteral_0= 'and' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1882:3: enumLiteral_0= 'and'
             {
-            enumLiteral_0=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleLogicalAndOperator4232); 
+            enumLiteral_0=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleLogicalAndOperator4321); 
 
                     current = grammarAccess.getLogicalAndOperatorAccess().getLogicalAndEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getLogicalAndOperatorAccess().getLogicalAndEnumLiteralDeclaration()); 
@@ -4735,7 +4819,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEqualityOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1858:1: ruleEqualityOperator returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1892:1: ruleEqualityOperator returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) ;
     public final Enumerator ruleEqualityOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4744,17 +4828,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1860:28: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1861:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1894:28: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1895:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1861:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1895:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( (LA27_0==33) ) {
+            if ( (LA27_0==34) ) {
                 alt27=1;
             }
-            else if ( (LA27_0==34) ) {
+            else if ( (LA27_0==35) ) {
                 alt27=2;
             }
             else {
@@ -4765,12 +4849,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt27) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1861:2: (enumLiteral_0= '==' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1895:2: (enumLiteral_0= '==' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1861:2: (enumLiteral_0= '==' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1861:4: enumLiteral_0= '=='
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1895:2: (enumLiteral_0= '==' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1895:4: enumLiteral_0= '=='
                     {
-                    enumLiteral_0=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleEqualityOperator4276); 
+                    enumLiteral_0=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleEqualityOperator4365); 
 
                             current = grammarAccess.getEqualityOperatorAccess().getEqualEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getEqualityOperatorAccess().getEqualEnumLiteralDeclaration_0()); 
@@ -4782,12 +4866,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1867:6: (enumLiteral_1= '!=' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1901:6: (enumLiteral_1= '!=' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1867:6: (enumLiteral_1= '!=' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1867:8: enumLiteral_1= '!='
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1901:6: (enumLiteral_1= '!=' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1901:8: enumLiteral_1= '!='
                     {
-                    enumLiteral_1=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleEqualityOperator4293); 
+                    enumLiteral_1=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleEqualityOperator4382); 
 
                             current = grammarAccess.getEqualityOperatorAccess().getNotEqualEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getEqualityOperatorAccess().getNotEqualEnumLiteralDeclaration_1()); 
@@ -4819,7 +4903,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparativeOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1877:1: ruleComparativeOperator returns [Enumerator current=null] : ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1911:1: ruleComparativeOperator returns [Enumerator current=null] : ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) ) ;
     public final Enumerator ruleComparativeOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4828,17 +4912,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1879:28: ( ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1880:1: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1913:28: ( ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1914:1: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1880:1: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1914:1: ( (enumLiteral_0= '<' ) | (enumLiteral_1= '>' ) )
             int alt28=2;
             int LA28_0 = input.LA(1);
 
-            if ( (LA28_0==35) ) {
+            if ( (LA28_0==36) ) {
                 alt28=1;
             }
-            else if ( (LA28_0==36) ) {
+            else if ( (LA28_0==37) ) {
                 alt28=2;
             }
             else {
@@ -4849,12 +4933,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt28) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1880:2: (enumLiteral_0= '<' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1914:2: (enumLiteral_0= '<' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1880:2: (enumLiteral_0= '<' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1880:4: enumLiteral_0= '<'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1914:2: (enumLiteral_0= '<' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1914:4: enumLiteral_0= '<'
                     {
-                    enumLiteral_0=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleComparativeOperator4338); 
+                    enumLiteral_0=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleComparativeOperator4427); 
 
                             current = grammarAccess.getComparativeOperatorAccess().getLessThanEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getComparativeOperatorAccess().getLessThanEnumLiteralDeclaration_0()); 
@@ -4866,12 +4950,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1886:6: (enumLiteral_1= '>' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1920:6: (enumLiteral_1= '>' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1886:6: (enumLiteral_1= '>' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1886:8: enumLiteral_1= '>'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1920:6: (enumLiteral_1= '>' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1920:8: enumLiteral_1= '>'
                     {
-                    enumLiteral_1=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleComparativeOperator4355); 
+                    enumLiteral_1=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleComparativeOperator4444); 
 
                             current = grammarAccess.getComparativeOperatorAccess().getGreaterThanEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getComparativeOperatorAccess().getGreaterThanEnumLiteralDeclaration_1()); 
@@ -4903,7 +4987,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditiveOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1896:1: ruleAdditiveOperator returns [Enumerator current=null] : ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1930:1: ruleAdditiveOperator returns [Enumerator current=null] : ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) ) ;
     public final Enumerator ruleAdditiveOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4912,17 +4996,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1898:28: ( ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1899:1: ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1932:28: ( ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1933:1: ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1899:1: ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1933:1: ( (enumLiteral_0= '+' ) | (enumLiteral_1= '-' ) )
             int alt29=2;
             int LA29_0 = input.LA(1);
 
-            if ( (LA29_0==37) ) {
+            if ( (LA29_0==38) ) {
                 alt29=1;
             }
-            else if ( (LA29_0==38) ) {
+            else if ( (LA29_0==39) ) {
                 alt29=2;
             }
             else {
@@ -4933,12 +5017,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1899:2: (enumLiteral_0= '+' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1933:2: (enumLiteral_0= '+' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1899:2: (enumLiteral_0= '+' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1899:4: enumLiteral_0= '+'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1933:2: (enumLiteral_0= '+' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1933:4: enumLiteral_0= '+'
                     {
-                    enumLiteral_0=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleAdditiveOperator4400); 
+                    enumLiteral_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleAdditiveOperator4489); 
 
                             current = grammarAccess.getAdditiveOperatorAccess().getAdditionEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getAdditiveOperatorAccess().getAdditionEnumLiteralDeclaration_0()); 
@@ -4950,12 +5034,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1905:6: (enumLiteral_1= '-' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1939:6: (enumLiteral_1= '-' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1905:6: (enumLiteral_1= '-' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1905:8: enumLiteral_1= '-'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1939:6: (enumLiteral_1= '-' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1939:8: enumLiteral_1= '-'
                     {
-                    enumLiteral_1=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleAdditiveOperator4417); 
+                    enumLiteral_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleAdditiveOperator4506); 
 
                             current = grammarAccess.getAdditiveOperatorAccess().getSubtractionEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getAdditiveOperatorAccess().getSubtractionEnumLiteralDeclaration_1()); 
@@ -4987,7 +5071,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicativeOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1915:1: ruleMultiplicativeOperator returns [Enumerator current=null] : (enumLiteral_0= '*' ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1949:1: ruleMultiplicativeOperator returns [Enumerator current=null] : (enumLiteral_0= '*' ) ;
     public final Enumerator ruleMultiplicativeOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4995,13 +5079,13 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1917:28: ( (enumLiteral_0= '*' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1918:1: (enumLiteral_0= '*' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1951:28: ( (enumLiteral_0= '*' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1952:1: (enumLiteral_0= '*' )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1918:1: (enumLiteral_0= '*' )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1918:3: enumLiteral_0= '*'
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1952:1: (enumLiteral_0= '*' )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1952:3: enumLiteral_0= '*'
             {
-            enumLiteral_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleMultiplicativeOperator4461); 
+            enumLiteral_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleMultiplicativeOperator4550); 
 
                     current = grammarAccess.getMultiplicativeOperatorAccess().getMultiplicationEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getMultiplicativeOperatorAccess().getMultiplicationEnumLiteralDeclaration()); 
@@ -5027,7 +5111,7 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryOperator"
-    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1928:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) ) ;
+    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1962:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) ) ;
     public final Enumerator ruleUnaryOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -5036,17 +5120,17 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1930:28: ( ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1931:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1964:28: ( ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1965:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1931:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1965:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= 'not' ) )
             int alt30=2;
             int LA30_0 = input.LA(1);
 
-            if ( (LA30_0==38) ) {
+            if ( (LA30_0==39) ) {
                 alt30=1;
             }
-            else if ( (LA30_0==40) ) {
+            else if ( (LA30_0==41) ) {
                 alt30=2;
             }
             else {
@@ -5057,12 +5141,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
             }
             switch (alt30) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1931:2: (enumLiteral_0= '-' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1965:2: (enumLiteral_0= '-' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1931:2: (enumLiteral_0= '-' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1931:4: enumLiteral_0= '-'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1965:2: (enumLiteral_0= '-' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1965:4: enumLiteral_0= '-'
                     {
-                    enumLiteral_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleUnaryOperator4505); 
+                    enumLiteral_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleUnaryOperator4594); 
 
                             current = grammarAccess.getUnaryOperatorAccess().getInversionEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getUnaryOperatorAccess().getInversionEnumLiteralDeclaration_0()); 
@@ -5074,12 +5158,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1937:6: (enumLiteral_1= 'not' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1971:6: (enumLiteral_1= 'not' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1937:6: (enumLiteral_1= 'not' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1937:8: enumLiteral_1= 'not'
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1971:6: (enumLiteral_1= 'not' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax/src-gen/dk/itu/smdp2015/church/parser/antlr/internal/InternalConfigurator.g:1971:8: enumLiteral_1= 'not'
                     {
-                    enumLiteral_1=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleUnaryOperator4522); 
+                    enumLiteral_1=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleUnaryOperator4611); 
 
                             current = grammarAccess.getUnaryOperatorAccess().getLogicalNotEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getUnaryOperatorAccess().getLogicalNotEnumLiteralDeclaration_1()); 
@@ -5135,12 +5219,12 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_15_in_ruleParameterGroup453 = new BitSet(new long[]{0x0000000000000010L});
         public static final BitSet FOLLOW_RULE_ID_in_ruleParameterGroup470 = new BitSet(new long[]{0x0000000000031020L});
         public static final BitSet FOLLOW_RULE_STRING_in_ruleParameterGroup492 = new BitSet(new long[]{0x0000000000031000L});
-        public static final BitSet FOLLOW_16_in_ruleParameterGroup556 = new BitSet(new long[]{0x0000014060400070L});
+        public static final BitSet FOLLOW_16_in_ruleParameterGroup556 = new BitSet(new long[]{0x00000280C0800070L});
         public static final BitSet FOLLOW_ruleExpression_in_ruleParameterGroup577 = new BitSet(new long[]{0x0000000000031002L});
         public static final BitSet FOLLOW_17_in_ruleParameterGroup645 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleParameterGroup657 = new BitSet(new long[]{0x0000014068400070L});
+        public static final BitSet FOLLOW_12_in_ruleParameterGroup657 = new BitSet(new long[]{0x00000280D0800070L});
         public static final BitSet FOLLOW_ruleConstraint_in_ruleParameterGroup678 = new BitSet(new long[]{0x0000000000006000L});
-        public static final BitSet FOLLOW_13_in_ruleParameterGroup691 = new BitSet(new long[]{0x0000014068400070L});
+        public static final BitSet FOLLOW_13_in_ruleParameterGroup691 = new BitSet(new long[]{0x00000280D0800070L});
         public static final BitSet FOLLOW_ruleConstraint_in_ruleParameterGroup712 = new BitSet(new long[]{0x0000000000006000L});
         public static final BitSet FOLLOW_13_in_ruleParameterGroup727 = new BitSet(new long[]{0x0000000000004000L});
         public static final BitSet FOLLOW_14_in_ruleParameterGroup741 = new BitSet(new long[]{0x0000000000031002L});
@@ -5153,126 +5237,128 @@ public class InternalConfiguratorParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter979 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleParameter989 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_18_in_ruleParameter1026 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleParameter1043 = new BitSet(new long[]{0x00000000003B0020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleParameter1065 = new BitSet(new long[]{0x00000000003B0000L});
-        public static final BitSet FOLLOW_19_in_ruleParameter1135 = new BitSet(new long[]{0x00000000003B0002L});
-        public static final BitSet FOLLOW_20_in_ruleParameter1166 = new BitSet(new long[]{0x00000000003B0002L});
-        public static final BitSet FOLLOW_16_in_ruleParameter1234 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleParameter1255 = new BitSet(new long[]{0x00000000003B0002L});
-        public static final BitSet FOLLOW_17_in_ruleParameter1323 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleParameter1335 = new BitSet(new long[]{0x0000014068400070L});
-        public static final BitSet FOLLOW_ruleConstraint_in_ruleParameter1356 = new BitSet(new long[]{0x0000000000006000L});
-        public static final BitSet FOLLOW_13_in_ruleParameter1369 = new BitSet(new long[]{0x0000014068400070L});
-        public static final BitSet FOLLOW_ruleConstraint_in_ruleParameter1390 = new BitSet(new long[]{0x0000000000006000L});
-        public static final BitSet FOLLOW_14_in_ruleParameter1404 = new BitSet(new long[]{0x00000000003B0002L});
-        public static final BitSet FOLLOW_21_in_ruleParameter1472 = new BitSet(new long[]{0x0000000001400000L});
-        public static final BitSet FOLLOW_ruleValueRange_in_ruleParameter1493 = new BitSet(new long[]{0x00000000003B0002L});
-        public static final BitSet FOLLOW_ruleValueRange_in_entryRuleValueRange1576 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleValueRange1586 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEnumerated_in_ruleValueRange1633 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBounded_in_ruleValueRange1660 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEnumerated_in_entryRuleEnumerated1695 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEnumerated1705 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_22_in_ruleEnumerated1742 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleEnumerated1763 = new BitSet(new long[]{0x0000000000802000L});
-        public static final BitSet FOLLOW_13_in_ruleEnumerated1776 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleEnumerated1797 = new BitSet(new long[]{0x0000000000802000L});
-        public static final BitSet FOLLOW_23_in_ruleEnumerated1811 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBounded_in_entryRuleBounded1847 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleBounded1857 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_24_in_ruleBounded1894 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleBounded1915 = new BitSet(new long[]{0x0000000002000000L});
-        public static final BitSet FOLLOW_25_in_ruleBounded1927 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleBounded1948 = new BitSet(new long[]{0x0000000004000000L});
-        public static final BitSet FOLLOW_26_in_ruleBounded1960 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConstraint_in_entryRuleConstraint1996 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleConstraint2006 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_27_in_ruleConstraint2044 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleConstraint2061 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_ruleConstraint2089 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression2125 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleExpression2135 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLogicalOr_in_ruleExpression2181 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLogicalOr_in_entryRuleLogicalOr2215 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleLogicalOr2225 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2272 = new BitSet(new long[]{0x0000000080000002L});
-        public static final BitSet FOLLOW_ruleLogicalOrOperator_in_ruleLogicalOr2302 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2323 = new BitSet(new long[]{0x0000000080000002L});
-        public static final BitSet FOLLOW_ruleLogicalAnd_in_entryRuleLogicalAnd2361 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleLogicalAnd2371 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEquality_in_ruleLogicalAnd2418 = new BitSet(new long[]{0x0000000100000002L});
-        public static final BitSet FOLLOW_ruleLogicalAndOperator_in_ruleLogicalAnd2448 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleEquality_in_ruleLogicalAnd2469 = new BitSet(new long[]{0x0000000100000002L});
-        public static final BitSet FOLLOW_ruleEquality_in_entryRuleEquality2507 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEquality2517 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleComparative_in_ruleEquality2564 = new BitSet(new long[]{0x0000000600000002L});
-        public static final BitSet FOLLOW_ruleEqualityOperator_in_ruleEquality2594 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleComparative_in_ruleEquality2615 = new BitSet(new long[]{0x0000000600000002L});
-        public static final BitSet FOLLOW_ruleComparative_in_entryRuleComparative2653 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleComparative2663 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAdditive_in_ruleComparative2710 = new BitSet(new long[]{0x0000001800000002L});
-        public static final BitSet FOLLOW_ruleComparativeOperator_in_ruleComparative2740 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleAdditive_in_ruleComparative2761 = new BitSet(new long[]{0x0000001800000002L});
-        public static final BitSet FOLLOW_ruleAdditive_in_entryRuleAdditive2799 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAdditive2809 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleMultiplicative_in_ruleAdditive2856 = new BitSet(new long[]{0x0000006000000002L});
-        public static final BitSet FOLLOW_ruleAdditiveOperator_in_ruleAdditive2886 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleMultiplicative_in_ruleAdditive2907 = new BitSet(new long[]{0x0000006000000002L});
-        public static final BitSet FOLLOW_ruleMultiplicative_in_entryRuleMultiplicative2945 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleMultiplicative2955 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePrimitive_in_ruleMultiplicative3002 = new BitSet(new long[]{0x0000008000000002L});
-        public static final BitSet FOLLOW_ruleMultiplicativeOperator_in_ruleMultiplicative3032 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_rulePrimitive_in_ruleMultiplicative3053 = new BitSet(new long[]{0x0000008000000002L});
-        public static final BitSet FOLLOW_rulePrimitive_in_entryRulePrimitive3091 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePrimitive3101 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleUnary_in_rulePrimitive3148 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInRange_in_rulePrimitive3175 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInteger_in_rulePrimitive3202 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBoolean_in_rulePrimitive3229 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleString0_in_rulePrimitive3256 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleIdentifier_in_rulePrimitive3283 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_22_in_rulePrimitive3301 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_ruleExpression_in_rulePrimitive3323 = new BitSet(new long[]{0x0000000000800000L});
-        public static final BitSet FOLLOW_23_in_rulePrimitive3334 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleUnary_in_entryRuleUnary3371 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleUnary3381 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleUnaryOperator_in_ruleUnary3427 = new BitSet(new long[]{0x0000014060400070L});
-        public static final BitSet FOLLOW_rulePrimitive_in_ruleUnary3448 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInRange_in_entryRuleInRange3486 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleInRange3496 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleInRange3541 = new BitSet(new long[]{0x0000000010000000L});
-        public static final BitSet FOLLOW_28_in_ruleInRange3553 = new BitSet(new long[]{0x0000000001400000L});
-        public static final BitSet FOLLOW_ruleValueRange_in_ruleInRange3574 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInteger_in_entryRuleInteger3610 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleInteger3620 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_ruleInteger3665 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBoolean_in_entryRuleBoolean3700 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleBoolean3710 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEBoolean_in_ruleBoolean3755 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleString0_in_entryRuleString03790 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleString03800 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleString03841 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleIdentifier_in_entryRuleIdentifier3881 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleIdentifier3891 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleIdentifier3935 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEInt_in_entryRuleEInt3971 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEInt3982 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleEInt4021 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEBoolean_in_entryRuleEBoolean4068 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEBoolean4079 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_29_in_ruleEBoolean4117 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_30_in_ruleEBoolean4136 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_31_in_ruleLogicalOrOperator4189 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_32_in_ruleLogicalAndOperator4232 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_33_in_ruleEqualityOperator4276 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_34_in_ruleEqualityOperator4293 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_35_in_ruleComparativeOperator4338 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_36_in_ruleComparativeOperator4355 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_37_in_ruleAdditiveOperator4400 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_38_in_ruleAdditiveOperator4417 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleMultiplicativeOperator4461 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_38_in_ruleUnaryOperator4505 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_40_in_ruleUnaryOperator4522 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleParameter1043 = new BitSet(new long[]{0x00000000007B0020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleParameter1065 = new BitSet(new long[]{0x00000000007B0000L});
+        public static final BitSet FOLLOW_19_in_ruleParameter1135 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_20_in_ruleParameter1166 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_16_in_ruleParameter1234 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleParameter1255 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_21_in_ruleParameter1323 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleParameter1344 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_17_in_ruleParameter1412 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleParameter1424 = new BitSet(new long[]{0x00000280D0800070L});
+        public static final BitSet FOLLOW_ruleConstraint_in_ruleParameter1445 = new BitSet(new long[]{0x0000000000006000L});
+        public static final BitSet FOLLOW_13_in_ruleParameter1458 = new BitSet(new long[]{0x00000280D0800070L});
+        public static final BitSet FOLLOW_ruleConstraint_in_ruleParameter1479 = new BitSet(new long[]{0x0000000000006000L});
+        public static final BitSet FOLLOW_14_in_ruleParameter1493 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_22_in_ruleParameter1561 = new BitSet(new long[]{0x0000000002800000L});
+        public static final BitSet FOLLOW_ruleValueRange_in_ruleParameter1582 = new BitSet(new long[]{0x00000000007B0002L});
+        public static final BitSet FOLLOW_ruleValueRange_in_entryRuleValueRange1665 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleValueRange1675 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEnumerated_in_ruleValueRange1722 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBounded_in_ruleValueRange1749 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEnumerated_in_entryRuleEnumerated1784 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEnumerated1794 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_23_in_ruleEnumerated1831 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleEnumerated1852 = new BitSet(new long[]{0x0000000001002000L});
+        public static final BitSet FOLLOW_13_in_ruleEnumerated1865 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleEnumerated1886 = new BitSet(new long[]{0x0000000001002000L});
+        public static final BitSet FOLLOW_24_in_ruleEnumerated1900 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBounded_in_entryRuleBounded1936 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleBounded1946 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_25_in_ruleBounded1983 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleBounded2004 = new BitSet(new long[]{0x0000000004000000L});
+        public static final BitSet FOLLOW_26_in_ruleBounded2016 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleBounded2037 = new BitSet(new long[]{0x0000000008000000L});
+        public static final BitSet FOLLOW_27_in_ruleBounded2049 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleConstraint_in_entryRuleConstraint2085 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleConstraint2095 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_28_in_ruleConstraint2133 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleConstraint2150 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_ruleConstraint2178 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression2214 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleExpression2224 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLogicalOr_in_ruleExpression2270 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLogicalOr_in_entryRuleLogicalOr2304 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleLogicalOr2314 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2361 = new BitSet(new long[]{0x0000000100000002L});
+        public static final BitSet FOLLOW_ruleLogicalOrOperator_in_ruleLogicalOr2391 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleLogicalAnd_in_ruleLogicalOr2412 = new BitSet(new long[]{0x0000000100000002L});
+        public static final BitSet FOLLOW_ruleLogicalAnd_in_entryRuleLogicalAnd2450 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleLogicalAnd2460 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEquality_in_ruleLogicalAnd2507 = new BitSet(new long[]{0x0000000200000002L});
+        public static final BitSet FOLLOW_ruleLogicalAndOperator_in_ruleLogicalAnd2537 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleEquality_in_ruleLogicalAnd2558 = new BitSet(new long[]{0x0000000200000002L});
+        public static final BitSet FOLLOW_ruleEquality_in_entryRuleEquality2596 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEquality2606 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleComparative_in_ruleEquality2653 = new BitSet(new long[]{0x0000000C00000002L});
+        public static final BitSet FOLLOW_ruleEqualityOperator_in_ruleEquality2683 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleComparative_in_ruleEquality2704 = new BitSet(new long[]{0x0000000C00000002L});
+        public static final BitSet FOLLOW_ruleComparative_in_entryRuleComparative2742 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleComparative2752 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAdditive_in_ruleComparative2799 = new BitSet(new long[]{0x0000003000000002L});
+        public static final BitSet FOLLOW_ruleComparativeOperator_in_ruleComparative2829 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleAdditive_in_ruleComparative2850 = new BitSet(new long[]{0x0000003000000002L});
+        public static final BitSet FOLLOW_ruleAdditive_in_entryRuleAdditive2888 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAdditive2898 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMultiplicative_in_ruleAdditive2945 = new BitSet(new long[]{0x000000C000000002L});
+        public static final BitSet FOLLOW_ruleAdditiveOperator_in_ruleAdditive2975 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleMultiplicative_in_ruleAdditive2996 = new BitSet(new long[]{0x000000C000000002L});
+        public static final BitSet FOLLOW_ruleMultiplicative_in_entryRuleMultiplicative3034 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMultiplicative3044 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePrimitive_in_ruleMultiplicative3091 = new BitSet(new long[]{0x0000010000000002L});
+        public static final BitSet FOLLOW_ruleMultiplicativeOperator_in_ruleMultiplicative3121 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_rulePrimitive_in_ruleMultiplicative3142 = new BitSet(new long[]{0x0000010000000002L});
+        public static final BitSet FOLLOW_rulePrimitive_in_entryRulePrimitive3180 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePrimitive3190 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleUnary_in_rulePrimitive3237 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInRange_in_rulePrimitive3264 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInteger_in_rulePrimitive3291 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBoolean_in_rulePrimitive3318 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleString0_in_rulePrimitive3345 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleIdentifier_in_rulePrimitive3372 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_23_in_rulePrimitive3390 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_ruleExpression_in_rulePrimitive3412 = new BitSet(new long[]{0x0000000001000000L});
+        public static final BitSet FOLLOW_24_in_rulePrimitive3423 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleUnary_in_entryRuleUnary3460 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleUnary3470 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleUnaryOperator_in_ruleUnary3516 = new BitSet(new long[]{0x00000280C0800070L});
+        public static final BitSet FOLLOW_rulePrimitive_in_ruleUnary3537 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInRange_in_entryRuleInRange3575 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleInRange3585 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleInRange3630 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleInRange3642 = new BitSet(new long[]{0x0000000002800000L});
+        public static final BitSet FOLLOW_ruleValueRange_in_ruleInRange3663 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInteger_in_entryRuleInteger3699 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleInteger3709 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_ruleInteger3754 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBoolean_in_entryRuleBoolean3789 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleBoolean3799 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEBoolean_in_ruleBoolean3844 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleString0_in_entryRuleString03879 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleString03889 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleString03930 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleIdentifier_in_entryRuleIdentifier3970 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleIdentifier3980 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleIdentifier4024 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEInt_in_entryRuleEInt4060 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEInt4071 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleEInt4110 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEBoolean_in_entryRuleEBoolean4157 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEBoolean4168 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_30_in_ruleEBoolean4206 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_31_in_ruleEBoolean4225 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_32_in_ruleLogicalOrOperator4278 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_33_in_ruleLogicalAndOperator4321 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_34_in_ruleEqualityOperator4365 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_35_in_ruleEqualityOperator4382 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_36_in_ruleComparativeOperator4427 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_37_in_ruleComparativeOperator4444 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_38_in_ruleAdditiveOperator4489 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_39_in_ruleAdditiveOperator4506 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_40_in_ruleMultiplicativeOperator4550 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_39_in_ruleUnaryOperator4594 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_41_in_ruleUnaryOperator4611 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

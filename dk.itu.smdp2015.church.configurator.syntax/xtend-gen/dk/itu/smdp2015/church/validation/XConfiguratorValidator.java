@@ -28,8 +28,8 @@ public class XConfiguratorValidator extends AbstractConfiguratorValidator {
   
   @Check
   public void checkType(final Constraint constraint) {
-    Expression _expr = constraint.getExpr();
-    this.checkExpectedBoolean(_expr, ConfiguratorPackage.Literals.CONSTRAINT__EXPR);
+    Expression _expression = constraint.getExpression();
+    this.checkExpectedBoolean(_expression, ConfiguratorPackage.Literals.CONSTRAINT__EXPRESSION);
   }
   
   @Check

@@ -629,7 +629,7 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_Expr() {
+	public EReference getConstraint_Expression() {
 		return (EReference)constraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -739,7 +739,7 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		constraintEClass = createEClass(CONSTRAINT);
-		createEReference(constraintEClass, CONSTRAINT__EXPR);
+		createEReference(constraintEClass, CONSTRAINT__EXPRESSION);
 
 		// Create enums
 		binaryOperatorEEnum = createEEnum(BINARY_OPERATOR);
@@ -803,7 +803,7 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Mandatory(), ecorePackage.getEBoolean(), "mandatory", "true", 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ValueRange(), this.getValueRange(), null, "valueRange", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParameter_Default(), this.getExpression(), null, "default", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Default(), this.getExpression(), null, "default", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configuratorEClass, Configurator.class, "Configurator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfigurator_Parameters(), this.getAbstractParameter(), null, "parameters", null, 1, -1, Configurator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -853,7 +853,7 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConstraint_Expr(), this.getExpression(), null, "expr", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Expression(), this.getExpression(), null, "expression", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(binaryOperatorEEnum, BinaryOperator.class, "BinaryOperator");

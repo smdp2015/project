@@ -19,7 +19,7 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkType(Constraint constraint) {
-		checkExpectedBoolean(constraint.expr, ConfiguratorPackage.Literals.CONSTRAINT__EXPR)
+		checkExpectedBoolean(constraint.expression, ConfiguratorPackage.Literals.CONSTRAINT__EXPRESSION)
 	}
 
 	@Check

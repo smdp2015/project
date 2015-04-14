@@ -23,6 +23,7 @@ Parameter:
 	(description=STRING)?
 	( (mandatory?='mandatory'|'optional')? 
 	& ('visible-if' visibility=Expression)?
+	& ('default-value' default=Expression)?
 	& ('constraints' '{' constraints+=Constraint ( ',' constraints+=Constraint)* '}' )?
 	& 'values' valueRange=ValueRange );
 
@@ -37,7 +38,7 @@ Bounded returns Bounded:
 
 Constraint:
 	('description' description=STRING)?	
-	 expr=Expression;
+	 expression=Expression;
 
 Expression:
 	LogicalOr;

@@ -591,40 +591,52 @@ ruleParameter returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 2);
 	 				}
-					({true}?=>(	otherlv_8='constraints' 
+					({true}?=>(	otherlv_8='default-value' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getParameterAccess().getConstraintsKeyword_3_2_0());
-    }
-	otherlv_9='{' 
-    {
-    	newLeafNode(otherlv_9, grammarAccess.getParameterAccess().getLeftCurlyBracketKeyword_3_2_1());
+    	newLeafNode(otherlv_8, grammarAccess.getParameterAccess().getDefaultValueKeyword_3_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_2_2_0()); 
+	        newCompositeNode(grammarAccess.getParameterAccess().getDefaultExpressionParserRuleCall_3_2_1_0()); 
 	    }
-		lv_constraints_10_0=ruleConstraint		{
+		lv_default_9_0=ruleExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getParameterRule());
 	        }
-       		add(
+       		set(
        			$current, 
-       			"constraints",
-        		lv_constraints_10_0, 
-        		"Constraint");
+       			"default",
+        		lv_default_9_0, 
+        		"Expression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_11=',' 
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getParameterAccess().getUnorderedGroup_3());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3);
+	 				}
+					({true}?=>(	otherlv_10='constraints' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getParameterAccess().getCommaKeyword_3_2_3_0());
+    	newLeafNode(otherlv_10, grammarAccess.getParameterAccess().getConstraintsKeyword_3_3_0());
+    }
+	otherlv_11='{' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getParameterAccess().getLeftCurlyBracketKeyword_3_3_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_2_3_1_0()); 
+	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_3_2_0()); 
 	    }
 		lv_constraints_12_0=ruleConstraint		{
 	        if ($current==null) {
@@ -639,9 +651,31 @@ ruleParameter returns [EObject current=null]
 	    }
 
 )
-))*	otherlv_13='}' 
+)(	otherlv_13=',' 
     {
-    	newLeafNode(otherlv_13, grammarAccess.getParameterAccess().getRightCurlyBracketKeyword_3_2_4());
+    	newLeafNode(otherlv_13, grammarAccess.getParameterAccess().getCommaKeyword_3_3_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_3_3_3_1_0()); 
+	    }
+		lv_constraints_14_0=ruleConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getParameterRule());
+	        }
+       		add(
+       			$current, 
+       			"constraints",
+        		lv_constraints_14_0, 
+        		"Constraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_15='}' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getParameterAccess().getRightCurlyBracketKeyword_3_3_4());
     }
 ))
 					{ 
@@ -651,27 +685,27 @@ ruleParameter returns [EObject current=null]
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 3);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_3(), 4);
 	 				}
-					({true}?=>(	otherlv_14='values' 
+					({true}?=>(	otherlv_16='values' 
     {
-    	newLeafNode(otherlv_14, grammarAccess.getParameterAccess().getValuesKeyword_3_3_0());
+    	newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getValuesKeyword_3_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getParameterAccess().getValueRangeValueRangeParserRuleCall_3_3_1_0()); 
+	        newCompositeNode(grammarAccess.getParameterAccess().getValueRangeValueRangeParserRuleCall_3_4_1_0()); 
 	    }
-		lv_valueRange_15_0=ruleValueRange		{
+		lv_valueRange_17_0=ruleValueRange		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getParameterRule());
 	        }
        		set(
        			$current, 
        			"valueRange",
-        		lv_valueRange_15_0, 
+        		lv_valueRange_17_0, 
         		"ValueRange");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -916,16 +950,16 @@ ruleConstraint returns [EObject current=null]
 ))?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getConstraintAccess().getExprExpressionParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getConstraintAccess().getExpressionExpressionParserRuleCall_1_0()); 
 	    }
-		lv_expr_2_0=ruleExpression		{
+		lv_expression_2_0=ruleExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getConstraintRule());
 	        }
        		set(
        			$current, 
-       			"expr",
-        		lv_expr_2_0, 
+       			"expression",
+        		lv_expression_2_0, 
         		"Expression");
 	        afterParserOrEnumRuleCall();
 	    }
