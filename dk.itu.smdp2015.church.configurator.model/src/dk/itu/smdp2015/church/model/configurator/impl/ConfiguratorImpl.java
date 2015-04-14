@@ -5,7 +5,7 @@ package dk.itu.smdp2015.church.model.configurator.impl;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
-import dk.itu.smdp2015.church.model.configurator.DescribedElement;
+import dk.itu.smdp2015.church.model.configurator.NamedElement;
 
 import java.lang.String;
 
@@ -31,33 +31,33 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorImpl#getName <em>Name</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
+public class ConfiguratorImpl extends DescribedElementImpl implements Configurator {
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String description = DESCRIPTION_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -93,8 +93,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -102,11 +102,11 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONFIGURATOR__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONFIGURATOR__NAME, oldName, name));
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONFIGURATOR__DESCRIPTION:
-				return getDescription();
+			case ConfiguratorPackage.CONFIGURATOR__NAME:
+				return getName();
 			case ConfiguratorPackage.CONFIGURATOR__PARAMETERS:
 				return getParameters();
 		}
@@ -160,8 +160,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONFIGURATOR__DESCRIPTION:
-				setDescription((String)newValue);
+			case ConfiguratorPackage.CONFIGURATOR__NAME:
+				setName((String)newValue);
 				return;
 			case ConfiguratorPackage.CONFIGURATOR__PARAMETERS:
 				getParameters().clear();
@@ -179,8 +179,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONFIGURATOR__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
+			case ConfiguratorPackage.CONFIGURATOR__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ConfiguratorPackage.CONFIGURATOR__PARAMETERS:
 				getParameters().clear();
@@ -197,8 +197,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONFIGURATOR__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case ConfiguratorPackage.CONFIGURATOR__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfiguratorPackage.CONFIGURATOR__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 		}
@@ -212,9 +212,9 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == DescribedElement.class) {
+		if (baseClass == NamedElement.class) {
 			switch (derivedFeatureID) {
-				case ConfiguratorPackage.CONFIGURATOR__DESCRIPTION: return ConfiguratorPackage.DESCRIBED_ELEMENT__DESCRIPTION;
+				case ConfiguratorPackage.CONFIGURATOR__NAME: return ConfiguratorPackage.NAMED_ELEMENT__NAME;
 				default: return -1;
 			}
 		}
@@ -228,9 +228,9 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == DescribedElement.class) {
+		if (baseClass == NamedElement.class) {
 			switch (baseFeatureID) {
-				case ConfiguratorPackage.DESCRIBED_ELEMENT__DESCRIPTION: return ConfiguratorPackage.CONFIGURATOR__DESCRIPTION;
+				case ConfiguratorPackage.NAMED_ELEMENT__NAME: return ConfiguratorPackage.CONFIGURATOR__NAME;
 				default: return -1;
 			}
 		}
@@ -247,8 +247,8 @@ public class ConfiguratorImpl extends NamedElementImpl implements Configurator {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (description: ");
-		result.append(description);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

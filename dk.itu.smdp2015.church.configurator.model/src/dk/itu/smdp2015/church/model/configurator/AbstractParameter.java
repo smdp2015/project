@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractParameter extends NamedElement, DescribedElement {
+public interface AbstractParameter extends DescribedElement, NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Visibility</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

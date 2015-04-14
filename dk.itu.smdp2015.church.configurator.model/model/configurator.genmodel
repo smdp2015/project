@@ -40,6 +40,7 @@
     <genClasses ecoreClass="configurator.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Parameter/mandatory"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/valueRange"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/default"/>
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Configurator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Configurator/parameters"/>
@@ -86,9 +87,14 @@
     <genClasses ecoreClass="configurator.ecore#//Identifier">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Identifier/id"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="configurator.ecore#//DescribedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//DescribedElement/description"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="configurator.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//NamedElement/name"/>
-      <genFeatures createChild="false"/>
+    </genClasses>
+    <genClasses ecoreClass="configurator.ecore#//Constraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Constraint/expr"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

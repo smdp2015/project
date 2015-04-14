@@ -171,6 +171,13 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass describedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass namedElementEClass = null;
 
 	/**
@@ -179,13 +186,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * @generated
 	 */
 	private EClass constraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass describedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -652,6 +652,24 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDescribedElement() {
+		return describedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDescribedElement_Description() {
+		return (EAttribute)describedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -681,24 +699,6 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 */
 	public EReference getConstraint_Expr() {
 		return (EReference)constraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDescribedElement() {
-		return describedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDescribedElement_Description() {
-		return (EAttribute)describedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -816,14 +816,14 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		identifierEClass = createEClass(IDENTIFIER);
 		createEReference(identifierEClass, IDENTIFIER__ID);
 
+		describedElementEClass = createEClass(DESCRIBED_ELEMENT);
+		createEAttribute(describedElementEClass, DESCRIBED_ELEMENT__DESCRIPTION);
+
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		constraintEClass = createEClass(CONSTRAINT);
 		createEReference(constraintEClass, CONSTRAINT__EXPR);
-
-		describedElementEClass = createEClass(DESCRIBED_ELEMENT);
-		createEAttribute(describedElementEClass, DESCRIBED_ELEMENT__DESCRIPTION);
 
 		// Create enums
 		scalarOperatorEEnum = createEEnum(SCALAR_OPERATOR);
@@ -859,12 +859,12 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		abstractParameterEClass.getESuperTypes().add(this.getNamedElement());
 		abstractParameterEClass.getESuperTypes().add(this.getDescribedElement());
+		abstractParameterEClass.getESuperTypes().add(this.getNamedElement());
 		parameterGroupEClass.getESuperTypes().add(this.getAbstractParameter());
 		parameterEClass.getESuperTypes().add(this.getAbstractParameter());
-		configuratorEClass.getESuperTypes().add(this.getNamedElement());
 		configuratorEClass.getESuperTypes().add(this.getDescribedElement());
+		configuratorEClass.getESuperTypes().add(this.getNamedElement());
 		enumeratedEClass.getESuperTypes().add(this.getValueRange());
 		boundedEClass.getESuperTypes().add(this.getValueRange());
 		unaryEClass.getESuperTypes().add(this.getExpression());
@@ -940,14 +940,14 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEClass(identifierEClass, Identifier.class, "Identifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIdentifier_Id(), this.getParameter(), null, "id", null, 1, 1, Identifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(describedElementEClass, DescribedElement.class, "DescribedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDescribedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, DescribedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstraint_Expr(), this.getExpression(), null, "expr", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(describedElementEClass, DescribedElement.class, "DescribedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDescribedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, DescribedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(scalarOperatorEEnum, ScalarOperator.class, "ScalarOperator");

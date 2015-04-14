@@ -5,8 +5,8 @@ package dk.itu.smdp2015.church.model.configurator.impl;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Constraint;
-import dk.itu.smdp2015.church.model.configurator.DescribedElement;
 import dk.itu.smdp2015.church.model.configurator.Expression;
+import dk.itu.smdp2015.church.model.configurator.NamedElement;
 
 import java.lang.String;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -40,26 +40,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class AbstractParameterImpl extends NamedElementImpl implements AbstractParameter {
+public abstract class AbstractParameterImpl extends DescribedElementImpl implements AbstractParameter {
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String description = DESCRIPTION_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' containment reference.
@@ -105,8 +105,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -114,11 +114,11 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.ABSTRACT_PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -200,8 +200,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION:
-				return getDescription();
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				return getName();
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				return getVisibility();
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
@@ -219,8 +219,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION:
-				setDescription((String)newValue);
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				setName((String)newValue);
 				return;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				setVisibility((Expression)newValue);
@@ -241,8 +241,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				setVisibility((Expression)null);
@@ -262,8 +262,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__VISIBILITY:
 				return visibility != null;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
@@ -279,9 +279,9 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == DescribedElement.class) {
+		if (baseClass == NamedElement.class) {
 			switch (derivedFeatureID) {
-				case ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION: return ConfiguratorPackage.DESCRIBED_ELEMENT__DESCRIPTION;
+				case ConfiguratorPackage.ABSTRACT_PARAMETER__NAME: return ConfiguratorPackage.NAMED_ELEMENT__NAME;
 				default: return -1;
 			}
 		}
@@ -295,9 +295,9 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == DescribedElement.class) {
+		if (baseClass == NamedElement.class) {
 			switch (baseFeatureID) {
-				case ConfiguratorPackage.DESCRIBED_ELEMENT__DESCRIPTION: return ConfiguratorPackage.ABSTRACT_PARAMETER__DESCRIPTION;
+				case ConfiguratorPackage.NAMED_ELEMENT__NAME: return ConfiguratorPackage.ABSTRACT_PARAMETER__NAME;
 				default: return -1;
 			}
 		}
@@ -314,8 +314,8 @@ public abstract class AbstractParameterImpl extends NamedElementImpl implements 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (description: ");
-		result.append(description);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
