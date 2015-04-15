@@ -12,20 +12,15 @@ ko.bindingHandlers.isExpanded = {
         else
             $(element).collapsible( "collapse" );
 
-        $(element).on( "collapsibleexpand", function( event, ui ) {
+        function trySetValue(value){
             var observableValue = valueAccessor();
             if(ko.isObservable(observableValue))
-                observableValue(true);
-
-        } );
-        $(element).on( "collapsiblecollapse", function( event, ui ) {
-            var observableValue = valueAccessor();
-            if(ko.isObservable(observableValue))
-                observableValue(false);
-
-        } );
-
+                observableValue(value);
+        }
+        $(element).on( "collapsibleexpand", function(){trySetValue(true)});
+        $(element).on( "collapsiblecollapse", function(){trySetValue(false)});
     },
+
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         // This will be called once when the binding is first applied to an element,
         // and again whenever any observables/computeds that are accessed change
@@ -33,4 +28,16 @@ ko.bindingHandlers.isExpanded = {
 
 
     }
+};
+
+ko.deferredPureComputed = function(evaluatorOrOptions, target, options) {
+    options = options || {};
+
+    if (typeof evaluatorOrOptions == "object") {
+        evaluatorOrOptions.deferEvaluation = true;
+    } else {
+        options.deferEvaluation = true;
+    }
+
+    return ko.pureComputed(evaluatorOrOptions, target, options);
 };

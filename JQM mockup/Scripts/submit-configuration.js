@@ -8,5 +8,6 @@ function submitconfiguration(){
     var json = ko.mapping.toJS(App.ViewModel,mapping);
 
     alert(JSON.stringify(json, null, 4));
+    //$("#resultdialoglink").click();
     //TODO: replace by some styling/email logic, maybe JSON->XML->XSLT->Mail HTML
 };

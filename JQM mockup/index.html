@@ -4,16 +4,22 @@
     <title>car</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="Content/Lib/jquery.mobile-1.4.5.min.css">
+
     <script src="Scripts/Lib/jquery-1.11.1.min.js"></script>
     <script src="Scripts/Lib/knockout-3.3.0.debug.js"></script>
     <script src="Scripts/Lib/knockout.mapping-latest.js"></script>
-    <script src="Scripts/Src-gen/app-viewmodel.js"></script>
-    <script src="Scripts/Src-gen/ko-initpagebinding.js"></script>
+
     <script src="Scripts/submit-configuration.js"></script>
     <script src="Scripts/ko-initcustomhandlers.js"></script>
+
+    <script src="Scripts/Src-gen/app-viewmodel.js"></script>
+    <script src="Scripts/Src-gen/ko-initpagebinding.js"></script>
+
     <script src="Scripts/jqm-init.js"></script>
     <script src="Scripts/Lib/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 <body>
     <div id="main" data-role="page" data-add-back-btn="true">
@@ -51,7 +57,7 @@
                     <h2>fog_lights:</h2>
                    <label data-bind="text: fog_lights.value()?'on':'off'"> <input type="checkbox" id="fog_lights-param" data-bind="checked:fog_lights.value"> </label>
                 </li>
-                <li><a href="#seats">seats</a></li>
+                <li data-bind="visible: group_seats.isVisible"><a href="#seats">seats</a></li>
             </ul>
         </div>
     </div>
@@ -101,6 +107,10 @@
                 </li>
             </ul>
         </div>
+    </div>
+    <a id='resultdialoglink' href="#resultdialog" data-transition="pop" style='display:none;'>Open dialog</a>
+    <div id="resultdialog" data-role="dialog" data-add-back-btn="true">
+        <div role="main">adsf</div>
     </div>
 </body>
 </html>
