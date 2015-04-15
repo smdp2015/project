@@ -14,8 +14,6 @@ import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-import dk.itu.smdp2015.church.model.configurator.Scalar;
-import dk.itu.smdp2015.church.model.configurator.ScalarOperator;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.UnaryOperator;
 
@@ -79,10 +77,8 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 			case ConfiguratorPackage.BOUNDED: return createBounded();
 			case ConfiguratorPackage.UNARY: return createUnary();
 			case ConfiguratorPackage.BINARY: return createBinary();
-			case ConfiguratorPackage.SCALAR: return createScalar();
 			case ConfiguratorPackage.IN_RANGE: return createInRange();
 			case ConfiguratorPackage.INTEGER: return createInteger();
-			case ConfiguratorPackage.DOUBLE: return createDouble();
 			case ConfiguratorPackage.BOOLEAN: return createBoolean();
 			case ConfiguratorPackage.STRING: return createString();
 			case ConfiguratorPackage.IDENTIFIER: return createIdentifier();
@@ -100,8 +96,6 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ConfiguratorPackage.SCALAR_OPERATOR:
-				return createScalarOperatorFromString(eDataType, initialValue);
 			case ConfiguratorPackage.BINARY_OPERATOR:
 				return createBinaryOperatorFromString(eDataType, initialValue);
 			case ConfiguratorPackage.UNARY_OPERATOR:
@@ -119,8 +113,6 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ConfiguratorPackage.SCALAR_OPERATOR:
-				return convertScalarOperatorToString(eDataType, instanceValue);
 			case ConfiguratorPackage.BINARY_OPERATOR:
 				return convertBinaryOperatorToString(eDataType, instanceValue);
 			case ConfiguratorPackage.UNARY_OPERATOR:
@@ -205,16 +197,6 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Scalar createScalar() {
-		ScalarImpl scalar = new ScalarImpl();
-		return scalar;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public InRange createInRange() {
 		InRangeImpl inRange = new InRangeImpl();
 		return inRange;
@@ -228,16 +210,6 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	public dk.itu.smdp2015.church.model.configurator.Integer createInteger() {
 		IntegerImpl integer = new IntegerImpl();
 		return integer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public dk.itu.smdp2015.church.model.configurator.Double createDouble() {
-		DoubleImpl double_ = new DoubleImpl();
-		return double_;
 	}
 
 	/**
@@ -278,26 +250,6 @@ public class ConfiguratorFactoryImpl extends EFactoryImpl implements Configurato
 	public Constraint createConstraint() {
 		ConstraintImpl constraint = new ConstraintImpl();
 		return constraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ScalarOperator createScalarOperatorFromString(EDataType eDataType, String initialValue) {
-		ScalarOperator result = ScalarOperator.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertScalarOperatorToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ConstraintImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ConstraintImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,15 +29,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	/**
-	 * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpr()
+	 * @see #getExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression expr;
-
+	protected Expression expression;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,8 +61,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression getExpr() {
-		return expr;
+	public Expression getExpression() {
+		return expression;
 	}
 
 	/**
@@ -71,11 +70,11 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpr(Expression newExpr, NotificationChain msgs) {
-		Expression oldExpr = expr;
-		expr = newExpr;
+	public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs) {
+		Expression oldExpression = expression;
+		expression = newExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONSTRAINT__EXPR, oldExpr, newExpr);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONSTRAINT__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -86,18 +85,18 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpr(Expression newExpr) {
-		if (newExpr != expr) {
+	public void setExpression(Expression newExpression) {
+		if (newExpression != expression) {
 			NotificationChain msgs = null;
-			if (expr != null)
-				msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.CONSTRAINT__EXPR, null, msgs);
-			if (newExpr != null)
-				msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.CONSTRAINT__EXPR, null, msgs);
-			msgs = basicSetExpr(newExpr, msgs);
+			if (expression != null)
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.CONSTRAINT__EXPRESSION, null, msgs);
+			if (newExpression != null)
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfiguratorPackage.CONSTRAINT__EXPRESSION, null, msgs);
+			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONSTRAINT__EXPR, newExpr, newExpr));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.CONSTRAINT__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -108,8 +107,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONSTRAINT__EXPR:
-				return basicSetExpr(null, msgs);
+			case ConfiguratorPackage.CONSTRAINT__EXPRESSION:
+				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +121,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONSTRAINT__EXPR:
-				return getExpr();
+			case ConfiguratorPackage.CONSTRAINT__EXPRESSION:
+				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,8 +135,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONSTRAINT__EXPR:
-				setExpr((Expression)newValue);
+			case ConfiguratorPackage.CONSTRAINT__EXPRESSION:
+				setExpression((Expression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +150,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONSTRAINT__EXPR:
-				setExpr((Expression)null);
+			case ConfiguratorPackage.CONSTRAINT__EXPRESSION:
+				setExpression((Expression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +165,8 @@ public class ConstraintImpl extends DescribedElementImpl implements Constraint {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.CONSTRAINT__EXPR:
-				return expr != null;
+			case ConfiguratorPackage.CONSTRAINT__EXPRESSION:
+				return expression != null;
 		}
 		return super.eIsSet(featureID);
 	}

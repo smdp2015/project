@@ -7,28 +7,20 @@
   <foreignModel>configurator.ecore</foreignModel>
   <genPackages prefix="Configurator" basePackage="dk.itu.smdp2015.church.model" disposableProviderFactory="true"
       ecorePackage="configurator.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configurator.ecore#//ScalarOperator">
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//ScalarOperator/sum"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//ScalarOperator/min"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//ScalarOperator/max"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="configurator.ecore#//BinaryOperator">
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/disjunction"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/conjunction"/>
+      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/logicalOr"/>
+      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/logicalAnd"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/addition"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/subtraction"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/multiplication"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/division"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/lessThan"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/lessThanEqual"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/greaterThan"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/greaterThanEqual"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/equal"/>
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//BinaryOperator/notEqual"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="configurator.ecore#//UnaryOperator">
       <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//UnaryOperator/inversion"/>
-      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//UnaryOperator/negation"/>
+      <genEnumLiterals ecoreEnumLiteral="configurator.ecore#//UnaryOperator/logicalNot"/>
     </genEnums>
     <genClasses image="false" ecoreClass="configurator.ecore#//AbstractParameter">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//AbstractParameter/visibility"/>
@@ -40,6 +32,7 @@
     <genClasses ecoreClass="configurator.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Parameter/mandatory"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/valueRange"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/default"/>
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Configurator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Configurator/parameters"/>
@@ -62,10 +55,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Binary/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Binary/right"/>
     </genClasses>
-    <genClasses ecoreClass="configurator.ecore#//Scalar">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Scalar/operator"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Scalar/id"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="configurator.ecore#//Constant"/>
     <genClasses ecoreClass="configurator.ecore#//InRange">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//InRange/range"/>
@@ -73,9 +62,6 @@
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Integer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Integer/value"/>
-    </genClasses>
-    <genClasses ecoreClass="configurator.ecore#//Double">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Double/value"/>
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Boolean">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Boolean/value"/>
@@ -86,9 +72,14 @@
     <genClasses ecoreClass="configurator.ecore#//Identifier">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Identifier/id"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="configurator.ecore#//DescribedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//DescribedElement/description"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="configurator.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//NamedElement/name"/>
-      <genFeatures createChild="false"/>
+    </genClasses>
+    <genClasses ecoreClass="configurator.ecore#//Constraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Constraint/expression"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

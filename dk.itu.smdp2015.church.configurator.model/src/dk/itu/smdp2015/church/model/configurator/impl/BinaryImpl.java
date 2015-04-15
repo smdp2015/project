@@ -39,7 +39,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BinaryOperator OPERATOR_EDEFAULT = BinaryOperator.DISJUNCTION;
+	protected static final BinaryOperator OPERATOR_EDEFAULT = BinaryOperator.LOGICAL_OR;
 
 	/**
 	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.

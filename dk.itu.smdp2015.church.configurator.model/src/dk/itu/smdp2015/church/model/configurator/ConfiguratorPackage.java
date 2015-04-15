@@ -60,41 +60,41 @@ public interface ConfiguratorPackage extends EPackage {
 	ConfiguratorPackage eINSTANCE = dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl <em>Described Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.NamedElementImpl
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getNamedElement()
+	 * @see dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl
+	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDescribedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 18;
+	int DESCRIBED_ELEMENT = 16;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__NAME = 0;
+	int DESCRIBED_ELEMENT__DESCRIPTION = 0;
 
 	/**
-	 * The number of structural features of the '<em>Named Element</em>' class.
+	 * The number of structural features of the '<em>Described Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 1;
+	int DESCRIBED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Named Element</em>' class.
+	 * The number of operations of the '<em>Described Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_OPERATION_COUNT = 0;
+	int DESCRIBED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl <em>Abstract Parameter</em>}' class.
@@ -107,22 +107,22 @@ public interface ConfiguratorPackage extends EPackage {
 	int ABSTRACT_PARAMETER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PARAMETER__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_PARAMETER__DESCRIPTION = DESCRIBED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PARAMETER__NAME = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' containment reference.
@@ -131,7 +131,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER__VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_PARAMETER__VISIBILITY = DESCRIBED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -140,7 +140,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER__CONSTRAINTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_PARAMETER__CONSTRAINTS = DESCRIBED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Parameter</em>' class.
@@ -149,7 +149,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_PARAMETER_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Abstract Parameter</em>' class.
@@ -158,7 +158,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ABSTRACT_PARAMETER_OPERATION_COUNT = DESCRIBED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterGroupImpl <em>Parameter Group</em>}' class.
@@ -171,15 +171,6 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER_GROUP = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_GROUP__NAME = ABSTRACT_PARAMETER__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,6 +178,15 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_GROUP__DESCRIPTION = ABSTRACT_PARAMETER__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_GROUP__NAME = ABSTRACT_PARAMETER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' containment reference.
@@ -244,15 +244,6 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__NAME = ABSTRACT_PARAMETER__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,6 +251,15 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__DESCRIPTION = ABSTRACT_PARAMETER__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = ABSTRACT_PARAMETER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' containment reference.
@@ -298,7 +298,7 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER__VALUE_RANGE = ABSTRACT_PARAMETER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -335,22 +335,22 @@ public interface ConfiguratorPackage extends EPackage {
 	int CONFIGURATOR = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATOR__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATOR__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int CONFIGURATOR__DESCRIPTION = DESCRIBED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATOR__NAME = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -359,7 +359,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATOR__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONFIGURATOR__PARAMETERS = DESCRIBED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Configurator</em>' class.
@@ -368,7 +368,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATOR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int CONFIGURATOR_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Configurator</em>' class.
@@ -377,7 +377,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATOR_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int CONFIGURATOR_OPERATION_COUNT = DESCRIBED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ValueRangeImpl <em>Value Range</em>}' class.
@@ -620,52 +620,6 @@ public interface ConfiguratorPackage extends EPackage {
 	int BINARY_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ScalarImpl <em>Scalar</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ScalarImpl
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getScalar()
-	 * @generated
-	 */
-	int SCALAR = 10;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALAR__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALAR__ID = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALAR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALAR_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ConstantImpl <em>Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -673,7 +627,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getConstant()
 	 * @generated
 	 */
-	int CONSTANT = 11;
+	int CONSTANT = 10;
 
 	/**
 	 * The number of structural features of the '<em>Constant</em>' class.
@@ -701,7 +655,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getInRange()
 	 * @generated
 	 */
-	int IN_RANGE = 12;
+	int IN_RANGE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' containment reference.
@@ -747,7 +701,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 13;
+	int INTEGER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -777,43 +731,6 @@ public interface ConfiguratorPackage extends EPackage {
 	int INTEGER_OPERATION_COUNT = CONSTANT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DoubleImpl <em>Double</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.DoubleImpl
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDouble()
-	 * @generated
-	 */
-	int DOUBLE = 14;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE__VALUE = CONSTANT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Double</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Double</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE_OPERATION_COUNT = CONSTANT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.BooleanImpl <em>Boolean</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,7 +738,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 15;
+	int BOOLEAN = 13;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -858,7 +775,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 16;
+	int STRING = 14;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -895,7 +812,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getIdentifier()
 	 * @generated
 	 */
-	int IDENTIFIER = 17;
+	int IDENTIFIER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' reference.
@@ -925,41 +842,41 @@ public interface ConfiguratorPackage extends EPackage {
 	int IDENTIFIER_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl <em>Described Element</em>}' class.
+	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDescribedElement()
+	 * @see dk.itu.smdp2015.church.model.configurator.impl.NamedElementImpl
+	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int DESCRIBED_ELEMENT = 20;
+	int NAMED_ELEMENT = 17;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIBED_ELEMENT__DESCRIPTION = 0;
+	int NAMED_ELEMENT__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Described Element</em>' class.
+	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIBED_ELEMENT_FEATURE_COUNT = 1;
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Described Element</em>' class.
+	 * The number of operations of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIBED_ELEMENT_OPERATION_COUNT = 0;
+	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -969,7 +886,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 19;
+	int CONSTRAINT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -981,13 +898,13 @@ public interface ConfiguratorPackage extends EPackage {
 	int CONSTRAINT__DESCRIPTION = DESCRIBED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Expr</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__EXPR = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
+	int CONSTRAINT__EXPRESSION = DESCRIBED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -1008,16 +925,6 @@ public interface ConfiguratorPackage extends EPackage {
 	int CONSTRAINT_OPERATION_COUNT = DESCRIBED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.ScalarOperator <em>Scalar Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dk.itu.smdp2015.church.model.configurator.ScalarOperator
-	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getScalarOperator()
-	 * @generated
-	 */
-	int SCALAR_OPERATOR = 21;
-
-	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.BinaryOperator <em>Binary Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1025,7 +932,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getBinaryOperator()
 	 * @generated
 	 */
-	int BINARY_OPERATOR = 22;
+	int BINARY_OPERATOR = 19;
 
 	/**
 	 * The meta object id for the '{@link dk.itu.smdp2015.church.model.configurator.UnaryOperator <em>Unary Operator</em>}' enum.
@@ -1035,7 +942,7 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getUnaryOperator()
 	 * @generated
 	 */
-	int UNARY_OPERATOR = 23;
+	int UNARY_OPERATOR = 20;
 
 
 	/**
@@ -1124,10 +1031,10 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getParameter_ValueRange();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Default</em>'.
+	 * @return the meta object for the containment reference '<em>Default</em>'.
 	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#getDefault()
 	 * @see #getParameter()
 	 * @generated
@@ -1304,38 +1211,6 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getBinary_Right();
 
 	/**
-	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.Scalar <em>Scalar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Scalar</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Scalar
-	 * @generated
-	 */
-	EClass getScalar();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Scalar#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Scalar#getOperator()
-	 * @see #getScalar()
-	 * @generated
-	 */
-	EAttribute getScalar_Operator();
-
-	/**
-	 * Returns the meta object for the reference '{@link dk.itu.smdp2015.church.model.configurator.Scalar#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Id</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Scalar#getId()
-	 * @see #getScalar()
-	 * @generated
-	 */
-	EReference getScalar_Id();
-
-	/**
 	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.Constant <em>Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1397,27 +1272,6 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getInteger_Value();
-
-	/**
-	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.Double <em>Double</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Double</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Double
-	 * @generated
-	 */
-	EClass getDouble();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Double#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Double#getValue()
-	 * @see #getDouble()
-	 * @generated
-	 */
-	EAttribute getDouble_Value();
 
 	/**
 	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.Boolean <em>Boolean</em>}'.
@@ -1483,6 +1337,27 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getIdentifier_Id();
 
 	/**
+	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.DescribedElement <em>Described Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Described Element</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.DescribedElement
+	 * @generated
+	 */
+	EClass getDescribedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.DescribedElement#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.DescribedElement#getDescription()
+	 * @see #getDescribedElement()
+	 * @generated
+	 */
+	EAttribute getDescribedElement_Description();
+
+	/**
 	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1514,46 +1389,15 @@ public interface ConfiguratorPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Constraint#getExpr <em>Expr</em>}'.
+	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Constraint#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expr</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Constraint#getExpr()
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.Constraint#getExpression()
 	 * @see #getConstraint()
 	 * @generated
 	 */
-	EReference getConstraint_Expr();
-
-	/**
-	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.DescribedElement <em>Described Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Described Element</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.DescribedElement
-	 * @generated
-	 */
-	EClass getDescribedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.DescribedElement#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.DescribedElement#getDescription()
-	 * @see #getDescribedElement()
-	 * @generated
-	 */
-	EAttribute getDescribedElement_Description();
-
-	/**
-	 * Returns the meta object for enum '{@link dk.itu.smdp2015.church.model.configurator.ScalarOperator <em>Scalar Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Scalar Operator</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.ScalarOperator
-	 * @generated
-	 */
-	EEnum getScalarOperator();
+	EReference getConstraint_Expression();
 
 	/**
 	 * Returns the meta object for enum '{@link dk.itu.smdp2015.church.model.configurator.BinaryOperator <em>Binary Operator</em>}'.
@@ -1669,7 +1513,7 @@ public interface ConfiguratorPackage extends EPackage {
 		EReference PARAMETER__VALUE_RANGE = eINSTANCE.getParameter_ValueRange();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1819,32 +1663,6 @@ public interface ConfiguratorPackage extends EPackage {
 		EReference BINARY__RIGHT = eINSTANCE.getBinary_Right();
 
 		/**
-		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ScalarImpl <em>Scalar</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.ScalarImpl
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getScalar()
-		 * @generated
-		 */
-		EClass SCALAR = eINSTANCE.getScalar();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SCALAR__OPERATOR = eINSTANCE.getScalar_Operator();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SCALAR__ID = eINSTANCE.getScalar_Id();
-
-		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ConstantImpl <em>Constant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1897,24 +1715,6 @@ public interface ConfiguratorPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INTEGER__VALUE = eINSTANCE.getInteger_Value();
-
-		/**
-		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DoubleImpl <em>Double</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.DoubleImpl
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDouble()
-		 * @generated
-		 */
-		EClass DOUBLE = eINSTANCE.getDouble();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOUBLE__VALUE = eINSTANCE.getDouble_Value();
 
 		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.BooleanImpl <em>Boolean</em>}' class.
@@ -1971,6 +1771,24 @@ public interface ConfiguratorPackage extends EPackage {
 		EReference IDENTIFIER__ID = eINSTANCE.getIdentifier_Id();
 
 		/**
+		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl <em>Described Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl
+		 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDescribedElement()
+		 * @generated
+		 */
+		EClass DESCRIBED_ELEMENT = eINSTANCE.getDescribedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DESCRIBED_ELEMENT__DESCRIPTION = eINSTANCE.getDescribedElement_Description();
+
+		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1999,40 +1817,12 @@ public interface ConfiguratorPackage extends EPackage {
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONSTRAINT__EXPR = eINSTANCE.getConstraint_Expr();
-
-		/**
-		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl <em>Described Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.DescribedElementImpl
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getDescribedElement()
-		 * @generated
-		 */
-		EClass DESCRIBED_ELEMENT = eINSTANCE.getDescribedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DESCRIBED_ELEMENT__DESCRIPTION = eINSTANCE.getDescribedElement_Description();
-
-		/**
-		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.ScalarOperator <em>Scalar Operator</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dk.itu.smdp2015.church.model.configurator.ScalarOperator
-		 * @see dk.itu.smdp2015.church.model.configurator.impl.ConfiguratorPackageImpl#getScalarOperator()
-		 * @generated
-		 */
-		EEnum SCALAR_OPERATOR = eINSTANCE.getScalarOperator();
+		EReference CONSTRAINT__EXPRESSION = eINSTANCE.getConstraint_Expression();
 
 		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.BinaryOperator <em>Binary Operator</em>}' enum.
