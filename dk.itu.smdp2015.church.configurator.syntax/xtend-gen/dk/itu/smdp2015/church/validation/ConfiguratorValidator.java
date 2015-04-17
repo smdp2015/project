@@ -159,8 +159,8 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
         int _size = IterableExtensions.size(_filter);
         boolean _notEquals = (_size != 1);
         if (_notEquals) {
-          ConfiguratorValidator.this.error("Enumerated values should be unique", 
-            ConfiguratorPackage.Literals.ENUMERATED__VALUES, ConfiguratorValidator.INVALID_BOUND);
+          ConfiguratorValidator.this.error("Enumerated values should be unique", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
+            ConfiguratorValidator.INVALID_BOUND);
         }
       }
     };
@@ -300,6 +300,54 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
     if (_notEquals) {
       this.error(((("expected the same type, but the types are " + lowerType) + " and ") + upperType), 
         ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND, ConfiguratorValidator.WRONG_TYPE);
+    }
+  }
+  
+  @Check
+  public void checkType(final Parameter parameter) {
+    Expression _default = parameter.getDefault();
+    boolean _notEquals = (!Objects.equal(_default, null));
+    if (_notEquals) {
+      Expression _default_1 = parameter.getDefault();
+      final ExpressionType defType = this.getTypeAndCheckNotNull(_default_1, ConfiguratorPackage.Literals.PARAMETER__DEFAULT);
+      ValueRange _valueRange = parameter.getValueRange();
+      final ExpressionType rangeType = this.getTypeAndCheckNotNull(_valueRange, 
+        ConfiguratorPackage.Literals.PARAMETER__VALUE_RANGE);
+      boolean _notEquals_1 = (!Objects.equal(defType, rangeType));
+      if (_notEquals_1) {
+        this.error(((("expected the same type, but the types are " + defType) + " and ") + rangeType), 
+          ConfiguratorPackage.Literals.PARAMETER__DEFAULT, ConfiguratorValidator.WRONG_TYPE);
+      }
+    }
+  }
+  
+  @Check
+  public void checkDefaultValue(final Parameter parameter) {
+    Expression _default = parameter.getDefault();
+    boolean _notEquals = (!Objects.equal(_default, null));
+    if (_notEquals) {
+      Expression _default_1 = parameter.getDefault();
+      final Object defVal = this._expressionValueProvider.staticValue(_default_1);
+      final ValueRange range = parameter.getValueRange();
+      boolean _matched = false;
+      if (!_matched) {
+        if (range instanceof Enumerated) {
+          _matched=true;
+          EList<Expression> _values = ((Enumerated)range).getValues();
+          final Function1<Expression, Boolean> _function = new Function1<Expression, Boolean>() {
+            public Boolean apply(final Expression it) {
+              Object _staticValue = ConfiguratorValidator.this._expressionValueProvider.staticValue(it);
+              return Boolean.valueOf(Objects.equal(_staticValue, defVal));
+            }
+          };
+          boolean _exists = IterableExtensions.<Expression>exists(_values, _function);
+          boolean _not = (!_exists);
+          if (_not) {
+            this.error("Default value should be among the listed values", 
+              ConfiguratorPackage.Literals.PARAMETER__DEFAULT, ConfiguratorValidator.INVALID_BOUND);
+          }
+        }
+      }
     }
   }
   

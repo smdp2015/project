@@ -18,6 +18,7 @@ import org.eclipse.xtext.validation.Check
 
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
+import dk.itu.smdp2015.church.model.configurator.Parameter
 
 /**
  * Custom validation rules. 
@@ -81,10 +82,10 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkEnumeratedSequence(Enumerated enumerated) {
-		enumerated.values.forEach[v|
+		enumerated.values.forEach [ v |
 			if (enumerated.values.filter[staticValue == v.staticValue].size != 1)
-				error('Enumerated values should be unique',
-					ConfiguratorPackage.Literals.ENUMERATED__VALUES, INVALID_BOUND)
+				error('Enumerated values should be unique', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
+					INVALID_BOUND)
 		]
 	}
 
@@ -190,6 +191,34 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 		if (lowerType != upperType) {
 			error("expected the same type, but the types are " + lowerType + " and " + upperType,
 				ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND, WRONG_TYPE)
+		}
+	}
+
+	@Check
+	def checkType(Parameter parameter) {
+		if (parameter.^default != null) {
+			val defType = getTypeAndCheckNotNull(parameter.^default, ConfiguratorPackage.Literals.PARAMETER__DEFAULT)
+			val rangeType = getTypeAndCheckNotNull(parameter.valueRange,
+				ConfiguratorPackage.Literals.PARAMETER__VALUE_RANGE)
+			if (defType != rangeType) {
+				error("expected the same type, but the types are " + defType + " and " + rangeType,
+					ConfiguratorPackage.Literals.PARAMETER__DEFAULT, WRONG_TYPE)
+			}
+		}
+	}
+
+	@Check
+	def checkDefaultValue(Parameter parameter) {
+		if (parameter.^default != null) {
+			val defVal = parameter.^default.staticValue
+			val range = parameter.valueRange
+			switch (range) {
+				Enumerated:
+					if (!range.values.exists[staticValue == defVal])
+						error('Default value should be among the listed values',
+							ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
+				// Bounded: to be done...
+			}
 		}
 	}
 
