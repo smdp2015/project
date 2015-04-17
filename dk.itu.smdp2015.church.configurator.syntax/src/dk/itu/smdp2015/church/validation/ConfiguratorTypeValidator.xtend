@@ -6,20 +6,23 @@ import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage
 import dk.itu.smdp2015.church.model.configurator.Constraint
 import dk.itu.smdp2015.church.model.configurator.Enumerated
 import dk.itu.smdp2015.church.model.configurator.Expression
+import dk.itu.smdp2015.church.model.configurator.Unary
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.validation.Check
 
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 
-class XConfiguratorValidator extends AbstractConfiguratorValidator {
+class ConfiguratorTypeValidator extends AbstractConfiguratorValidator {
 	public static val WRONG_TYPE = "dk.itu.smdp2015.church.WrongType"
 
 	@Inject extension ExpressionTypeProvider
 
 	@Check
-	def checkType(Constraint constraint) {
-		checkExpectedBoolean(constraint.expression, ConfiguratorPackage.Literals.CONSTRAINT__EXPRESSION)
+	def cwheckType(Constraint constraint) {
+		val literal = ConfiguratorPackage.Literals.CONSTRAINT__EXPRESSION
+		val type = getTypeAndCheckNotNull(constraint.expression, literal)
+		checkExpectedType(type, ExpressionType.Boolean, literal)
 	}
 
 	@Check
@@ -27,34 +30,62 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 		val leftLiteral = ConfiguratorPackage.Literals.BINARY__LEFT
 		val rightLiteral = ConfiguratorPackage.Literals.BINARY__RIGHT
 		val binaryLiteral = ConfiguratorPackage.Literals.BINARY__OPERATOR
+		val leftType = getTypeAndCheckNotNull(binary.left, leftLiteral)
+		val rightType = getTypeAndCheckNotNull(binary.right, rightLiteral)
 		switch (binary.operator) {
 			case ADDITION: {
+				checkExpectedType(leftType, ExpressionType.Integer, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Integer, rightLiteral)
 			}
 			case LOGICAL_AND: {
-				checkExpectedBoolean(binary.left, leftLiteral)
-				checkExpectedBoolean(binary.right, rightLiteral)
+				checkExpectedType(leftType, ExpressionType.Boolean, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Boolean, rightLiteral)
 			}
 			case LOGICAL_OR: {
-				checkExpectedBoolean(binary.left, leftLiteral)
-				checkExpectedBoolean(binary.right, rightLiteral)
+				checkExpectedType(leftType, ExpressionType.Boolean, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Boolean, rightLiteral)
 			}
 			case EQUAL: {
-				val leftType = getTypeAndCheckNotNull(binary.left, leftLiteral)
-				val rightType = getTypeAndCheckNotNull(binary.right, rightLiteral)
 				if (leftType != rightType) {
 					error("expected the same type, but the types are " + leftType + " and " + rightType, binaryLiteral,
 						WRONG_TYPE)
 				}
 			}
-			case GREATER_THAN: {
+			case GREATER_THAN: { 
+				checkExpectedType(leftType, ExpressionType.Integer, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Integer, rightLiteral)
 			}
-			case LESS_THAN: {
+			case LESS_THAN: { 
+				checkExpectedType(leftType, ExpressionType.Integer, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Integer, rightLiteral)
 			}
-			case MULTIPLICATION: {
+			case MULTIPLICATION: { 
+				checkExpectedType(leftType, ExpressionType.Integer, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Integer, rightLiteral)
+ 			}
+			case NOT_EQUAL: { 
+				if (leftType != rightType) {
+					error("expected the same type, but the types are " + leftType + " and " + rightType, binaryLiteral,
+						WRONG_TYPE)
+				}
 			}
-			case NOT_EQUAL: {
+			case SUBTRACTION: { 
+				checkExpectedType(leftType, ExpressionType.Integer, leftLiteral)
+				checkExpectedType(rightType, ExpressionType.Integer, rightLiteral)
 			}
-			case SUBTRACTION: {
+		}
+	}
+
+	@Check
+	def checkType(Unary unary) {
+		val innerLiteral = ConfiguratorPackage.Literals.UNARY__INNER
+		val innerType = getTypeAndCheckNotNull(unary.inner, innerLiteral)
+		switch (unary.operator) {
+			case INVERSION: {
+				checkExpectedType(innerType, ExpressionType.Integer, innerLiteral)
+			}
+			case LOGICAL_NOT: {
+				checkExpectedType(innerType, ExpressionType.Boolean, innerLiteral)
 			}
 		}
 	}
@@ -80,12 +111,7 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 		}
 	}
 
-	def private checkExpectedBoolean(Expression exp, EReference reference) {
-		checkExpectedType(exp, ExpressionType.Boolean, reference)
-	}
-
-	def private checkExpectedType(Expression expression, ExpressionType expectedType, EReference reference) {
-		val actualType = getTypeAndCheckNotNull(expression, reference)
+	def private checkExpectedType(ExpressionType actualType, ExpressionType expectedType, EReference reference) {
 		if (actualType != expectedType) {
 			error("expected type " + expectedType + ", actual type is " + actualType, reference, WRONG_TYPE)
 		}
@@ -94,7 +120,7 @@ class XConfiguratorValidator extends AbstractConfiguratorValidator {
 	def private ExpressionType getTypeAndCheckNotNull(Expression expression, EReference reference) {
 		var type = expression?.typeFor
 		if (type == null)
-			error("unknown", reference, WRONG_TYPE)
+			error("unknown type", reference, WRONG_TYPE)
 		type
 	}
 }
