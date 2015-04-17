@@ -104,38 +104,42 @@ public class ExpressionTypeProvider {
   }
   
   protected ExpressionType _typeFor(final Identifier identifier) {
-    ExpressionType _xblockexpression = null;
-    {
-      Parameter _id = identifier.getId();
-      final ValueRange range = _id.getValueRange();
-      ExpressionType _switchResult = null;
-      boolean _matched = false;
-      if (!_matched) {
-        if (range instanceof Enumerated) {
-          _matched=true;
-          EList<Expression> _values = ((Enumerated)range).getValues();
-          Expression _get = _values.get(0);
-          ExpressionType _typeFor = null;
-          if (_get!=null) {
-            _typeFor=this.typeFor(_get);
-          }
-          _switchResult = _typeFor;
-        }
-      }
-      if (!_matched) {
-        if (range instanceof Bounded) {
-          _matched=true;
-          Expression _lowerBound = ((Bounded)range).getLowerBound();
-          ExpressionType _typeFor = null;
-          if (_lowerBound!=null) {
-            _typeFor=this.typeFor(_lowerBound);
-          }
-          _switchResult = _typeFor;
-        }
-      }
-      _xblockexpression = _switchResult;
+    Parameter _id = identifier.getId();
+    ValueRange _valueRange = _id.getValueRange();
+    ExpressionType _rangeType = null;
+    if (_valueRange!=null) {
+      _rangeType=this.rangeType(_valueRange);
     }
-    return _xblockexpression;
+    return _rangeType;
+  }
+  
+  public ExpressionType rangeType(final ValueRange range) {
+    ExpressionType _switchResult = null;
+    boolean _matched = false;
+    if (!_matched) {
+      if (range instanceof Enumerated) {
+        _matched=true;
+        EList<Expression> _values = ((Enumerated)range).getValues();
+        Expression _get = _values.get(0);
+        ExpressionType _typeFor = null;
+        if (_get!=null) {
+          _typeFor=this.typeFor(_get);
+        }
+        _switchResult = _typeFor;
+      }
+    }
+    if (!_matched) {
+      if (range instanceof Bounded) {
+        _matched=true;
+        Expression _lowerBound = ((Bounded)range).getLowerBound();
+        ExpressionType _typeFor = null;
+        if (_lowerBound!=null) {
+          _typeFor=this.typeFor(_lowerBound);
+        }
+        _switchResult = _typeFor;
+      }
+    }
+    return _switchResult;
   }
   
   public ExpressionType typeFor(final Expression binary) {
