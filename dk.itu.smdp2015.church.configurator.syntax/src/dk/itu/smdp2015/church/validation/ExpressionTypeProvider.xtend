@@ -2,15 +2,18 @@ package dk.itu.smdp2015.church.validation
 
 import dk.itu.smdp2015.church.model.configurator.Binary
 import dk.itu.smdp2015.church.model.configurator.Boolean
+import dk.itu.smdp2015.church.model.configurator.Bounded
 import dk.itu.smdp2015.church.model.configurator.Constant
+import dk.itu.smdp2015.church.model.configurator.Enumerated
 import dk.itu.smdp2015.church.model.configurator.Identifier
 import dk.itu.smdp2015.church.model.configurator.InRange
 import dk.itu.smdp2015.church.model.configurator.Integer
 import dk.itu.smdp2015.church.model.configurator.String
 import dk.itu.smdp2015.church.model.configurator.Unary
+import dk.itu.smdp2015.church.model.configurator.ValueRange
 
-import dk.itu.smdp2015.church.model.configurator.Enumerated
-import dk.itu.smdp2015.church.model.configurator.Bounded
+import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
+import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
 
 class ExpressionTypeProvider {
 
@@ -57,7 +60,10 @@ class ExpressionTypeProvider {
 	}
 
 	def dispatch ExpressionType typeFor(Identifier identifier) {
-		val range = identifier.id.valueRange
+		identifier.id.valueRange?.rangeType
+	}
+	
+	def ExpressionType rangeType(ValueRange range) {
 		switch (range) {
 			Enumerated: range.values.get(0)?.typeFor
 			Bounded: range.lowerBound?.typeFor
