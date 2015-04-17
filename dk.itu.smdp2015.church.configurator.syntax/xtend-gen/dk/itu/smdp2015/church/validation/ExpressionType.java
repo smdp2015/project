@@ -6,7 +6,5 @@ public enum ExpressionType {
   
   Integer,
   
-  Double,
-  
   Boolean;
 }
