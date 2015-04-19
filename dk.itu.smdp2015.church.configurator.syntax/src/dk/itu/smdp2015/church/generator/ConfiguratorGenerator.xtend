@@ -6,6 +6,21 @@ package dk.itu.smdp2015.church.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import dk.itu.smdp2015.church.model.configurator.Configurator
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup
+import dk.itu.smdp2015.church.model.configurator.Parameter
+import org.eclipse.emf.common.util.EList
+import dk.itu.smdp2015.church.model.configurator.AbstractParameter
+import dk.itu.smdp2015.church.model.configurator.Unary
+import dk.itu.smdp2015.church.model.configurator.Identifier
+import dk.itu.smdp2015.church.model.configurator.InRange
+import dk.itu.smdp2015.church.model.configurator.Enumerated
+import dk.itu.smdp2015.church.model.configurator.Bounded
+import dk.itu.smdp2015.church.model.configurator.Binary
+import dk.itu.smdp2015.church.model.configurator.BinaryOperator
+import dk.itu.smdp2015.church.model.configurator.Constraint
+import java.util.List
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -13,12 +28,15 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class ConfiguratorGenerator implements IGenerator {
-	
+			
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+//		for(e:resource.allContents.toIterable.filter(typeof(Configurator)))
+//		{
+//			fsa.generateFile("configurator.cs", e.compile)
+//		}
+		
+		var csGenerator = new CSGenerator();
+		csGenerator.doGenerate(resource, fsa);		
 	}
 }
+	
