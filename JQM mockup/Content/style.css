@@ -1,0 +1,43 @@
+.validationMessage{
+
+    color:red;
+}
+.validationElement{
+
+    border-color:red!important;
+}
+.validationSection{
+    max-height:0px;
+    height:0px;
+    -webkit-transition: max-height 500ms ease-in-out;
+    -moz-transition: max-height 500ms ease-in-out;
+    -ms-transition: max-height 500ms ease-in-out;
+    -o-transition: max-height 500ms ease-in-out;
+    transition: max-height 500ms ease-in-out;
+
+}
+.validationSummary{
+    border-color: rgb(221, 8, 57);
+    border-width: 1px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: pink;
+    margin: 5px;
+
+}
+.showValidationSummary{
+    max-height:500px;
+    height:100%;
+}
+.validationSummary h4{
+    margin: 2px;
+}
+.description{
+    margin:10px;
+}
+.validationSummary ul{
+    list-style: none;
+    color:red;
+
+}

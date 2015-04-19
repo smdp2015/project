@@ -2,6 +2,12 @@
  * Created by rlh on 14/04/15.
  */
 function submitconfiguration(){
+   // App.ViewModel().group_seats.notifySubscribers(App.ViewModel().group_seats())
+    //var s = App.ViewModel().group_seats.isValid();
+
+    var isValid =App.ViewModel.isValid();
+    if(!isValid)
+        App.ViewModel.errors.showAllMessages();
     var mapping = {
         'ignore': ["boundedRange", "choices"]
     }

@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="Content/Lib/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="Content/style.css">
 
     <script src="Scripts/Lib/jquery-1.11.1.min.js"></script>
     <script src="Scripts/Lib/knockout-3.3.0.debug.js"></script>
     <script src="Scripts/Lib/knockout.mapping-latest.js"></script>
-
+    <script src="Scripts/Lib/knockout.validation.js"></script>
+   <!-- <script src="https://rawgit.com/ericmbarnard/Knockout-Validation/master/Src/knockout.validation.js"></script>-->
     <script src="Scripts/submit-configuration.js"></script>
+
+    <script src="Scripts/ko-init.js"></script>
     <script src="Scripts/ko-initcustomhandlers.js"></script>
 
     <script src="Scripts/Src-gen/app-viewmodel.js"></script>
@@ -29,14 +33,32 @@
             </h1>
             <button class="ui-btn-right ui-icon-check ui-btn-icon-right ui-btn" onclick="submitconfiguration();">submit</button>
         </div>
+
         <div role="main">
             <section class="description">
                 A configurator for a car
             </section>
+            <section class="validationSection" data-bind="css:{showValidationSummary: !isModelValid()}">
+                <div class="validationSummary">
+                    <h4>Validation summary</h4>
+                    <ul data-bind="foreach: currentErrors">
+                        <li><span data-bind="text: $data"> </span> </li>
+                    </ul>
+                </div>
+            </section>
+          <!--
+          data-bind="if: errors().length>0"
+           <label for="valtst">val test</label>
+            <input id="valtst" data-bind="value: x().y"/>
+
+            <label for="z">z extra field</label>
+            <input id="z" data-bind="value: x().z"/>-->
+
             <ul data-role="listview">
                 <li>
-                    <label for="length-param">Length:</label>
+                    <label for="length-param" >length of car:</label>
                     <input data-bind="value: length.value, attr:{ min: length.boundedRange.lower, max: length.boundedRange.upper}" type="range" name="length" id="length-param">
+                    <p class="validationMessage" data-bind="validationMessage: length.value"></p>
                 </li>
                 <li data-role="collapsible" data-bind="isExpanded: variant.isOn">
                     <h2><label for="variant-param">variant:</label></h2>
@@ -51,18 +73,26 @@
                      <select  id="engine-param" data-bind="options: engine.choices, selectedOptions: engine.value,optionsCaption:'Choose...'">
                            
                         </select>
+                    <p class="validationMessage" data-bind="validationMessage: engine.value"></p>
 
                 </li>
                 <li data-role="collapsible" data-bind="isExpanded: fog_lights.isOn">
                     <h2>fog_lights:</h2>
                    <label data-bind="text: fog_lights.value()?'on':'off'"> <input type="checkbox" id="fog_lights-param" data-bind="checked:fog_lights.value"> </label>
                 </li>
-                <li data-bind="visible: group_seats.isVisible"><a href="#seats">seats</a></li>
+                <li data-bind="visible: group_seats().isVisible">
+                    <a href="#seats">seats
+                        <p class="validationMessage" data-bind="validationMessage: group_seats"></p></a>
+                        </li>
+
+
+
             </ul>
         </div>
     </div>
 
     <div id="seats" data-role="page" data-bind="with: $root.group_seats">
+
         <div data-role="header" data-add-back-btn="true">
             <h1>
                 seats
@@ -70,6 +100,14 @@
             <button class="ui-btn-right ui-icon-check ui-btn-icon-right ui-btn" onclick="submitconfiguration();">submit</button>
         </div>
         <div role="main">
+            <section class="validationSection" data-bind="css:{showValidationSummary: !$root.isModelValid()}">
+                <div class="validationSummary">
+                  <h4>Validation summary</h4>
+                    <ul data-bind="foreach: $root.currentErrors">
+                        <li><span data-bind="text: $data"> </span> </li>
+                    </ul>
+                </div>
+            </section>
             <ul data-role="listview" >
                 <li>
                     <label for="material-param">material:</label>
@@ -77,40 +115,18 @@
                     </select>
                 </li>
                 <li data-role="collapsible" data-bind="isExpanded: colour.isOn">
-                    <h2><label for="colour-param">colour:</label></h2>
+                    <h2><label for="colour-param" >the seal colour:</label>
+                    </h2>
+
                      <select  id="colour-param"data-bind="options: colour.choices, selectedOptions: colour.value, optionsCaption:'Choose...'">
                 </select>
                 </li>
-                <li><a href="#seats2">seats2</a></li>
             </ul>
         </div>
     </div>
-
-    <div id="seats2" data-role="page" data-bind="with: $root.group_seats.group_seats2">
-        <div data-role="header" data-add-back-btn="true">
-            <h1>
-                seats2
-            </h1>
-            <button class="ui-btn-right ui-icon-check ui-btn-icon-right ui-btn" onclick="submitconfiguration();">submit</button>
-        </div>
-        <div role="main">
-            <ul data-role="listview" >
-                <li>
-                    <label for="seats2.material-param">material:</label>
-                     <select  id="seats2.material-param" data-bind="options: material.choices, selectedOptions: material.value, optionsCaption:'Choose...'">
-                </select>
-                </li>
-                <li data-role="collapsible" data-bind="isExpanded: colour.isOn">
-                    <h2><label for="seats2.colour-param">colour:</label></h2>
-                     <select  id="seats2.colour-param"data-bind="options: colour.choices, selectedOptions: colour.value, optionsCaption:'Choose...'">
-                </select>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <a id='resultdialoglink' href="#resultdialog" data-transition="pop" style='display:none;'>Open dialog</a>
+  <!--  <a id='resultdialoglink' href="#resultdialog" data-transition="pop" style='display:none;'>Open dialog</a>
     <div id="resultdialog" data-role="dialog" data-add-back-btn="true">
         <div role="main">adsf</div>
-    </div>
+    </div>-->
 </body>
 </html>

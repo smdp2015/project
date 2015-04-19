@@ -7,9 +7,9 @@ ko.bindingHandlers.isExpanded = {
         // Set up any initial state, event handlers, etc. here
 
         var value =ko.unwrap(valueAccessor());
-        if(value)
+        if(value && $( element ).hasClass("ui-collapsible-collapsed"))
             $(element).collapsible( "expand" );
-        else
+        else if(!$( element ).hasClass("ui-collapsible-collapsed"))
             $(element).collapsible( "collapse" );
 
         function trySetValue(value){
@@ -28,16 +28,4 @@ ko.bindingHandlers.isExpanded = {
 
 
     }
-};
-
-ko.deferredPureComputed = function(evaluatorOrOptions, target, options) {
-    options = options || {};
-
-    if (typeof evaluatorOrOptions == "object") {
-        evaluatorOrOptions.deferEvaluation = true;
-    } else {
-        options.deferEvaluation = true;
-    }
-
-    return ko.pureComputed(evaluatorOrOptions, target, options);
 };

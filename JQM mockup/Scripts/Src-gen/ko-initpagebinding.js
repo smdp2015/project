@@ -3,12 +3,10 @@
  */
 $(document).ready(function(){
     $("#main").on('pagecreate', function (event, ui) {
-        ko.applyBindings(App.ViewModel, this);
+
+        ko.applyBindings(App.ViewModel, this );
     });
     $("#seats").on('pagecreate', function (event, ui) {
-        ko.applyBindings(App.ViewModel, this);
-    });
-    $("#seats2").on('pagecreate', function (event, ui) {
         ko.applyBindings(App.ViewModel, this);
     });
 });
