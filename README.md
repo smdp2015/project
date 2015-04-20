@@ -1,6 +1,4 @@
-# project
-SMDP Project
-
+# SMDP Project, Group 5
 
 # Constraints:
 * lowerbound < upperbound DONE
@@ -11,7 +9,7 @@ SMDP Project
 * parmrefs skal pege på parametre/ikke grupper DONE
 * Måske skal vi også validere på at man refererer en parameter der er optional.... tænker det kan give noget "weirdness" hvis den så anvendes i visse expressions.
 * Man kan ikke refererer en optional parameter i constraints, hvis ikke den har en default værdi.
-
+* Constraints bør have en description (warning)
 
 # Kodegenerering:
 
