@@ -10,7 +10,7 @@
 * Måske skal vi også validere på at man refererer en parameter der er optional.... tænker det kan give noget "weirdness" hvis den så anvendes i visse expressions.
 * Man kan ikke refererer en optional parameter i constraints, hvis ikke den har en default værdi.
 * Constraints bør have en description (warning)
-
+* Alle parametre og grupper bør have unikke navne globalt
 # Kodegenerering:
 
 
