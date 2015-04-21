@@ -12,6 +12,8 @@
 * Constraints bør have en description (warning)
 * Alle parametre og grupper bør have unikke navne globalt
 * Enumerated værdier bør være unikke
+
+
 # Kodegenerering:
 
 
