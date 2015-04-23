@@ -21,7 +21,7 @@ ParameterGroup:
 Parameter:
 	'parameter'	name=ID
 	(description=STRING)?
-	( (mandatory?='mandatory'|'optional')? 
+	( ((optional?='optional')|'mandatory')? 
 	& ('visible-if' visibility=Expression)?
 	& ('default-value' default=Expression)?
 	& ('constraints' '{' constraints+=Constraint ( ',' constraints+=Constraint)* '}' )?
