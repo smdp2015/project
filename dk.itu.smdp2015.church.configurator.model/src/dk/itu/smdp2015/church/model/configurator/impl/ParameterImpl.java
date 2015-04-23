@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#isMandatory <em>Mandatory</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#isOptional <em>Optional</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#getValueRange <em>Value Range</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterImpl#getDefault <em>Default</em>}</li>
  * </ul>
@@ -34,24 +34,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	/**
-	 * The default value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMandatory()
+	 * @see #isOptional()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean MANDATORY_EDEFAULT = true;
+	protected static final boolean OPTIONAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+	 * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMandatory()
+	 * @see #isOptional()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean mandatory = MANDATORY_EDEFAULT;
+	protected boolean optional = OPTIONAL_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getValueRange() <em>Value Range</em>}' containment reference.
@@ -97,8 +97,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isMandatory() {
-		return mandatory;
+	public boolean isOptional() {
+		return optional;
 	}
 
 	/**
@@ -106,11 +106,11 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMandatory(boolean newMandatory) {
-		boolean oldMandatory = mandatory;
-		mandatory = newMandatory;
+	public void setOptional(boolean newOptional) {
+		boolean oldOptional = optional;
+		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__MANDATORY, oldMandatory, mandatory));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.PARAMETER__OPTIONAL, oldOptional, optional));
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorPackage.PARAMETER__MANDATORY:
-				return isMandatory();
+			case ConfiguratorPackage.PARAMETER__OPTIONAL:
+				return isOptional();
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return getValueRange();
 			case ConfiguratorPackage.PARAMETER__DEFAULT:
@@ -241,8 +241,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorPackage.PARAMETER__MANDATORY:
-				setMandatory((Boolean)newValue);
+			case ConfiguratorPackage.PARAMETER__OPTIONAL:
+				setOptional((Boolean)newValue);
 				return;
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				setValueRange((ValueRange)newValue);
@@ -262,8 +262,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.PARAMETER__MANDATORY:
-				setMandatory(MANDATORY_EDEFAULT);
+			case ConfiguratorPackage.PARAMETER__OPTIONAL:
+				setOptional(OPTIONAL_EDEFAULT);
 				return;
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				setValueRange((ValueRange)null);
@@ -283,8 +283,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorPackage.PARAMETER__MANDATORY:
-				return mandatory != MANDATORY_EDEFAULT;
+			case ConfiguratorPackage.PARAMETER__OPTIONAL:
+				return optional != OPTIONAL_EDEFAULT;
 			case ConfiguratorPackage.PARAMETER__VALUE_RANGE:
 				return valueRange != null;
 			case ConfiguratorPackage.PARAMETER__DEFAULT:
@@ -303,8 +303,8 @@ public class ParameterImpl extends AbstractParameterImpl implements Parameter {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (mandatory: ");
-		result.append(mandatory);
+		result.append(" (optional: ");
+		result.append(optional);
 		result.append(')');
 		return result.toString();
 	}
