@@ -11,7 +11,7 @@
 * Man kan ikke refererer en optional parameter i constraints, hvis ikke den har en default værdi.
 * Constraints bør have en description (warning)
 * Alle parametre og grupper bør have unikke navne globalt
-* Enumerated værdier bør være unikke
+* Enumerated værdier bør være unikke DONE
 
 
 # Kodegenerering:
