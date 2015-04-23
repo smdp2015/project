@@ -3,7 +3,7 @@
 # Constraints:
 * lowerbound < upperbound DONE
 * enums skal være forskellig værdier og samme type DONE
-* værdi af default skal ligge i interval/enum IGANG
+* værdi af default skal ligge i interval/enum DONE
 * values skal være Constant evt med Unary minus DONE med stjerne
 * gruppenavne skal være unikke/parameter skal være unikke 
 * parmrefs skal pege på parametre/ikke grupper DONE
