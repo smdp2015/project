@@ -214,7 +214,15 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 					if (!range.values.exists[staticValue == defVal])
 						error('Default value should be among the listed values',
 							ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
-				// Bounded: to be done...
+				Bounded: {
+					var defaultValueIsValid = true;
+					if (range.lowerBound.staticValue instanceof Integer)
+						defaultValueIsValid = (range.lowerBound.staticValue as Integer) <= (defVal as Integer) && (range.upperBound.staticValue as Integer) >= (defVal as Integer)
+					else if (range.lowerBound.staticValue instanceof String)
+						defaultValueIsValid = (range.lowerBound.staticValue as String) <= (defVal as String) && (range.upperBound.staticValue as String) >= (defVal as String)
+					if (!defaultValueIsValid)
+						error('Default value should be within the specified value range', ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
+				}
 			}
 		}
 	}
