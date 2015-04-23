@@ -8,6 +8,7 @@ import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Expression;
+import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.Unary;
@@ -41,6 +42,8 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   public final static String INVALID_BINARYTYPE = "invalid binary operand type";
   
   public final static String WRONG_TYPE = "dk.itu.smdp2015.church.WrongType";
+  
+  public final static String OPTIONAL_PARAMETER_INVALID = "optional Parameter invalid";
   
   @Inject
   @Extension
@@ -389,6 +392,24 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
           }
         }
       }
+    }
+  }
+  
+  @Check
+  public void checkIdentifierOptional(final Identifier identifier) {
+    Parameter _id = identifier.getId();
+    boolean _isOptional = _id.isOptional();
+    if (_isOptional) {
+      this.error("Identifier cannot refer to an optional parameter", ConfiguratorPackage.Literals.IDENTIFIER__ID, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID);
+    }
+  }
+  
+  @Check
+  public void checkInRangeOptional(final InRange inRange) {
+    Parameter _parameter = inRange.getParameter();
+    boolean _isOptional = _parameter.isOptional();
+    if (_isOptional) {
+      this.error("Identifier cannot refer to an optional parameter", ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID);
     }
   }
   
