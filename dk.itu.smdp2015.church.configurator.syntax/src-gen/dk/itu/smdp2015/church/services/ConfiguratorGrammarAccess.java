@@ -254,9 +254,9 @@ public class ConfiguratorGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_2_0 = (RuleCall)cDescriptionAssignment_2.eContents().get(0);
 		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
 		private final Alternatives cAlternatives_3_0 = (Alternatives)cUnorderedGroup_3.eContents().get(0);
-		private final Assignment cMandatoryAssignment_3_0_0 = (Assignment)cAlternatives_3_0.eContents().get(0);
-		private final Keyword cMandatoryMandatoryKeyword_3_0_0_0 = (Keyword)cMandatoryAssignment_3_0_0.eContents().get(0);
-		private final Keyword cOptionalKeyword_3_0_1 = (Keyword)cAlternatives_3_0.eContents().get(1);
+		private final Assignment cOptionalAssignment_3_0_0 = (Assignment)cAlternatives_3_0.eContents().get(0);
+		private final Keyword cOptionalOptionalKeyword_3_0_0_0 = (Keyword)cOptionalAssignment_3_0_0.eContents().get(0);
+		private final Keyword cMandatoryKeyword_3_0_1 = (Keyword)cAlternatives_3_0.eContents().get(1);
 		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
 		private final Keyword cVisibleIfKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
 		private final Assignment cVisibilityAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
@@ -281,13 +281,13 @@ public class ConfiguratorGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueRangeValueRangeParserRuleCall_3_4_1_0 = (RuleCall)cValueRangeAssignment_3_4_1.eContents().get(0);
 		
 		//Parameter:
-		//	"parameter" name=ID description=STRING? ((mandatory?="mandatory" | "optional")? & ("visible-if"
+		//	"parameter" name=ID description=STRING? ((optional?="optional" | "mandatory")? & ("visible-if"
 		//	visibility=Expression)? & ("default-value" default=Expression)? & ("constraints" "{" constraints+=Constraint (","
 		//	constraints+=Constraint)* "}")? & "values" valueRange=ValueRange);
 		public ParserRule getRule() { return rule; }
 
-		//"parameter" name=ID description=STRING? ((mandatory?="mandatory" | "optional")? & ("visible-if" visibility=Expression)?
-		//& ("default-value" default=Expression)? & ("constraints" "{" constraints+=Constraint ("," constraints+=Constraint)*
+		//"parameter" name=ID description=STRING? ((optional?="optional" | "mandatory")? & ("visible-if" visibility=Expression)? &
+		//("default-value" default=Expression)? & ("constraints" "{" constraints+=Constraint ("," constraints+=Constraint)*
 		//"}")? & "values" valueRange=ValueRange)
 		public Group getGroup() { return cGroup; }
 
@@ -306,21 +306,21 @@ public class ConfiguratorGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_2_0() { return cDescriptionSTRINGTerminalRuleCall_2_0; }
 
-		//(mandatory?="mandatory" | "optional")? & ("visible-if" visibility=Expression)? & ("default-value" default=Expression)? &
+		//(optional?="optional" | "mandatory")? & ("visible-if" visibility=Expression)? & ("default-value" default=Expression)? &
 		//("constraints" "{" constraints+=Constraint ("," constraints+=Constraint)* "}")? & "values" valueRange=ValueRange
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//(mandatory?="mandatory" | "optional")?
+		//(optional?="optional" | "mandatory")?
 		public Alternatives getAlternatives_3_0() { return cAlternatives_3_0; }
 
-		//mandatory?="mandatory"
-		public Assignment getMandatoryAssignment_3_0_0() { return cMandatoryAssignment_3_0_0; }
-
-		//"mandatory"
-		public Keyword getMandatoryMandatoryKeyword_3_0_0_0() { return cMandatoryMandatoryKeyword_3_0_0_0; }
+		//optional?="optional"
+		public Assignment getOptionalAssignment_3_0_0() { return cOptionalAssignment_3_0_0; }
 
 		//"optional"
-		public Keyword getOptionalKeyword_3_0_1() { return cOptionalKeyword_3_0_1; }
+		public Keyword getOptionalOptionalKeyword_3_0_0_0() { return cOptionalOptionalKeyword_3_0_0_0; }
+
+		//"mandatory"
+		public Keyword getMandatoryKeyword_3_0_1() { return cMandatoryKeyword_3_0_1; }
 
 		//("visible-if" visibility=Expression)?
 		public Group getGroup_3_1() { return cGroup_3_1; }
@@ -1334,7 +1334,7 @@ public class ConfiguratorGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Parameter:
-	//	"parameter" name=ID description=STRING? ((mandatory?="mandatory" | "optional")? & ("visible-if"
+	//	"parameter" name=ID description=STRING? ((optional?="optional" | "mandatory")? & ("visible-if"
 	//	visibility=Expression)? & ("default-value" default=Expression)? & ("constraints" "{" constraints+=Constraint (","
 	//	constraints+=Constraint)* "}")? & "values" valueRange=ValueRange);
 	public ParameterElements getParameterAccess() {

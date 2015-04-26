@@ -363,84 +363,9 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   }
   
   protected CharSequence _compileParameterLink(final Parameter it) {
-    CharSequence _xblockexpression = null;
-    {
-      boolean _isMandatory = it.isMandatory();
-      final boolean isCollapsible = (!_isMandatory);
-      final String dataBindExprPrefix = " data-bind=\"";
-      String dataBindExpr = dataBindExprPrefix;
-      if (isCollapsible) {
-        String _name = it.getName();
-        String _plus = ((dataBindExprPrefix + "isExpanded: ") + _name);
-        String _plus_1 = (_plus + ".isOn");
-        dataBindExpr = _plus_1;
-      }
-      Expression _visibility = it.getVisibility();
-      boolean _notEquals = (!Objects.equal(_visibility, null));
-      if (_notEquals) {
-        boolean _equals = Objects.equal(dataBindExpr, dataBindExprPrefix);
-        if (_equals) {
-          String _name_1 = it.getName();
-          String _plus_2 = ((dataBindExprPrefix + "visible: ") + _name_1);
-          String _plus_3 = (_plus_2 + ".isVisible");
-          dataBindExpr = _plus_3;
-        } else {
-          String _name_2 = it.getName();
-          String _plus_4 = (", visible: " + _name_2);
-          String _plus_5 = (_plus_4 + ".isVisible");
-          dataBindExpr = _plus_5;
-        }
-      }
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<li");
-      {
-        if (isCollapsible) {
-          _builder.append(" data-role=\"collapsible\"");
-        }
-      }
-      {
-        boolean _notEquals_1 = (!Objects.equal(dataBindExpr, dataBindExprPrefix));
-        if (_notEquals_1) {
-          _builder.append(dataBindExpr, "");
-          _builder.append("\"");
-        }
-      }
-      _builder.append(">");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t        ");
-      {
-        if (isCollapsible) {
-          _builder.append("<h2>");
-        }
-      }
-      _builder.append("<label for=\"");
-      String _name_3 = it.getName();
-      _builder.append(_name_3, "\t        ");
-      _builder.append("-param\" >");
-      String _description = it.getDescription();
-      _builder.append(_description, "\t        ");
-      _builder.append(":</label>");
-      {
-        if (isCollapsible) {
-          _builder.append("</h2>");
-        }
-      }
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t            ");
-      ValueRange _valueRange = it.getValueRange();
-      CharSequence _renderRangeInputElement = this.renderRangeInputElement(_valueRange, it);
-      _builder.append(_renderRangeInputElement, "\t            ");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t        \t");
-      CharSequence _renderLocalValidatonMessage = this.renderLocalValidatonMessage(it);
-      _builder.append(_renderLocalValidatonMessage, "\t        \t");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t       ");
-      _builder.append("</li>");
-      _builder.newLine();
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field mandatory is undefined for the type JqmHtmlGenerator"
+      + "\n! cannot be resolved");
   }
   
   protected CharSequence _renderRangeInputElement(final Enumerated it, final Parameter param) {

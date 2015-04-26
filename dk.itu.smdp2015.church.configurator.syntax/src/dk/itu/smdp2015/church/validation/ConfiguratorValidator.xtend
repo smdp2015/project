@@ -16,8 +16,12 @@ import org.eclipse.xtext.validation.Check
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
 import dk.itu.smdp2015.church.model.configurator.Parameter
-import dk.itu.smdp2015.church.xtext.common.ExpressionType
+
 import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
+import dk.itu.smdp2015.church.model.configurator.Identifier
+import dk.itu.smdp2015.church.xtext.common.ExpressionType
+
+//github.com/smdp2015/project.git
 
 /**
  * Custom validation rules. 
@@ -30,6 +34,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 	public static val INVALID_ENUMERATION = 'invalid enumeration'
 	public static val INVALID_BINARYTYPE = 'invalid binary operand type'
 	public static val WRONG_TYPE = "dk.itu.smdp2015.church.WrongType"
+	public static val OPTIONAL_PARAMETER_INVALID = 'optional Parameter invalid'
 
 	@Inject extension ExpressionTypeProvider
 	@Inject extension ExpressionValueProvider
@@ -216,11 +221,33 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 					if (!range.values.exists[staticValue == defVal])
 						error('Default value should be among the listed values',
 							ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
-				// Bounded: to be done...
+				Bounded: {
+					var defaultValueIsValid = true;
+					if (range.lowerBound.staticValue instanceof Integer)
+						defaultValueIsValid = (range.lowerBound.staticValue as Integer) <= (defVal as Integer) && (range.upperBound.staticValue as Integer) >= (defVal as Integer)
+					else if (range.lowerBound.staticValue instanceof String)
+						defaultValueIsValid = (range.lowerBound.staticValue as String) <= (defVal as String) && (range.upperBound.staticValue as String) >= (defVal as String)
+					if (!defaultValueIsValid)
+						error('Default value should be within the specified value range', ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
+				}
 			}
 		}
 	}
 
+	@Check
+	def checkIdentifierOptional(Identifier identifier) {
+		if (identifier.id.optional) {
+			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IDENTIFIER__ID, OPTIONAL_PARAMETER_INVALID)
+		}
+	}
+
+	@Check
+	def checkInRangeOptional(InRange inRange) {
+		if (inRange.parameter.optional) {
+			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, OPTIONAL_PARAMETER_INVALID)
+		}
+	}
+	
 	def private checkExpectedType(ExpressionType actualType, ExpressionType expectedType, EReference reference) {
 		if (actualType != expectedType) {
 			error("expected type " + expectedType + ", actual type is " + actualType, reference, WRONG_TYPE)

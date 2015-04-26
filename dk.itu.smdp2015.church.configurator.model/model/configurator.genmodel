@@ -30,7 +30,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//ParameterGroup/parameters"/>
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Parameter/mandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Parameter/optional"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/valueRange"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference configurator.ecore#//Parameter/default"/>
     </genClasses>

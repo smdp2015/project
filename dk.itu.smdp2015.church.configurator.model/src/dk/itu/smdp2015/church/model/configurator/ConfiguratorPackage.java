@@ -280,13 +280,13 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER__CONSTRAINTS = ABSTRACT_PARAMETER__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * The feature id for the '<em><b>Optional</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__MANDATORY = ABSTRACT_PARAMETER_FEATURE_COUNT + 0;
+	int PARAMETER__OPTIONAL = ABSTRACT_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value Range</b></em>' containment reference.
@@ -1009,15 +1009,15 @@ public interface ConfiguratorPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory <em>Mandatory</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isOptional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Mandatory</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory()
+	 * @return the meta object for the attribute '<em>Optional</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#isOptional()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameter_Mandatory();
+	EAttribute getParameter_Optional();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getValueRange <em>Value Range</em>}'.
@@ -1497,12 +1497,12 @@ public interface ConfiguratorPackage extends EPackage {
 		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER__MANDATORY = eINSTANCE.getParameter_Mandatory();
+		EAttribute PARAMETER__OPTIONAL = eINSTANCE.getParameter_Optional();
 
 		/**
 		 * The meta object literal for the '<em><b>Value Range</b></em>' containment reference feature.

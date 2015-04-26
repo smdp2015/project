@@ -97,7 +97,7 @@ public class ConfiguratorParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterGroupAccess().getParametersAssignment_3_2_2_1(), "rule__ParameterGroup__ParametersAssignment_3_2_2_1");
 					put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
 					put(grammarAccess.getParameterAccess().getDescriptionAssignment_2(), "rule__Parameter__DescriptionAssignment_2");
-					put(grammarAccess.getParameterAccess().getMandatoryAssignment_3_0_0(), "rule__Parameter__MandatoryAssignment_3_0_0");
+					put(grammarAccess.getParameterAccess().getOptionalAssignment_3_0_0(), "rule__Parameter__OptionalAssignment_3_0_0");
 					put(grammarAccess.getParameterAccess().getVisibilityAssignment_3_1_1(), "rule__Parameter__VisibilityAssignment_3_1_1");
 					put(grammarAccess.getParameterAccess().getDefaultAssignment_3_2_1(), "rule__Parameter__DefaultAssignment_3_2_1");
 					put(grammarAccess.getParameterAccess().getConstraintsAssignment_3_3_2(), "rule__Parameter__ConstraintsAssignment_3_3_2");

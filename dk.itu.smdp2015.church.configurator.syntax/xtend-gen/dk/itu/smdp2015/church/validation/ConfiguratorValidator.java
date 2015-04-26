@@ -8,6 +8,7 @@ import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Expression;
+import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.Unary;
@@ -41,6 +42,8 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   public final static String INVALID_BINARYTYPE = "invalid binary operand type";
   
   public final static String WRONG_TYPE = "dk.itu.smdp2015.church.WrongType";
+  
+  public final static String OPTIONAL_PARAMETER_INVALID = "optional Parameter invalid";
   
   @Inject
   @Extension
@@ -345,6 +348,68 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
           }
         }
       }
+      if (!_matched) {
+        if (range instanceof Bounded) {
+          _matched=true;
+          boolean defaultValueIsValid = true;
+          Expression _lowerBound = ((Bounded)range).getLowerBound();
+          Object _staticValue = this._expressionValueProvider.staticValue(_lowerBound);
+          if ((_staticValue instanceof Integer)) {
+            boolean _and = false;
+            Expression _lowerBound_1 = ((Bounded)range).getLowerBound();
+            Object _staticValue_1 = this._expressionValueProvider.staticValue(_lowerBound_1);
+            boolean _lessEqualsThan = (((Integer) _staticValue_1).compareTo(((Integer) defVal)) <= 0);
+            if (!_lessEqualsThan) {
+              _and = false;
+            } else {
+              Expression _upperBound = ((Bounded)range).getUpperBound();
+              Object _staticValue_2 = this._expressionValueProvider.staticValue(_upperBound);
+              boolean _greaterEqualsThan = (((Integer) _staticValue_2).compareTo(((Integer) defVal)) >= 0);
+              _and = _greaterEqualsThan;
+            }
+            defaultValueIsValid = _and;
+          } else {
+            Expression _lowerBound_2 = ((Bounded)range).getLowerBound();
+            Object _staticValue_3 = this._expressionValueProvider.staticValue(_lowerBound_2);
+            if ((_staticValue_3 instanceof String)) {
+              boolean _and_1 = false;
+              Expression _lowerBound_3 = ((Bounded)range).getLowerBound();
+              Object _staticValue_4 = this._expressionValueProvider.staticValue(_lowerBound_3);
+              boolean _lessEqualsThan_1 = (((String) _staticValue_4).compareTo(((String) defVal)) <= 0);
+              if (!_lessEqualsThan_1) {
+                _and_1 = false;
+              } else {
+                Expression _upperBound_1 = ((Bounded)range).getUpperBound();
+                Object _staticValue_5 = this._expressionValueProvider.staticValue(_upperBound_1);
+                boolean _greaterEqualsThan_1 = (((String) _staticValue_5).compareTo(((String) defVal)) >= 0);
+                _and_1 = _greaterEqualsThan_1;
+              }
+              defaultValueIsValid = _and_1;
+            }
+          }
+          if ((!defaultValueIsValid)) {
+            this.error("Default value should be within the specified value range", ConfiguratorPackage.Literals.PARAMETER__DEFAULT, ConfiguratorValidator.INVALID_BOUND);
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkIdentifierOptional(final Identifier identifier) {
+    Parameter _id = identifier.getId();
+    boolean _isOptional = _id.isOptional();
+    if (_isOptional) {
+      this.error("Identifier cannot refer to an optional parameter", ConfiguratorPackage.Literals.IDENTIFIER__ID, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID);
+    }
+  }
+  
+  @Check
+  public void checkInRangeOptional(final InRange inRange) {
+    Parameter _parameter = inRange.getParameter();
+    boolean _isOptional = _parameter.isOptional();
+    if (_isOptional) {
+      this.error("Identifier cannot refer to an optional parameter", ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID);
     }
   }
   

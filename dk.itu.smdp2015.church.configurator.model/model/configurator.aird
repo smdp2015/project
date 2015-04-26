@@ -1028,7 +1028,7 @@
           <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_Sa5oY8meEeSJCdt4SN43MA">
             <key xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
             <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_VmkHONCxEeSgmMs19g-PFA">
-              <key xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/mandatory"/>
+              <key xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/optional"/>
               <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_VmkHOdCxEeSgmMs19g-PFA" key="_4EuT8MmfEeSJCdt4SN43MA">
                 <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_VmtRIdCxEeSgmMs19g-PFA" value="_VmtRINCxEeSgmMs19g-PFA">
                   <key xmi:type="ecore:EClass" href="configurator.ecore#//Parameter"/>
@@ -1326,9 +1326,9 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_7NjGFMmfEeSJCdt4SN43MA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_4EuT8MmfEeSJCdt4SN43MA" name="mandatory : EBoolean = true" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/mandatory"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/mandatory"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_4EuT8MmfEeSJCdt4SN43MA" name="optional : EBoolean = false" tooltipText="">
+          <target xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/optional"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="configurator.ecore#//Parameter/optional"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_VmtRItCxEeSgmMs19g-PFA" labelFormat="bold" labelAlignment="LEFT" description="_VmtRINCxEeSgmMs19g-PFA">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VmtRI9CxEeSgmMs19g-PFA"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_VmtRJNCxEeSgmMs19g-PFA"/>
