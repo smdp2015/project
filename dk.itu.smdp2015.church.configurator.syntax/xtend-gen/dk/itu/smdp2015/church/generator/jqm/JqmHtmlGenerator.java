@@ -2,7 +2,6 @@ package dk.itu.smdp2015.church.generator.jqm;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import dk.itu.smdp2015.church.generator.jqm.GroupNameStack;
 import dk.itu.smdp2015.church.generator.jqm.IJqmPartGenerator;
 import dk.itu.smdp2015.church.generator.jqm.JqmCommon;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
@@ -31,8 +30,6 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 @SuppressWarnings("all")
 public class JqmHtmlGenerator implements IJqmPartGenerator {
   private String currentPath = "";
-  
-  private final GroupNameStack _groupNameStack = new GroupNameStack();
   
   @Inject
   @Extension
@@ -219,13 +216,11 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   public String renderGroupPage(final ParameterGroup it) {
     String _xblockexpression = null;
     {
-      String _name = it.getName();
-      this._groupNameStack.pushLevel(_name);
       EList<AbstractParameter> _parameters = it.getParameters();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<div id=\"");
-      String _name_1 = it.getName();
-      _builder.append(_name_1, "");
+      String _name = it.getName();
+      _builder.append(_name, "");
       _builder.append("\" data-role=\"page\" data-bind=\"with: $root.");
       String _fullPath = this._jqmCommon.getFullPath(it);
       _builder.append(_fullPath, "");
@@ -237,8 +232,8 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       if (_description != null) {
         _elvis = _description;
       } else {
-        String _name_2 = it.getName();
-        _elvis = _name_2;
+        String _name_1 = it.getName();
+        _elvis = _name_1;
       }
       CharSequence _renderHeader = this.renderHeader(_elvis);
       _builder.append(_renderHeader, "\t\t\t");
@@ -273,7 +268,6 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       _builder.append("    \t");
       _builder.newLine();
       final String result = this.renderGroupPages(_parameters, _builder.toString());
-      this._groupNameStack.popLevel();
       _xblockexpression = result;
     }
     return _xblockexpression;

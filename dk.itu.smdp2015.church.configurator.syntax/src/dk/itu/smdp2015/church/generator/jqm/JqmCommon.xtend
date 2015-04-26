@@ -28,15 +28,4 @@ class JqmCommon {
 		}
 		parts.reverse.fold('')[result,it|result + it]
 	}
-	def dispatch String getFullPath(Parameter it){
-		val parts = new ArrayList<String>()
-		parts.add(name)
-		var parentGroup = parent
-		while(parentGroup!=null)
-		{
-			parts.add(parentGroup.groupName + "().")
-			parentGroup = parentGroup.parent
-		}
-		parts.reverse.fold('')[result,it|result + it]
-	}
 }

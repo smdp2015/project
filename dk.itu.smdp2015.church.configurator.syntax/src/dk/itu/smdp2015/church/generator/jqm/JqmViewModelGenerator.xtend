@@ -26,7 +26,6 @@ import java.security.InvalidParameterException
 
 class JqmViewModelGenerator implements IJqmPartGenerator {
 	private var currentPath = "";
-	val _groupNameStack = new GroupNameStack()
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
 	
@@ -62,11 +61,21 @@ App.ViewModel = ko.validatedObservable({
 
 });
 
-//Init special group validations, by resetting objects
-//App.ViewModel().group_seats(App.ViewModel().group_seats());
-		'''
+//Init special group validations, by resetting objects value
+«parameters.filter(typeof(ParameterGroup)).renderGroupValidationInit('')»
+'''
 	}
 	
+	def renderGroupValidationInit(Iterable<ParameterGroup> it,String result) {
+		fold(result)[prev,it|prev + renderGroupValidationInit]
+	}
+	def renderGroupValidationInit(ParameterGroup it) {
+		parameters.filter(typeof(ParameterGroup)).renderGroupValidationInit(
+			'''
+			App.ViewModel().«fullPath»(App.ViewModel().«fullPath»());
+			'''
+		)
+	}
 	def renderParameters(EList<AbstractParameter> it){
 		drop(1).fold(get(0).renderParam)[previous,it|previous + ", \n" + renderParam]
 	}
@@ -89,7 +98,7 @@ App.ViewModel = ko.validatedObservable({
            	return «visibility.renderExpression»
         }),«ENDIF»
 			«parameters.renderParameters»
-		})'''
+		})«FOR it:constraints»«renderConstraint»«ENDFOR»'''
 	}
 	def renderRequiredValidation(Parameter it) {
 		'''.extend({

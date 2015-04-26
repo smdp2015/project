@@ -2,7 +2,6 @@ package dk.itu.smdp2015.church.generator.jqm;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import dk.itu.smdp2015.church.generator.jqm.GroupNameStack;
 import dk.itu.smdp2015.church.generator.jqm.IJqmPartGenerator;
 import dk.itu.smdp2015.church.generator.jqm.JqmCommon;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
@@ -39,8 +38,6 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 @SuppressWarnings("all")
 public class JqmViewModelGenerator implements IJqmPartGenerator {
   private String currentPath = "";
-  
-  private final GroupNameStack _groupNameStack = new GroupNameStack();
   
   @Inject
   @Extension
@@ -110,11 +107,39 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     _builder.append("});");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("//Init special group validations, by resetting objects");
+    _builder.append("//Init special group validations, by resetting objects value");
     _builder.newLine();
-    _builder.append("//App.ViewModel().group_seats(App.ViewModel().group_seats());");
-    _builder.newLine();
+    EList<AbstractParameter> _parameters_1 = it.getParameters();
+    Iterable<ParameterGroup> _filter = Iterables.<ParameterGroup>filter(_parameters_1, ParameterGroup.class);
+    String _renderGroupValidationInit = this.renderGroupValidationInit(_filter, "");
+    _builder.append(_renderGroupValidationInit, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
+  }
+  
+  public String renderGroupValidationInit(final Iterable<ParameterGroup> it, final String result) {
+    final Function2<String, ParameterGroup, String> _function = new Function2<String, ParameterGroup, String>() {
+      public String apply(final String prev, final ParameterGroup it) {
+        Object _renderGroupValidationInit = JqmViewModelGenerator.this.renderGroupValidationInit(it);
+        return (prev + _renderGroupValidationInit);
+      }
+    };
+    return IterableExtensions.<ParameterGroup, String>fold(it, result, _function);
+  }
+  
+  public Object renderGroupValidationInit(final ParameterGroup it) {
+    EList<AbstractParameter> _parameters = it.getParameters();
+    Iterable<ParameterGroup> _filter = Iterables.<ParameterGroup>filter(_parameters, ParameterGroup.class);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("App.ViewModel().");
+    String _fullPath = this._jqmCommon.getFullPath(it);
+    _builder.append(_fullPath, "");
+    _builder.append("(App.ViewModel().");
+    String _fullPath_1 = this._jqmCommon.getFullPath(it);
+    _builder.append(_fullPath_1, "");
+    _builder.append("());");
+    _builder.newLineIfNotEmpty();
+    return this.renderGroupValidationInit(_filter, _builder.toString());
   }
   
   public String renderParameters(final EList<AbstractParameter> it) {
@@ -220,6 +245,13 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     _builder.append(_renderParameters, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("})");
+    {
+      EList<Constraint> _constraints = it.getConstraints();
+      for(final Constraint it_1 : _constraints) {
+        CharSequence _renderConstraint = this.renderConstraint(it_1);
+        _builder.append(_renderConstraint, "");
+      }
+    }
     return _builder.toString();
   }
   

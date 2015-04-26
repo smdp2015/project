@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 class JqmHtmlGenerator implements IJqmPartGenerator {
 	private var currentPath = "";
-	val _groupNameStack = new GroupNameStack()
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
 	
@@ -99,8 +98,6 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 	
 	
 	def renderGroupPage(ParameterGroup it) {
-		_groupNameStack.pushLevel(name)//We track full group path name, to support proper binding to the datamodel
-		
     	val result = parameters.renderGroupPages(
 	'''<div id="«name»" data-role="page" data-bind="with: $root.«fullPath»">
 			«renderHeader(description?:name)»
@@ -115,8 +112,6 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 		</div>
     	
 	''')
-    	
-    	_groupNameStack.popLevel
     	result
 	}
 	

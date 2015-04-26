@@ -60,41 +60,8 @@ public class JqmCommon {
     return _xblockexpression;
   }
   
-  protected String _getFullPath(final Parameter it) {
-    String _xblockexpression = null;
-    {
-      final ArrayList<String> parts = new ArrayList<String>();
-      String _name = it.getName();
-      parts.add(_name);
-      ParameterGroup parentGroup = it.getParent();
-      boolean _notEquals = (!Objects.equal(parentGroup, null));
-      boolean _while = _notEquals;
-      while (_while) {
-        {
-          String _groupName = this.getGroupName(parentGroup);
-          String _plus = (_groupName + "().");
-          parts.add(_plus);
-          ParameterGroup _parent = parentGroup.getParent();
-          parentGroup = _parent;
-        }
-        boolean _notEquals_1 = (!Objects.equal(parentGroup, null));
-        _while = _notEquals_1;
-      }
-      List<String> _reverse = ListExtensions.<String>reverse(parts);
-      final Function2<String, String, String> _function = new Function2<String, String, String>() {
-        public String apply(final String result, final String it) {
-          return (result + it);
-        }
-      };
-      _xblockexpression = IterableExtensions.<String, String>fold(_reverse, "", _function);
-    }
-    return _xblockexpression;
-  }
-  
   public String getFullPath(final EObject it) {
-    if (it instanceof Parameter) {
-      return _getFullPath((Parameter)it);
-    } else if (it instanceof AbstractParameter) {
+    if (it instanceof AbstractParameter) {
       return _getFullPath((AbstractParameter)it);
     } else if (it instanceof Identifier) {
       return _getFullPath((Identifier)it);
