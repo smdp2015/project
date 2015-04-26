@@ -148,7 +148,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
                
 	}
 	def dispatch compileParameterLink(Parameter it){
-		val isCollapsible =!mandatory
+		val isCollapsible = optional
 		val dataBindExprPrefix=' data-bind="'
 		var dataBindExpr =dataBindExprPrefix
 		if(isCollapsible)
