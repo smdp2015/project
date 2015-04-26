@@ -387,5 +387,6 @@ public enum BinaryOperator implements Enumerator {
 	public String toString() {
 		return literal;
 	}
+
 	
 } //BinaryOperator

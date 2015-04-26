@@ -42,19 +42,22 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   @Extension
   private JqmCommon _jqmCommon;
   
-  public JqmHtmlGenerator(final ExpressionTypeProvider extTypeProvider, final JqmCommon common) {
+  private String _rootFolder;
+  
+  public JqmHtmlGenerator(final ExpressionTypeProvider extTypeProvider, final JqmCommon common, final String rootFolder) {
+    this._rootFolder = rootFolder;
     this._expressionTypeProvider = extTypeProvider;
     this._jqmCommon = common;
   }
   
-  public void doGenerate(final Resource input, final IFileSystemAccess fsa, final String rootFolder) {
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = input.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<Configurator> _filter = Iterables.<Configurator>filter(_iterable, Configurator.class);
     for (final Configurator e : _filter) {
       {
         CharSequence generated = this.compile(e);
-        fsa.generateFile((rootFolder + "/main.html"), generated);
+        fsa.generateFile((this._rootFolder + "/main.html"), generated);
       }
     }
   }
@@ -126,7 +129,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.append("<body>");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("<div id=\"main\" data-role=\"page\" data-add-back-btn=\"true\">");
+    _builder.append("<div id=\"main\" data-role=\"page\">");
     _builder.newLine();
     _builder.append("        ");
     String _name = it.getName();
@@ -182,7 +185,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   
   public CharSequence renderHeader(final String title) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<div data-role=\"header\">");
+    _builder.append("<div data-role=\"header\" data-add-back-btn=\"true\">");
     _builder.newLine();
     _builder.append("            ");
     _builder.append("<h1>");
@@ -224,9 +227,9 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       String _name_1 = it.getName();
       _builder.append(_name_1, "");
       _builder.append("\" data-role=\"page\" data-bind=\"with: $root.");
-      String _fullPath = this._groupNameStack.getFullPath();
+      String _fullPath = this._jqmCommon.getFullPath(it);
       _builder.append(_fullPath, "");
-      _builder.append("\" data-add-back-btn=\"true\">");
+      _builder.append("\">");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
       String _elvis = null;
@@ -278,7 +281,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   
   public CharSequence renderValidatonSummary() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<section class=\"validationSection\" data-bind=\"css:{showValidationSummary: !isModelValid()}\">");
+    _builder.append("<section class=\"validationSection\" data-bind=\"css:{showValidationSummary: !$root.isModelValid()}\">");
     _builder.newLine();
     _builder.append("                ");
     _builder.append("<div class=\"validationSummary\">");
@@ -287,7 +290,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.append("<h4>Validation summary</h4>");
     _builder.newLine();
     _builder.append("                    ");
-    _builder.append("<ul data-bind=\"foreach: currentErrors\">");
+    _builder.append("<ul data-bind=\"foreach: $root.currentErrors\">");
     _builder.newLine();
     _builder.append("                        ");
     _builder.append("<li><span data-bind=\"text: $data\"> </span> </li>");
@@ -303,11 +306,6 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     return _builder;
   }
   
-  public String fullPathForParameter(final Parameter it) {
-    String _name = it.getName();
-    return (this.currentPath + _name);
-  }
-  
   public CharSequence renderLocalValidatonMessage(final Parameter it) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: ");
@@ -320,10 +318,9 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   public CharSequence renderLocalValidatonMessage(final ParameterGroup it) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: ");
-    String _name = it.getName();
-    String _groupName = this._jqmCommon.getGroupName(_name);
+    String _groupName = this._jqmCommon.getGroupName(it);
     _builder.append(_groupName, "");
-    _builder.append(".value\"></p>");
+    _builder.append("\"></p>");
     return _builder;
   }
   
@@ -335,19 +332,29 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       boolean _notEquals = (!Objects.equal(_visibility, null));
       if (_notEquals) {
         _builder.append(" data-bind=\"visible: ");
-        String _name = it.getName();
-        String _groupName = this._jqmCommon.getGroupName(_name);
+        String _groupName = this._jqmCommon.getGroupName(it);
         _builder.append(_groupName, "");
-        _builder.append("().visible\"");
+        _builder.append("().isVisible\"");
       }
     }
     _builder.append(">");
     _builder.newLineIfNotEmpty();
     _builder.append("                ");
     _builder.append("<a href=\"#");
-    String _name_1 = it.getName();
-    _builder.append(_name_1, "                ");
+    String _name = it.getName();
+    _builder.append(_name, "                ");
     _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("                \t");
+    String _elvis = null;
+    String _description = it.getDescription();
+    if (_description != null) {
+      _elvis = _description;
+    } else {
+      String _name_1 = it.getName();
+      _elvis = _name_1;
+    }
+    _builder.append(_elvis, "                \t");
     _builder.newLineIfNotEmpty();
     _builder.append("                    ");
     CharSequence _renderLocalValidatonMessage = this.renderLocalValidatonMessage(it);
@@ -416,8 +423,15 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       String _name_3 = it.getName();
       _builder.append(_name_3, "\t        ");
       _builder.append("-param\" >");
+      String _elvis = null;
       String _description = it.getDescription();
-      _builder.append(_description, "\t        ");
+      if (_description != null) {
+        _elvis = _description;
+      } else {
+        String _name_4 = it.getName();
+        _elvis = _name_4;
+      }
+      _builder.append(_elvis, "\t        ");
       _builder.append(":</label>");
       {
         if (isCollapsible) {

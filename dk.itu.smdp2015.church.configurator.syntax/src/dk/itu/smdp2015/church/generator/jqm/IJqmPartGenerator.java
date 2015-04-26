@@ -4,5 +4,5 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 
 public interface IJqmPartGenerator {
-	void doGenerate(Resource input, IFileSystemAccess fsa, String rootFolder);
+	void doGenerate(Resource input, IFileSystemAccess fsa) ;
 }

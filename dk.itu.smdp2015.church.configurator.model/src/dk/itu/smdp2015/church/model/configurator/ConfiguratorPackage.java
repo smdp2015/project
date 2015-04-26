@@ -143,13 +143,22 @@ public interface ConfiguratorPackage extends EPackage {
 	int ABSTRACT_PARAMETER__CONSTRAINTS = DESCRIBED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PARAMETER__PARENT = DESCRIBED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_PARAMETER_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Abstract Parameter</em>' class.
@@ -205,6 +214,15 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_GROUP__CONSTRAINTS = ABSTRACT_PARAMETER__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_GROUP__PARENT = ABSTRACT_PARAMETER__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -278,6 +296,15 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__CONSTRAINTS = ABSTRACT_PARAMETER__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__PARENT = ABSTRACT_PARAMETER__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Optional</b></em>' attribute.
@@ -978,6 +1005,17 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getAbstractParameter_Constraints();
 
 	/**
+	 * Returns the meta object for the container reference '{@link dk.itu.smdp2015.church.model.configurator.AbstractParameter#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.AbstractParameter#getParent()
+	 * @see #getAbstractParameter()
+	 * @generated
+	 */
+	EReference getAbstractParameter_Parent();
+
+	/**
 	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.ParameterGroup <em>Parameter Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1467,6 +1505,14 @@ public interface ConfiguratorPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ABSTRACT_PARAMETER__CONSTRAINTS = eINSTANCE.getAbstractParameter_Constraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_PARAMETER__PARENT = eINSTANCE.getAbstractParameter_Parent();
 
 		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterGroupImpl <em>Parameter Group</em>}' class.

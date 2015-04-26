@@ -8,6 +8,7 @@ import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Expression;
 import dk.itu.smdp2015.church.model.configurator.NamedElement;
 
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
 import java.lang.String;
 
 import java.util.Collection;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -35,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.impl.AbstractParameterImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,6 +184,63 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ParameterGroup getParent() {
+		if (eContainerFeatureID() != ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT) return null;
+		return (ParameterGroup)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParent(ParameterGroup newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(ParameterGroup newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, ConfiguratorPackage.PARAMETER_GROUP__PARAMETERS, ParameterGroup.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT, newParent, newParent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParent((ParameterGroup)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -188,8 +248,24 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 				return basicSetVisibility(null, msgs);
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				return eInternalContainer().eInverseRemove(this, ConfiguratorPackage.PARAMETER_GROUP__PARAMETERS, ParameterGroup.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -206,6 +282,8 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 				return getVisibility();
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				return getConstraints();
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -229,6 +307,9 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 				getConstraints().clear();
 				getConstraints().addAll((Collection<? extends Constraint>)newValue);
 				return;
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				setParent((ParameterGroup)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -250,6 +331,9 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				getConstraints().clear();
 				return;
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				setParent((ParameterGroup)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -268,6 +352,8 @@ public abstract class AbstractParameterImpl extends DescribedElementImpl impleme
 				return visibility != null;
 			case ConfiguratorPackage.ABSTRACT_PARAMETER__CONSTRAINTS:
 				return constraints != null && !constraints.isEmpty();
+			case ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT:
+				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

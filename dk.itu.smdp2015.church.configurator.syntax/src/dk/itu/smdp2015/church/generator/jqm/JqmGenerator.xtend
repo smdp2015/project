@@ -9,22 +9,22 @@ import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
 class JqmGenerator implements IGenerator {
 	
 	String rootFolder = "JQM config"
+	String scriptFolder =rootFolder +"/Scripts/Src-gen"
 	IJqmPartGenerator[] _gens = #{
-		new JqmHtmlGenerator(new ExpressionTypeProvider(),new JqmCommon()),
-		new JqmViewModelGenerator(new ExpressionTypeProvider(),new JqmCommon())
+		new JqmHtmlGenerator(new ExpressionTypeProvider(),new JqmCommon(),rootFolder),
+		new JqmViewModelGenerator(new ExpressionTypeProvider(),new JqmCommon(),scriptFolder),
+		new JqmKoPageBindingGenerator(scriptFolder)
 		
 	};
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		_gens.forEach[
 		try{
-				
-				doGenerate(input, fsa,rootFolder);
+				doGenerate(input, fsa);
 			}catch(Exception ex){
-				System.out.println(String.format("Error generating JQM code with %S: \n %S \n %S", it.class.name,ex.message,ex.stackTrace.toString()))
-			}
-			
-			]
+				System.out.println(String.format("Error generating JQM code with %S: \n %S \n", it.class.name,ex.message))
+				ex.printStackTrace
+			}]
 	}
 	
 }

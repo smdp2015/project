@@ -278,6 +278,15 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAbstractParameter_Parent() {
+		return (EReference)abstractParameterEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getParameterGroup() {
 		return parameterGroupEClass;
 	}
@@ -682,6 +691,7 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		abstractParameterEClass = createEClass(ABSTRACT_PARAMETER);
 		createEReference(abstractParameterEClass, ABSTRACT_PARAMETER__VISIBILITY);
 		createEReference(abstractParameterEClass, ABSTRACT_PARAMETER__CONSTRAINTS);
+		createEReference(abstractParameterEClass, ABSTRACT_PARAMETER__PARENT);
 
 		parameterGroupEClass = createEClass(PARAMETER_GROUP);
 		createEReference(parameterGroupEClass, PARAMETER_GROUP__PARAMETERS);
@@ -796,9 +806,10 @@ public class ConfiguratorPackageImpl extends EPackageImpl implements Configurato
 		initEClass(abstractParameterEClass, AbstractParameter.class, "AbstractParameter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractParameter_Visibility(), this.getExpression(), null, "visibility", null, 0, 1, AbstractParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractParameter_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, AbstractParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractParameter_Parent(), this.getParameterGroup(), this.getParameterGroup_Parameters(), "parent", null, 0, 1, AbstractParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterGroupEClass, ParameterGroup.class, "ParameterGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameterGroup_Parameters(), this.getAbstractParameter(), null, "parameters", null, 1, -1, ParameterGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameterGroup_Parameters(), this.getAbstractParameter(), this.getAbstractParameter_Parent(), "parameters", null, 1, -1, ParameterGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Optional(), ecorePackage.getEBoolean(), "optional", "false", 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

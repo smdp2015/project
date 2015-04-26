@@ -18,17 +18,21 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 	val _groupNameStack = new GroupNameStack()
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
-	new(ExpressionTypeProvider extTypeProvider, JqmCommon common){
+	
+	String _rootFolder
+	
+	new(ExpressionTypeProvider extTypeProvider, JqmCommon common, String rootFolder){
+		_rootFolder =rootFolder
 		_expressionTypeProvider = extTypeProvider
 		_jqmCommon = common
 	}
-	override doGenerate(Resource input, IFileSystemAccess fsa, String rootFolder) {
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
 			
 		for (e : input.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);
 
 			
-			fsa.generateFile(rootFolder + "/main.html", generated)
+			fsa.generateFile(_rootFolder + "/main.html", generated)
 		}
 	}
 	def compile(Configurator it) {
@@ -60,7 +64,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 
 </head>
 <body>
-    <div id="main" data-role="page" data-add-back-btn="true">
+    <div id="main" data-role="page">
         «renderHeader(name)»
 
         <div role="main">
@@ -80,7 +84,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 	}
 	
 	def renderHeader(String title) {
-		'''<div data-role="header">
+		'''<div data-role="header" data-add-back-btn="true">
             <h1>
                 «title»
             </h1>
@@ -98,7 +102,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 		_groupNameStack.pushLevel(name)//We track full group path name, to support proper binding to the datamodel
 		
     	val result = parameters.renderGroupPages(
-	'''<div id="«name»" data-role="page" data-bind="with: $root.«_groupNameStack.fullPath»" data-add-back-btn="true">
+	'''<div id="«name»" data-role="page" data-bind="with: $root.«fullPath»">
 			«renderHeader(description?:name)»
 	        <div role="main">
 	            «renderValidatonSummary»
@@ -118,29 +122,28 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 	
 	
 	def renderValidatonSummary() {
-		'''<section class="validationSection" data-bind="css:{showValidationSummary: !isModelValid()}">
+		'''<section class="validationSection" data-bind="css:{showValidationSummary: !$root.isModelValid()}">
                 <div class="validationSummary">
                     <h4>Validation summary</h4>
-                    <ul data-bind="foreach: currentErrors">
+                    <ul data-bind="foreach: $root.currentErrors">
                         <li><span data-bind="text: $data"> </span> </li>
                     </ul>
                 </div>
             </section>'''
 	}
-	def fullPathForParameter(Parameter it){
-		currentPath + name
-	}
+	
 	def renderLocalValidatonMessage(Parameter it) {
 		'''<p class="validationMessage" data-bind="validationMessage: «name».value"></p>'''
 	}
 	def renderLocalValidatonMessage(ParameterGroup it) {
-		'''<p class="validationMessage" data-bind="validationMessage: «name.groupName».value"></p>'''
+		'''<p class="validationMessage" data-bind="validationMessage: «groupName»"></p>'''
 	}
 	
 	def dispatch compileParameterLink(ParameterGroup it){
 		 '''
-		  <li«IF visibility!=null» data-bind="visible: «name.groupName»().visible"«ENDIF»>
+		  <li«IF visibility!=null» data-bind="visible: «groupName»().isVisible"«ENDIF»>
                 <a href="#«name»">
+                	«description?:name»
                     «renderLocalValidatonMessage»
                 </a>
           </li>
@@ -159,7 +162,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 			else
 				dataBindExpr = ", visible: "+ name + ".isVisible"
 		'''<li«IF isCollapsible» data-role="collapsible"«ENDIF»«IF dataBindExpr!=dataBindExprPrefix»«dataBindExpr»"«ENDIF»>
-	        «IF isCollapsible»<h2>«ENDIF»<label for="«name»-param" >«description»:</label>«IF isCollapsible»</h2>«ENDIF»
+	        «IF isCollapsible»<h2>«ENDIF»<label for="«name»-param" >«description?:name»:</label>«IF isCollapsible»</h2>«ENDIF»
 	            «valueRange.renderRangeInputElement(it)»
 	        	«renderLocalValidatonMessage»
 	       </li>
