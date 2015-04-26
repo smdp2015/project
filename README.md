@@ -12,7 +12,7 @@
 * Constraints bør have en description (warning)
 * Alle parametre og grupper bør have unikke navne globalt
 * Enumerated værdier bør være unikke DONE
-
+* En bounded range bør kun være Integer (eller anden værdi, men vi har kun integer)
 
 # Kodegenerering:
 
