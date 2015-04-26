@@ -2,15 +2,18 @@ package dk.itu.smdp2015.church.generator.jqm;
 
 import com.google.common.collect.Iterables;
 import dk.itu.smdp2015.church.generator.jqm.IJqmPartGenerator;
+import dk.itu.smdp2015.church.generator.jqm.JqmCommon;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
+import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -19,7 +22,12 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class JqmKoPageBindingGenerator implements IJqmPartGenerator {
   private String _rootFolder;
   
-  public JqmKoPageBindingGenerator(final String rootFolder) {
+  @Inject
+  @Extension
+  private JqmCommon _jqmCommon;
+  
+  public JqmKoPageBindingGenerator(final JqmCommon common, final String rootFolder) {
+    this._jqmCommon = common;
     this._rootFolder = rootFolder;
   }
   
@@ -30,7 +38,10 @@ public class JqmKoPageBindingGenerator implements IJqmPartGenerator {
     for (final Configurator e : _filter) {
       {
         CharSequence generated = this.compile(e);
-        fsa.generateFile((this._rootFolder + "/ko-initpagebinding.js"), generated);
+        String _resourceFileName = this._jqmCommon.getResourceFileName(input);
+        String _plus = ((this._rootFolder + "/") + _resourceFileName);
+        String _plus_1 = (_plus + "-ko-initpagebinding.js");
+        fsa.generateFile(_plus_1, generated);
       }
     }
   }

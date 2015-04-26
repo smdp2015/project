@@ -22,7 +22,7 @@ public class JqmGenerator implements IGenerator {
   
   private String scriptFolder = (this.rootFolder + "/Scripts/Src-gen");
   
-  private IJqmPartGenerator[] _gens = ((IJqmPartGenerator[])Conversions.unwrapArray(Collections.<IJqmPartGenerator>unmodifiableSet(Sets.<IJqmPartGenerator>newHashSet(new JqmHtmlGenerator(new ExpressionTypeProvider(), new JqmCommon(), this.rootFolder), new JqmViewModelGenerator(new ExpressionTypeProvider(), new JqmCommon(), this.scriptFolder), new JqmKoPageBindingGenerator(this.scriptFolder))), IJqmPartGenerator.class));
+  private IJqmPartGenerator[] _gens = ((IJqmPartGenerator[])Conversions.unwrapArray(Collections.<IJqmPartGenerator>unmodifiableSet(Sets.<IJqmPartGenerator>newHashSet(new JqmHtmlGenerator(new ExpressionTypeProvider(), new JqmCommon(), this.rootFolder), new JqmViewModelGenerator(new ExpressionTypeProvider(), new JqmCommon(), this.scriptFolder), new JqmKoPageBindingGenerator(new JqmCommon(), this.scriptFolder))), IJqmPartGenerator.class));
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     final Consumer<IJqmPartGenerator> _function = new Consumer<IJqmPartGenerator>() {

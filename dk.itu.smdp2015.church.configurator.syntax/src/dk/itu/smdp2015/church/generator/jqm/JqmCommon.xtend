@@ -6,6 +6,7 @@ import java.util.List
 import java.util.ArrayList
 import dk.itu.smdp2015.church.model.configurator.Parameter
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter
+import org.eclipse.emf.ecore.resource.Resource
 
 class JqmCommon {
 	def getGroupName(ParameterGroup it){
@@ -27,5 +28,9 @@ class JqmCommon {
 			parentGroup = parentGroup.parent
 		}
 		parts.reverse.fold('')[result,it|result + it]
+	}
+	
+	def getResourceFileName(Resource it){
+		URI.lastSegment.split(".conf").get(0)
 	}
 }

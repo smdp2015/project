@@ -26,14 +26,16 @@ import java.security.InvalidParameterException
 
 class JqmKoPageBindingGenerator implements IJqmPartGenerator {
 	String _rootFolder
-	new(String rootFolder){
+	@Inject extension JqmCommon
+	new(JqmCommon common, String rootFolder){
+		_jqmCommon = common;
 		_rootFolder =rootFolder
 	}
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 			
 		for (e : input.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);
-			fsa.generateFile(_rootFolder + "/ko-initpagebinding.js", generated)
+			fsa.generateFile(_rootFolder + "/" +input.resourceFileName + "-ko-initpagebinding.js", generated)
 		}
 	}
 	def compile(Configurator it) {

@@ -14,11 +14,12 @@ import dk.itu.smdp2015.church.xtext.common.*
 import javax.inject.Inject
 
 class JqmHtmlGenerator implements IJqmPartGenerator {
-	private var currentPath = "";
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
 	
 	String _rootFolder
+	
+	Resource _input
 	
 	new(ExpressionTypeProvider extTypeProvider, JqmCommon common, String rootFolder){
 		_rootFolder =rootFolder
@@ -26,12 +27,12 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 		_jqmCommon = common
 	}
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-			
+		_input =input
 		for (e : input.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);
 
 			
-			fsa.generateFile(_rootFolder + "/main.html", generated)
+			fsa.generateFile(_rootFolder +"/" +input.URI.lastSegment.replace(".conf", ".html"), generated)
 		}
 	}
 	def compile(Configurator it) {
@@ -55,8 +56,8 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
     <script src="Scripts/ko-init.js"></script>
     <script src="Scripts/ko-initcustomhandlers.js"></script>
 
-    <script src="Scripts/Src-gen/app-viewmodel.js"></script>
-    <script src="Scripts/Src-gen/ko-initpagebinding.js"></script>
+    <script src="Scripts/Src-gen/«_input.resourceFileName»-app-viewmodel.js"></script>
+    <script src="Scripts/Src-gen/«_input.resourceFileName»-ko-initpagebinding.js"></script>
 
     <script src="Scripts/jqm-init.js"></script>
     <script src="Scripts/Lib/jquery.mobile-1.4.5.min.js"></script>

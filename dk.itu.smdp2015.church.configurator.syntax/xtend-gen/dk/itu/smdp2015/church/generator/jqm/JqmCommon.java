@@ -8,7 +8,9 @@ import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -58,6 +60,13 @@ public class JqmCommon {
       _xblockexpression = IterableExtensions.<String, String>fold(_reverse, "", _function);
     }
     return _xblockexpression;
+  }
+  
+  public String getResourceFileName(final Resource it) {
+    URI _uRI = it.getURI();
+    String _lastSegment = _uRI.lastSegment();
+    String[] _split = _lastSegment.split(".conf");
+    return _split[0];
   }
   
   public String getFullPath(final EObject it) {

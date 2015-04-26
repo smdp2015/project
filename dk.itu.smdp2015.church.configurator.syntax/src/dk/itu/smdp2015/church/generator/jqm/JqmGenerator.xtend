@@ -11,9 +11,9 @@ class JqmGenerator implements IGenerator {
 	String rootFolder = "JQM config"
 	String scriptFolder =rootFolder +"/Scripts/Src-gen"
 	IJqmPartGenerator[] _gens = #{
-		new JqmHtmlGenerator(new ExpressionTypeProvider(),new JqmCommon(),rootFolder),
+		new JqmHtmlGenerator(new ExpressionTypeProvider,new JqmCommon,rootFolder),
 		new JqmViewModelGenerator(new ExpressionTypeProvider(),new JqmCommon(),scriptFolder),
-		new JqmKoPageBindingGenerator(scriptFolder)
+		new JqmKoPageBindingGenerator(new JqmCommon,scriptFolder)
 		
 	};
 	

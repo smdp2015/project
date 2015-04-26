@@ -40,7 +40,7 @@ class JqmViewModelGenerator implements IJqmPartGenerator {
 			
 		for (e : input.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);
-			fsa.generateFile(_rootFolder + "/app-viewmodel.js", generated)
+			fsa.generateFile(_rootFolder + "/" + input.resourceFileName + "-app-viewmodel.js", generated)
 		}
 	}
 	def compile(Configurator it) {

@@ -18,6 +18,7 @@ import java.util.Arrays;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -29,8 +30,6 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class JqmHtmlGenerator implements IJqmPartGenerator {
-  private String currentPath = "";
-  
   @Inject
   @Extension
   private ExpressionTypeProvider _expressionTypeProvider;
@@ -41,6 +40,8 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   
   private String _rootFolder;
   
+  private Resource _input;
+  
   public JqmHtmlGenerator(final ExpressionTypeProvider extTypeProvider, final JqmCommon common, final String rootFolder) {
     this._rootFolder = rootFolder;
     this._expressionTypeProvider = extTypeProvider;
@@ -48,13 +49,18 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   }
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+    this._input = input;
     TreeIterator<EObject> _allContents = input.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<Configurator> _filter = Iterables.<Configurator>filter(_iterable, Configurator.class);
     for (final Configurator e : _filter) {
       {
         CharSequence generated = this.compile(e);
-        fsa.generateFile((this._rootFolder + "/main.html"), generated);
+        URI _uRI = input.getURI();
+        String _lastSegment = _uRI.lastSegment();
+        String _replace = _lastSegment.replace(".conf", ".html");
+        String _plus = ((this._rootFolder + "/") + _replace);
+        fsa.generateFile(_plus, generated);
       }
     }
   }
@@ -108,11 +114,17 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("<script src=\"Scripts/Src-gen/app-viewmodel.js\"></script>");
-    _builder.newLine();
+    _builder.append("<script src=\"Scripts/Src-gen/");
+    String _resourceFileName = this._jqmCommon.getResourceFileName(this._input);
+    _builder.append(_resourceFileName, "    ");
+    _builder.append("-app-viewmodel.js\"></script>");
+    _builder.newLineIfNotEmpty();
     _builder.append("    ");
-    _builder.append("<script src=\"Scripts/Src-gen/ko-initpagebinding.js\"></script>");
-    _builder.newLine();
+    _builder.append("<script src=\"Scripts/Src-gen/");
+    String _resourceFileName_1 = this._jqmCommon.getResourceFileName(this._input);
+    _builder.append(_resourceFileName_1, "    ");
+    _builder.append("-ko-initpagebinding.js\"></script>");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<script src=\"Scripts/jqm-init.js\"></script>");

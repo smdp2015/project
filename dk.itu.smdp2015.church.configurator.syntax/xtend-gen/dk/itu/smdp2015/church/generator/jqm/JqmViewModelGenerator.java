@@ -62,7 +62,10 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     for (final Configurator e : _filter) {
       {
         CharSequence generated = this.compile(e);
-        fsa.generateFile((this._rootFolder + "/app-viewmodel.js"), generated);
+        String _resourceFileName = this._jqmCommon.getResourceFileName(input);
+        String _plus = ((this._rootFolder + "/") + _resourceFileName);
+        String _plus_1 = (_plus + "-app-viewmodel.js");
+        fsa.generateFile(_plus_1, generated);
       }
     }
   }
