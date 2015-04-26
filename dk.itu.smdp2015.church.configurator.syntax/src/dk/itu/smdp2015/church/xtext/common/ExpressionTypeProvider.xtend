@@ -1,4 +1,4 @@
-package dk.itu.smdp2015.church.validation
+package dk.itu.smdp2015.church.xtext.common
 
 import dk.itu.smdp2015.church.model.configurator.Binary
 import dk.itu.smdp2015.church.model.configurator.Boolean
@@ -14,6 +14,7 @@ import dk.itu.smdp2015.church.model.configurator.ValueRange
 
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
+import dk.itu.smdp2015.church.xtext.common.ExpressionType
 
 class ExpressionTypeProvider {
 

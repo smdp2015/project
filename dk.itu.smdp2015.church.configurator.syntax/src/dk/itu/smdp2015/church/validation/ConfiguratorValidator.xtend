@@ -16,6 +16,8 @@ import org.eclipse.xtext.validation.Check
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
 import dk.itu.smdp2015.church.model.configurator.Parameter
+import dk.itu.smdp2015.church.xtext.common.ExpressionType
+import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
 
 /**
  * Custom validation rules. 

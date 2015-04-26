@@ -22,7 +22,7 @@ import dk.itu.smdp2015.church.model.configurator.Expression
 class CSGenerator implements IGenerator {
 	var classes = new LinkedList<String>
 	var confBuilder = new LinkedList<String>
-
+  
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);

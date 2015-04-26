@@ -9,7 +9,7 @@ import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.UnaryOperator;
-import dk.itu.smdp2015.church.validation.ExpressionType;
+import dk.itu.smdp2015.church.xtext.common.ExpressionType;
 import java.util.Arrays;
 
 @SuppressWarnings("all")

@@ -21,6 +21,7 @@ import dk.itu.smdp2015.church.model.configurator.BinaryOperator
 import dk.itu.smdp2015.church.model.configurator.Constraint
 import java.util.List
 import java.util.ArrayList
+import dk.itu.smdp2015.church.generator.jqm.JqmGenerator
 
 /**
  * Generates code from your model files on save.
@@ -29,14 +30,22 @@ import java.util.ArrayList
  */
 class ConfiguratorGenerator implements IGenerator {
 			
+	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 //		for(e:resource.allContents.toIterable.filter(typeof(Configurator)))
 //		{
 //			fsa.generateFile("configurator.cs", e.compile)
 //		}
-		
-		var csGenerator = new CSGenerator();
-		csGenerator.doGenerate(resource, fsa);		
+
+		var generators = #{new CSGenerator(),new JqmGenerator()};
+		generators.forEach[
+			try{
+				it.doGenerate(resource, fsa);
+			}catch(Exception ex){
+				System.out.println(String.format("Error generating code with %S: \n %S \n %S", it.class.name,ex.message,ex.stackTrace))
+			}
+		]		
 	}
+	
 }
 	

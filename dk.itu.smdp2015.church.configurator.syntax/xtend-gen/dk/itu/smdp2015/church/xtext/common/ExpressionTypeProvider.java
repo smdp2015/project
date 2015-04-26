@@ -1,4 +1,4 @@
-package dk.itu.smdp2015.church.validation;
+package dk.itu.smdp2015.church.xtext.common;
 
 import dk.itu.smdp2015.church.model.configurator.Binary;
 import dk.itu.smdp2015.church.model.configurator.BinaryOperator;
@@ -12,7 +12,7 @@ import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.UnaryOperator;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
-import dk.itu.smdp2015.church.validation.ExpressionType;
+import dk.itu.smdp2015.church.xtext.common.ExpressionType;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 
