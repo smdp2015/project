@@ -37,6 +37,30 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
 	}
 	def compile(Configurator it) {
 		'''
+«renderHeadHtmlPart»
+«renderBodyPart»
+    '''
+	}
+	
+	def renderBodyPart(Configurator it){
+		'''<body>
+    <div id="main" data-role="page">
+        «renderHeader(name)»
+        <div role="main">
+           «renderAppDescription»
+           «renderValidatonSummary»
+           <ul data-role="listview">
+	           «FOR it :  parameters»	
+	          		«compileParameterLink»
+	           «ENDFOR»
+           </ul>
+        </div>
+    </div>
+	«parameters.renderGroupPages('')»
+</body>'''
+	}
+	def renderHeadHtmlPart(){
+		'''
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -56,34 +80,24 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     <script src="Scripts/ko-init.js"></script>
     <script src="Scripts/ko-initcustomhandlers.js"></script>
 
-    <script src="Scripts/Src-gen/«_input.resourceFileName»-app-viewmodel.js"></script>
-    <script src="Scripts/Src-gen/«_input.resourceFileName»-ko-initpagebinding.js"></script>
+    <script src="Scripts/Src-gen/«_input?.resourceFileName»-app-viewmodel.js"></script>
+    <script src="Scripts/Src-gen/«_input?.resourceFileName»-ko-initpagebinding.js"></script>
 
     <script src="Scripts/jqm-init.js"></script>
     <script src="Scripts/Lib/jquery.mobile-1.4.5.min.js"></script>
 
-</head>
-<body>
-    <div id="main" data-role="page">
-        «renderHeader(name)»
-
-        <div role="main">
-            <section class="main-description">
+</head>'''
+	}
+	def String renderAppDescription(Configurator it) {
+		'''<section class="main-description">
                 «description»
             </section>
-            «renderValidatonSummary»
-            <ul data-role="listview">
-	            «FOR it :  parameters»	
-	            	«compileParameterLink»
-	            «ENDFOR»
-            </ul>
-        </div>
-    </div>
-	«parameters.renderGroupPages('')»
-    '''
+            '''
 	}
-	
-	def renderHeader(String title) {
+	def renderHeader(ParameterGroup it) {
+		renderHeader(description?:name)
+	}
+	private def renderHeader(String title) {
 		'''<div data-role="header" data-add-back-btn="true">
             <h1>
                 «title»
@@ -100,19 +114,18 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
 	
 	def renderGroupPage(ParameterGroup it) {
     	val result = parameters.renderGroupPages(
-	'''<div id="«name»" data-role="page" data-bind="with: $root.«fullPath»">
-			«renderHeader(description?:name)»
+	'''		<div id="«name»" data-role="page" data-bind="with: $root.«fullPath»">
+			«renderHeader»
 	        <div role="main">
 	            «renderValidatonSummary»
-	            <ul data-role="listview" >
+	            <ul data-role="listview">
 	                 «FOR it :  parameters»	
 	            		«compileParameterLink»
 	            	«ENDFOR»
 	            </ul>
 	        </div>
 		</div>
-    	
-	''')
+		''')
     	result
 	}
 	
@@ -129,13 +142,17 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
 	}
 	
 	def renderLocalValidatonMessage(Parameter it) {
-		'''<p class="validationMessage" data-bind="validationMessage: «name».value"></p>'''
+		'''
+		<p class="validationMessage" data-bind="validationMessage: «name».value"></p>
+		'''
 	}
 	def renderLocalValidatonMessage(ParameterGroup it) {
-		'''<p class="validationMessage" data-bind="validationMessage: «groupName»"></p>'''
+		'''
+		<p class="validationMessage" data-bind="validationMessage: «groupName»"></p>
+		'''
 	}
 	def dispatch String compileParameterLink(AbstractParameter it){
-               
+          //for enabling calling as base reference  
 	}
 	def dispatch String compileParameterLink(ParameterGroup it){
 		 '''
@@ -161,7 +178,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
 				dataBindExpr = ", visible: "+ name + ".isVisible"
 		'''<li«IF isCollapsible» data-role="collapsible"«ENDIF»«IF dataBindExpr!=dataBindExprPrefix»«dataBindExpr»"«ENDIF»>
 	        «IF isCollapsible»<h2>«ENDIF»<label for="«name»-param" >«description?:name»:</label>«IF isCollapsible»</h2>«ENDIF»
-	            «valueRange.renderRangeInputElement(it)»
+	            «valueRange?.renderRangeInputElement(it)»
 	        	«renderLocalValidatonMessage»
 	       </li>
 	       '''

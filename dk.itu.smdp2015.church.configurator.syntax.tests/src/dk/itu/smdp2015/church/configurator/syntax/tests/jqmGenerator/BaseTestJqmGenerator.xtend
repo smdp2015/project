@@ -1,4 +1,4 @@
-package dk.itu.smdp2015.church.configurator.syntax.tests
+package dk.itu.smdp2015.church.configurator.syntax.tests.jqmGenerator
 
 import org.junit.Test
 import javax.inject.Inject
@@ -16,39 +16,33 @@ import dk.itu.smdp2015.church.ConfiguratorInjectorProvider
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage
 import org.junit.Before
 import org.junit.BeforeClass
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup
+import dk.itu.smdp2015.church.model.configurator.Parameter
+import dk.itu.smdp2015.church.configurator.syntax.tests.BaseXtextTest
 
-@RunWith(XtextRunner)
-@InjectWith(ConfiguratorInjectorProvider)
-class TestJqmHtmlGenerator {
+abstract class BaseTestJqmGenerator extends BaseXtextTest{
 
-	@Inject extension ParseHelper<Configurator>
-	@Inject extension JqmHtmlGenerator
-	@BeforeClass
-	def static void beforeClass(){
-		ConfiguratorPackage.eINSTANCE.eClass
-		
+	//helpers
+	def String addPrefix (String it){
+		'configuration testconfig ' + it
 	}
-	def void testGroupLink_RendersAsListItem(){
-		
-		'configuration test {group test{}}}'.parse =>
-		[
-			compileParameterLink(parameters.get(0)).assertHtml(
-		'''<li>
-                <a href="#test">
-                	test
-                    <p class="validationMessage" data-bind="validationMessage: group_test"></p>
-                </a>
-          </li>
-          ''')
-		]
-		
+	def firstGroup (Configurator it){
+		parameters.filter(typeof(ParameterGroup)).get(0)
 	}
-	def void assertHtml(String actual, String expected)
+	def firstParam (Configurator it){
+		parameters.filter(typeof(Parameter)).get(0)
+	}
+	def dispatch void assertHtmlWithExpectedOutput(CharSequence actual, String expected)
+	{
+		assertHtmlWithExpectedOutput(actual.toString,expected)
+	}
+	def dispatch void assertHtmlWithExpectedOutput(String actual, String expected)
 	{
 		Assert.assertEquals(expected.debuggableWhitespace,actual.debuggableWhitespace)
 	}	
 	def String debuggableWhitespace(String it)
 	{
-		replace(" ","+")
+		return it
+		//replace(" ","+")
 	}	
 }

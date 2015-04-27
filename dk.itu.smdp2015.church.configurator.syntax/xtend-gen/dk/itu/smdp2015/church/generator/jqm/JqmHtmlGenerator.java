@@ -70,6 +70,69 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   
   public CharSequence compile(final Configurator it) {
     StringConcatenation _builder = new StringConcatenation();
+    CharSequence _renderHeadHtmlPart = this.renderHeadHtmlPart();
+    _builder.append(_renderHeadHtmlPart, "");
+    _builder.newLineIfNotEmpty();
+    CharSequence _renderBodyPart = this.renderBodyPart(it);
+    _builder.append(_renderBodyPart, "");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence renderBodyPart(final Configurator it) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<body>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<div id=\"main\" data-role=\"page\">");
+    _builder.newLine();
+    _builder.append("        ");
+    String _name = it.getName();
+    CharSequence _renderHeader = this.renderHeader(_name);
+    _builder.append(_renderHeader, "        ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("<div role=\"main\">");
+    _builder.newLine();
+    _builder.append("           ");
+    String _renderAppDescription = this.renderAppDescription(it);
+    _builder.append(_renderAppDescription, "           ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("           ");
+    CharSequence _renderValidatonSummary = this.renderValidatonSummary();
+    _builder.append(_renderValidatonSummary, "           ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("           ");
+    _builder.append("<ul data-role=\"listview\">");
+    _builder.newLine();
+    {
+      EList<AbstractParameter> _parameters = it.getParameters();
+      for(final AbstractParameter it_1 : _parameters) {
+        String _compileParameterLink = this.compileParameterLink(it_1);
+        _builder.append(_compileParameterLink, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("           ");
+    _builder.append("</ul>");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("\t");
+    EList<AbstractParameter> _parameters_1 = it.getParameters();
+    String _renderGroupPages = this.renderGroupPages(_parameters_1, "");
+    _builder.append(_renderGroupPages, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</body>");
+    return _builder;
+  }
+  
+  public CharSequence renderHeadHtmlPart() {
+    StringConcatenation _builder = new StringConcatenation();
     _builder.append("<!DOCTYPE html>");
     _builder.newLine();
     _builder.append("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
@@ -118,13 +181,19 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<script src=\"Scripts/Src-gen/");
-    String _resourceFileName = this._jqmCommon.getResourceFileName(this._input);
+    String _resourceFileName = null;
+    if (this._input!=null) {
+      _resourceFileName=this._jqmCommon.getResourceFileName(this._input);
+    }
     _builder.append(_resourceFileName, "    ");
     _builder.append("-app-viewmodel.js\"></script>");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("<script src=\"Scripts/Src-gen/");
-    String _resourceFileName_1 = this._jqmCommon.getResourceFileName(this._input);
+    String _resourceFileName_1 = null;
+    if (this._input!=null) {
+      _resourceFileName_1=this._jqmCommon.getResourceFileName(this._input);
+    }
     _builder.append(_resourceFileName_1, "    ");
     _builder.append("-ko-initpagebinding.js\"></script>");
     _builder.newLineIfNotEmpty();
@@ -137,22 +206,11 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("</head>");
-    _builder.newLine();
-    _builder.append("<body>");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("<div id=\"main\" data-role=\"page\">");
-    _builder.newLine();
-    _builder.append("        ");
-    String _name = it.getName();
-    CharSequence _renderHeader = this.renderHeader(_name);
-    _builder.append(_renderHeader, "        ");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("<div role=\"main\">");
-    _builder.newLine();
-    _builder.append("            ");
+    return _builder;
+  }
+  
+  public String renderAppDescription(final Configurator it) {
+    StringConcatenation _builder = new StringConcatenation();
     _builder.append("<section class=\"main-description\">");
     _builder.newLine();
     _builder.append("                ");
@@ -162,40 +220,22 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.append("            ");
     _builder.append("</section>");
     _builder.newLine();
-    _builder.append("            ");
-    CharSequence _renderValidatonSummary = this.renderValidatonSummary();
-    _builder.append(_renderValidatonSummary, "            ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("            ");
-    _builder.append("<ul data-role=\"listview\">");
-    _builder.newLine();
-    {
-      EList<AbstractParameter> _parameters = it.getParameters();
-      for(final AbstractParameter it_1 : _parameters) {
-        _builder.append("\t            ");
-        String _compileParameterLink = this.compileParameterLink(it_1);
-        _builder.append(_compileParameterLink, "\t            ");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("            ");
-    _builder.append("</ul>");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("</div>");
-    _builder.newLine();
-    _builder.append("\t");
-    EList<AbstractParameter> _parameters_1 = it.getParameters();
-    String _renderGroupPages = this.renderGroupPages(_parameters_1, "");
-    _builder.append(_renderGroupPages, "\t");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
   
-  public CharSequence renderHeader(final String title) {
+  public CharSequence renderHeader(final ParameterGroup it) {
+    String _elvis = null;
+    String _description = it.getDescription();
+    if (_description != null) {
+      _elvis = _description;
+    } else {
+      String _name = it.getName();
+      _elvis = _name;
+    }
+    return this.renderHeader(_elvis);
+  }
+  
+  private CharSequence renderHeader(final String title) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<div data-role=\"header\" data-add-back-btn=\"true\">");
     _builder.newLine();
@@ -233,24 +273,17 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     {
       EList<AbstractParameter> _parameters = it.getParameters();
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\t\t");
       _builder.append("<div id=\"");
       String _name = it.getName();
-      _builder.append(_name, "");
+      _builder.append(_name, "\t\t");
       _builder.append("\" data-role=\"page\" data-bind=\"with: $root.");
       String _fullPath = this._jqmCommon.getFullPath(it);
-      _builder.append(_fullPath, "");
+      _builder.append(_fullPath, "\t\t");
       _builder.append("\">");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
-      String _elvis = null;
-      String _description = it.getDescription();
-      if (_description != null) {
-        _elvis = _description;
-      } else {
-        String _name_1 = it.getName();
-        _elvis = _name_1;
-      }
-      CharSequence _renderHeader = this.renderHeader(_elvis);
+      CharSequence _renderHeader = this.renderHeader(it);
       _builder.append(_renderHeader, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t        ");
@@ -261,7 +294,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       _builder.append(_renderValidatonSummary, "\t            ");
       _builder.newLineIfNotEmpty();
       _builder.append("\t            ");
-      _builder.append("<ul data-role=\"listview\" >");
+      _builder.append("<ul data-role=\"listview\">");
       _builder.newLine();
       {
         EList<AbstractParameter> _parameters_1 = it.getParameters();
@@ -279,8 +312,6 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("</div>");
-      _builder.newLine();
-      _builder.append("    \t");
       _builder.newLine();
       final String result = this.renderGroupPages(_parameters, _builder.toString());
       _xblockexpression = result;
@@ -321,6 +352,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     String _name = it.getName();
     _builder.append(_name, "");
     _builder.append(".value\"></p>");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -330,6 +362,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     String _groupName = this._jqmCommon.getGroupName(it);
     _builder.append(_groupName, "");
     _builder.append("\"></p>");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -454,7 +487,10 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append("\t            ");
       ValueRange _valueRange = it.getValueRange();
-      CharSequence _renderRangeInputElement = this.renderRangeInputElement(_valueRange, it);
+      CharSequence _renderRangeInputElement = null;
+      if (_valueRange!=null) {
+        _renderRangeInputElement=this.renderRangeInputElement(_valueRange, it);
+      }
       _builder.append(_renderRangeInputElement, "\t            ");
       _builder.newLineIfNotEmpty();
       _builder.append("\t        \t");
