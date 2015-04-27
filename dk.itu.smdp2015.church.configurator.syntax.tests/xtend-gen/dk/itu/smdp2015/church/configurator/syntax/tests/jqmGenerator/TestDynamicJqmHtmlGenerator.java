@@ -212,9 +212,9 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
   }
   
   @Test
-  public void testRenderHeader_rendersGroupHeaderAsJqmHeader() {
+  public void testRenderHeader_WhenParameterGroupWithDescription_ThenHeaderShowsDescription() {
     try {
-      String _addPrefix = this.addPrefix("{group test{}}");
+      String _addPrefix = this.addPrefix("{group test \"some group description\" {}}");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
       ParameterGroup _firstGroup = this.firstGroup(_parse);
       CharSequence _renderHeader = this._jqmHtmlGenerator.renderHeader(_firstGroup);
@@ -225,7 +225,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("<h1>");
       _builder.newLine();
       _builder.append("                ");
-      _builder.append("test");
+      _builder.append("some group description");
       _builder.newLine();
       _builder.append("            ");
       _builder.append("</h1>");
@@ -364,7 +364,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
   @Test
   public void testCompileParameterLink_WhenBoundedRange_ThenRendersAsSelectInputWithRange() {
     try {
-      String _addPrefix = this.addPrefix("{parameter test values (0;10)}");
+      String _addPrefix = this.addPrefix("{parameter test values [0;10]}");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
       Parameter _firstParam = this.firstParam(_parse);
       String _compileParameterLink = this._jqmHtmlGenerator.compileParameterLink(_firstParam);
@@ -375,7 +375,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("<label for=\"test-param\" >test:</label>");
       _builder.newLine();
       _builder.append("\t            ");
-      _builder.append("<select id=\"test-param\" data-bind=\"options: test.choices, selectedOptions: test.value,optionsCaption:\'Choose...\'\"></select>");
+      _builder.append("<input data-bind=\"value: test.value, attr:{ min: test.boundedRange.lower, max: test.boundedRange.upper}\" type=\"range\" name=\"test\" id=\"test-param\">");
       _builder.newLine();
       _builder.append("\t        \t");
       _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: test.value\"></p>");

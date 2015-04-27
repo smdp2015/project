@@ -88,14 +88,14 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
 		''')
 	}
 	@Test
-	def testRenderHeader_rendersGroupHeaderAsJqmHeader() {
-		'{group test{}}'.addPrefix.parse.firstGroup
+	def testRenderHeader_WhenParameterGroupWithDescription_ThenHeaderShowsDescription() {
+		'{group test "some group description" {}}'.addPrefix.parse.firstGroup
 		.renderHeader
 		.assertHtmlWithExpectedOutput
 		(
 		'''<div data-role="header" data-add-back-btn="true">
             <h1>
-                test
+                some group description
             </h1>
             <button class="ui-btn-right ui-icon-check ui-btn-icon-right ui-btn" onclick="submitconfiguration();">submit</button>
         </div>
@@ -165,12 +165,12 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
 	@Test
 	def void testCompileParameterLink_WhenBoundedRange_ThenRendersAsSelectInputWithRange(){
 		
-		'{parameter test values (0;10)}'.addPrefix.parse.firstParam
+		'{parameter test values [0;10]}'.addPrefix.parse.firstParam
 		.compileParameterLink
 		.assertHtmlWithExpectedOutput(
 		'''<li>
 	        <label for="test-param" >test:</label>
-	            <select id="test-param" data-bind="options: test.choices, selectedOptions: test.value,optionsCaption:'Choose...'"></select>
+	            <input data-bind="value: test.value, attr:{ min: test.boundedRange.lower, max: test.boundedRange.upper}" type="range" name="test" id="test-param">
 	        	<p class="validationMessage" data-bind="validationMessage: test.value"></p>
 	       </li>
           ''')
