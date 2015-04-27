@@ -1,24 +1,11 @@
 package dk.itu.smdp2015.church.configurator.syntax.tests.jqmGenerator
 
-import org.junit.Test
-import javax.inject.Inject
-import org.eclipse.xtext.junit4.util.ParseHelper
-import dk.itu.smdp2015.church.model.configurator.Configurator
-import dk.itu.smdp2015.church.generator.jqm.JqmHtmlGenerator
-import java.beans.Expression
-import dk.itu.smdp2015.church.generator.jqm.JqmCommon
-import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
-import org.junit.Assert
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.InjectWith
-import dk.itu.smdp2015.church.ConfiguratorInjectorProvider
-import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage
-import org.junit.Before
-import org.junit.BeforeClass
+
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup
 import dk.itu.smdp2015.church.model.configurator.Parameter
 import dk.itu.smdp2015.church.configurator.syntax.tests.BaseXtextTest
+import dk.itu.smdp2015.church.model.configurator.Configurator
+import org.junit.Assert
 
 abstract class BaseTestJqmGenerator extends BaseXtextTest{
 

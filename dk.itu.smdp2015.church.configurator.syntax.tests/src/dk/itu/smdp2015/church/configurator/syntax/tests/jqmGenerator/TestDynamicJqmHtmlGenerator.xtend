@@ -93,8 +93,7 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
 		.renderHeader
 		.assertHtmlWithExpectedOutput
 		(
-		'''
-		<div data-role="header" data-add-back-btn="true">
+		'''<div data-role="header" data-add-back-btn="true">
             <h1>
                 test
             </h1>
@@ -104,7 +103,7 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
           )
 	}
 	@Test
-	def testRenderLocalValidatonMessage_WhenParameter_ThenRendersAsParagraph() {
+	def testRenderLocalValidatonMessage_WhenParameter_ThenRendersAsStandardDataboundValueName() {
 		'{parameter test{}}'.addPrefix.parse.firstParam
 		.renderLocalValidatonMessage
 		.assertHtmlWithExpectedOutput(
@@ -113,7 +112,7 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
 		''')
 	}
 	@Test
-	def testRenderLocalValidatonMessage_WhenParameterGroup_ThenRendersAsParagraph() {
+	def testRenderLocalValidatonMessage_WhenParameterGroup_ThenRendersWithDataboundGroupName() {
 		'{group test{}}'.addPrefix.parse.firstGroup
 		.renderLocalValidatonMessage
 		.assertHtmlWithExpectedOutput(
@@ -171,6 +170,20 @@ class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator{
 		.assertHtmlWithExpectedOutput(
 		'''<li>
 	        <label for="test-param" >test:</label>
+	            <select id="test-param" data-bind="options: test.choices, selectedOptions: test.value,optionsCaption:'Choose...'"></select>
+	        	<p class="validationMessage" data-bind="validationMessage: test.value"></p>
+	       </li>
+          ''')
+		
+	}
+	@Test
+	def void testCompileParameterLink_WhenOptionalParameter_ThenListItemIsCollapsible(){
+		
+		'{parameter test optional values (0;10)}'.addPrefix.parse.firstParam
+		.compileParameterLink
+		.assertHtmlWithExpectedOutput(
+		'''<li data-role="collapsible" data-bind="isExpanded: test.isOn">
+	        <h2><label for="test-param" >test:</label></h2>
 	            <select id="test-param" data-bind="options: test.choices, selectedOptions: test.value,optionsCaption:'Choose...'"></select>
 	        	<p class="validationMessage" data-bind="validationMessage: test.value"></p>
 	       </li>

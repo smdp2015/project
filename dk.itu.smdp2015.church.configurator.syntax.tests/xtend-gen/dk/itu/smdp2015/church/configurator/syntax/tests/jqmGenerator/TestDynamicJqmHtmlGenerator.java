@@ -243,7 +243,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
   }
   
   @Test
-  public void testRenderLocalValidatonMessage_WhenParameter_ThenRendersAsParagraph() {
+  public void testRenderLocalValidatonMessage_WhenParameter_ThenRendersAsStandardDataboundValueName() {
     try {
       String _addPrefix = this.addPrefix("{parameter test{}}");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
@@ -259,7 +259,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
   }
   
   @Test
-  public void testRenderLocalValidatonMessage_WhenParameterGroup_ThenRendersAsParagraph() {
+  public void testRenderLocalValidatonMessage_WhenParameterGroup_ThenRendersWithDataboundGroupName() {
     try {
       String _addPrefix = this.addPrefix("{group test{}}");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
@@ -373,6 +373,34 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.newLine();
       _builder.append("\t        ");
       _builder.append("<label for=\"test-param\" >test:</label>");
+      _builder.newLine();
+      _builder.append("\t            ");
+      _builder.append("<select id=\"test-param\" data-bind=\"options: test.choices, selectedOptions: test.value,optionsCaption:\'Choose...\'\"></select>");
+      _builder.newLine();
+      _builder.append("\t        \t");
+      _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: test.value\"></p>");
+      _builder.newLine();
+      _builder.append("\t       ");
+      _builder.append("</li>");
+      _builder.newLine();
+      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testCompileParameterLink_WhenOptionalParameter_ThenListItemIsCollapsible() {
+    try {
+      String _addPrefix = this.addPrefix("{parameter test optional values (0;10)}");
+      Configurator _parse = this._parseHelper.parse(_addPrefix);
+      Parameter _firstParam = this.firstParam(_parse);
+      String _compileParameterLink = this._jqmHtmlGenerator.compileParameterLink(_firstParam);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<li data-role=\"collapsible\" data-bind=\"isExpanded: test.isOn\">");
+      _builder.newLine();
+      _builder.append("\t        ");
+      _builder.append("<h2><label for=\"test-param\" >test:</label></h2>");
       _builder.newLine();
       _builder.append("\t            ");
       _builder.append("<select id=\"test-param\" data-bind=\"options: test.choices, selectedOptions: test.value,optionsCaption:\'Choose...\'\"></select>");
