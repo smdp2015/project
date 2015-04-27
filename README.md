@@ -13,6 +13,7 @@
 * Alle parametre og grupper bør have unikke navne globalt
 * Enumerated værdier bør være unikke DONE
 * En bounded range bør kun være Integer (eller anden værdi, men vi har kun integer)
+* En true,false enumeration bør kun have de to og kun to værdier
 
 # Kodegenerering:
 
