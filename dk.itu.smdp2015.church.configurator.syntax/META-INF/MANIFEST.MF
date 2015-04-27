@@ -21,11 +21,13 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: dk.itu.smdp2015.church,
- dk.itu.smdp2015.church.services,
- dk.itu.smdp2015.church.serializer,
+ dk.itu.smdp2015.church.formatting,
+ dk.itu.smdp2015.church.generator,
+ dk.itu.smdp2015.church.generator.jqm,
  dk.itu.smdp2015.church.parser.antlr,
  dk.itu.smdp2015.church.parser.antlr.internal,
- dk.itu.smdp2015.church.validation,
  dk.itu.smdp2015.church.scoping,
- dk.itu.smdp2015.church.generator,
- dk.itu.smdp2015.church.formatting
+ dk.itu.smdp2015.church.serializer,
+ dk.itu.smdp2015.church.services,
+ dk.itu.smdp2015.church.validation,
+ dk.itu.smdp2015.church.xtext.common

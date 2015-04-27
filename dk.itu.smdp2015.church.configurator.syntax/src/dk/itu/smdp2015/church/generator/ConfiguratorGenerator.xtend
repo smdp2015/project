@@ -37,12 +37,13 @@ class ConfiguratorGenerator implements IGenerator {
 //			fsa.generateFile("configurator.cs", e.compile)
 //		}
 
-		var generators = #{new CSGenerator(),new JqmGenerator()};
+		var generators = #{new CSGenerator,new JqmGenerator};
 		generators.forEach[
 			try{
 				it.doGenerate(resource, fsa);
 			}catch(Exception ex){
-				System.out.println(String.format("Error generating code with %S: \n %S \n %S", it.class.name,ex.message,ex.stackTrace))
+				System.out.println(String.format("Error generating code with %S: %S", it.class.name,ex.message))
+				ex.printStackTrace
 			}
 		]		
 	}

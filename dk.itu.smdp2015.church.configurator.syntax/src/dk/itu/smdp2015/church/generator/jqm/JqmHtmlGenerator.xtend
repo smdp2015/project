@@ -13,14 +13,14 @@ import java.beans.Visibility
 import dk.itu.smdp2015.church.xtext.common.*
 import javax.inject.Inject
 
-class JqmHtmlGenerator implements IJqmPartGenerator {
+public class JqmHtmlGenerator implements IJqmPartGenerator {
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
 	
 	String _rootFolder
 	
 	Resource _input
-	
+	new(){}
 	new(ExpressionTypeProvider extTypeProvider, JqmCommon common, String rootFolder){
 		_rootFolder =rootFolder
 		_expressionTypeProvider = extTypeProvider
@@ -134,8 +134,10 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 	def renderLocalValidatonMessage(ParameterGroup it) {
 		'''<p class="validationMessage" data-bind="validationMessage: «groupName»"></p>'''
 	}
-	
-	def dispatch compileParameterLink(ParameterGroup it){
+	def dispatch String compileParameterLink(AbstractParameter it){
+               
+	}
+	def dispatch String compileParameterLink(ParameterGroup it){
 		 '''
 		  <li«IF visibility!=null» data-bind="visible: «groupName»().isVisible"«ENDIF»>
                 <a href="#«name»">
@@ -146,7 +148,7 @@ class JqmHtmlGenerator implements IJqmPartGenerator {
 		 '''
                
 	}
-	def dispatch compileParameterLink(Parameter it){
+	def dispatch String compileParameterLink(Parameter it){
 		val isCollapsible = optional
 		val dataBindExprPrefix=' data-bind="'
 		var dataBindExpr =dataBindExprPrefix

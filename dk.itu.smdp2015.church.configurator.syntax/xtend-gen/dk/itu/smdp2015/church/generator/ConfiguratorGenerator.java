@@ -35,9 +35,9 @@ public class ConfiguratorGenerator implements IGenerator {
             Class<? extends IGenerator> _class = it.getClass();
             String _name = _class.getName();
             String _message = ex.getMessage();
-            StackTraceElement[] _stackTrace = ex.getStackTrace();
-            String _format = String.format("Error generating code with %S: \n %S \n %S", _name, _message, _stackTrace);
+            String _format = String.format("Error generating code with %S: %S", _name, _message);
             System.out.println(_format);
+            ex.printStackTrace();
           } else {
             throw Exceptions.sneakyThrow(_t);
           }

@@ -42,6 +42,9 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
   
   private Resource _input;
   
+  public JqmHtmlGenerator() {
+  }
+  
   public JqmHtmlGenerator(final ExpressionTypeProvider extTypeProvider, final JqmCommon common, final String rootFolder) {
     this._rootFolder = rootFolder;
     this._expressionTypeProvider = extTypeProvider;
@@ -170,7 +173,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       EList<AbstractParameter> _parameters = it.getParameters();
       for(final AbstractParameter it_1 : _parameters) {
         _builder.append("\t            ");
-        CharSequence _compileParameterLink = this.compileParameterLink(it_1);
+        String _compileParameterLink = this.compileParameterLink(it_1);
         _builder.append(_compileParameterLink, "\t            ");
         _builder.newLineIfNotEmpty();
       }
@@ -263,7 +266,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       {
         EList<AbstractParameter> _parameters_1 = it.getParameters();
         for(final AbstractParameter it_1 : _parameters_1) {
-          CharSequence _compileParameterLink = this.compileParameterLink(it_1);
+          String _compileParameterLink = this.compileParameterLink(it_1);
           _builder.append(_compileParameterLink, "");
           _builder.newLineIfNotEmpty();
         }
@@ -330,7 +333,11 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     return _builder;
   }
   
-  protected CharSequence _compileParameterLink(final ParameterGroup it) {
+  protected String _compileParameterLink(final AbstractParameter it) {
+    return null;
+  }
+  
+  protected String _compileParameterLink(final ParameterGroup it) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<li");
     {
@@ -372,11 +379,11 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     _builder.append("          ");
     _builder.append("</li>");
     _builder.newLine();
-    return _builder;
+    return _builder.toString();
   }
   
-  protected CharSequence _compileParameterLink(final Parameter it) {
-    CharSequence _xblockexpression = null;
+  protected String _compileParameterLink(final Parameter it) {
+    String _xblockexpression = null;
     {
       final boolean isCollapsible = it.isOptional();
       final String dataBindExprPrefix = " data-bind=\"";
@@ -457,7 +464,7 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
       _builder.append("\t       ");
       _builder.append("</li>");
       _builder.newLine();
-      _xblockexpression = _builder;
+      _xblockexpression = _builder.toString();
     }
     return _xblockexpression;
   }
@@ -527,11 +534,13 @@ public class JqmHtmlGenerator implements IJqmPartGenerator {
     return _builder;
   }
   
-  public CharSequence compileParameterLink(final AbstractParameter it) {
+  public String compileParameterLink(final AbstractParameter it) {
     if (it instanceof Parameter) {
       return _compileParameterLink((Parameter)it);
     } else if (it instanceof ParameterGroup) {
       return _compileParameterLink((ParameterGroup)it);
+    } else if (it != null) {
+      return _compileParameterLink(it);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it).toString());
