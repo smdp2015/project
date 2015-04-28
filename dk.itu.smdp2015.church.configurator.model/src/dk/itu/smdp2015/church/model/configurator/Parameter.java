@@ -11,7 +11,7 @@ package dk.itu.smdp2015.church.model.configurator;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory <em>Mandatory</em>}</li>
+ *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#isOptional <em>Optional</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#getValueRange <em>Value Range</em>}</li>
  *   <li>{@link dk.itu.smdp2015.church.model.configurator.Parameter#getDefault <em>Default</em>}</li>
  * </ul>
@@ -23,31 +23,31 @@ package dk.itu.smdp2015.church.model.configurator;
  */
 public interface Parameter extends AbstractParameter {
 	/**
-	 * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Optional</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mandatory</em>' attribute.
-	 * @see #setMandatory(boolean)
-	 * @see dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage#getParameter_Mandatory()
-	 * @model default="true" required="true"
+	 * @return the value of the '<em>Optional</em>' attribute.
+	 * @see #setOptional(boolean)
+	 * @see dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage#getParameter_Optional()
+	 * @model default="false" required="true"
 	 * @generated
 	 */
-	boolean isMandatory();
+	boolean isOptional();
 
 	/**
-	 * Sets the value of the '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory <em>Mandatory</em>}' attribute.
+	 * Sets the value of the '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isOptional <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mandatory</em>' attribute.
-	 * @see #isMandatory()
+	 * @param value the new value of the '<em>Optional</em>' attribute.
+	 * @see #isOptional()
 	 * @generated
 	 */
-	void setMandatory(boolean value);
+	void setOptional(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Range</b></em>' containment reference.

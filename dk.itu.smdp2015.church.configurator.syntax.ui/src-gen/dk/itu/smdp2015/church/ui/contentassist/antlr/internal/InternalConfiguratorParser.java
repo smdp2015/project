@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalConfiguratorParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'or'", "'and'", "'*'", "'optional'", "'true'", "'false'", "'=='", "'!='", "'<'", "'>'", "'+'", "'-'", "'not'", "'configurator'", "'{'", "'}'", "','", "'group'", "'visible-if'", "'constraints'", "'parameter'", "'default-value'", "'values'", "'('", "')'", "'['", "';'", "']'", "'description'", "'in'", "'mandatory'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'or'", "'and'", "'*'", "'mandatory'", "'true'", "'false'", "'=='", "'!='", "'<'", "'>'", "'+'", "'-'", "'not'", "'configurator'", "'{'", "'}'", "','", "'group'", "'visible-if'", "'constraints'", "'parameter'", "'default-value'", "'values'", "'('", "')'", "'['", "';'", "']'", "'description'", "'in'", "'optional'"
     };
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
@@ -2330,13 +2330,13 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Parameter__Alternatives_3_0"
-    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:894:1: rule__Parameter__Alternatives_3_0 : ( ( ( rule__Parameter__MandatoryAssignment_3_0_0 ) ) | ( 'optional' ) );
+    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:894:1: rule__Parameter__Alternatives_3_0 : ( ( ( rule__Parameter__OptionalAssignment_3_0_0 ) ) | ( 'mandatory' ) );
     public final void rule__Parameter__Alternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:898:1: ( ( ( rule__Parameter__MandatoryAssignment_3_0_0 ) ) | ( 'optional' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:898:1: ( ( ( rule__Parameter__OptionalAssignment_3_0_0 ) ) | ( 'mandatory' ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2354,24 +2354,24 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
             }
             switch (alt2) {
                 case 1 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:899:1: ( ( rule__Parameter__MandatoryAssignment_3_0_0 ) )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:899:1: ( ( rule__Parameter__OptionalAssignment_3_0_0 ) )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:899:1: ( ( rule__Parameter__MandatoryAssignment_3_0_0 ) )
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:900:1: ( rule__Parameter__MandatoryAssignment_3_0_0 )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:899:1: ( ( rule__Parameter__OptionalAssignment_3_0_0 ) )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:900:1: ( rule__Parameter__OptionalAssignment_3_0_0 )
                     {
-                     before(grammarAccess.getParameterAccess().getMandatoryAssignment_3_0_0()); 
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:901:1: ( rule__Parameter__MandatoryAssignment_3_0_0 )
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:901:2: rule__Parameter__MandatoryAssignment_3_0_0
+                     before(grammarAccess.getParameterAccess().getOptionalAssignment_3_0_0()); 
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:901:1: ( rule__Parameter__OptionalAssignment_3_0_0 )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:901:2: rule__Parameter__OptionalAssignment_3_0_0
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Parameter__MandatoryAssignment_3_0_0_in_rule__Parameter__Alternatives_3_01822);
-                    rule__Parameter__MandatoryAssignment_3_0_0();
+                    pushFollow(FollowSets000.FOLLOW_rule__Parameter__OptionalAssignment_3_0_0_in_rule__Parameter__Alternatives_3_01822);
+                    rule__Parameter__OptionalAssignment_3_0_0();
 
                     state._fsp--;
 
 
                     }
 
-                     after(grammarAccess.getParameterAccess().getMandatoryAssignment_3_0_0()); 
+                     after(grammarAccess.getParameterAccess().getOptionalAssignment_3_0_0()); 
 
                     }
 
@@ -2379,14 +2379,14 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:905:6: ( 'optional' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:905:6: ( 'mandatory' )
                     {
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:905:6: ( 'optional' )
-                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:906:1: 'optional'
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:905:6: ( 'mandatory' )
+                    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:906:1: 'mandatory'
                     {
-                     before(grammarAccess.getParameterAccess().getOptionalKeyword_3_0_1()); 
+                     before(grammarAccess.getParameterAccess().getMandatoryKeyword_3_0_1()); 
                     match(input,14,FollowSets000.FOLLOW_14_in_rule__Parameter__Alternatives_3_01841); 
-                     after(grammarAccess.getParameterAccess().getOptionalKeyword_3_0_1()); 
+                     after(grammarAccess.getParameterAccess().getMandatoryKeyword_3_0_1()); 
 
                     }
 
@@ -12857,30 +12857,30 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__Parameter__DescriptionAssignment_2"
 
 
-    // $ANTLR start "rule__Parameter__MandatoryAssignment_3_0_0"
-    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4782:1: rule__Parameter__MandatoryAssignment_3_0_0 : ( ( 'mandatory' ) ) ;
-    public final void rule__Parameter__MandatoryAssignment_3_0_0() throws RecognitionException {
+    // $ANTLR start "rule__Parameter__OptionalAssignment_3_0_0"
+    // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4782:1: rule__Parameter__OptionalAssignment_3_0_0 : ( ( 'optional' ) ) ;
+    public final void rule__Parameter__OptionalAssignment_3_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4786:1: ( ( ( 'mandatory' ) ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4787:1: ( ( 'mandatory' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4786:1: ( ( ( 'optional' ) ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4787:1: ( ( 'optional' ) )
             {
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4787:1: ( ( 'mandatory' ) )
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4788:1: ( 'mandatory' )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4787:1: ( ( 'optional' ) )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4788:1: ( 'optional' )
             {
-             before(grammarAccess.getParameterAccess().getMandatoryMandatoryKeyword_3_0_0_0()); 
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4789:1: ( 'mandatory' )
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4790:1: 'mandatory'
+             before(grammarAccess.getParameterAccess().getOptionalOptionalKeyword_3_0_0_0()); 
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4789:1: ( 'optional' )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:4790:1: 'optional'
             {
-             before(grammarAccess.getParameterAccess().getMandatoryMandatoryKeyword_3_0_0_0()); 
-            match(input,41,FollowSets000.FOLLOW_41_in_rule__Parameter__MandatoryAssignment_3_0_010021); 
-             after(grammarAccess.getParameterAccess().getMandatoryMandatoryKeyword_3_0_0_0()); 
+             before(grammarAccess.getParameterAccess().getOptionalOptionalKeyword_3_0_0_0()); 
+            match(input,41,FollowSets000.FOLLOW_41_in_rule__Parameter__OptionalAssignment_3_0_010021); 
+             after(grammarAccess.getParameterAccess().getOptionalOptionalKeyword_3_0_0_0()); 
 
             }
 
-             after(grammarAccess.getParameterAccess().getMandatoryMandatoryKeyword_3_0_0_0()); 
+             after(grammarAccess.getParameterAccess().getOptionalOptionalKeyword_3_0_0_0()); 
 
             }
 
@@ -12899,7 +12899,7 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__Parameter__MandatoryAssignment_3_0_0"
+    // $ANTLR end "rule__Parameter__OptionalAssignment_3_0_0"
 
 
     // $ANTLR start "rule__Parameter__VisibilityAssignment_3_1_1"
@@ -14260,7 +14260,7 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
         public static final BitSet FOLLOW_rule__UnaryOperator__Alternatives_in_ruleUnaryOperator1738 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleParameterGroup_in_rule__AbstractParameter__Alternatives1773 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleParameter_in_rule__AbstractParameter__Alternatives1790 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Parameter__MandatoryAssignment_3_0_0_in_rule__Parameter__Alternatives_3_01822 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Parameter__OptionalAssignment_3_0_0_in_rule__Parameter__Alternatives_3_01822 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_14_in_rule__Parameter__Alternatives_3_01841 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEnumerated_in_rule__ValueRange__Alternatives1875 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleBounded_in_rule__ValueRange__Alternatives1892 = new BitSet(new long[]{0x0000000000000002L});
@@ -14578,7 +14578,7 @@ public class InternalConfiguratorParser extends AbstractInternalContentAssistPar
         public static final BitSet FOLLOW_ruleAbstractParameter_in_rule__ParameterGroup__ParametersAssignment_3_2_2_19923 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_ID_in_rule__Parameter__NameAssignment_19954 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_STRING_in_rule__Parameter__DescriptionAssignment_29985 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_41_in_rule__Parameter__MandatoryAssignment_3_0_010021 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_41_in_rule__Parameter__OptionalAssignment_3_0_010021 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleExpression_in_rule__Parameter__VisibilityAssignment_3_1_110060 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleExpression_in_rule__Parameter__DefaultAssignment_3_2_110091 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstraint_in_rule__Parameter__ConstraintsAssignment_3_3_210122 = new BitSet(new long[]{0x0000000000000002L});

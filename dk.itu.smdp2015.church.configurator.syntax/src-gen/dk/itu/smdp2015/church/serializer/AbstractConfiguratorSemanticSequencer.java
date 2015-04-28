@@ -370,7 +370,7 @@ public abstract class AbstractConfiguratorSemanticSequencer extends AbstractDele
 	 *     (
 	 *         name=ID 
 	 *         description=STRING? 
-	 *         mandatory?='mandatory'? 
+	 *         optional?='optional'? 
 	 *         visibility=Expression? 
 	 *         default=Expression? 
 	 *         (constraints+=Constraint constraints+=Constraint*)? 

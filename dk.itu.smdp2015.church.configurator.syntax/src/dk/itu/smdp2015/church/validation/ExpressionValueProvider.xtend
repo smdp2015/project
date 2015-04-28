@@ -9,6 +9,7 @@ import dk.itu.smdp2015.church.model.configurator.Unary
 
 import static dk.itu.smdp2015.church.model.configurator.BinaryOperator.*
 import static dk.itu.smdp2015.church.model.configurator.UnaryOperator.*
+import dk.itu.smdp2015.church.xtext.common.ExpressionType
 
 class ExpressionValueProvider {
 

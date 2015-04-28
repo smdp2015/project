@@ -143,13 +143,22 @@ public interface ConfiguratorPackage extends EPackage {
 	int ABSTRACT_PARAMETER__CONSTRAINTS = DESCRIBED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PARAMETER__PARENT = DESCRIBED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PARAMETER_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_PARAMETER_FEATURE_COUNT = DESCRIBED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Abstract Parameter</em>' class.
@@ -205,6 +214,15 @@ public interface ConfiguratorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_GROUP__CONSTRAINTS = ABSTRACT_PARAMETER__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_GROUP__PARENT = ABSTRACT_PARAMETER__PARENT;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -280,13 +298,22 @@ public interface ConfiguratorPackage extends EPackage {
 	int PARAMETER__CONSTRAINTS = ABSTRACT_PARAMETER__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__MANDATORY = ABSTRACT_PARAMETER_FEATURE_COUNT + 0;
+	int PARAMETER__PARENT = ABSTRACT_PARAMETER__PARENT;
+
+	/**
+	 * The feature id for the '<em><b>Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__OPTIONAL = ABSTRACT_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value Range</b></em>' containment reference.
@@ -978,6 +1005,17 @@ public interface ConfiguratorPackage extends EPackage {
 	EReference getAbstractParameter_Constraints();
 
 	/**
+	 * Returns the meta object for the container reference '{@link dk.itu.smdp2015.church.model.configurator.AbstractParameter#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.AbstractParameter#getParent()
+	 * @see #getAbstractParameter()
+	 * @generated
+	 */
+	EReference getAbstractParameter_Parent();
+
+	/**
 	 * Returns the meta object for class '{@link dk.itu.smdp2015.church.model.configurator.ParameterGroup <em>Parameter Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1009,15 +1047,15 @@ public interface ConfiguratorPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory <em>Mandatory</em>}'.
+	 * Returns the meta object for the attribute '{@link dk.itu.smdp2015.church.model.configurator.Parameter#isOptional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Mandatory</em>'.
-	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#isMandatory()
+	 * @return the meta object for the attribute '<em>Optional</em>'.
+	 * @see dk.itu.smdp2015.church.model.configurator.Parameter#isOptional()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameter_Mandatory();
+	EAttribute getParameter_Optional();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link dk.itu.smdp2015.church.model.configurator.Parameter#getValueRange <em>Value Range</em>}'.
@@ -1469,6 +1507,14 @@ public interface ConfiguratorPackage extends EPackage {
 		EReference ABSTRACT_PARAMETER__CONSTRAINTS = eINSTANCE.getAbstractParameter_Constraints();
 
 		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_PARAMETER__PARENT = eINSTANCE.getAbstractParameter_Parent();
+
+		/**
 		 * The meta object literal for the '{@link dk.itu.smdp2015.church.model.configurator.impl.ParameterGroupImpl <em>Parameter Group</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1497,12 +1543,12 @@ public interface ConfiguratorPackage extends EPackage {
 		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER__MANDATORY = eINSTANCE.getParameter_Mandatory();
+		EAttribute PARAMETER__OPTIONAL = eINSTANCE.getParameter_Optional();
 
 		/**
 		 * The meta object literal for the '<em><b>Value Range</b></em>' containment reference feature.

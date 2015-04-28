@@ -5,17 +5,12 @@ package dk.itu.smdp2015.church.model.configurator.impl;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -68,9 +63,24 @@ public class ParameterGroupImpl extends AbstractParameterImpl implements Paramet
 	 */
 	public EList<AbstractParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<AbstractParameter>(AbstractParameter.class, this, ConfiguratorPackage.PARAMETER_GROUP__PARAMETERS);
+			parameters = new EObjectContainmentWithInverseEList<AbstractParameter>(AbstractParameter.class, this, ConfiguratorPackage.PARAMETER_GROUP__PARAMETERS, ConfiguratorPackage.ABSTRACT_PARAMETER__PARENT);
 		}
 		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ConfiguratorPackage.PARAMETER_GROUP__PARAMETERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

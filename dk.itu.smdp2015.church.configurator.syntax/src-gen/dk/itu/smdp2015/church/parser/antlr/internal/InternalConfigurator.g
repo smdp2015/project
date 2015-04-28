@@ -527,23 +527,23 @@ ruleParameter returns [EObject current=null]
 	 				}
 					({true}?=>((
 (
-		lv_mandatory_4_0=	'mandatory' 
+		lv_optional_4_0=	'optional' 
     {
-        newLeafNode(lv_mandatory_4_0, grammarAccess.getParameterAccess().getMandatoryMandatoryKeyword_3_0_0_0());
+        newLeafNode(lv_optional_4_0, grammarAccess.getParameterAccess().getOptionalOptionalKeyword_3_0_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getParameterRule());
 	        }
-       		setWithLastConsumed($current, "mandatory", true, "mandatory");
+       		setWithLastConsumed($current, "optional", true, "optional");
 	    }
 
 )
 )
-    |	otherlv_5='optional' 
+    |	otherlv_5='mandatory' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getParameterAccess().getOptionalKeyword_3_0_1());
+    	newLeafNode(otherlv_5, grammarAccess.getParameterAccess().getMandatoryKeyword_3_0_1());
     }
 ))
 					{ 

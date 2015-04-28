@@ -132,10 +132,10 @@ public class InternalConfiguratorLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:14:7: ( 'optional' )
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:14:9: 'optional'
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:14:7: ( 'mandatory' )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:14:9: 'mandatory'
             {
-            match("optional"); 
+            match("mandatory"); 
 
 
             }
@@ -687,10 +687,10 @@ public class InternalConfiguratorLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:41:7: ( 'mandatory' )
-            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:41:9: 'mandatory'
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:41:7: ( 'optional' )
+            // ../dk.itu.smdp2015.church.configurator.syntax.ui/src-gen/dk/itu/smdp2015/church/ui/contentassist/antlr/internal/InternalConfigurator.g:41:9: 'optional'
             {
-            match("mandatory"); 
+            match("optional"); 
 
 
             }
@@ -1496,59 +1496,59 @@ public class InternalConfiguratorLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\2\46\1\uffff\2\46\2\43\4\uffff\2\46\3\uffff\4\46\5\uffff"+
-        "\2\46\1\43\2\uffff\3\43\2\uffff\1\107\1\46\1\uffff\1\46\1\uffff"+
-        "\2\46\6\uffff\2\46\3\uffff\5\46\5\uffff\1\124\1\46\6\uffff\1\46"+
-        "\1\127\2\46\1\132\7\46\1\uffff\2\46\1\uffff\1\145\1\46\1\uffff\12"+
-        "\46\1\uffff\1\161\2\46\1\164\7\46\1\uffff\2\46\1\uffff\1\46\1\177"+
-        "\10\46\1\uffff\4\46\1\u008c\2\46\1\uffff\1\46\1\uffff\2\46\1\uffff"+
-        "\2\46\1\u0094\1\46\1\u0096\2\46\1\uffff\1\46\1\uffff\1\46\1\u009b"+
-        "\1\u009c\1\u009d\3\uffff";
+        "\1\uffff\2\46\1\uffff\3\46\2\43\4\uffff\2\46\3\uffff\4\46\5\uffff"+
+        "\1\46\1\43\2\uffff\3\43\2\uffff\1\107\1\46\1\uffff\1\46\1\uffff"+
+        "\3\46\6\uffff\2\46\3\uffff\5\46\5\uffff\1\125\6\uffff\1\46\1\127"+
+        "\3\46\1\133\7\46\1\uffff\1\46\1\uffff\1\46\1\146\1\46\1\uffff\12"+
+        "\46\1\uffff\1\162\2\46\1\165\7\46\1\uffff\2\46\1\uffff\1\46\1\u0080"+
+        "\10\46\1\uffff\3\46\1\u008c\3\46\1\uffff\1\46\1\uffff\1\46\1\uffff"+
+        "\1\u0092\2\46\1\u0095\1\46\1\uffff\2\46\1\uffff\2\46\1\u009b\1\u009c"+
+        "\1\u009d\3\uffff";
     static final String DFA12_eofS =
         "\u009e\uffff";
     static final String DFA12_minS =
-        "\1\0\1\160\1\156\1\uffff\1\162\1\141\2\75\4\uffff\2\157\3\uffff"+
-        "\1\162\2\141\1\145\5\uffff\1\156\1\141\1\101\2\uffff\2\0\1\52\2"+
-        "\uffff\1\60\1\164\1\uffff\1\144\1\uffff\1\165\1\154\6\uffff\1\164"+
-        "\1\156\3\uffff\1\157\1\163\1\154\1\162\1\146\5\uffff\1\60\1\156"+
-        "\6\uffff\1\151\1\60\1\145\1\163\1\60\1\146\1\165\1\151\1\165\2\141"+
-        "\1\143\1\uffff\1\144\1\157\1\uffff\1\60\1\145\1\uffff\1\151\1\164"+
-        "\1\160\1\142\1\145\1\155\1\165\1\162\1\141\1\156\1\uffff\1\60\1"+
-        "\147\1\162\1\60\1\154\1\163\1\145\1\154\1\151\1\164\1\141\1\uffff"+
-        "\1\165\1\141\1\uffff\1\145\1\60\2\164\1\160\1\157\1\154\1\162\1"+
-        "\151\1\55\1\uffff\1\145\1\55\1\164\1\162\1\60\1\141\1\156\1\uffff"+
-        "\1\162\1\uffff\1\151\1\171\1\uffff\2\164\1\60\1\157\1\60\1\157\1"+
-        "\163\1\uffff\1\156\1\uffff\1\162\3\60\3\uffff";
+        "\1\0\1\160\1\156\1\uffff\1\141\1\162\1\141\2\75\4\uffff\2\157\3"+
+        "\uffff\1\162\2\141\1\145\5\uffff\1\156\1\101\2\uffff\2\0\1\52\2"+
+        "\uffff\1\60\1\164\1\uffff\1\144\1\uffff\1\156\1\165\1\154\6\uffff"+
+        "\1\164\1\156\3\uffff\1\157\1\163\1\154\1\162\1\146\5\uffff\1\60"+
+        "\6\uffff\1\151\1\60\1\144\1\145\1\163\1\60\1\146\1\165\1\151\1\165"+
+        "\2\141\1\143\1\uffff\1\157\1\uffff\1\141\1\60\1\145\1\uffff\1\151"+
+        "\1\164\1\160\1\142\1\145\1\155\1\165\1\162\1\156\1\164\1\uffff\1"+
+        "\60\1\147\1\162\1\60\1\154\1\163\1\145\1\154\1\151\1\141\1\157\1"+
+        "\uffff\1\165\1\141\1\uffff\1\145\1\60\2\164\1\160\1\154\2\162\1"+
+        "\151\1\55\1\uffff\1\145\1\55\1\164\1\60\1\171\1\141\1\156\1\uffff"+
+        "\1\162\1\uffff\1\151\1\uffff\1\60\2\164\1\60\1\157\1\uffff\1\157"+
+        "\1\163\1\uffff\1\156\1\162\3\60\3\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\162\1\156\1\uffff\1\162\1\141\2\75\4\uffff\2\157\3\uffff"+
-        "\1\162\1\151\1\141\1\145\5\uffff\1\156\1\141\1\172\2\uffff\2\uffff"+
-        "\1\57\2\uffff\1\172\1\164\1\uffff\1\144\1\uffff\1\165\1\154\6\uffff"+
-        "\1\164\1\156\3\uffff\1\157\1\163\1\154\1\162\1\163\5\uffff\1\172"+
-        "\1\156\6\uffff\1\151\1\172\1\145\1\163\1\172\1\163\1\165\1\151\1"+
-        "\165\2\141\1\143\1\uffff\1\144\1\157\1\uffff\1\172\1\145\1\uffff"+
-        "\1\151\1\164\1\160\1\142\1\145\1\155\1\165\1\162\1\141\1\156\1\uffff"+
-        "\1\172\1\147\1\162\1\172\1\154\1\163\1\145\1\154\1\151\1\164\1\141"+
-        "\1\uffff\1\165\1\141\1\uffff\1\145\1\172\2\164\1\160\1\157\1\154"+
-        "\1\162\1\151\1\55\1\uffff\1\145\1\55\1\164\1\162\1\172\1\141\1\156"+
-        "\1\uffff\1\162\1\uffff\1\151\1\171\1\uffff\2\164\1\172\1\157\1\172"+
-        "\1\157\1\163\1\uffff\1\156\1\uffff\1\162\3\172\3\uffff";
+        "\1\uffff\1\162\1\156\1\uffff\1\141\1\162\1\141\2\75\4\uffff\2\157"+
+        "\3\uffff\1\162\1\151\1\141\1\145\5\uffff\1\156\1\172\2\uffff\2\uffff"+
+        "\1\57\2\uffff\1\172\1\164\1\uffff\1\144\1\uffff\1\156\1\165\1\154"+
+        "\6\uffff\1\164\1\156\3\uffff\1\157\1\163\1\154\1\162\1\163\5\uffff"+
+        "\1\172\6\uffff\1\151\1\172\1\144\1\145\1\163\1\172\1\163\1\165\1"+
+        "\151\1\165\2\141\1\143\1\uffff\1\157\1\uffff\1\141\1\172\1\145\1"+
+        "\uffff\1\151\1\164\1\160\1\142\1\145\1\155\1\165\1\162\1\156\1\164"+
+        "\1\uffff\1\172\1\147\1\162\1\172\1\154\1\163\1\145\1\154\1\151\1"+
+        "\141\1\157\1\uffff\1\165\1\141\1\uffff\1\145\1\172\2\164\1\160\1"+
+        "\154\2\162\1\151\1\55\1\uffff\1\145\1\55\1\164\1\172\1\171\1\141"+
+        "\1\156\1\uffff\1\162\1\uffff\1\151\1\uffff\1\172\2\164\1\172\1\157"+
+        "\1\uffff\1\157\1\163\1\uffff\1\156\1\162\3\172\3\uffff";
     static final String DFA12_acceptS =
-        "\3\uffff\1\3\4\uffff\1\11\1\12\1\13\1\14\2\uffff\1\17\1\20\1\21"+
-        "\4\uffff\1\30\1\31\1\32\1\33\1\34\3\uffff\1\40\1\41\3\uffff\1\45"+
-        "\1\46\2\uffff\1\40\1\uffff\1\3\2\uffff\1\7\1\10\1\11\1\12\1\13\1"+
-        "\14\2\uffff\1\17\1\20\1\21\5\uffff\1\30\1\31\1\32\1\33\1\34\2\uffff"+
-        "\1\41\1\42\1\43\1\44\1\45\1\1\14\uffff\1\36\2\uffff\1\2\2\uffff"+
+        "\3\uffff\1\3\5\uffff\1\11\1\12\1\13\1\14\2\uffff\1\17\1\20\1\21"+
+        "\4\uffff\1\30\1\31\1\32\1\33\1\34\2\uffff\1\40\1\41\3\uffff\1\45"+
+        "\1\46\2\uffff\1\40\1\uffff\1\3\3\uffff\1\7\1\10\1\11\1\12\1\13\1"+
+        "\14\2\uffff\1\17\1\20\1\21\5\uffff\1\30\1\31\1\32\1\33\1\34\1\uffff"+
+        "\1\41\1\42\1\43\1\44\1\45\1\1\15\uffff\1\36\1\uffff\1\2\3\uffff"+
         "\1\15\12\uffff\1\5\13\uffff\1\6\2\uffff\1\22\12\uffff\1\27\7\uffff"+
-        "\1\23\1\uffff\1\26\2\uffff\1\4\7\uffff\1\25\1\uffff\1\37\4\uffff"+
+        "\1\23\1\uffff\1\26\1\uffff\1\37\5\uffff\1\4\2\uffff\1\25\5\uffff"+
         "\1\24\1\35\1\16";
     static final String DFA12_specialS =
-        "\1\1\36\uffff\1\2\1\0\175\uffff}>";
+        "\1\2\36\uffff\1\1\1\0\175\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\43\2\42\2\43\1\42\22\43\1\42\1\7\1\37\4\43\1\40\1\25\1"+
-            "\26\1\3\1\12\1\20\1\13\1\43\1\41\12\36\1\43\1\30\1\10\1\6\1"+
-            "\11\2\43\32\35\1\27\1\43\1\31\1\34\1\35\1\43\1\2\1\35\1\15\1"+
-            "\24\1\35\1\5\1\21\1\35\1\32\3\35\1\33\1\14\1\1\1\23\3\35\1\4"+
-            "\1\35\1\22\4\35\1\16\1\43\1\17\uff82\43",
+            "\11\43\2\42\2\43\1\42\22\43\1\42\1\10\1\37\4\43\1\40\1\26\1"+
+            "\27\1\3\1\13\1\21\1\14\1\43\1\41\12\36\1\43\1\31\1\11\1\7\1"+
+            "\12\2\43\32\35\1\30\1\43\1\32\1\34\1\35\1\43\1\2\1\35\1\16\1"+
+            "\25\1\35\1\6\1\22\1\35\1\33\3\35\1\4\1\15\1\1\1\24\3\35\1\5"+
+            "\1\35\1\23\4\35\1\17\1\43\1\20\uff82\43",
             "\1\45\1\uffff\1\44",
             "\1\47",
             "",
@@ -1556,25 +1556,25 @@ public class InternalConfiguratorLexer extends Lexer {
             "\1\52",
             "\1\53",
             "\1\54",
+            "\1\55",
             "",
             "",
             "",
             "",
-            "\1\61",
             "\1\62",
+            "\1\63",
             "",
             "",
             "",
-            "\1\66",
-            "\1\70\7\uffff\1\67",
-            "\1\71",
+            "\1\67",
+            "\1\71\7\uffff\1\70",
             "\1\72",
+            "\1\73",
             "",
             "",
             "",
             "",
             "",
-            "\1\100",
             "\1\101",
             "\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
@@ -1591,29 +1591,29 @@ public class InternalConfiguratorLexer extends Lexer {
             "",
             "\1\112",
             "\1\113",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\114",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\115",
-            "",
-            "",
-            "",
             "\1\116",
+            "",
+            "",
+            "",
             "\1\117",
             "\1\120",
             "\1\121",
-            "\1\122\14\uffff\1\123",
+            "\1\122",
+            "\1\123\14\uffff\1\124",
             "",
             "",
             "",
             "",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\125",
             "",
             "",
             "",
@@ -1624,22 +1624,22 @@ public class InternalConfiguratorLexer extends Lexer {
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\130",
             "\1\131",
+            "\1\132",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\133\14\uffff\1\134",
-            "\1\135",
+            "\1\134\14\uffff\1\135",
             "\1\136",
             "\1\137",
             "\1\140",
             "\1\141",
             "\1\142",
-            "",
             "\1\143",
+            "",
             "\1\144",
             "",
+            "\1\145",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\146",
-            "",
             "\1\147",
+            "",
             "\1\150",
             "\1\151",
             "\1\152",
@@ -1649,25 +1649,25 @@ public class InternalConfiguratorLexer extends Lexer {
             "\1\156",
             "\1\157",
             "\1\160",
+            "\1\161",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\162",
             "\1\163",
+            "\1\164",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\165",
             "\1\166",
             "\1\167",
             "\1\170",
             "\1\171",
             "\1\172",
             "\1\173",
-            "",
             "\1\174",
-            "\1\175",
             "",
+            "\1\175",
             "\1\176",
+            "",
+            "\1\177",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u0080",
             "\1\u0081",
             "\1\u0082",
             "\1\u0083",
@@ -1675,30 +1675,30 @@ public class InternalConfiguratorLexer extends Lexer {
             "\1\u0085",
             "\1\u0086",
             "\1\u0087",
-            "",
             "\1\u0088",
+            "",
             "\1\u0089",
             "\1\u008a",
             "\1\u008b",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u008d",
             "\1\u008e",
-            "",
             "\1\u008f",
             "",
             "\1\u0090",
+            "",
             "\1\u0091",
             "",
-            "\1\u0092",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u0093",
+            "\1\u0094",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u0095",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u0096",
+            "",
             "\1\u0097",
             "\1\u0098",
             "",
             "\1\u0099",
-            "",
             "\1\u009a",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
@@ -1755,6 +1755,16 @@ public class InternalConfiguratorLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
+                        int LA12_31 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 67;}
+
+                        else s = 35;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1764,53 +1774,53 @@ public class InternalConfiguratorLexer extends Lexer {
 
                         else if ( (LA12_0=='*') ) {s = 3;}
 
-                        else if ( (LA12_0=='t') ) {s = 4;}
+                        else if ( (LA12_0=='m') ) {s = 4;}
 
-                        else if ( (LA12_0=='f') ) {s = 5;}
+                        else if ( (LA12_0=='t') ) {s = 5;}
 
-                        else if ( (LA12_0=='=') ) {s = 6;}
+                        else if ( (LA12_0=='f') ) {s = 6;}
 
-                        else if ( (LA12_0=='!') ) {s = 7;}
+                        else if ( (LA12_0=='=') ) {s = 7;}
 
-                        else if ( (LA12_0=='<') ) {s = 8;}
+                        else if ( (LA12_0=='!') ) {s = 8;}
 
-                        else if ( (LA12_0=='>') ) {s = 9;}
+                        else if ( (LA12_0=='<') ) {s = 9;}
 
-                        else if ( (LA12_0=='+') ) {s = 10;}
+                        else if ( (LA12_0=='>') ) {s = 10;}
 
-                        else if ( (LA12_0=='-') ) {s = 11;}
+                        else if ( (LA12_0=='+') ) {s = 11;}
 
-                        else if ( (LA12_0=='n') ) {s = 12;}
+                        else if ( (LA12_0=='-') ) {s = 12;}
 
-                        else if ( (LA12_0=='c') ) {s = 13;}
+                        else if ( (LA12_0=='n') ) {s = 13;}
 
-                        else if ( (LA12_0=='{') ) {s = 14;}
+                        else if ( (LA12_0=='c') ) {s = 14;}
 
-                        else if ( (LA12_0=='}') ) {s = 15;}
+                        else if ( (LA12_0=='{') ) {s = 15;}
 
-                        else if ( (LA12_0==',') ) {s = 16;}
+                        else if ( (LA12_0=='}') ) {s = 16;}
 
-                        else if ( (LA12_0=='g') ) {s = 17;}
+                        else if ( (LA12_0==',') ) {s = 17;}
 
-                        else if ( (LA12_0=='v') ) {s = 18;}
+                        else if ( (LA12_0=='g') ) {s = 18;}
 
-                        else if ( (LA12_0=='p') ) {s = 19;}
+                        else if ( (LA12_0=='v') ) {s = 19;}
 
-                        else if ( (LA12_0=='d') ) {s = 20;}
+                        else if ( (LA12_0=='p') ) {s = 20;}
 
-                        else if ( (LA12_0=='(') ) {s = 21;}
+                        else if ( (LA12_0=='d') ) {s = 21;}
 
-                        else if ( (LA12_0==')') ) {s = 22;}
+                        else if ( (LA12_0=='(') ) {s = 22;}
 
-                        else if ( (LA12_0=='[') ) {s = 23;}
+                        else if ( (LA12_0==')') ) {s = 23;}
 
-                        else if ( (LA12_0==';') ) {s = 24;}
+                        else if ( (LA12_0=='[') ) {s = 24;}
 
-                        else if ( (LA12_0==']') ) {s = 25;}
+                        else if ( (LA12_0==';') ) {s = 25;}
 
-                        else if ( (LA12_0=='i') ) {s = 26;}
+                        else if ( (LA12_0==']') ) {s = 26;}
 
-                        else if ( (LA12_0=='m') ) {s = 27;}
+                        else if ( (LA12_0=='i') ) {s = 27;}
 
                         else if ( (LA12_0=='^') ) {s = 28;}
 
@@ -1827,16 +1837,6 @@ public class InternalConfiguratorLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 34;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='&')||LA12_0=='.'||LA12_0==':'||(LA12_0>='?' && LA12_0<='@')||LA12_0=='\\'||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 35;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_31 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 67;}
-
-                        else s = 35;
 
                         if ( s>=0 ) return s;
                         break;
