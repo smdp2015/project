@@ -1,35 +1,48 @@
 package dk.itu.smdp2015.church.generator
 
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
-import dk.itu.smdp2015.church.model.configurator.Configurator
-import dk.itu.smdp2015.church.model.configurator.ParameterGroup
-import dk.itu.smdp2015.church.model.configurator.Parameter
-import org.eclipse.emf.common.util.EList
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter
-import dk.itu.smdp2015.church.model.configurator.Unary
-import dk.itu.smdp2015.church.model.configurator.Identifier
-import dk.itu.smdp2015.church.model.configurator.Enumerated
-import dk.itu.smdp2015.church.model.configurator.Bounded
 import dk.itu.smdp2015.church.model.configurator.Binary
 import dk.itu.smdp2015.church.model.configurator.BinaryOperator
+import dk.itu.smdp2015.church.model.configurator.Boolean
+import dk.itu.smdp2015.church.model.configurator.Bounded
+import dk.itu.smdp2015.church.model.configurator.Configurator
 import dk.itu.smdp2015.church.model.configurator.Constraint
+import dk.itu.smdp2015.church.model.configurator.Enumerated
+import dk.itu.smdp2015.church.model.configurator.Identifier
+import dk.itu.smdp2015.church.model.configurator.Integer
+import dk.itu.smdp2015.church.model.configurator.Parameter
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup
+import dk.itu.smdp2015.church.model.configurator.Unary
 import java.util.LinkedList
-import dk.itu.smdp2015.church.model.configurator.impl.ParameterGroupImpl
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import dk.itu.smdp2015.church.validation.*
+
+import dk.itu.smdp2015.church.validation.ExpressionType
+import dk.itu.smdp2015.church.validation.ExpressionTypeProvider
+import javax.inject.Inject
 import dk.itu.smdp2015.church.model.configurator.Expression
+import dk.itu.smdp2015.church.model.configurator.ValueRange
 
 class CSGenerator implements IGenerator {
-	var classes = new LinkedList<String>
+	var groupParameterclasses = new LinkedList<String>
+	var parameterInstance = new LinkedList<String>
 	var confBuilder = new LinkedList<String>
+	
+	
+	@Inject extension ExpressionTypeProvider
+	@Inject extension ExpressionValueProvider
 
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(typeof(Configurator))) {
 			var generated = compile(e);
 
-			for (s : classes) {
+			for (s : groupParameterclasses) {
 				generated.append(s.toString)
 			}
+
 
 			for (s : confBuilder) {
 				generated.append(s.toString)
@@ -40,21 +53,30 @@ class CSGenerator implements IGenerator {
 	}
 
 	def compile(Configurator configurator) {
-         
+        //clear scope
+        parameterInstance.clear
         
+        //create parameter instances
+        compileBuilder(configurator.parameters)
+		var parameters = new StringBuilder
+		for(s : parameterInstance){
+				parameters.append(s.toString)
+		}
+
 		//ModelBuilder
 		var sb = new StringBuilder
 		sb.append(
 			'''
 				public static class ConfigurationBuilder
 				{
+					«parameters.toString»
 					public static Configurator Build()
 					{						
 						var model = «compileBuilder(configurator.parameters)»;
 				   	    return new Configurator(model); 
 				   	}
 				}
-			''')
+			''')			
 		confBuilder.addLast(sb.toString)
 
 		//Classes
@@ -70,139 +92,165 @@ class CSGenerator implements IGenerator {
 		p.fold(new StringBuilder)[sb, parameter|sb.append(compileParameterBuilder(parameter)); sb]
 	}
 
+	
 	def dispatch compileParameterBuilder(ParameterGroup parameterGroup)	{
-		'''«parameterGroup.name» = new «parameterGroup.name»
-			{
+		compileBuilder(parameterGroup.parameters)			
+		parameterInstance.addLast('''
+		var «parameterGroup.name»GroupParameter = new «parameterGroup.name»
+		{
 				Name = "«parameterGroup.name»",
-				«compileBuilder(parameterGroup.parameters)»
-			}'''
+				«compileParameterGroupBuilder(parameterGroup.parameters)»
+		}		
+		''')				
+		
+		'''«parameterGroup.name» = «parameterGroup.name»ParameterGroup;'''
 	}
 
+
 	def dispatch compileParameterBuilder(Parameter parameter) {
+				
 		if(parameter.valueRange instanceof Bounded )
 		{
+			var boundedvalueRange = parameter.valueRange as Bounded
+			
+			parameterInstance.addLast('''
+			var «parameter.name»Parameter = new «parameter.name» { Value = «compileExpression(parameter.^default)», Name = "«parameter.name»", Description = "«parameter.description»", Validate = () => «
+											safeAddConstraints(parameter.constraints)», IsVisible = () => «
+											safeAddVisibleIf(parameter.visibility)», Mandatory = «parameter.mandatory
+											», UpperBound = «safeAddUpperLower(parameter.valueRange)»};
+		 	''')
+		
 			''' «parameter.name» = new «parameter.name» { Value = «compileExpression(parameter.^default)», Name = "«parameter.name»", Description = "«parameter.description»" },'''
 		} else
 		if(parameter.valueRange instanceof Enumerated )
 		{
 			var v = parameter.valueRange as Enumerated
 			var enumValues = v.values.map[value|'"' + compileExpression(value) + '"'].join(',')
+			
+			parameterInstance.addLast('''
+			var «parameter.name»Parameter = new «parameter.name»  { Value = "«compileExpression(parameter.^default)
+									»", Name = "«parameter.name»", Description = "«parameter.description
+									»", SelectableValues = new List<string>{«enumValues.toString» }};
+			''')
+			
 			''' «parameter.name» = new «parameter.name» { Value = "«compileExpression(parameter.^default)
 									»", Name = "«parameter.name»", Description = "«parameter.description
 									»", SelectableValues = new List<string>{«enumValues.toString» }},'''
 		}		
 	}
+	
+	def safeAddConstraints(EList<Constraint> constraint)
+	{
+		if(constraint==null || constraint.length==0){
+			"true"
+		}else
+		{
+			compileExpression(constraint)
+		}
+	}
+	
+	def safeAddVisibleIf(Expression expression)
+	{
+		if(expression==null)
+		{
+			true
+		}else
+		{
+			compileExpression(expression)
+		}
+	}
+	
+	def safeAddUpperLower(ValueRange valueRange)
+	{		
+		if(valueRange!=null && valueRange instanceof Bounded)
+		{
+			var boundedvalueRange = valueRange as Bounded
+			var a = boundedvalueRange.upperBound.typeFor
+			if(	boundedvalueRange.upperBound != null && boundedvalueRange.upperBound.typeFor == ExpressionType.Integer)
+			{
+				"UpperBound = " + compileExpression(boundedvalueRange.upperBound) +", LowerBound = " + compileExpression(boundedvalueRange.lowerBound)				
+			}
+		}
+	}
+
+	def dispatch compileParameterGroupBuilder(EList<AbstractParameter> p) {
+		p.fold(new StringBuilder)[sb, parameter|sb.append(compileParameterGroupBuilder(parameter)); sb]
+	}
+
+	def dispatch compileParameterGroupBuilder(ParameterGroup parameterGroup){
+		 '''
+		«parameterGroup.name» = «parameterGroup.name»GroupParameter,
+		'''
+	}
+
+	def dispatch compileParameterGroupBuilder(Parameter parameter)	{
+		'''
+		«parameter.name» = «parameter.name»Parameter,
+		''' 
+	}
 
 	def dispatch compileParameter(ParameterGroup parameterGroup) //named compileParameter because of the dispatch keyword
-	{
-		var sb = new StringBuilder
-		sb.append(
+	{		
+			groupParameterclasses.addLast('''		
+				 
+				/// <summary>
+				/// Parametergroup «parameterGroup.name» 
+				/// «parameterGroup.description»
+				/// </summary>
+				public class «parameterGroup.name»:GroupParameter
+				{	
+					public string Name { get; set; }		
+					«compile(parameterGroup.parameters)»
+				}
+			'''	)
+			
 			'''
 				/// <summary>
 				/// Parametergroup «parameterGroup.name» 
 				/// «parameterGroup.description»
 				/// </summary>
-				public class «parameterGroup.name»:IGroupParameter
-				{	
-					public string Name { get; set; }		
-					«compile(parameterGroup.parameters)»
-					
-					public bool IsVisible()
-					{
-						return 	«if (parameterGroup.visibility == null) {'''true; //visibility is null'''} else {compileExpression(parameterGroup.visibility)}»;
-					}
-						 
-					public bool Validate()
-					{ 
-						return true;
-					}
-				}
-			''')
-		classes.addLast(sb.toString)
-
-		'''
-			/// <summary>
-			/// parameter «parameterGroup.name» 
-			/// «parameterGroup.description»
-			/// </summary>
-			public «parameterGroup.name» «parameterGroup.name» { get; set; }
-		'''
+				public «parameterGroup.name» «parameterGroup.name» {get; set;}
+			'''
 	}
 
 
-
 	def dispatch compileParameter(Parameter parameter) {
-		var sb = new StringBuilder
+		var pType =""	
+		
 		if(parameter.valueRange instanceof Bounded)
-		{			
-		sb.append(
-			'''
-				/// <summary>
-				/// Parameter «parameter.name» 
-				/// «parameter.description»
-				/// </summary>
-				public class «parameter.name»: IntParameter
-				{	
-					public string Name { get; set; }		
-										
-					public override bool IsVisible()
-					{
-						return 	«if (parameter.visibility == null) {'''true; //visibility is null'''} else {compileExpression(parameter.visibility)}»;
-					}
-						 
-					public override bool Validate()
-					{
-						return  «if(parameter.constraints != 224324){'''true; //constraints is null'''} else {
-							compileExpression(parameter.constraints)''';'''
-							}» 
-						
-					}
-				}
-			''')
-		} 
-		if(parameter.valueRange instanceof Enumerated)
-		{
-			sb.append(
-			'''
-				/// <summary>
-				/// Parameter «parameter.name» 
-				/// «parameter.description»
-				/// </summary>
-				public class «parameter.name»: EnumeratedParameter
-				{	
-					public string Name { get; set; }		
-										
-					public override bool IsVisible()
-					{
-						return 	«if (parameter.visibility == null) {'''true; //visibility is null'''} else {compileExpression(parameter.visibility)}»;
-					}
-						 
-					public override bool Validate()
-					{
-							return true;
-					}
-				}
-			''')
+		{	
+			var bounded1 = parameter.valueRange as Bounded
+			
+			if(bounded1.upperBound instanceof dk.itu.smdp2015.church.model.configurator.Integer)
+			{			  				 				
+				pType="IntParameter"  			  				
+  			}
+  			
+  			if(bounded1.upperBound instanceof dk.itu.smdp2015.church.model.configurator.String)
+  			{
+  				pType = "StringParameter"  				
+  			}
+  			if(bounded1.upperBound instanceof dk.itu.smdp2015.church.model.configurator.Boolean)
+  			{
+  				pType=  "BoolParameter"  				
+  			}  				
 		}
-		
-		classes.addLast(sb.toString)
-		
-		'''
-			/// <summary>
-			/// parameter «parameter.name» 
-			/// «parameter.description»
-			/// </summary>
-			public «parameter.name» «parameter.name» { get; set; }
-					
+				
+		if(parameter.valueRange instanceof Enumerated)
+		{		
+  			pType ="EnumeratedParameter"		
+  		}  		
+  		
+  		'''/// <summary>
+  		/// parameter «parameter.name»
+  		/// «parameter.description»
+  		/// </summary>
+  		public «pType» «parameter.name» { get; set; }		
 		'''
 	}
 
 	def dispatch compileExpression(EList<Constraint> p) {
 		p.fold(new StringBuilder)[sb, con|sb.append(compileExpression(con.expression)); sb].toString  //virker ikke
-
-//		for(c:p){
-//			compileExpression(c.expression)	
-//		}
 	}
 	
 	def dispatch compileExpression(Binary binary) {
@@ -219,11 +267,11 @@ class CSGenerator implements IGenerator {
 		identifier.id.name
 	}
 
-	def dispatch compileExpression(dk.itu.smdp2015.church.model.configurator.Integer integer) {
+	def dispatch compileExpression(Integer integer) {
 		integer.value
 	}
 
-	def dispatch compileExpression(dk.itu.smdp2015.church.model.configurator.Boolean bool) {
+	def dispatch compileExpression(Boolean bool) {
 		bool.value
 	}
 
