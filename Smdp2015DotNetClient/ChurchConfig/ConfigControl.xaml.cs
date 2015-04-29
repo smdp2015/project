@@ -57,7 +57,8 @@ namespace ChurchConfig
 
                 if (runtimeProperty.PropertyType == typeof(BoolParameter))
                 {
-
+                    var value = runtimeProperty.GetValue(commonParameter) as BoolParameter;
+                    AddBoolParameter(listView, runtimeProperty, value);
                 }
 
                 var propertyGroup = runtimeProperty.GetValue(commonParameter) as GroupParameter;
@@ -73,8 +74,6 @@ namespace ChurchConfig
                         Height = 50,
                         Fill = new SolidColorBrush(Colors.Beige)
                     });
-                    // stackPanel.ChildrenTransitions = new TransitionCollection { new EntranceThemeTransition() };
-                    // stackPanel.Transitions = new TransitionCollection { new PaneThemeTransition() };
 
                     var textBlock = new TextBlock();
                     var binding = new Binding { Path = new PropertyPath("Name"), Mode = BindingMode.OneWay };
