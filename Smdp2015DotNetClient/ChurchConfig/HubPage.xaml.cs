@@ -1,4 +1,8 @@
-﻿using ChurchConfig.Common;
+﻿using System.Reflection;
+using Windows.UI;
+using Windows.UI.Xaml.Shapes;
+using ChurchConfig.Common;
+using ChurchConfig.Configuration;
 using ChurchConfig.Data;
 using System;
 using System.Collections.Generic;
@@ -49,7 +53,10 @@ namespace ChurchConfig
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            
         }
+
+        public ListView ConfigurationControl { get; set; }
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -116,5 +123,9 @@ namespace ChurchConfig
         }
 
         #endregion
+
+
+        
+
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0e3bce87-5748-4be1-ac86-7a063556c357}</ProjectGuid>
+    <ProjectGuid>{0E3BCE87-5748-4BE1-AC86-7A063556C357}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChurchConfig</RootNamespace>
@@ -14,9 +14,7 @@
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    
     <PackageCertificateKeyFile>ChurchConfig_TemporaryKey.pfx</PackageCertificateKeyFile>
-    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -110,6 +108,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfigControl.xaml.cs">
+      <DependentUpon>ConfigControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\CommonConfig.cs" />
+    <Compile Include="Configuration\ConfDataTemplateSelector.cs" />
+    <Compile Include="Configuration\Configurator.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
@@ -131,13 +135,12 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
-    
     <None Include="ChurchConfig_TemporaryKey.pfx" />
-    
     <PRIResource Include="Strings\en-US\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
-    <Content Include="DataModel\SampleData.json"/>
+    <Content Include="Assets\church.jpg" />
+    <Content Include="DataModel\SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ConfigControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
