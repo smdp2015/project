@@ -113,6 +113,18 @@ public class ExpressionTypeProvider {
     return _rangeType;
   }
   
+  protected ExpressionType _typeFor(final dk.itu.smdp2015.church.model.configurator.Integer integerVal) {
+    return ExpressionType.Integer;
+  }
+  
+  protected ExpressionType _typeFor(final dk.itu.smdp2015.church.model.configurator.Boolean booleanVal) {
+    return ExpressionType.Boolean;
+  }
+  
+  protected ExpressionType _typeFor(final dk.itu.smdp2015.church.model.configurator.String stringVal) {
+    return ExpressionType.String;
+  }
+  
   public ExpressionType rangeType(final ValueRange range) {
     ExpressionType _switchResult = null;
     boolean _matched = false;
@@ -142,20 +154,26 @@ public class ExpressionTypeProvider {
     return _switchResult;
   }
   
-  public ExpressionType typeFor(final Expression binary) {
-    if (binary instanceof Binary) {
-      return _typeFor((Binary)binary);
-    } else if (binary instanceof Constant) {
-      return _typeFor((Constant)binary);
-    } else if (binary instanceof Identifier) {
-      return _typeFor((Identifier)binary);
-    } else if (binary instanceof InRange) {
-      return _typeFor((InRange)binary);
-    } else if (binary instanceof Unary) {
-      return _typeFor((Unary)binary);
+  public ExpressionType typeFor(final Expression booleanVal) {
+    if (booleanVal instanceof dk.itu.smdp2015.church.model.configurator.Boolean) {
+      return _typeFor((dk.itu.smdp2015.church.model.configurator.Boolean)booleanVal);
+    } else if (booleanVal instanceof dk.itu.smdp2015.church.model.configurator.Integer) {
+      return _typeFor((dk.itu.smdp2015.church.model.configurator.Integer)booleanVal);
+    } else if (booleanVal instanceof dk.itu.smdp2015.church.model.configurator.String) {
+      return _typeFor((dk.itu.smdp2015.church.model.configurator.String)booleanVal);
+    } else if (booleanVal instanceof Binary) {
+      return _typeFor((Binary)booleanVal);
+    } else if (booleanVal instanceof Constant) {
+      return _typeFor((Constant)booleanVal);
+    } else if (booleanVal instanceof Identifier) {
+      return _typeFor((Identifier)booleanVal);
+    } else if (booleanVal instanceof InRange) {
+      return _typeFor((InRange)booleanVal);
+    } else if (booleanVal instanceof Unary) {
+      return _typeFor((Unary)booleanVal);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(binary).toString());
+        Arrays.<Object>asList(booleanVal).toString());
     }
   }
 }

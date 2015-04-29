@@ -26,8 +26,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//AbstractParameter/visibility"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//AbstractParameter/constraints"/>
     </genClasses>
-    <genClasses ecoreClass="configurator.ecore#//ParameterGroup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//ParameterGroup/parameters"/>
+    <genClasses ecoreClass="configurator.ecore#//B">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configurator.ecore#//B/parameters"/>
     </genClasses>
     <genClasses ecoreClass="configurator.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configurator.ecore#//Parameter/optional"/>

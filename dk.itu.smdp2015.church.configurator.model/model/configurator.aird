@@ -23,7 +23,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_zgz5VsmeEeSJCdt4SN43MA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_zgz5UcmeEeSJCdt4SN43MA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zgz5UsmeEeSJCdt4SN43MA" x="36" y="-120" width="168" height="63"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zgz5UsmeEeSJCdt4SN43MA" x="36" y="-108" width="168" height="63"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_5MH2UMmeEeSJCdt4SN43MA" type="2003" element="_5L07YMmeEeSJCdt4SN43MA">
             <children xmi:type="notation:Node" xmi:id="_5MH2U8meEeSJCdt4SN43MA" type="5007"/>
@@ -1285,9 +1285,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_zgqIUMmeEeSJCdt4SN43MA" name="ParameterGroup" tooltipText="" outgoingEdges="_2WrTMMmeEeSJCdt4SN43MA" incomingEdges="_IJYiYOwmEeSw8JNS1Oej9Q" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="configurator.ecore#//ParameterGroup"/>
-        <semanticElements xmi:type="ecore:EClass" href="configurator.ecore#//ParameterGroup"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_zgqIUMmeEeSJCdt4SN43MA" name="B" tooltipText="" outgoingEdges="_2WrTMMmeEeSJCdt4SN43MA" incomingEdges="_IJYiYOwmEeSw8JNS1Oej9Q" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="configurator.ecore#//B"/>
+        <semanticElements xmi:type="ecore:EClass" href="configurator.ecore#//B"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1301,8 +1301,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_2WrTMMmeEeSJCdt4SN43MA" sourceNode="_zgqIUMmeEeSJCdt4SN43MA" targetNode="_NZ-FIMmeEeSJCdt4SN43MA">
-        <target xmi:type="ecore:EClass" href="configurator.ecore#//ParameterGroup"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="configurator.ecore#//ParameterGroup/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="configurator.ecore#//B"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="configurator.ecore#//B/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_IJR0sOwmEeSw8JNS1Oej9Q" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_IJR0sewmEeSw8JNS1Oej9Q" red="136" green="136" blue="136"/>
@@ -2258,7 +2258,7 @@
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_IJYiYOwmEeSw8JNS1Oej9Q" sourceNode="_NZ-FIMmeEeSJCdt4SN43MA" targetNode="_zgqIUMmeEeSJCdt4SN43MA" beginLabel="[1..*] parameters" endLabel="[0..1] parent">
         <target xmi:type="ecore:EReference" href="configurator.ecore#//AbstractParameter/parent"/>
-        <semanticElements xmi:type="ecore:EReference" href="configurator.ecore#//ParameterGroup/parameters"/>
+        <semanticElements xmi:type="ecore:EReference" href="configurator.ecore#//B/parameters"/>
         <semanticElements xmi:type="ecore:EReference" href="configurator.ecore#//AbstractParameter/parent"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_IJZJduwmEeSw8JNS1Oej9Q" description="_IJZJcuwmEeSw8JNS1Oej9Q" sourceArrow="InputArrow" targetArrow="FillDiamond" routingStyle="manhattan">
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_IJZJd-wmEeSw8JNS1Oej9Q"/>

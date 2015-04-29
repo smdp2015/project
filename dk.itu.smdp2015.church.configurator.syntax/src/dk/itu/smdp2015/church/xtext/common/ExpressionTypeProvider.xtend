@@ -64,10 +64,24 @@ class ExpressionTypeProvider {
 		identifier.id.valueRange?.rangeType
 	}
 	
+	def dispatch ExpressionType typeFor(Integer integerVal){
+		ExpressionType.Integer
+	}
+	
+	def dispatch ExpressionType typeFor(Boolean booleanVal){
+		ExpressionType.Boolean
+	}
+	
+	def dispatch ExpressionType typeFor(String stringVal){
+		ExpressionType.String
+	}
+	
 	def ExpressionType rangeType(ValueRange range) {
 		switch (range) {
 			Enumerated: range.values.get(0)?.typeFor
 			Bounded: range.lowerBound?.typeFor
 		}
 	}
+	
+	
 }
