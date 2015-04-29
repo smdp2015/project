@@ -16,10 +16,20 @@
 * En true,false enumeration bør kun have de to og kun to værdier
 
 # Kodegenerering:
+.Net klient
+Filbeskrivelse
+project / Smdp2015DotNetClient / ChurchConfig / Configuration / Configurator.cs indeholder den genereret kode
+project / Smdp2015DotNetClient / ChurchConfig / Configuration / CommonConfig.cs indeholder baseklasser til koden
+project / Smdp2015DotNetClient / ChurchConfig / ConfigControl.xaml  er usercontrollen til visning af konfigurationen
+project / Smdp2015DotNetClient / ChurchConfig / HubPage.xaml er hovedvinduet i applikationen
+
+Der er ikke lavet validering i UI. 
+![Alt text](/Smdp2015DotNetClient/screenshot_04292015_141316.png ".Net Client")
 
 
 # Tests:
 * Metamodel
 * Grammatik
 * Kodegeneratorer
+
 
