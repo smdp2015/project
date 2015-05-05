@@ -6,9 +6,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//Constraint" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//B" eOpposite="#//B/parameters"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//ParameterGroup"
+        eOpposite="#//ParameterGroup/parameters"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="B" eSuperTypes="#//AbstractParameter">
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterGroup" eSuperTypes="#//AbstractParameter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
         upperBound="-1" eType="#//AbstractParameter" containment="true" eOpposite="#//AbstractParameter/parent"/>
   </eClassifiers>

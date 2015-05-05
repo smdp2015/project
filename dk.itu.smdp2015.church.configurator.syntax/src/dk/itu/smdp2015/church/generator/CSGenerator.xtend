@@ -33,7 +33,16 @@ class CSGenerator implements IGenerator {
 	
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(typeof(Configurator))) {
-			var generated = compile(e);
+
+			var generated = new StringBuilder
+			generated.append('''using System.Collections.Generic;
+using ChurchConfig.Configuration;
+			 
+namespace ChurchConfig.Configuration
+{
+	''')
+ 
+			generated.append(compile(e));
 
 			for (s : groupParameterclasses) {
 				generated.append(s.toString)
@@ -43,7 +52,7 @@ class CSGenerator implements IGenerator {
 			for (s : confBuilder) {
 				generated.append(s.toString)
 			}
-			
+			generated.append("}") //end namespace
 			fsa.generateFile("Configurator.cs", generated)
 		}
 	}
