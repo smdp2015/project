@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configurator:Configurator xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configurator="http://itu.dk/smdp/configurator" xsi:schemaLocation="http://itu.dk/smdp/configurator ../model/configurator.ecore" description="A configurator for a car" name="car">
+  <parameters xsi:type="configurator:Parameter" description="Car color" name="color">
+    <valueRange xsi:type="configurator:Enumerated">
+      <values xsi:type="configurator:String" value="Black"/>
+      <values xsi:type="configurator:String" value="Gray"/>
+      <values xsi:type="configurator:String" value="White"/>
+      <values xsi:type="configurator:String" value="Red"/>
+    </valueRange>
+  </parameters>
+  <parameters xsi:type="configurator:Parameter" description="The car model" name="model">
+    <valueRange xsi:type="configurator:Enumerated">
+      <values xsi:type="configurator:String" value="Standard"/>
+      <values xsi:type="configurator:String" value="Luxury"/>
+      <values xsi:type="configurator:String" value="Sport"/>
+    </valueRange>
+  </parameters>
+  <parameters xsi:type="configurator:ParameterGroup" description="Parameters related to wheels" name="wheels">
+    <parameters xsi:type="configurator:Parameter" description="Wheel size" name="size">
+      <valueRange xsi:type="configurator:Bounded">
+        <upperBound xsi:type="configurator:Integer" value="18"/>
+        <lowerBound xsi:type="configurator:Integer" value="14"/>
+      </valueRange>
+    </parameters>
+    <parameters xsi:type="configurator:Parameter" description="Type of wheels" name="wheeltype">
+      <valueRange xsi:type="configurator:Enumerated">
+        <values xsi:type="configurator:String" value="Aluminum"/>
+        <values xsi:type="configurator:String" value="Steel"/>
+      </valueRange>
+    </parameters>
+    <parameters xsi:type="configurator:Parameter" description="Type of aluminum wheels" name="aluminumModel">
+      <visibility xsi:type="configurator:InRange" parameter="//@parameters.2/@parameters.1">
+        <range xsi:type="configurator:Enumerated">
+          <values xsi:type="configurator:String" value="Aluminum"/>
+        </range>
+      </visibility>
+      <valueRange xsi:type="configurator:Enumerated">
+        <values xsi:type="configurator:String" value="Pink Fairy"/>
+        <values xsi:type="configurator:String" value="Dark Night"/>
+        <values xsi:type="configurator:String" value="Ultra Cool Showdown"/>
+      </valueRange>
+    </parameters>
+  </parameters>
+  <parameters xsi:type="configurator:ParameterGroup" description="Parameters related to engine" name="engine">
+    <parameters xsi:type="configurator:Parameter" description="Engine type" name="engineType">
+      <valueRange xsi:type="configurator:Enumerated">
+        <values xsi:type="configurator:String" value="Diesel"/>
+        <values xsi:type="configurator:String" value="Gasoline"/>
+        <values xsi:type="configurator:String" value="Electric"/>
+        <values xsi:type="configurator:String" value="Hybrid"/>
+      </valueRange>
+    </parameters>
+    <parameters xsi:type="configurator:ParameterGroup" description="Parameters related to fossile fuel based engines" name="fossileFuelParameters">
+      <visibility xsi:type="configurator:Unary" operator="logicalNot">
+        <inner xsi:type="configurator:InRange" parameter="//@parameters.3/@parameters.0">
+          <range xsi:type="configurator:Enumerated">
+            <values xsi:type="configurator:String" value="Electric"/>
+          </range>
+        </inner>
+      </visibility>
+      <parameters xsi:type="configurator:Parameter" description="Engine size" name="engineSize">
+        <valueRange xsi:type="configurator:Enumerated">
+          <values xsi:type="configurator:Integer" value="1000"/>
+          <values xsi:type="configurator:Integer" value="1200"/>
+          <values xsi:type="configurator:Integer" value="1400"/>
+          <values xsi:type="configurator:Integer" value="1600"/>
+          <values xsi:type="configurator:Integer" value="2000"/>
+          <values xsi:type="configurator:Integer" value="3000"/>
+          <values xsi:type="configurator:Integer" value="4500"/>
+        </valueRange>
+      </parameters>
+      <parameters xsi:type="configurator:Parameter" description="Fuel tank size" name="fuelTankSize">
+        <valueRange xsi:type="configurator:Enumerated">
+          <values xsi:type="configurator:Integer" value="40"/>
+          <values xsi:type="configurator:Integer" value="60"/>
+          <values xsi:type="configurator:Integer" value="80"/>
+          <values xsi:type="configurator:Integer" value="100"/>
+        </valueRange>
+      </parameters>
+    </parameters>
+  </parameters>
+</configurator:Configurator>
