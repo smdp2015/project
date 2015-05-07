@@ -29,7 +29,7 @@ Der er ikke lavet validering i UI.
 
 # Tests:
 * Metamodel
-* Grammatik
+* Grammatik. Se ConfiguratorGrammarTest.xtend
 * Kodegeneratorer
 
 
