@@ -28,9 +28,9 @@ class JqmViewModelGenerator implements IJqmPartGenerator {
 	private var currentPath = "";
 	@Inject extension ExpressionTypeProvider
 	@Inject extension JqmCommon
-	
 	String _rootFolder
 	
+	new(){}
 	new(ExpressionTypeProvider extTypeProvider, JqmCommon common, String rootFolder){
 		_rootFolder =rootFolder
 		_expressionTypeProvider = extTypeProvider
@@ -57,12 +57,12 @@ App.ViewModel = ko.validatedObservable({
         App.ViewModel().currentErrors(App.ViewModel.errors());
         return isValid;
     },this),
-    «parameters.renderParameters»
+    «parameters?.renderParameters»
 
 });
 
 //Init special group validations, by resetting objects value
-«parameters.filter(typeof(ParameterGroup)).renderGroupValidationInit('')»
+«parameters?.filter(typeof(ParameterGroup)).renderGroupValidationInit('')»
 '''
 	}
 	
@@ -77,6 +77,8 @@ App.ViewModel = ko.validatedObservable({
 		)
 	}
 	def renderParameters(EList<AbstractParameter> it){
+		if(length==0)
+			return ''
 		drop(1).fold(get(0).renderParam)[previous,it|previous + ", \n" + renderParam]
 	}
 	def dispatch String renderParam(Parameter it) {

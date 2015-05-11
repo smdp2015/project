@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -48,6 +49,9 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
   private JqmCommon _jqmCommon;
   
   private String _rootFolder;
+  
+  public JqmViewModelGenerator() {
+  }
   
   public JqmViewModelGenerator(final ExpressionTypeProvider extTypeProvider, final JqmCommon common, final String rootFolder) {
     this._rootFolder = rootFolder;
@@ -103,7 +107,10 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     _builder.newLine();
     _builder.append("    ");
     EList<AbstractParameter> _parameters = it.getParameters();
-    String _renderParameters = this.renderParameters(_parameters);
+    String _renderParameters = null;
+    if (_parameters!=null) {
+      _renderParameters=this.renderParameters(_parameters);
+    }
     _builder.append(_renderParameters, "    ");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -113,7 +120,10 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     _builder.append("//Init special group validations, by resetting objects value");
     _builder.newLine();
     EList<AbstractParameter> _parameters_1 = it.getParameters();
-    Iterable<ParameterGroup> _filter = Iterables.<ParameterGroup>filter(_parameters_1, ParameterGroup.class);
+    Iterable<ParameterGroup> _filter = null;
+    if (_parameters_1!=null) {
+      _filter=Iterables.<ParameterGroup>filter(_parameters_1, ParameterGroup.class);
+    }
     String _renderGroupValidationInit = this.renderGroupValidationInit(_filter, "");
     _builder.append(_renderGroupValidationInit, "");
     _builder.newLineIfNotEmpty();
@@ -146,16 +156,25 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
   }
   
   public String renderParameters(final EList<AbstractParameter> it) {
-    Iterable<AbstractParameter> _drop = IterableExtensions.<AbstractParameter>drop(it, 1);
-    AbstractParameter _get = it.get(0);
-    String _renderParam = this.renderParam(_get);
-    final Function2<String, AbstractParameter, String> _function = new Function2<String, AbstractParameter, String>() {
-      public String apply(final String previous, final AbstractParameter it) {
-        String _renderParam = JqmViewModelGenerator.this.renderParam(it);
-        return ((previous + ", \n") + _renderParam);
+    String _xblockexpression = null;
+    {
+      int _length = ((Object[])Conversions.unwrapArray(it, Object.class)).length;
+      boolean _equals = (_length == 0);
+      if (_equals) {
+        return "";
       }
-    };
-    return IterableExtensions.<AbstractParameter, String>fold(_drop, _renderParam, _function);
+      Iterable<AbstractParameter> _drop = IterableExtensions.<AbstractParameter>drop(it, 1);
+      AbstractParameter _get = it.get(0);
+      String _renderParam = this.renderParam(_get);
+      final Function2<String, AbstractParameter, String> _function = new Function2<String, AbstractParameter, String>() {
+        public String apply(final String previous, final AbstractParameter it) {
+          String _renderParam = JqmViewModelGenerator.this.renderParam(it);
+          return ((previous + ", \n") + _renderParam);
+        }
+      };
+      _xblockexpression = IterableExtensions.<AbstractParameter, String>fold(_drop, _renderParam, _function);
+    }
+    return _xblockexpression;
   }
   
   protected String _renderParam(final Parameter it) {

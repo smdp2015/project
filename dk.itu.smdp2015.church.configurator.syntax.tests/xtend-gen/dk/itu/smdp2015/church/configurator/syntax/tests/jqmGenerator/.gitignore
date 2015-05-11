@@ -2,3 +2,7 @@
 /.TestStaticJqmHtmlGenerator.java._trace
 /.BaseTestJqmGenerator.java._trace
 /.TestDynamicJqmHtmlGenerator.java._trace
+/.TestDynamicJsGenerator.java._trace
+/.TestDynamicJsViewModelGeneratorBaseTestJqmGenerator.java._trace
+/.TestDynamicJsViewModelGenerator.java._trace
+/.TestStaticJsViewModelGenerator.java._trace

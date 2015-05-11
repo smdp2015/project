@@ -11,7 +11,7 @@ class TestStaticJqmHtmlGenerator extends BaseTestJqmGenerator {
 	@Test
 	def testRenderValidatonSummary() {
 		renderValidatonSummary
-		.assertHtmlWithExpectedOutput(
+		.assertCodeWithExpectedOutput(
 		'''<section class="validationSection" data-bind="css:{showValidationSummary: !$root.isModelValid()}">
                 <div class="validationSummary">
                     <h4>Validation summary</h4>
@@ -25,7 +25,7 @@ class TestStaticJqmHtmlGenerator extends BaseTestJqmGenerator {
 	@Test
 	def testRenderHeadHtmlPart() {
 		renderHeadHtmlPart
-		.assertHtmlWithExpectedOutput(
+		.assertCodeWithExpectedOutput(
 		'''
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

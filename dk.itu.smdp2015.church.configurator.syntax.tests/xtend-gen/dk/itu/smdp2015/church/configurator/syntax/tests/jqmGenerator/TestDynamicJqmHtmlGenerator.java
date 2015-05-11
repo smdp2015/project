@@ -36,7 +36,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("            ");
       _builder.append("</section>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_renderAppDescription, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderAppDescription, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -117,7 +117,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("</div>");
       _builder.newLine();
       _builder.append("</body>");
-      this.assertHtmlWithExpectedOutput(_renderBodyPart, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderBodyPart, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -205,7 +205,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("\t\t");
       _builder.append("</div>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_renderGroupPage, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderGroupPage, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -236,7 +236,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("        ");
       _builder.append("</div>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_renderHeader, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderHeader, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -252,7 +252,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: test.value\"></p>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_renderLocalValidatonMessage, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderLocalValidatonMessage, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -268,7 +268,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<p class=\"validationMessage\" data-bind=\"validationMessage: group_test\"></p>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_renderLocalValidatonMessage, _builder.toString());
+      this.assertCodeWithExpectedOutput(_renderLocalValidatonMessage, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -299,7 +299,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("          ");
       _builder.append("</li>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+      this.assertCodeWithExpectedOutput(_compileParameterLink, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -327,7 +327,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("\t       ");
       _builder.append("</li>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+      this.assertCodeWithExpectedOutput(_compileParameterLink, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -355,7 +355,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("\t       ");
       _builder.append("</li>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+      this.assertCodeWithExpectedOutput(_compileParameterLink, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -383,7 +383,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("\t       ");
       _builder.append("</li>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+      this.assertCodeWithExpectedOutput(_compileParameterLink, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -411,7 +411,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
       _builder.append("\t       ");
       _builder.append("</li>");
       _builder.newLine();
-      this.assertHtmlWithExpectedOutput(_compileParameterLink, _builder.toString());
+      this.assertCodeWithExpectedOutput(_compileParameterLink, _builder.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -431,7 +431,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<input data-bind=\"value: test.value, attr:{ min: test.boundedRange.lower, max: test.boundedRange.upper}\" type=\"range\" name=\"test\" id=\"test-param\">");
           _builder.newLine();
-          TestDynamicJqmHtmlGenerator.this.assertHtmlWithExpectedOutput(_renderRangeInputElement, _builder.toString());
+          TestDynamicJqmHtmlGenerator.this.assertCodeWithExpectedOutput(_renderRangeInputElement, _builder.toString());
         }
       };
       ObjectExtensions.<Configurator>operator_doubleArrow(_parse, _function);
@@ -454,7 +454,7 @@ public class TestDynamicJqmHtmlGenerator extends BaseTestJqmGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<label data-bind=\"text: test.value()?\'on\':\'off\'\"> <input type=\"checkbox\" id=\"test-param\" data-bind=\"checked:test.value\"> </label>");
           _builder.newLine();
-          TestDynamicJqmHtmlGenerator.this.assertHtmlWithExpectedOutput(_renderBooleanInputElement, _builder.toString());
+          TestDynamicJqmHtmlGenerator.this.assertCodeWithExpectedOutput(_renderBooleanInputElement, _builder.toString());
         }
       };
       ObjectExtensions.<Configurator>operator_doubleArrow(_parse, _function);

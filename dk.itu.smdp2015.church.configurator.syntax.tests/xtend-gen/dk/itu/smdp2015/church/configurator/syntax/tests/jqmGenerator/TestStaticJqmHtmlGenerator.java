@@ -39,7 +39,7 @@ public class TestStaticJqmHtmlGenerator extends BaseTestJqmGenerator {
     _builder.newLine();
     _builder.append("            ");
     _builder.append("</section>");
-    this.assertHtmlWithExpectedOutput(_renderValidatonSummary, _builder.toString());
+    this.assertCodeWithExpectedOutput(_renderValidatonSummary, _builder.toString());
   }
   
   @Test
@@ -107,6 +107,6 @@ public class TestStaticJqmHtmlGenerator extends BaseTestJqmGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("</head>");
-    this.assertHtmlWithExpectedOutput(_renderHeadHtmlPart, _builder.toString());
+    this.assertCodeWithExpectedOutput(_renderHeadHtmlPart, _builder.toString());
   }
 }

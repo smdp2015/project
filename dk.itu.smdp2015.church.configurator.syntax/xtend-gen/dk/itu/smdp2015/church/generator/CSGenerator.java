@@ -47,7 +47,21 @@ public class CSGenerator implements IGenerator {
     Iterable<Configurator> _filter = Iterables.<Configurator>filter(_iterable, Configurator.class);
     for (final Configurator e : _filter) {
       {
-        StringBuilder generated = this.compile(e);
+        StringBuilder generated = new StringBuilder();
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("using System.Collections.Generic;");
+        _builder.newLine();
+        _builder.append("using ChurchConfig.Configuration;");
+        _builder.newLine();
+        _builder.append("\t\t\t ");
+        _builder.newLine();
+        _builder.append("namespace ChurchConfig.Configuration");
+        _builder.newLine();
+        _builder.append("{");
+        _builder.newLine();
+        generated.append(_builder);
+        StringBuilder _compile = this.compile(e);
+        generated.append(_compile);
         for (final String s : this.groupParameterclasses) {
           String _string = s.toString();
           generated.append(_string);
@@ -56,6 +70,7 @@ public class CSGenerator implements IGenerator {
           String _string_1 = s_1.toString();
           generated.append(_string_1);
         }
+        generated.append("}");
         fsa.generateFile("Configurator.cs", generated);
       }
     }
