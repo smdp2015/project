@@ -5,8 +5,10 @@ import dk.itu.smdp2015.church.ConfiguratorInjectorProvider;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
+import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
+import dk.itu.smdp2015.church.model.configurator.ValueRange;
 import java.util.Arrays;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
@@ -46,6 +48,14 @@ public abstract class BaseXtextTest {
     EList<AbstractParameter> _parameters = it.getParameters();
     Iterable<Parameter> _filter = Iterables.<Parameter>filter(_parameters, Parameter.class);
     return ((Parameter[])Conversions.unwrapArray(_filter, Parameter.class))[0];
+  }
+  
+  public Enumerated firstEnumerated(final Configurator it) {
+    EList<AbstractParameter> _parameters = it.getParameters();
+    Iterable<Parameter> _filter = Iterables.<Parameter>filter(_parameters, Parameter.class);
+    Parameter _get = ((Parameter[])Conversions.unwrapArray(_filter, Parameter.class))[0];
+    ValueRange _valueRange = _get.getValueRange();
+    return ((Enumerated) _valueRange);
   }
   
   protected void _assertCodeWithExpectedOutput(final CharSequence actual, final String expected) {

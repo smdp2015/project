@@ -11,7 +11,6 @@ import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
 import dk.itu.smdp2015.church.model.configurator.impl.IntegerImpl;
 import dk.itu.smdp2015.church.model.configurator.impl.StringImpl;
-import dk.itu.smdp2015.church.validation.ConfiguratorValidator;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -46,18 +45,6 @@ public class ConfiguratorGrammarTest {
   }
   
   @Test
-  public void testInvalidModelNoParameters() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("configurator Empty");
-      Configurator model = this._parseHelper.parse(_builder);
-      this._validationTestHelper.assertError(model, ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input");
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
   public void testValidBoundedRange() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -85,24 +72,12 @@ public class ConfiguratorGrammarTest {
   }
   
   @Test
-  public void testInvalidBoundedRangeReverse() {
+  public void testInvalidModelNoParameters() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("configurator Bicycle { parameter wheel_size values [24;16] }");
+      _builder.append("configurator Empty");
       Configurator model = this._parseHelper.parse(_builder);
-      this._validationTestHelper.assertError(model, ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Lower bound should be less than upper bound");
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void testInvalidBoundedRangeWrongTypes() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("configurator Bicycle { parameter wheel_size values [b;16] }");
-      Configurator model = this._parseHelper.parse(_builder);
-      this._validationTestHelper.assertError(model, ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.WRONG_TYPE, "expected the same type");
+      this._validationTestHelper.assertError(model, ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -141,18 +116,6 @@ public class ConfiguratorGrammarTest {
       String _value_2 = ((StringImpl) _get_3).getValue();
       Assert.assertEquals("Luxury", _value_2);
       this._validationTestHelper.assertNoErrors(model);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void testInvalidEnumWrongElement() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("configurator Car { parameter Variant values (\"Standard\", \"Sport\", Luxury) }");
-      Configurator model = this._parseHelper.parse(_builder);
-      this._validationTestHelper.assertError(model, ConfiguratorPackage.Literals.ENUMERATED, ConfiguratorValidator.INVALID_ENUMERATION, "Enumerated item should be a constant");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

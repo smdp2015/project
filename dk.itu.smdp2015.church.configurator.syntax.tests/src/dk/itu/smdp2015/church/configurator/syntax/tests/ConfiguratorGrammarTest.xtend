@@ -38,11 +38,6 @@ class ConfiguratorGrammarTest {
 		ConfiguratorPackage.eINSTANCE.eClass		
 	}
 
-	@Test
-	def void testInvalidModelNoParameters() {
-		var model = '''configurator Empty'''.parse
-		model.assertError(ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input")
-	}
 	
 	@Test
 	def void testValidBoundedRange() {
@@ -56,18 +51,13 @@ class ConfiguratorGrammarTest {
 		model.assertNoErrors
 	}
 
+	
 	@Test
-	def void testInvalidBoundedRangeReverse() {
-		var model = '''configurator Bicycle { parameter wheel_size values [24;16] }'''.parse
-		model.assertError(ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Lower bound should be less than upper bound")
+	def void testInvalidModelNoParameters() {
+		var model = '''configurator Empty'''.parse
+		model.assertError(ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input")
 	}
-
-	@Test
-	def void testInvalidBoundedRangeWrongTypes() {
-		var model = '''configurator Bicycle { parameter wheel_size values [b;16] }'''.parse
-		model.assertError(ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.WRONG_TYPE, "expected the same type")
-	}
-
+	
 	@Test
 	def void testValidEnum() {
 		var model = '''configurator Car { parameter Variant values ("Standard", "Sport", "Luxury") }'''.parse
@@ -81,12 +71,6 @@ class ConfiguratorGrammarTest {
 		assertEquals("Sport", (enumerated.values.get(1) as StringImpl).value)
 		assertEquals("Luxury", (enumerated.values.get(2) as StringImpl).value)
 		model.assertNoErrors
-	}
-
-	@Test
-	def void testInvalidEnumWrongElement() {
-		var model = '''configurator Car { parameter Variant values ("Standard", "Sport", Luxury) }'''.parse
-		model.assertError(ConfiguratorPackage.Literals.ENUMERATED, ConfiguratorValidator.INVALID_ENUMERATION, "Enumerated item should be a constant")
 	}
 
  /* 

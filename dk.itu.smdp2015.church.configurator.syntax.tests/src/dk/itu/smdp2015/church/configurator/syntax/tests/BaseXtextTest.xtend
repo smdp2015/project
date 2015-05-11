@@ -12,6 +12,7 @@ import dk.itu.smdp2015.church.model.configurator.Configurator
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup
 import dk.itu.smdp2015.church.model.configurator.Parameter
 import org.junit.Assert
+import dk.itu.smdp2015.church.model.configurator.Enumerated
 
 @RunWith(XtextRunner)
 @InjectWith(ConfiguratorInjectorProvider)
@@ -33,6 +34,9 @@ abstract class BaseXtextTest {
 	}
 	def firstParam (Configurator it){
 		parameters.filter(typeof(Parameter)).get(0)
+	}
+	def firstEnumerated (Configurator it){
+		parameters.filter(typeof(Parameter)).get(0).valueRange as Enumerated
 	}
 	def dispatch void assertCodeWithExpectedOutput(CharSequence actual, String expected)
 	{
