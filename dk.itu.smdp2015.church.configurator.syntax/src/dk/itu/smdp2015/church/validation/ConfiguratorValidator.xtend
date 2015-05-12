@@ -20,6 +20,13 @@ import dk.itu.smdp2015.church.model.configurator.Parameter
 import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
 import dk.itu.smdp2015.church.model.configurator.Identifier
 import dk.itu.smdp2015.church.xtext.common.ExpressionType
+import dk.itu.smdp2015.church.model.configurator.Configurator
+import org.eclipse.emf.common.util.EList
+import dk.itu.smdp2015.church.model.configurator.AbstractParameter
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup
+import java.util.ArrayList
+import java.util.List
+import dk.itu.smdp2015.church.model.configurator.Constant
 
 //github.com/smdp2015/project.git
 
@@ -35,22 +42,22 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 	public static val INVALID_BINARYTYPE = 'invalid binary operand type'
 	public static val WRONG_TYPE = "dk.itu.smdp2015.church.WrongType"
 	public static val OPTIONAL_PARAMETER_INVALID = 'optional Parameter invalid'
+	public static val PARAMETER_NAME_NOT_UNIQUE = 'parameter name not unique'
 
 	@Inject extension ExpressionTypeProvider
 	@Inject extension ExpressionValueProvider
 
 	@Check
 	def checkEnumeratedExpressionIsConstant(Enumerated it) {
-		values.forEach[
-			if (staticValue == null) {
-				error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
+		if (values.filter(Constant).length != values.length) {
+			error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
 					INVALID_ENUMERATION)
-			}]
+		}
 	}
 
 	@Check
 	def checkBoundedExpressionUpperBoundIsConstant(Bounded bounded) {
-		if (bounded.upperBound.staticValue == null) {
+		if (!(bounded.upperBound instanceof Constant)) {
 			error('Upper bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND,
 				INVALID_BOUND)
 		}
@@ -58,7 +65,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkBoundedExpressionLowerBoundIsConstant(Bounded bounded) {
-		if (bounded.lowerBound.staticValue == null) {
+		if (!(bounded.lowerBound instanceof Constant)) {
 			error('Lower bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND,
 				INVALID_BOUND)
 		}
@@ -89,7 +96,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 		enumerated.values.forEach [ v |
 			if (enumerated.values.filter[staticValue == v.staticValue].size != 1)
 				error('Enumerated values should be unique', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
-					INVALID_BOUND)
+					INVALID_ENUMERATION)
 		]
 	}
 
@@ -246,6 +253,26 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 		if (inRange.parameter.optional) {
 			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, OPTIONAL_PARAMETER_INVALID)
 		}
+	}
+	
+	@Check
+	def checkUniqueParameterNames(Configurator configurator) {
+		var params = configurator.parameters.names
+		if (params.length != params.toSet.length) {
+			error('All parameters and parameter groups must have globally unique names', ConfiguratorPackage.Literals.NAMED_ELEMENT__NAME, PARAMETER_NAME_NOT_UNIQUE)
+		}
+	}
+	
+	def private List<String> names(EList<AbstractParameter> it) {
+		 // Get all abstract parameter names:
+		var paramNames = fold(new ArrayList<String>) [ parameterNames, abstractParameter | parameterNames.add(abstractParameter.name); parameterNames]
+		// Add names of all parameters in any underlying parameter groups (notice the recursion):
+		paramNames.addAll(
+			it.filter(ParameterGroup).fold(new ArrayList<String>) 
+			[parameterNames, parameterGroup | parameterNames.addAll(parameterGroup.parameters.names); parameterNames]
+		)
+		// Just return parameter names
+		paramNames
 	}
 	
 	def private checkExpectedType(ExpressionType actualType, ExpressionType expectedType, EReference reference) {

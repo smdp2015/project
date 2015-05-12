@@ -1,16 +1,21 @@
 package dk.itu.smdp2015.church.validation;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
 import dk.itu.smdp2015.church.model.configurator.Binary;
 import dk.itu.smdp2015.church.model.configurator.BinaryOperator;
 import dk.itu.smdp2015.church.model.configurator.Bounded;
+import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
+import dk.itu.smdp2015.church.model.configurator.Constant;
 import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Expression;
 import dk.itu.smdp2015.church.model.configurator.Identifier;
 import dk.itu.smdp2015.church.model.configurator.InRange;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
 import dk.itu.smdp2015.church.model.configurator.Unary;
 import dk.itu.smdp2015.church.model.configurator.UnaryOperator;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
@@ -18,14 +23,19 @@ import dk.itu.smdp2015.church.validation.AbstractConfiguratorValidator;
 import dk.itu.smdp2015.church.validation.ExpressionValueProvider;
 import dk.itu.smdp2015.church.xtext.common.ExpressionType;
 import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -45,6 +55,8 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   
   public final static String OPTIONAL_PARAMETER_INVALID = "optional Parameter invalid";
   
+  public final static String PARAMETER_NAME_NOT_UNIQUE = "parameter name not unique";
+  
   @Inject
   @Extension
   private ExpressionTypeProvider _expressionTypeProvider;
@@ -56,25 +68,21 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   @Check
   public void checkEnumeratedExpressionIsConstant(final Enumerated it) {
     EList<Expression> _values = it.getValues();
-    final Consumer<Expression> _function = new Consumer<Expression>() {
-      public void accept(final Expression it) {
-        Object _staticValue = ConfiguratorValidator.this._expressionValueProvider.staticValue(it);
-        boolean _equals = Objects.equal(_staticValue, null);
-        if (_equals) {
-          ConfiguratorValidator.this.error("Enumerated item should be a constant.", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
-            ConfiguratorValidator.INVALID_ENUMERATION);
-        }
-      }
-    };
-    _values.forEach(_function);
+    Iterable<Constant> _filter = Iterables.<Constant>filter(_values, Constant.class);
+    int _length = ((Object[])Conversions.unwrapArray(_filter, Object.class)).length;
+    EList<Expression> _values_1 = it.getValues();
+    int _length_1 = ((Object[])Conversions.unwrapArray(_values_1, Object.class)).length;
+    boolean _notEquals = (_length != _length_1);
+    if (_notEquals) {
+      this.error("Enumerated item should be a constant.", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
+        ConfiguratorValidator.INVALID_ENUMERATION);
+    }
   }
   
   @Check
   public void checkBoundedExpressionUpperBoundIsConstant(final Bounded bounded) {
     Expression _upperBound = bounded.getUpperBound();
-    Object _staticValue = this._expressionValueProvider.staticValue(_upperBound);
-    boolean _equals = Objects.equal(_staticValue, null);
-    if (_equals) {
+    if ((!(_upperBound instanceof Constant))) {
       this.error("Upper bound should be a constant.", ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND, 
         ConfiguratorValidator.INVALID_BOUND);
     }
@@ -83,9 +91,7 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   @Check
   public void checkBoundedExpressionLowerBoundIsConstant(final Bounded bounded) {
     Expression _lowerBound = bounded.getLowerBound();
-    Object _staticValue = this._expressionValueProvider.staticValue(_lowerBound);
-    boolean _equals = Objects.equal(_staticValue, null);
-    if (_equals) {
+    if ((!(_lowerBound instanceof Constant))) {
       this.error("Lower bound should be a constant.", ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND, 
         ConfiguratorValidator.INVALID_BOUND);
     }
@@ -160,7 +166,7 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
         boolean _notEquals = (_size != 1);
         if (_notEquals) {
           ConfiguratorValidator.this.error("Enumerated values should be unique", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
-            ConfiguratorValidator.INVALID_BOUND);
+            ConfiguratorValidator.INVALID_ENUMERATION);
         }
       }
     };
@@ -411,6 +417,57 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
     if (_isOptional) {
       this.error("Identifier cannot refer to an optional parameter", ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID);
     }
+  }
+  
+  @Check
+  public void checkUniqueParameterNames(final Configurator configurator) {
+    EList<AbstractParameter> _parameters = configurator.getParameters();
+    List<String> params = this.names(_parameters);
+    final List<String> _converted_params = (List<String>)params;
+    int _length = ((Object[])Conversions.unwrapArray(_converted_params, Object.class)).length;
+    Set<String> _set = IterableExtensions.<String>toSet(params);
+    int _length_1 = ((Object[])Conversions.unwrapArray(_set, Object.class)).length;
+    boolean _notEquals = (_length != _length_1);
+    if (_notEquals) {
+      this.error("All parameters and parameter groups must have globally unique names", ConfiguratorPackage.Literals.NAMED_ELEMENT__NAME, ConfiguratorValidator.PARAMETER_NAME_NOT_UNIQUE);
+    }
+  }
+  
+  private List<String> names(final EList<AbstractParameter> it) {
+    ArrayList<String> _xblockexpression = null;
+    {
+      ArrayList<String> _arrayList = new ArrayList<String>();
+      final Function2<ArrayList<String>, AbstractParameter, ArrayList<String>> _function = new Function2<ArrayList<String>, AbstractParameter, ArrayList<String>>() {
+        public ArrayList<String> apply(final ArrayList<String> parameterNames, final AbstractParameter abstractParameter) {
+          ArrayList<String> _xblockexpression = null;
+          {
+            String _name = abstractParameter.getName();
+            parameterNames.add(_name);
+            _xblockexpression = parameterNames;
+          }
+          return _xblockexpression;
+        }
+      };
+      ArrayList<String> paramNames = IterableExtensions.<AbstractParameter, ArrayList<String>>fold(it, _arrayList, _function);
+      Iterable<ParameterGroup> _filter = Iterables.<ParameterGroup>filter(it, ParameterGroup.class);
+      ArrayList<String> _arrayList_1 = new ArrayList<String>();
+      final Function2<ArrayList<String>, ParameterGroup, ArrayList<String>> _function_1 = new Function2<ArrayList<String>, ParameterGroup, ArrayList<String>>() {
+        public ArrayList<String> apply(final ArrayList<String> parameterNames, final ParameterGroup parameterGroup) {
+          ArrayList<String> _xblockexpression = null;
+          {
+            EList<AbstractParameter> _parameters = parameterGroup.getParameters();
+            List<String> _names = ConfiguratorValidator.this.names(_parameters);
+            parameterNames.addAll(_names);
+            _xblockexpression = parameterNames;
+          }
+          return _xblockexpression;
+        }
+      };
+      ArrayList<String> _fold = IterableExtensions.<ParameterGroup, ArrayList<String>>fold(_filter, _arrayList_1, _function_1);
+      paramNames.addAll(_fold);
+      _xblockexpression = paramNames;
+    }
+    return _xblockexpression;
   }
   
   private void checkExpectedType(final ExpressionType actualType, final ExpressionType expectedType, final EReference reference) {
