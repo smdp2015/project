@@ -23,11 +23,7 @@ import dk.itu.smdp2015.church.xtext.common.ExpressionType
 import dk.itu.smdp2015.church.model.configurator.Configurator
 import org.eclipse.emf.common.util.EList
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter
-import java.util.Arrays
-import com.google.common.collect.Lists
-import java.util.HashSet
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup
-import java.util.Set
 import java.util.ArrayList
 import java.util.List
 
