@@ -2,14 +2,12 @@ package dk.itu.smdp2015.church.configurator.syntax.tests;
 
 import dk.itu.smdp2015.church.ConfiguratorInjectorProvider;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
-import dk.itu.smdp2015.church.model.configurator.Bounded;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Expression;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
-import dk.itu.smdp2015.church.model.configurator.impl.IntegerImpl;
 import dk.itu.smdp2015.church.model.configurator.impl.StringImpl;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
@@ -42,33 +40,6 @@ public class ConfiguratorGrammarTest {
   @Before
   public void before() {
     ConfiguratorPackage.eINSTANCE.eClass();
-  }
-  
-  @Test
-  public void testValidBoundedRange() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("configurator Bicycle \"Bicycle configuration\" { parameter wheel_size values [16;24] }");
-      Configurator model = this._parseHelper.parse(_builder);
-      String _description = model.getDescription();
-      Assert.assertEquals("Bicycle configuration", _description);
-      EList<AbstractParameter> _parameters = model.getParameters();
-      AbstractParameter _get = _parameters.get(0);
-      Parameter param = ((Parameter) _get);
-      String _name = param.getName();
-      Assert.assertEquals("wheel_size", _name);
-      ValueRange _valueRange = param.getValueRange();
-      Bounded valueRange = ((Bounded) _valueRange);
-      Expression _lowerBound = valueRange.getLowerBound();
-      int _value = ((IntegerImpl) _lowerBound).getValue();
-      Assert.assertEquals(16, _value);
-      Expression _upperBound = valueRange.getUpperBound();
-      int _value_1 = ((IntegerImpl) _upperBound).getValue();
-      Assert.assertEquals(24, _value_1);
-      this._validationTestHelper.assertNoErrors(model);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
   }
   
   @Test

@@ -37,20 +37,6 @@ class ConfiguratorGrammarTest {
 	def void before() {
 		ConfiguratorPackage.eINSTANCE.eClass		
 	}
-
-	
-	@Test
-	def void testValidBoundedRange() {
-		var model = '''configurator Bicycle "Bicycle configuration" { parameter wheel_size values [16;24] }'''.parse
-		assertEquals("Bicycle configuration", model.description)
-		var param = model.parameters.get(0) as Parameter
-		assertEquals("wheel_size", param.name)
-		var valueRange = param.valueRange as Bounded
-		assertEquals(16, (valueRange.lowerBound as IntegerImpl).value)
-		assertEquals(24, (valueRange.upperBound as IntegerImpl).value)
-		model.assertNoErrors
-	}
-
 	
 	@Test
 	def void testInvalidModelNoParameters() {
