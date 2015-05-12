@@ -20,6 +20,16 @@ import dk.itu.smdp2015.church.model.configurator.Parameter
 import dk.itu.smdp2015.church.xtext.common.ExpressionTypeProvider
 import dk.itu.smdp2015.church.model.configurator.Identifier
 import dk.itu.smdp2015.church.xtext.common.ExpressionType
+import dk.itu.smdp2015.church.model.configurator.Configurator
+import org.eclipse.emf.common.util.EList
+import dk.itu.smdp2015.church.model.configurator.AbstractParameter
+import java.util.Arrays
+import com.google.common.collect.Lists
+import java.util.HashSet
+import dk.itu.smdp2015.church.model.configurator.ParameterGroup
+import java.util.Set
+import java.util.ArrayList
+import java.util.List
 
 //github.com/smdp2015/project.git
 
@@ -35,6 +45,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 	public static val INVALID_BINARYTYPE = 'invalid binary operand type'
 	public static val WRONG_TYPE = "dk.itu.smdp2015.church.WrongType"
 	public static val OPTIONAL_PARAMETER_INVALID = 'optional Parameter invalid'
+	public static val PARAMETER_NAME_NOT_UNIQUE = 'parameter name not unique'
 
 	@Inject extension ExpressionTypeProvider
 	@Inject extension ExpressionValueProvider
@@ -246,6 +257,26 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 		if (inRange.parameter.optional) {
 			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, OPTIONAL_PARAMETER_INVALID)
 		}
+	}
+	
+	@Check
+	def checkUniqueParameterNames(Configurator configurator) {
+		var params = configurator.parameters.names
+		if (params.length != params.toSet.length) {
+			error('All parameters and parameter groups must have globally unique names', ConfiguratorPackage.Literals.NAMED_ELEMENT__NAME, PARAMETER_NAME_NOT_UNIQUE)
+		}
+	}
+	
+	def private List<String> names(EList<AbstractParameter> it) {
+		 // Get all abstract parameter names:
+		var paramNames = fold(new ArrayList<String>) [ parameterNames, abstractParameter | parameterNames.add(abstractParameter.name); parameterNames]
+		// Add names of all parameters in any underlying parameter groups (notice the recursion):
+		paramNames.addAll(
+			it.filter(ParameterGroup).fold(new ArrayList<String>) 
+			[parameterNames, parameterGroup | parameterNames.addAll(parameterGroup.parameters.names); parameterNames]
+		)
+		// Just return parameter names
+		paramNames
 	}
 	
 	def private checkExpectedType(ExpressionType actualType, ExpressionType expectedType, EReference reference) {
