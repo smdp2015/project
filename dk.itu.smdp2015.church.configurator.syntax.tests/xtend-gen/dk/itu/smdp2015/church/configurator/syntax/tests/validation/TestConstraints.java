@@ -242,7 +242,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testParameterReferenceValid() {
     try {
-      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\')\r\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio==\'Disco\'\r\n\t\tparameter speakers values (\'Super-Bass\', \'Extra-Bass\') visible-if radio in (\'Disco\', \'Funk\') }");
+      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\')\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio==\'Disco\'\n\t\tparameter speakers values (\'Super-Bass\', \'Extra-Bass\') visible-if radio in (\'Disco\', \'Funk\') }");
       this._validationTestHelper.assertNoErrors(_parse);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -252,7 +252,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testParameterReferenceInvalidIdentifier() {
     try {
-      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\') optional\r\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio==\'Disco\' }");
+      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\') optional\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio==\'Disco\' }");
       this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.IDENTIFIER, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID, "Identifier cannot refer to an optional parameter");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -262,7 +262,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testParameterReferenceInvalidInRange() {
     try {
-      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\') optional\r\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio in (\'Disco\', \'Funk\') }");
+      Configurator _parse = this._parseHelper.parse("configurator car { parameter radio values (\'Disco\', \'Funk\', \'Classic\') optional\n\t\tparameter antenna values (\'telescope\', \'standard\') visible-if radio in (\'Disco\', \'Funk\') }");
       this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.IN_RANGE, ConfiguratorValidator.OPTIONAL_PARAMETER_INVALID, "Identifier cannot refer to an optional parameter");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

@@ -17,8 +17,8 @@ class TestPageBindingGenerator extends BaseTestJqmGenerator{
 		'configuration carconfig { 
 			group group1 { }, 
 group group2 { },
-group group3 { },
-group group4 { }, }'.parse.compile
+group groupA { },
+group groupB { }, }'.parse.compile
 			.assertCodeWithExpectedOutput('''$(document).ready(function(){
 	$("#main").on('pagecreate', function (event, ui) {
 	
@@ -32,11 +32,11 @@ group group4 { }, }'.parse.compile
 	
 	    ko.applyBindings(App.ViewModel, this );
 	});
-	$("#group3").on('pagecreate', function (event, ui) {
+	$("#groupA").on('pagecreate', function (event, ui) {
 	
 	    ko.applyBindings(App.ViewModel, this );
 	});
-	$("#group4").on('pagecreate', function (event, ui) {
+	$("#groupB").on('pagecreate', function (event, ui) {
 	
 	    ko.applyBindings(App.ViewModel, this );
 	});

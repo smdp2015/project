@@ -18,7 +18,7 @@ public class TestPageBindingGenerator extends BaseTestJqmGenerator {
   @Test
   public void testCompile_WhenFourGroups() {
     try {
-      Configurator _parse = this._parseHelper.parse("configuration carconfig { \n\t\t\tgroup group1 { }, \ngroup group2 { },\ngroup group3 { },\ngroup group4 { }, }");
+      Configurator _parse = this._parseHelper.parse("configuration carconfig { \n\t\t\tgroup group1 { }, \ngroup group2 { },\ngroup groupA { },\ngroup groupB { }, }");
       CharSequence _compile = this._jqmKoPageBindingGenerator.compile(_parse);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("$(document).ready(function(){");
@@ -57,7 +57,7 @@ public class TestPageBindingGenerator extends BaseTestJqmGenerator {
       _builder.append("});");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("$(\"#group3\").on(\'pagecreate\', function (event, ui) {");
+      _builder.append("$(\"#groupA\").on(\'pagecreate\', function (event, ui) {");
       _builder.newLine();
       _builder.append("\t");
       _builder.newLine();
@@ -68,7 +68,7 @@ public class TestPageBindingGenerator extends BaseTestJqmGenerator {
       _builder.append("});");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("$(\"#group4\").on(\'pagecreate\', function (event, ui) {");
+      _builder.append("$(\"#groupB\").on(\'pagecreate\', function (event, ui) {");
       _builder.newLine();
       _builder.append("\t");
       _builder.newLine();
