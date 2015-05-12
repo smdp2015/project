@@ -26,6 +26,9 @@ public class JqmKoPageBindingGenerator implements IJqmPartGenerator {
   @Extension
   private JqmCommon _jqmCommon;
   
+  public JqmKoPageBindingGenerator() {
+  }
+  
   public JqmKoPageBindingGenerator(final JqmCommon common, final String rootFolder) {
     this._jqmCommon = common;
     this._rootFolder = rootFolder;

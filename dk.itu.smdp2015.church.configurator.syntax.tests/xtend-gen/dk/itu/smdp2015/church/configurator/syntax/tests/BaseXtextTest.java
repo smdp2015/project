@@ -3,9 +3,12 @@ package dk.itu.smdp2015.church.configurator.syntax.tests;
 import com.google.common.collect.Iterables;
 import dk.itu.smdp2015.church.ConfiguratorInjectorProvider;
 import dk.itu.smdp2015.church.model.configurator.AbstractParameter;
+import dk.itu.smdp2015.church.model.configurator.Binary;
+import dk.itu.smdp2015.church.model.configurator.BinaryOperator;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
+import dk.itu.smdp2015.church.model.configurator.Expression;
 import dk.itu.smdp2015.church.model.configurator.Parameter;
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup;
 import dk.itu.smdp2015.church.model.configurator.ValueRange;
@@ -42,6 +45,19 @@ public abstract class BaseXtextTest {
     EList<AbstractParameter> _parameters = it.getParameters();
     Iterable<ParameterGroup> _filter = Iterables.<ParameterGroup>filter(_parameters, ParameterGroup.class);
     return ((ParameterGroup[])Conversions.unwrapArray(_filter, ParameterGroup.class))[0];
+  }
+  
+  public Expression firstVisibilityExpression(final Configurator it) {
+    EList<AbstractParameter> _parameters = it.getParameters();
+    AbstractParameter _get = _parameters.get(0);
+    return _get.getVisibility();
+  }
+  
+  public BinaryOperator firstBinaryOperator(final Configurator it) {
+    EList<AbstractParameter> _parameters = it.getParameters();
+    AbstractParameter _get = _parameters.get(0);
+    Expression _visibility = _get.getVisibility();
+    return ((Binary) _visibility).getOperator();
   }
   
   public Parameter firstParam(final Configurator it) {

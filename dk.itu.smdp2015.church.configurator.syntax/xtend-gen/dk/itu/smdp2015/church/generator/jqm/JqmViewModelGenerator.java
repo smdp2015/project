@@ -413,8 +413,11 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     return _builder;
   }
   
-  protected Object _renderExpression(final dk.itu.smdp2015.church.model.configurator.Boolean it) {
-    return it.isValue();
+  protected CharSequence _renderExpression(final dk.itu.smdp2015.church.model.configurator.Boolean it) {
+    StringConcatenation _builder = new StringConcatenation();
+    boolean _isValue = it.isValue();
+    _builder.append(_isValue, "");
+    return _builder;
   }
   
   protected Object _renderExpression(final dk.itu.smdp2015.church.model.configurator.Integer it) {
@@ -429,8 +432,8 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("$.inArray(");
         Parameter _parameter = it.getParameter();
-        CharSequence _jsValueReference = this.jsValueReference(_parameter);
-        _builder.append(_jsValueReference, "");
+        CharSequence _renderJsValueReference = this.renderJsValueReference(_parameter);
+        _builder.append(_renderJsValueReference, "");
         _builder.append(",");
         _builder.newLineIfNotEmpty();
         _builder.append(" ");
@@ -447,16 +450,16 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
           _builder.newLineIfNotEmpty();
           _builder.append("(");
           Parameter _parameter_1 = it.getParameter();
-          CharSequence _jsValueReference_1 = this.jsValueReference(_parameter_1);
-          _builder.append(_jsValueReference_1, "");
+          CharSequence _renderJsValueReference_1 = this.renderJsValueReference(_parameter_1);
+          _builder.append(_renderJsValueReference_1, "");
           _builder.append(" \">\" ");
           Expression _lowerBound = bound.getLowerBound();
           Object _renderExpression = this.renderExpression(_lowerBound);
           _builder.append(_renderExpression, "");
           _builder.append(" && ");
           Parameter _parameter_2 = it.getParameter();
-          CharSequence _jsValueReference_2 = this.jsValueReference(_parameter_2);
-          _builder.append(_jsValueReference_2, "");
+          CharSequence _renderJsValueReference_2 = this.renderJsValueReference(_parameter_2);
+          _builder.append(_renderJsValueReference_2, "");
           _builder.append(" < ");
           Expression _upperBound = bound.getUpperBound();
           Object _renderExpression_1 = this.renderExpression(_upperBound);
@@ -482,25 +485,19 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     Expression _left = it.getLeft();
     Object _renderExpression = this.renderExpression(_left);
     _builder.append(_renderExpression, "");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
     BinaryOperator _operator = it.getOperator();
-    String _renderOperator = this.renderOperator(_operator);
-    _builder.append(_renderOperator, "\t\t\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
+    CharSequence _renderOperator = this.renderOperator(_operator);
+    _builder.append(_renderOperator, "");
     Expression _right = it.getRight();
     Object _renderExpression_1 = this.renderExpression(_right);
-    _builder.append(_renderExpression_1, "\t\t\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
+    _builder.append(_renderExpression_1, "");
     _builder.append(")");
     return _builder;
   }
   
   protected Object _renderExpression(final Identifier it) {
     Parameter _id = it.getId();
-    return this.jsValueReference(_id);
+    return this.renderJsValueReference(_id);
   }
   
   protected Object _renderExpression(final Unary it) {
@@ -555,20 +552,26 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     return _switchResult;
   }
   
-  public String renderOperator(final BinaryOperator operator) {
-    String _switchResult = null;
+  public CharSequence renderOperator(final BinaryOperator operator) {
+    CharSequence _switchResult = null;
     String _literal = operator.getLiteral();
     boolean _matched = false;
     if (!_matched) {
       if (Objects.equal(_literal, "logicalOr")) {
         _matched=true;
-        _switchResult = " || ";
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("||");
+        _builder.newLine();
+        _switchResult = _builder;
       }
     }
     if (!_matched) {
       if (Objects.equal(_literal, "logicalAnd")) {
         _matched=true;
-        _switchResult = " && ";
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("&&");
+        _builder_1.newLine();
+        _switchResult = _builder_1;
       }
     }
     if (!_matched) {
@@ -613,7 +616,7 @@ public class JqmViewModelGenerator implements IJqmPartGenerator {
     return _switchResult;
   }
   
-  public CharSequence jsValueReference(final Parameter it) {
+  public CharSequence renderJsValueReference(final Parameter it) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("App.ViewModel().");
     String _fullPath = this._jqmCommon.getFullPath(it);

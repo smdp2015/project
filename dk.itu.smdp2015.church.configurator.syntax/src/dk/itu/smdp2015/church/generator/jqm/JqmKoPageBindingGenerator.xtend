@@ -27,6 +27,8 @@ import java.security.InvalidParameterException
 class JqmKoPageBindingGenerator implements IJqmPartGenerator {
 	String _rootFolder
 	@Inject extension JqmCommon
+	new(){
+	}
 	new(JqmCommon common, String rootFolder){
 		_jqmCommon = common;
 		_rootFolder =rootFolder

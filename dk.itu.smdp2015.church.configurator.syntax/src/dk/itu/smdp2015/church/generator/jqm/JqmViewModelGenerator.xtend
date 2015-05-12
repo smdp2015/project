@@ -146,32 +146,29 @@ App.ViewModel = ko.validatedObservable({
 	def dispatch renderExpression(dk.itu.smdp2015.church.model.configurator.String it){
 		'''"«it.value»"'''
 	}
-	def dispatch renderExpression(dk.itu.smdp2015.church.model.configurator.Boolean it){
-		it.value
+	def  dispatch CharSequence renderExpression(dk.itu.smdp2015.church.model.configurator.Boolean it){
+		'''«value»'''
 	}
 	def dispatch renderExpression(dk.itu.smdp2015.church.model.configurator.Integer it){
 		it.value
 	}
 	def dispatch renderExpression(InRange it){
 		'''«IF it.range instanceof Enumerated»
-			$.inArray(«parameter.jsValueReference»,
+			$.inArray(«parameter.renderJsValueReference»,
 			 «(range as Enumerated).renderJavaScriptArray») > -1
 			 «ELSEIF it.range instanceof Bounded»
 			 	«val bound = range as Bounded»
-			 	(«parameter.jsValueReference» ">" «bound.lowerBound.renderExpression» && «parameter.jsValueReference» < «bound.upperBound.renderExpression»)
+			 	(«parameter.renderJsValueReference» ">" «bound.lowerBound.renderExpression» && «parameter.renderJsValueReference» < «bound.upperBound.renderExpression»)
 			 «ELSE»
 			 	«"Unknown valuerange: " + it.range.class.name»
 			 «ENDIF»
 			 '''
 	}
 	def dispatch renderExpression(Binary it){
-		'''(«left.renderExpression»
-			«operator.renderOperator»
-			«right.renderExpression»
-			)'''
+		'''(«left.renderExpression»«operator.renderOperator»«right.renderExpression»)'''
 	}
 	def dispatch renderExpression(Identifier it){
-		it.id.jsValueReference
+		it.id.renderJsValueReference
 	}
 	def dispatch renderExpression(Unary it){
 		val isLogical= operator == UnaryOperator.LOGICAL_NOT
@@ -193,8 +190,12 @@ App.ViewModel = ko.validatedObservable({
 	}
 	def renderOperator(dk.itu.smdp2015.church.model.configurator.BinaryOperator operator) {
 		switch operator.literal {
-			case "logicalOr": " || "
-			case "logicalAnd": " && "
+			case "logicalOr": '''
+			||
+			'''
+			case "logicalAnd": '''
+			&&
+			'''
 			case "addition": " + "
 			case "multiplication": " * "
 			case "lessThan": " < "
@@ -204,7 +205,7 @@ App.ViewModel = ko.validatedObservable({
 			default: " no operatormatch "
 		}
 	}
-	def jsValueReference(Parameter it){
+	def renderJsValueReference(Parameter it){
 		'''App.ViewModel().«fullPath».value()«IF it.valueRange instanceof Enumerated»==null? '' : App.ViewModel().«fullPath».value()[0]«ENDIF»'''
 	}
 	

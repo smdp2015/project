@@ -13,6 +13,8 @@ import dk.itu.smdp2015.church.model.configurator.ParameterGroup
 import dk.itu.smdp2015.church.model.configurator.Parameter
 import org.junit.Assert
 import dk.itu.smdp2015.church.model.configurator.Enumerated
+import java.util.function.BinaryOperator
+import dk.itu.smdp2015.church.model.configurator.Binary
 
 @RunWith(XtextRunner)
 @InjectWith(ConfiguratorInjectorProvider)
@@ -31,6 +33,12 @@ abstract class BaseXtextTest {
 	}
 	def firstGroup (Configurator it){
 		parameters.filter(typeof(ParameterGroup)).get(0)
+	}
+	def firstVisibilityExpression (Configurator it){
+		parameters.get(0).visibility
+	}
+	def firstBinaryOperator (Configurator it){
+		(parameters.get(0).visibility as Binary).operator
 	}
 	def firstParam (Configurator it){
 		parameters.filter(typeof(Parameter)).get(0)
