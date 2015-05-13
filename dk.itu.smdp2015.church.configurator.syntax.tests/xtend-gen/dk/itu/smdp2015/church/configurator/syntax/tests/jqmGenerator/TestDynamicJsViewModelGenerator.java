@@ -308,7 +308,7 @@ public class TestDynamicJsViewModelGenerator extends BaseTestJqmGenerator {
   }
   
   @Test
-  public void testComplexExpression_ThenItIsRenderedCorrectly() {
+  public void testWhenComplexExpression_ThenItIsRenderedCorrectly() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("{parameter test visible-if p2 == p1 or p1 == p3 or p4 == p1 or p2<p3 and test != \"somestring\" ,");
@@ -321,13 +321,12 @@ public class TestDynamicJsViewModelGenerator extends BaseTestJqmGenerator {
       _builder.append("parameter p3,");
       _builder.newLine();
       _builder.append("parameter p4 },");
-      _builder.newLine();
-      String u = _builder.toString();
-      String _addPrefix = this.addPrefix(u);
+      String _string = _builder.toString();
+      String _addPrefix = this.addPrefix(_string);
       Configurator _parse = this._parseHelper.parse(_addPrefix);
       Expression _firstVisibilityExpression = this.firstVisibilityExpression(_parse);
       Object _renderExpression = this._jqmViewModelGenerator.renderExpression(_firstVisibilityExpression);
-      String _string = _renderExpression.toString();
+      String _string_1 = _renderExpression.toString();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("((((App.ViewModel().p2.value()==null? \'\' : App.ViewModel().p2.value()[0] == App.ViewModel().p1.value())||");
       _builder_1.newLine();
@@ -338,7 +337,7 @@ public class TestDynamicJsViewModelGenerator extends BaseTestJqmGenerator {
       _builder_1.append("((App.ViewModel().p2.value()==null? \'\' : App.ViewModel().p2.value()[0] < App.ViewModel().p3.value())&&");
       _builder_1.newLine();
       _builder_1.append("(App.ViewModel().test.value() != \"somestring\")))");
-      this.assertCodeWithExpectedOutput(_string, _builder_1.toString());
+      this.assertCodeWithExpectedOutput(_string_1, _builder_1.toString());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

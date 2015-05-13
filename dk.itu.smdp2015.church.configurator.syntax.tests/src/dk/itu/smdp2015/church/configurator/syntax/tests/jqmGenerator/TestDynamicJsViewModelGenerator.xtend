@@ -144,15 +144,13 @@ class TestDynamicJsViewModelGenerator extends BaseTestJqmGenerator{
 		' > ')
 	}
 	
-		@Test
-	def void  testComplexExpression_ThenItIsRenderedCorrectly() {
-		var u = '''{parameter test visible-if p2 == p1 or p1 == p3 or p4 == p1 or p2<p3 and test != "somestring" ,
+	@Test
+	def void  testWhenComplexExpression_ThenItIsRenderedCorrectly() {
+		'''{parameter test visible-if p2 == p1 or p1 == p3 or p4 == p1 or p2<p3 and test != "somestring" ,
 		parameter p1 ,
 parameter p2 values (1,2,3),
 parameter p3,
-parameter p4 },
-'''
-		u.addPrefix.parse.firstVisibilityExpression
+parameter p4 },'''.toString.addPrefix.parse.firstVisibilityExpression
 		.renderExpression.toString
 		.assertCodeWithExpectedOutput(
 		'''((((App.ViewModel().p2.value()==null? '' : App.ViewModel().p2.value()[0] == App.ViewModel().p1.value())||
