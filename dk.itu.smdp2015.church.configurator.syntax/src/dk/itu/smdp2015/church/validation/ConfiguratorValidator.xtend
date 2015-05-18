@@ -27,8 +27,6 @@ import dk.itu.smdp2015.church.model.configurator.ParameterGroup
 import java.util.ArrayList
 import java.util.List
 
-//github.com/smdp2015/project.git
-
 /**
  * Custom validation rules. 
  *
@@ -48,6 +46,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkEnumeratedExpressionIsConstant(Enumerated it) {
+		// Check that each value in the enumerated expression can be evaluated as a static value:
 		values.forEach[
 			if (staticValue == null) {
 				error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
@@ -57,6 +56,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkBoundedExpressionUpperBoundIsConstant(Bounded bounded) {
+		// Check that the upper bound in a bounded expression can be evaluated as a static value:
 		if (bounded.upperBound.staticValue == null) {
 			error('Upper bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND,
 				INVALID_BOUND)
@@ -65,6 +65,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkBoundedExpressionLowerBoundIsConstant(Bounded bounded) {
+		// Check that the lower bound in a bounded expression can be evaluated as a static value:
 		if (bounded.lowerBound.staticValue == null) {			
 			error('Lower bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND,
 				INVALID_BOUND)
@@ -73,16 +74,20 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkBoundedExpressionLowerIsBelowUpper(Bounded bounded) {
+		// Check that the lower bound in a bound expression is less than the upper bound
 		val lowerVal = bounded.lowerBound?.staticValue
 		val upperVal = bounded.upperBound?.staticValue
 		var c = -1;
 		if (lowerVal instanceof Integer && upperVal instanceof Integer) {
+			// If values are of type Integer:
 			c = (lowerVal as Integer).compareTo(upperVal as Integer)
 		}
 		if (lowerVal instanceof String && upperVal instanceof String) {
+			// If values are of type String:
 			c = (lowerVal as String).compareTo(upperVal as String)
 		}
 		if (lowerVal instanceof Boolean && upperVal instanceof Boolean) {
+			// If values are of type Boolean:
 			c = (lowerVal as Boolean).compareTo(upperVal as Boolean)
 		}
 		if (c >= 0) {
@@ -93,6 +98,8 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkEnumeratedSequence(Enumerated enumerated) {
+		// Check that values contained in Enumerated all have unique static values
+		// (e.g. 2+2 must not be in the same sequence as 4) 
 		enumerated.values.forEach [ v |
 			if (enumerated.values.filter[staticValue == v.staticValue].size != 1)
 				error('Enumerated values should be unique', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
@@ -220,21 +227,31 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkDefaultValue(Parameter parameter) {
+		// Constraint check on parameter default value.
+		// Does this parameter have a default value at all?:
 		if (parameter.^default != null) {
 			val defVal = parameter.^default.staticValue
 			val range = parameter.valueRange
 			switch (range) {
 				Enumerated:
+					// Constraint check on Enumerated ValueRange type:
 					if (!range.values.exists[staticValue == defVal])
+						// Error if default value is not among the listed elements in the Enumerated collection:
 						error('Default value should be among the listed values',
 							ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
 				Bounded: {
+					// Constraint check on Bounded ValueRange type:
 					var defaultValueIsValid = true;
-					if (range.lowerBound.staticValue instanceof Integer)
-						defaultValueIsValid = (range.lowerBound.staticValue as Integer) <= (defVal as Integer) && (range.upperBound.staticValue as Integer) >= (defVal as Integer)
-					else if (range.lowerBound.staticValue instanceof String)
-						defaultValueIsValid = (range.lowerBound.staticValue as String) <= (defVal as String) && (range.upperBound.staticValue as String) >= (defVal as String)
+					if (range.lowerBound.staticValue instanceof Integer) // Bounded ValueRange elements are of type Integer
+						// Check that default value lies between lower and upper bound:
+						defaultValueIsValid = (range.lowerBound.staticValue as Integer) <= (defVal as Integer) 
+							&& (range.upperBound.staticValue as Integer) >= (defVal as Integer)
+					else if (range.lowerBound.staticValue instanceof String) // Bounded ValueRange elements are of type String 
+						// Check that default value lies between lower and upper bound (based on string values):
+						defaultValueIsValid = (range.lowerBound.staticValue as String) <= (defVal as String)
+							&& (range.upperBound.staticValue as String) >= (defVal as String)
 					if (!defaultValueIsValid)
+						// Throw an error:
 						error('Default value should be within the specified value range', ConfiguratorPackage.Literals.PARAMETER__DEFAULT, INVALID_BOUND)
 				}
 			}
@@ -243,6 +260,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkIdentifierOptional(Identifier identifier) {
+		// Check if any Identifier refers to an optional parameter:
 		if (identifier.id.optional) {
 			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IDENTIFIER__ID, OPTIONAL_PARAMETER_INVALID)
 		}
@@ -250,6 +268,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkInRangeOptional(InRange inRange) {
+		// Check if any InRange refers to an optional parameter:
 		if (inRange.parameter.optional) {
 			error('Identifier cannot refer to an optional parameter', ConfiguratorPackage.Literals.IN_RANGE__PARAMETER, OPTIONAL_PARAMETER_INVALID)
 		}
@@ -257,6 +276,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 	
 	@Check
 	def checkUniqueParameterNames(Configurator configurator) {
+		// Check that all parameters and parameter groups have globally unique names:
 		var params = configurator.parameters.names
 		if (params.length != params.toSet.length) {
 			error('All parameters and parameter groups must have globally unique names', ConfiguratorPackage.Literals.NAMED_ELEMENT__NAME, PARAMETER_NAME_NOT_UNIQUE)
