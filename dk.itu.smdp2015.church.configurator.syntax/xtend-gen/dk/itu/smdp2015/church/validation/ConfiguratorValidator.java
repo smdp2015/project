@@ -8,7 +8,6 @@ import dk.itu.smdp2015.church.model.configurator.BinaryOperator;
 import dk.itu.smdp2015.church.model.configurator.Bounded;
 import dk.itu.smdp2015.church.model.configurator.Configurator;
 import dk.itu.smdp2015.church.model.configurator.ConfiguratorPackage;
-import dk.itu.smdp2015.church.model.configurator.Constant;
 import dk.itu.smdp2015.church.model.configurator.Constraint;
 import dk.itu.smdp2015.church.model.configurator.Enumerated;
 import dk.itu.smdp2015.church.model.configurator.Expression;
@@ -68,21 +67,25 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   @Check
   public void checkEnumeratedExpressionIsConstant(final Enumerated it) {
     EList<Expression> _values = it.getValues();
-    Iterable<Constant> _filter = Iterables.<Constant>filter(_values, Constant.class);
-    int _length = ((Object[])Conversions.unwrapArray(_filter, Object.class)).length;
-    EList<Expression> _values_1 = it.getValues();
-    int _length_1 = ((Object[])Conversions.unwrapArray(_values_1, Object.class)).length;
-    boolean _notEquals = (_length != _length_1);
-    if (_notEquals) {
-      this.error("Enumerated item should be a constant.", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
-        ConfiguratorValidator.INVALID_ENUMERATION);
-    }
+    final Consumer<Expression> _function = new Consumer<Expression>() {
+      public void accept(final Expression it) {
+        Object _staticValue = ConfiguratorValidator.this._expressionValueProvider.staticValue(it);
+        boolean _equals = Objects.equal(_staticValue, null);
+        if (_equals) {
+          ConfiguratorValidator.this.error("Enumerated item should be a constant.", ConfiguratorPackage.Literals.ENUMERATED__VALUES, 
+            ConfiguratorValidator.INVALID_ENUMERATION);
+        }
+      }
+    };
+    _values.forEach(_function);
   }
   
   @Check
   public void checkBoundedExpressionUpperBoundIsConstant(final Bounded bounded) {
     Expression _upperBound = bounded.getUpperBound();
-    if ((!(_upperBound instanceof Constant))) {
+    Object _staticValue = this._expressionValueProvider.staticValue(_upperBound);
+    boolean _equals = Objects.equal(_staticValue, null);
+    if (_equals) {
       this.error("Upper bound should be a constant.", ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND, 
         ConfiguratorValidator.INVALID_BOUND);
     }
@@ -91,7 +94,9 @@ public class ConfiguratorValidator extends AbstractConfiguratorValidator {
   @Check
   public void checkBoundedExpressionLowerBoundIsConstant(final Bounded bounded) {
     Expression _lowerBound = bounded.getLowerBound();
-    if ((!(_lowerBound instanceof Constant))) {
+    Object _staticValue = this._expressionValueProvider.staticValue(_lowerBound);
+    boolean _equals = Objects.equal(_staticValue, null);
+    if (_equals) {
       this.error("Lower bound should be a constant.", ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND, 
         ConfiguratorValidator.INVALID_BOUND);
     }

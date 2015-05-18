@@ -26,7 +26,6 @@ import dk.itu.smdp2015.church.model.configurator.AbstractParameter
 import dk.itu.smdp2015.church.model.configurator.ParameterGroup
 import java.util.ArrayList
 import java.util.List
-import dk.itu.smdp2015.church.model.configurator.Constant
 
 //github.com/smdp2015/project.git
 
@@ -49,15 +48,16 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkEnumeratedExpressionIsConstant(Enumerated it) {
-		if (values.filter(Constant).length != values.length) {
-			error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
+		values.forEach[
+			if (staticValue == null) {
+				error('Enumerated item should be a constant.', ConfiguratorPackage.Literals.ENUMERATED__VALUES,
 					INVALID_ENUMERATION)
-		}
+			}]
 	}
 
 	@Check
 	def checkBoundedExpressionUpperBoundIsConstant(Bounded bounded) {
-		if (!(bounded.upperBound instanceof Constant)) {
+		if (bounded.upperBound.staticValue == null) {
 			error('Upper bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__UPPER_BOUND,
 				INVALID_BOUND)
 		}
@@ -65,7 +65,7 @@ class ConfiguratorValidator extends AbstractConfiguratorValidator {
 
 	@Check
 	def checkBoundedExpressionLowerBoundIsConstant(Bounded bounded) {
-		if (!(bounded.lowerBound instanceof Constant)) {
+		if (bounded.lowerBound.staticValue == null) {			
 			error('Lower bound should be a constant.', ConfiguratorPackage.Literals.BOUNDED__LOWER_BOUND,
 				INVALID_BOUND)
 		}
