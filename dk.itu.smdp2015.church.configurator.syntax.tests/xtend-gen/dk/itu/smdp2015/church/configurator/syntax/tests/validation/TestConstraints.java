@@ -81,7 +81,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testBoundedInvalidLowerNotConstant() {
     try {
-      String _addPrefix = this.addPrefix("{ parameter wheel_size values [2+3;5] }");
+      String _addPrefix = this.addPrefix("{ parameter wheel_type values (\'aluminum\', \'steel\') parameter wheel_size values [wheel_type;5] }");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
       this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Lower bound should be a constant.");
     } catch (Throwable _e) {
@@ -92,7 +92,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testBoundedInvalidUpperNotConstant() {
     try {
-      String _addPrefix = this.addPrefix("{ parameter wheel_size values [2;5+2] }");
+      String _addPrefix = this.addPrefix("{ parameter wheel_size values [2;wheel_size] }");
       Configurator _parse = this._parseHelper.parse(_addPrefix);
       this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Upper bound should be a constant.");
     } catch (Throwable _e) {
@@ -161,8 +161,7 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testEnumerationInvalidNotConstantValue() {
     try {
-      String _addPrefix = this.addPrefix("{ parameter Variant values (1, 2+3) }");
-      Configurator _parse = this._parseHelper.parse(_addPrefix);
+      Configurator _parse = this._parseHelper.parse("configurator myconfigurator { parameter Variant values (1, Variant) }");
       this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.ENUMERATED, ConfiguratorValidator.INVALID_ENUMERATION, "Enumerated item should be a constant");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -292,9 +291,8 @@ public class TestConstraints extends BaseXtextTest {
   @Test
   public void testParameterNameInvalid() {
     try {
-      String _addPrefix = this.addPrefix("{ parameter 3foo values [3, 4] }");
-      Configurator _parse = this._parseHelper.parse(_addPrefix);
-      this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input");
+      Configurator _parse = this._parseHelper.parse("configurator myconfigurator { parameter 3foo values [3; 4] }");
+      this._validationTestHelper.assertError(_parse, ConfiguratorPackage.Literals.PARAMETER, Diagnostic.SYNTAX_DIAGNOSTIC, "extraneous input \'3\'");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -46,13 +46,13 @@ class TestConstraints extends BaseXtextTest {
 
 	@Test
 	def void testBoundedInvalidLowerNotConstant(){
-		'{ parameter wheel_size values [2+3;5] }'.addPrefix.parse
+		'{ parameter wheel_type values (\'aluminum\', \'steel\') parameter wheel_size values [wheel_type;5] }'.addPrefix.parse
 		.assertError(ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Lower bound should be a constant.")		
 	}
 	
 	@Test
 	def void testBoundedInvalidUpperNotConstant(){
-		'{ parameter wheel_size values [2;5+2] }'.addPrefix.parse
+		'{ parameter wheel_size values [2;wheel_size] }'.addPrefix.parse
 		.assertError(ConfiguratorPackage.Literals.BOUNDED, ConfiguratorValidator.INVALID_BOUND, "Upper bound should be a constant.")	
 	}
 	
@@ -87,7 +87,7 @@ class TestConstraints extends BaseXtextTest {
 
 	@Test
 	def void testEnumerationInvalidNotConstantValue() {
-		'{ parameter Variant values (1, 2+3) }'.addPrefix.parse
+		'configurator myconfigurator { parameter Variant values (1, Variant) }'.parse
 		.assertError(ConfiguratorPackage.Literals.ENUMERATED, ConfiguratorValidator.INVALID_ENUMERATION, "Enumerated item should be a constant")
 	}
 	
@@ -178,8 +178,8 @@ class TestConstraints extends BaseXtextTest {
 	
 	@Test
 	def void testParameterNameInvalid() {
-		'{ parameter 3foo values [3, 4] }'.addPrefix.parse
-		.assertError(ConfiguratorPackage.Literals.CONFIGURATOR, Diagnostic.SYNTAX_DIAGNOSTIC, "mismatched input")
+		'configurator myconfigurator { parameter 3foo values [3; 4] }'.parse
+		.assertError(ConfiguratorPackage.Literals.PARAMETER, Diagnostic.SYNTAX_DIAGNOSTIC, "extraneous input '3'")
 	}	
 	
 }
